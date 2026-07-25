@@ -167,7 +167,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .pr .save{font-size:8.5px;padding:2px 6px;letter-spacing:.04em}
   .atc{height:42px;font-size:11px;margin-top:10px}
   .ptag{top:8px;right:8px;font-size:8.5px;padding:4px 8px}
-  .grid3{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad)}
+  .grid3{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
   .grid3::-webkit-scrollbar{display:none}
   .grid3 .p-card{flex:0 0 220px;scroll-snap-align:start}
   .footer{margin-top:64px;padding:44px 22px 0}

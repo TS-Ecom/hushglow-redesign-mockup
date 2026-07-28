@@ -51,7 +51,8 @@ small; leave out the per-page JS include only when the page truly has no behavio
 
 ## Reused markup
 
-Header (announcement + head + mega menu panels + mobile menu), trust bar and footer are
+Header (announcement + head + mega menu panels + mobile menu), trust bar, footer and the
+cart drawer (`.cart-ovl` + `.cartdrawer`, opened by the bag icon via `cartToggle()`) are
 copied verbatim from `html/index.html` into every new page until real templating exists.
 When changing them, change them on every page in the same commit.
 

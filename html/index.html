@@ -51,11 +51,11 @@
       <a href="#"><span>Contact</span></a>
       <div class="icons">
         <svg class="account" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
-        <span class="bag"><svg viewBox="0 0 24 24"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><i>4</i></span>
+        <span class="bag"><svg viewBox="0 0 24 24"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><i>1</i></span>
       </div>
     </nav>
     <div class="icons mob-icons">
-      <span class="bag"><svg viewBox="0 0 24 24"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><i>4</i></span>
+      <span class="bag"><svg viewBox="0 0 24 24"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><i>1</i></span>
     </div>
   </header>
 </div>
@@ -298,6 +298,71 @@
     <a class="mm-tile"><span class="tl"><img src="https://hushglow.com/cdn/shop/files/1_1296_1296__1.webp?width=400" alt="Glow Travel Kit"></span><b>Glow Travel Kit</b></a>
   </div>
 </div>
+
+<!-- cart drawer (static visual prototype, approved Launch state: one gift, one item) -->
+<div class="cart-ovl" id="cartOvl" onclick="cartToggle(false)"></div>
+<aside class="cartdrawer" id="cartDrawer" aria-label="Cart">
+  <div class="d-body">
+    <div class="gifttop">
+      <button class="x" aria-label="Close cart" onclick="cartToggle(false)">✕</button>
+      <p class="gmsg">Spend another <b>$40.01</b> for <b>Cosmetic Bag</b></p>
+      <div class="gift1">
+        <div class="gph"><img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=200" alt="Cosmetic Bag"></div>
+        <div class="g1mid"><b>Cosmetic Bag</b><span class="shl">Unlock at $80</span><div class="g1bar"><div style="width:50%"></div></div></div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="ph"><img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/1_1296_1296___Ivory_2.webp?width=300" alt=""></div>
+      <div class="mid">
+        <p class="name">Hush Foundation Cushion</p>
+        <div class="shade"><span class="sw"></span>Beige</div>
+        <span class="qty"><span>−</span><span class="n">1</span><span>+</span></span><span class="rm">Remove</span>
+      </div>
+      <div class="right"><div class="price">$39.99</div><div class="was">$70.99</div></div>
+    </div>
+    <div class="strip">100% Shade Match Guarantee</div>
+    <div class="hl">
+      <div class="ph"><img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?width=300" alt=""></div>
+      <div class="mid">
+        <p class="hd">Pairs well with</p>
+        <span class="nm">Multi-Effect Blush Stick<span class="shl">matched to your shade Beige</span></span>
+        <span class="pr"><b>$32.99</b><s>$45.99</s></span>
+        <a class="hlbtn">Add to Bag</a>
+      </div>
+    </div>
+    <div class="cyl">
+      <p class="hd2">Complete your look</p>
+      <div class="cylwrap">
+        <div class="cylrow">
+          <div class="ccard">
+            <div class="ph"><img src="https://hushglow.com/cdn/shop/files/37.jpg?width=300" alt=""></div>
+            <p class="nm">Waterproof Setting Spray</p>
+            <a class="hlbtn">Add · $21.99</a>
+          </div>
+          <div class="ccard">
+            <div class="ph"><img src="https://hushglow.com/cdn/shop/files/38.jpg?width=300" alt=""></div>
+            <p class="nm">Pore-Blurring Primer Stick</p>
+            <a class="hlbtn">Add · $19.99</a>
+          </div>
+          <div class="ccard">
+            <div class="ph"><img src="https://hushglow.com/cdn/shop/files/1_1296_1296_SUNKISSED_TRIO_fee55656-5224-402c-a213-5e3c92a5f333.jpg?width=300" alt=""></div>
+            <p class="nm">Sunkissed Trio</p>
+            <a class="hlbtn">Add · $90.99</a>
+          </div>
+        </div>
+        <div class="carr">→</div>
+      </div>
+    </div>
+  </div>
+  <div class="d-foot">
+    <div class="row tsave"><span class="l">You're saving</span><span class="r">$31.00</span></div>
+    <div class="row ship"><span class="l">Shipping</span><span class="r">FREE SHIPPING</span></div>
+    <div class="row"><span class="l">Subtotal</span><span class="r">$39.99</span></div>
+    <a class="co"><svg class="lk" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>Secure Checkout · $39.99</a>
+    <div class="gpill"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.7-6L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.7 6L3 16"/><path d="M3 21v-5h5"/></svg>Wrong shade? <b>We'll replace it free.</b></div>
+    <div class="cpay" id="cartPayRow"></div>
+  </div>
+</aside>
 
 <script src="../js/shared.js"></script>
 <script src="../js/index.js"></script>

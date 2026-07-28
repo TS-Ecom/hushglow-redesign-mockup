@@ -12,21 +12,12 @@
 .hero .ctas{display:flex;gap:14px;margin-top:4px;flex-wrap:wrap}
 
 
-/* ---------- press ---------- */
-.press{background:var(--cream);padding:28px 0 32px;display:flex;flex-direction:column;align-items:center;gap:18px;overflow:hidden;margin-top:0}
-.press .lbl{font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-weight:600}
-.press .ticker{display:flex;width:max-content}
-.press .half{display:flex;align-items:center;gap:74px;padding-right:74px;animation:tickmove 26s linear infinite}
-.press img{height:24px;width:auto;filter:grayscale(1) brightness(.35);opacity:.75}
-@keyframes tickmove{to{transform:translateX(-100%)}}
-
-
 /* ---------- image with text ---------- */
 .iwt{display:grid;grid-template-columns:1.08fr 1fr;gap:0;margin-top:96px;background:#fff}
 .iwt .ph{height:640px;overflow:hidden}
 .iwt .ph img{width:100%;height:100%;object-fit:cover}
 .iwt .tx{display:flex;flex-direction:column;justify-content:center;padding:60px 84px;gap:22px;align-items:flex-start}
-.iwt .tx h2{font-size:36px;font-weight:500;letter-spacing:-.015em;line-height:1.12;max-width:14ch}
+.iwt .tx h2{font-size:clamp(28px,2.5vw,36px);font-weight:500;letter-spacing:-.015em;line-height:1.12}
 .iwt .tx p{font-size:15.5px;color:var(--ink-soft);line-height:1.7;max-width:52ch}
 .iwt.flip .ph{order:2}
 .iwt.flip .tx{order:1}
@@ -38,10 +29,11 @@
 
 
 /* ---------- get the look ---------- */
+/* full-bleed edge-to-edge strip, 4 cards per viewport (Jones Road reference) */
 .look{margin-top:96px;position:relative}
-.lookrow{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
+.lookrow{display:flex;gap:4px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .lookrow::-webkit-scrollbar{display:none}
-.l-card{position:relative;flex:0 0 300px;aspect-ratio:3/4.05;border-radius:var(--radius);overflow:hidden;scroll-snap-align:start}
+.l-card{position:relative;flex:0 0 calc((100% - 12px)/4);aspect-ratio:3/4.05;border-radius:var(--radius);overflow:hidden;scroll-snap-align:start}
 .l-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
 .l-card:hover img{transform:scale(1.045)}
 .l-card::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(23,14,12,.55) 0%,rgba(23,14,12,0) 45%)}
@@ -72,10 +64,6 @@
   .hero .lede{font-size:14.5px}
   .hero .ctas{flex-direction:column;width:100%;gap:10px}
   .hero .btn{width:100%;padding:16px 0}
-  .press{padding:20px 0 22px;gap:13px}
-  .press .lbl{font-size:11px}
-  .press .half{gap:40px;padding-right:40px;animation-duration:22s}
-  .press img{height:16px}
   .iwt{grid-template-columns:1fr;margin-top:64px}
   .iwt .ph{height:340px;order:0}
   .iwt .tx{padding:30px 20px 36px;gap:14px}
@@ -86,13 +74,11 @@
   .iwt.flip .tx{order:1}
   .photobanner{margin-top:64px}
   .look{margin-top:64px}
-  .lookrow{gap:14px}
-  .l-card{flex:0 0 240px}
+  .l-card{flex:0 0 calc(100% - 40px)}
   .l-card .cap b{font-size:11px}
   .lookarrow{display:none}
 }
 
 @media (prefers-reduced-motion: reduce){
-  .press .half{animation:none}
   video{display:none}
 }

@@ -121,8 +121,16 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 .soc i{width:32px;height:32px;border:1px solid rgba(251,247,242,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-style:normal;cursor:pointer;transition:background .2s ease,border-color .2s ease}
 .soc i:hover{background:rgba(250,248,246,.14);border-color:rgba(250,248,246,.6)}
 .soc svg{width:14px;height:14px}
-.pay{display:flex;flex-wrap:wrap;gap:8px;margin-top:44px;max-width:1320px;margin-left:auto;margin-right:auto}
+.paybar{display:flex;justify-content:space-between;align-items:center;gap:24px;max-width:1320px;margin:44px auto 0}
+.pay{display:flex;flex-wrap:wrap;gap:8px}
 .pay img{height:24px;width:auto;display:block}
+.tp-foot{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.tp-foot b{color:var(--paper);font-size:15px;font-weight:600}
+.tp-foot .tp-svg{width:96px;height:19px}
+.tp-foot .tpl{font-size:13px;text-decoration:underline;text-underline-offset:3px;transition:color .2s ease}
+.tp-foot .tpl:hover{color:var(--paper)}
+.tp-foot .tpb{display:inline-flex;align-items:center;gap:4px;color:var(--paper);font-size:14.5px;font-weight:600}
+.tp-foot .tpb svg{width:17px;height:17px;display:block}
 .footer .bottom{border-top:1px solid rgba(251,247,242,.14);margin-top:20px;padding:20px 0;font-size:12px;display:flex;justify-content:space-between;max-width:1320px;margin-left:auto;margin-right:auto}
 
 
@@ -276,7 +284,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .sub-in{margin-top:14px}
   .footer .col:last-child .soc{display:none}
   .pay img{height:22px}
-  .pay{justify-content:center;max-width:340px;margin-top:34px}
+  .paybar{display:block;margin:34px 0 0}
+  .tp-foot{display:none}
+  .pay{justify-content:center;max-width:340px;margin:0 auto}
   .follow{display:block;margin:32px 0 0;text-align:center}
   .follow .flbl{font-size:15px;font-weight:500;color:var(--paper);margin-bottom:15px}
   .follow .soc{margin-top:0;justify-content:center}

@@ -73,10 +73,23 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 .trust i{font-style:normal;font-weight:400;font-size:14px}
 
 
+/* ---------- image with text (used on home + product pages) ---------- */
+.iwt{display:grid;grid-template-columns:1.08fr 1fr;gap:0;margin-top:96px;background:#fff}
+.iwt .ph{height:640px;overflow:hidden}
+.iwt .ph img{width:100%;height:100%;object-fit:cover}
+.iwt .tx{display:flex;flex-direction:column;justify-content:center;padding:60px 84px;gap:22px;align-items:flex-start}
+.iwt .tx .cap{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--ink-soft)}
+.iwt .tx h2{font-size:clamp(28px,2.5vw,36px);font-weight:500;letter-spacing:-.015em;line-height:1.12}
+.iwt .tx p{font-size:15.5px;color:var(--ink-soft);line-height:1.7;max-width:52ch}
+.iwt .tx p b{color:var(--ink)}
+.iwt.flip .ph{order:2}
+.iwt.flip .tx{order:1}
+
+
 /* ---------- product cards ---------- */
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:1120px;margin:0 auto}
-.p-card{cursor:pointer;position:relative}
+.p-card{cursor:pointer;position:relative;display:block}
 .p-card .ph{border-radius:var(--radius);overflow:hidden;background:var(--cream);aspect-ratio:1/1;position:relative}
 .p-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,opacity .25s ease}
 .p-card .ph img.alt{position:absolute;inset:0;opacity:0}
@@ -258,6 +271,14 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .pr .save{font-size:8.5px;padding:2px 6px;letter-spacing:.04em}
   .atc{height:42px;font-size:11px;margin-top:10px}
   .ptag{top:8px;right:8px;font-size:8.5px;padding:4px 8px}
+  .iwt{grid-template-columns:1fr;margin-top:64px}
+  .iwt .ph{height:340px;order:0}
+  .iwt .tx{padding:30px 20px 36px;gap:14px}
+  .iwt .tx h2{font-size:27px}
+  .iwt .tx p{font-size:14px}
+  .iwt .tx .btn{width:100%}
+  .iwt.flip .ph{order:0}
+  .iwt.flip .tx{order:1}
   .grid3{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
   .grid3::-webkit-scrollbar{display:none}
   .grid3 .p-card{flex:0 0 220px;scroll-snap-align:start}

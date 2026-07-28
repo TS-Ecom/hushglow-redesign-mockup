@@ -108,10 +108,6 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 /* mobile-only footer elements (accordion "Contact" header, Follow us block) */
 .m-only{display:none}
 .follow{display:none}
-.follow .soc svg[fill]:not([fill="none"]){fill:var(--ink)}
-.follow .soc svg [fill]:not([fill="none"]){fill:var(--ink)}
-.follow .soc svg[stroke]:not([stroke="none"]){stroke:var(--ink)}
-.follow .soc svg [stroke]:not([stroke="none"]){stroke:var(--ink)}
 .footer h4{color:var(--paper);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
 .footer ul{list-style:none}
 .footer li{font-size:13.5px;padding:4px 0;cursor:pointer;transition:color .2s ease}
@@ -200,18 +196,14 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .footer .col:last-child{margin-top:30px}
   .footer .col:last-child h4{display:none}
   .footer .col:last-child p{font-size:14px}
-  .sub-in{border:1px solid rgba(251,247,242,.38);padding:5px 5px 5px 15px;align-items:center;gap:8px;margin-top:14px}
-  .sub-in input{font-size:15px}
-  .sub-in button{background:var(--paper);color:var(--ink);padding:13px 22px;flex:0 0 auto}
-  .sub-in .arr{display:none}
+  .sub-in{margin-top:14px}
   .footer .col:last-child .soc{display:none}
   .pay img{height:22px}
   .pay{justify-content:center;max-width:340px;margin-top:34px}
   .follow{display:block;margin:32px 0 0;text-align:center}
   .follow .flbl{font-size:15px;font-weight:500;color:var(--paper);margin-bottom:15px}
   .follow .soc{margin-top:0;justify-content:center}
-  .follow .soc i{width:38px;height:38px;background:var(--paper);border-color:var(--paper)}
-  .follow .soc i:hover{background:var(--paper);border-color:var(--paper)}
+  .follow .soc i{width:38px;height:38px}
   .footer .bottom{flex-direction:column;gap:4px;font-size:11.5px;padding:16px 0 22px;align-items:center;border-top:0;margin-top:24px}
 }
 

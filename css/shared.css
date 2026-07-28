@@ -73,6 +73,14 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 .trust i{font-style:normal;font-weight:400;font-size:14px}
 
 
+/* ---------- slider arrows (used on home + product pages) ---------- */
+.lookarrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;z-index:3;font-size:17px;box-shadow:0 4px 14px rgba(33,26,23,.16);transition:background .2s ease,color .2s ease,opacity .2s ease}
+.lookarrow:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lookarrow.prev{left:26px}
+.lookarrow.next{right:26px}
+.lookarrow[disabled]{opacity:.35;pointer-events:none}
+
+
 /* ---------- image with text (used on home + product pages) ---------- */
 .iwt{display:grid;grid-template-columns:1.08fr 1fr;gap:0;margin-top:96px;background:#fff}
 .iwt .ph{height:640px;overflow:hidden}

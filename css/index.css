@@ -30,11 +30,6 @@
 .l-card .cap b{color:#fff;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;line-height:1.45}
 .l-card .cap a{background:var(--paper);color:var(--ink);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:9px 16px;border-radius:var(--r-btn);transition:background .2s ease,color .2s ease}
 .l-card .cap a:hover{background:var(--ink);color:var(--paper)}
-.lookarrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;z-index:3;font-size:17px;box-shadow:0 4px 14px rgba(33,26,23,.16);transition:background .2s ease,color .2s ease,opacity .2s ease}
-.lookarrow:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.lookarrow.prev{left:26px}
-.lookarrow.next{right:26px}
-.lookarrow[disabled]{opacity:.35;pointer-events:none}
 
 
 /* ---------- instagram ---------- */

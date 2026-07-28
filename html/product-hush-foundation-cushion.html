@@ -140,7 +140,7 @@
       <button class="swb" data-shade="Deep Mocha" data-desc="dark with neutral undertones" data-img="https://hushglow.com/cdn/shop/files/1_1296_1296___Deep_1.webp?width=1200" style="background:#96745b" aria-label="Deep Mocha"></button>
     </div>
     <p class="swdesc"><b id="swName">Ivory</b> <span id="swDesc">is pale with neutral undertones</span></p>
-    <a class="quizlink" href="#"><img class="qico" src="https://hushglow.com/cdn/shop/files/shade-finder-img.png?width=100" alt=""><span>Not Sure Your Shade? Tap Here →</span></a>
+    <a class="quizlink" href="#"><span>Not Sure Your Shade? Tap Here →</span><img class="qico" src="https://hushglow.com/cdn/shop/files/shade-finder-img.png" alt=""></a>
 
     <div class="bundlbl">Buy More – Save More</div>
     <div class="bundles">
@@ -216,15 +216,51 @@
   <span>Cruelty Free</span><i>·</i><span>Used by MakeUp Artists</span><i>·</i><span>Skin Care-Infused</span>
 </div>
 
-<!-- testimonials -->
+<!-- testimonials (Smooche-style cards, mirrors live EG Testimonials) -->
 <section class="section">
   <div class="inner">
     <h2 class="sec-h statement lovedh">Loved by <span class="oval">400,000+<svg viewBox="0 0 200 74" preserveAspectRatio="none"><ellipse cx="100" cy="37" rx="95" ry="32"/></svg></span></h2>
-    <div class="trow">
-      <div class="tcard"><div class="tph"><img src="https://hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_1.jpg?width=600" alt=""></div><p>“I have super sensitive skin and was scared to try anything new. But this didn't sting, itch, or break me out. It's soft, light, and actually makes my skin feel calm. I love the glow.”</p><b>Alexis, 54</b></div>
-      <div class="tcard"><div class="tph"><img src="https://hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_4.jpg?width=600" alt=""></div><p>“I was very surprised to have the wonderful customer service. When I expressed disappointment with the shade I received, they worked with me to send a better color. Amazing service.”</p><b>Kandeyce, 57</b></div>
-      <div class="tcard"><div class="tph"><img src="https://hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31.jpg?width=600" alt=""></div><p>“Hush Glow is the best makeup that I have ever tried!!! I'm 62 and it covers brown spots and evens out my complexion. My new forever makeup friend!!!”</p><b>Kim, 62</b></div>
-      <div class="tcard"><div class="tph"><img src="https://hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_3.jpg?width=600" alt=""></div><p>“I am so impressed with this product — the coverage is very good and yet it feels like you are wearing a wonderful moisturizer! I'm speechless. It blends beautifully with my coloring.”</p><b>Jill, 54</b></div>
+    <div class="twrap">
+      <button class="lookarrow prev" id="tPrev" aria-label="Previous" disabled>←</button>
+      <div class="trow" id="tRow">
+        <div class="tcard">
+          <div class="tph"><img src="https://hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_1.jpg?width=600" alt=""></div>
+          <div class="tbody">
+            <div class="tname"><b>Alexis, 54</b><span class="stars">★★★★★</span></div>
+            <div class="tver"><i>✓</i>Verified Purchase</div>
+            <p>“I have super sensitive skin and was scared to try anything new. But this didn't sting, itch, or break me out. It's soft, light, and actually makes my skin feel calm. I love the glow.”</p>
+            <a class="tmore">Read More</a>
+          </div>
+        </div>
+        <div class="tcard">
+          <div class="tph"><img src="https://hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_4.jpg?width=600" alt=""></div>
+          <div class="tbody">
+            <div class="tname"><b>Kandeyce, 57</b><span class="stars">★★★★★</span></div>
+            <div class="tver"><i>✓</i>Verified Purchase</div>
+            <p>“I was very surprised to have the wonderful customer service. When I expressed disappointment with the shade I received, they worked with me to send a better color. Amazing service.”</p>
+            <a class="tmore">Read More</a>
+          </div>
+        </div>
+        <div class="tcard">
+          <div class="tph"><img src="https://hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31.jpg?width=600" alt=""></div>
+          <div class="tbody">
+            <div class="tname"><b>Kim, 62</b><span class="stars">★★★★★</span></div>
+            <div class="tver"><i>✓</i>Verified Purchase</div>
+            <p>“Hush Glow is the best makeup that I have ever tried!!! I'm 62 and it covers brown spots and evens out my complexion. My new forever makeup friend!!!”</p>
+            <a class="tmore">Read More</a>
+          </div>
+        </div>
+        <div class="tcard">
+          <div class="tph"><img src="https://hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_3.jpg?width=600" alt=""></div>
+          <div class="tbody">
+            <div class="tname"><b>Jill, 54</b><span class="stars">★★★★★</span></div>
+            <div class="tver"><i>✓</i>Verified Purchase</div>
+            <p>“I am so impressed with this product — the coverage is very good and yet it feels like you are wearing a wonderful moisturizer! I'm speechless. It blends beautifully with my coloring.”</p>
+            <a class="tmore">Read More</a>
+          </div>
+        </div>
+      </div>
+      <button class="lookarrow next" id="tNext" aria-label="Next">→</button>
     </div>
   </div>
 </section>
@@ -245,27 +281,25 @@
         <div class="bitem"><i class="chk">✓</i><div><b>Weightless Feel, Buildable Coverage</b><p>Feels light like skincare, but covers redness, fine lines, and dullness in one step.</p></div></div>
       </div>
     </div>
+    <div class="benef-cta" id="reviews">
+      <svg class="tp-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 49 10" aria-label="4.5 out of 5 stars">
+        <path fill="#00B67A" d="M9.13482 0H0V9.11034H9.13482V0Z"></path>
+        <path fill="#00B67A" d="M18.936 0H9.80115V9.11034H18.936V0Z"></path>
+        <path fill="#00B67A" d="M28.8318 0H19.697V9.11034H28.8318V0Z"></path>
+        <path fill="#00B67A" d="M38.633 0H29.498V9.11034H38.633V0Z"></path>
+        <path fill="#DCDCE6" d="M48.5289 0H39.3938V9.11034H48.5289V0Z"></path>
+        <path fill="#00B67A" d="M39 0H47V9H39V0Z"></path>
+        <path fill="white" d="M4.472 6.07346L5.89934 5.69386L6.47026 7.49697L4.472 6.07346ZM7.70726 3.79589H5.23325L4.472 1.51831L3.71079 3.79589H1.33191L3.33016 5.2194L2.56891 7.49697L4.56717 6.07346L5.80417 5.2194L7.70726 3.79589Z"></path>
+        <path fill="white" d="M14.3688 6.07346L15.7961 5.69386L16.367 7.49697L14.3688 6.07346ZM17.5088 3.79589H15.0348L14.2736 1.51831L13.5123 3.79589H11.0383L13.0366 5.2194L12.2753 7.49697L14.2736 6.07346L15.5106 5.2194L17.5088 3.79589Z"></path>
+        <path fill="white" d="M24.2645 6.07346L25.6918 5.69386L26.2627 7.49697L24.2645 6.07346ZM27.4046 3.79589H24.9306L24.1693 1.51831L23.4081 3.79589H20.9341L22.9323 5.2194L22.2663 7.49697L24.2645 6.07346L25.5015 5.2194L27.4046 3.79589Z"></path>
+        <path fill="white" d="M34.0653 6.07346L35.4924 5.69386L36.0633 7.49697L34.0653 6.07346ZM37.3002 3.79589H34.8264L34.0653 1.51831L33.3038 3.79589H30.83L32.828 5.2194L32.0669 7.49697L34.0653 6.07346L35.3022 5.2194L37.3002 3.79589Z"></path>
+        <path fill="white" d="M43.9612 6.07346L45.3883 5.69386L45.9592 7.49697L43.9612 6.07346ZM47.101 3.79589H44.6272L43.8661 1.51831L43.1997 3.79589H40.7258L42.7242 5.2194L41.9628 7.49697L43.9612 6.07346L45.1981 5.2194L47.101 3.79589Z"></path>
+      </svg>
+      <p class="tpr">Rated 4.87/5 · 1,264 reviews</p>
+      <a class="btn btn-accent">Meet the #1 Foundation for Mature Skin →</a>
+      <p class="tpc">30-Day Shade Match Guarantee</p>
+    </div>
   </div>
-</section>
-
-<!-- trustpilot band -->
-<section class="tpband" id="reviews">
-  <svg class="tp-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 49 10" aria-label="4.5 out of 5 stars">
-    <path fill="#00B67A" d="M9.13482 0H0V9.11034H9.13482V0Z"></path>
-    <path fill="#00B67A" d="M18.936 0H9.80115V9.11034H18.936V0Z"></path>
-    <path fill="#00B67A" d="M28.8318 0H19.697V9.11034H28.8318V0Z"></path>
-    <path fill="#00B67A" d="M38.633 0H29.498V9.11034H38.633V0Z"></path>
-    <path fill="#DCDCE6" d="M48.5289 0H39.3938V9.11034H48.5289V0Z"></path>
-    <path fill="#00B67A" d="M39 0H47V9H39V0Z"></path>
-    <path fill="white" d="M4.472 6.07346L5.89934 5.69386L6.47026 7.49697L4.472 6.07346ZM7.70726 3.79589H5.23325L4.472 1.51831L3.71079 3.79589H1.33191L3.33016 5.2194L2.56891 7.49697L4.56717 6.07346L5.80417 5.2194L7.70726 3.79589Z"></path>
-    <path fill="white" d="M14.3688 6.07346L15.7961 5.69386L16.367 7.49697L14.3688 6.07346ZM17.5088 3.79589H15.0348L14.2736 1.51831L13.5123 3.79589H11.0383L13.0366 5.2194L12.2753 7.49697L14.2736 6.07346L15.5106 5.2194L17.5088 3.79589Z"></path>
-    <path fill="white" d="M24.2645 6.07346L25.6918 5.69386L26.2627 7.49697L24.2645 6.07346ZM27.4046 3.79589H24.9306L24.1693 1.51831L23.4081 3.79589H20.9341L22.9323 5.2194L22.2663 7.49697L24.2645 6.07346L25.5015 5.2194L27.4046 3.79589Z"></path>
-    <path fill="white" d="M34.0653 6.07346L35.4924 5.69386L36.0633 7.49697L34.0653 6.07346ZM37.3002 3.79589H34.8264L34.0653 1.51831L33.3038 3.79589H30.83L32.828 5.2194L32.0669 7.49697L34.0653 6.07346L35.3022 5.2194L37.3002 3.79589Z"></path>
-    <path fill="white" d="M43.9612 6.07346L45.3883 5.69386L45.9592 7.49697L43.9612 6.07346ZM47.101 3.79589H44.6272L43.8661 1.51831L43.1997 3.79589H40.7258L42.7242 5.2194L41.9628 7.49697L43.9612 6.07346L45.1981 5.2194L47.101 3.79589Z"></path>
-  </svg>
-  <p class="tpr">Rated 4.87/5 · 1,264 reviews</p>
-  <a class="btn btn-primary" href="#reviews">Meet the #1 Foundation for Mature Skin →</a>
-  <p class="tpc">30-Day Shade Match Guarantee</p>
 </section>
 
 <!-- finally made for mature skin -->
@@ -319,6 +353,7 @@
     </div>
     <button class="lookarrow next" id="bsNext" aria-label="Next">→</button>
   </div>
+  <div class="bsdots" id="bsDots"></div>
 </section>
 
 <!-- 3 steps -->

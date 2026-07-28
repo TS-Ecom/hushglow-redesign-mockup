@@ -2,6 +2,7 @@
 
 /* ---------- buy area layout ---------- */
 .pdp{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;padding:36px var(--pagepad) 0;max-width:1400px;margin:0 auto;align-items:start}
+.pdp .gal,.pdp .info{min-width:0}
 
 /* gallery */
 .gal{position:sticky;top:98px}

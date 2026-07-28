@@ -19,10 +19,18 @@
 
 /* info column */
 .info{max-width:560px}
-.info .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:10px}
-.ratrow{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--ink-soft);margin-bottom:10px}
-.ratrow:hover span:last-child{text-decoration:underline;text-underline-offset:3px}
-.ratrow .stars{font-size:12px;margin:0}
+.badge{display:inline-block;background:var(--cream);border:1px solid var(--sand);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:8px 14px;margin-bottom:14px}
+.lovedrow{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.lovedrow .avs{display:inline-flex}
+.lovedrow .avs img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);background:var(--cream)}
+.lovedrow .avs img+img{margin-left:-9px}
+.lovedrow .lt{font-size:13.5px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap}
+.lovedrow .lt b{color:var(--ink);font-weight:600}
+.lovedrow .hrt{width:14px;height:14px;fill:var(--berry);flex:none}
+.ratrow{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink);margin-bottom:12px}
+.ratrow .tp-svg{width:103px;height:21px;display:block}
+.ratrow:hover .rt{text-decoration:underline;text-underline-offset:3px}
+.ratrow .dn{font-style:normal;font-size:14px;color:var(--ink-soft)}
 .info h1{font-size:clamp(28px,2.6vw,38px);font-weight:500;letter-spacing:-.015em;line-height:1.12;margin-bottom:18px}
 
 /* accordions (USP + bottom tabs) */
@@ -54,7 +62,9 @@
 .swb.on::after{content:'';position:absolute;inset:-5px;border:1.5px solid var(--ink);border-radius:50%}
 .swdesc{font-size:13.5px;color:var(--ink-soft);margin:12px 0 6px}
 .swdesc b{color:var(--ink);font-weight:600}
-.quizlink{display:inline-block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;text-decoration:underline;text-underline-offset:4px;margin-bottom:22px;transition:color .2s ease}
+.quizlink{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:22px;transition:color .2s ease}
+.quizlink span{text-decoration:underline;text-underline-offset:4px}
+.quizlink .qico{width:32px;height:32px;object-fit:contain;flex:none}
 .quizlink:hover{color:var(--berry)}
 
 /* kaching-style bundle picker */
@@ -140,6 +150,9 @@
 .pstrip i{font-style:normal;color:var(--taupe)}
 
 /* ---------- testimonials ---------- */
+.lovedh{font-size:clamp(30px,2.8vw,40px)}
+.oval{position:relative;display:inline-block;padding:0 8px}
+.oval svg{position:absolute;left:-12px;top:-9px;width:calc(100% + 24px);height:calc(100% + 20px);fill:none;stroke:var(--berry);stroke-width:2.5;transform:rotate(-2deg);pointer-events:none}
 .trow{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .tcard .tph{aspect-ratio:3/3.4;background:var(--cream);overflow:hidden}
 .tcard .tph img{width:100%;height:100%;object-fit:cover}
@@ -151,11 +164,11 @@
 .bsub{text-align:center;font-size:15px;color:var(--ink-soft);max-width:56ch;margin:-22px auto 40px}
 .bgrid{display:grid;grid-template-columns:minmax(0,1fr) 340px minmax(0,1fr);gap:44px;align-items:center;max-width:1180px;margin:0 auto}
 .bvid{width:100%;min-width:0;aspect-ratio:9/16;object-fit:cover;background:var(--cream)}
-.bitem{margin-bottom:34px}
+.bitem{display:flex;gap:11px;margin-bottom:34px}
 .bitem:last-child{margin-bottom:0}
-.bitem b{font-size:16px;font-weight:600;display:block;margin-bottom:7px}
+.bitem .chk{font-style:normal;color:var(--taupe);font-size:16px;font-weight:600;flex:none;line-height:1.5}
+.bitem b{font-size:17px;font-weight:600;display:block;margin-bottom:7px;line-height:1.35}
 .bitem p{font-size:14px;color:var(--ink-soft);line-height:1.65}
-.bgrid .bcol:first-child .bitem{text-align:right}
 
 /* ---------- trustpilot band ---------- */
 .tpband{margin-top:96px;padding:52px var(--pagepad);background:var(--cream);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
@@ -179,32 +192,22 @@
 .cmptx .q{font-size:17px;line-height:1.65;color:var(--ink);margin-bottom:24px}
 .cmptx .btn{white-space:normal}
 
-/* ---------- banner slider ---------- */
+/* ---------- banner slider (each banner keeps its own ratio so baked-in text stays whole) ---------- */
 .bslider{margin-top:96px;position:relative}
-.bsrow{display:flex;gap:4px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.bsrow{display:flex;gap:4px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;align-items:center}
 .bsrow::-webkit-scrollbar{display:none}
-.bsrow img{flex:0 0 min(74vw,1060px);width:min(74vw,1060px);object-fit:cover;scroll-snap-align:center;background:var(--cream)}
+.bsrow img{flex:none;width:auto;height:min(72vh,640px);scroll-snap-align:center;background:var(--cream)}
 
-/* ---------- 3 steps ---------- */
+/* ---------- 3 steps (card layout mirroring the live section) ---------- */
 .steps{padding:96px var(--pagepad) 0}
+.sec-h.statement{text-transform:none;letter-spacing:-.015em;font-size:clamp(26px,2.4vw,34px);font-weight:600}
 .stepgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;max-width:1180px;margin:0 auto}
-.step video{width:100%;min-width:0;aspect-ratio:3/3.3;object-fit:cover;background:var(--cream)}
-.step b{display:block;font-size:16px;font-weight:600;margin:14px 0 6px}
-.step p{font-size:14px;color:var(--ink-soft);line-height:1.65}
-
-/* ---------- reviews ---------- */
-.revs{padding:96px var(--pagepad) 0}
-.rhead{display:flex;align-items:center;justify-content:center;gap:16px;margin:-14px 0 34px}
-.rnum{font-size:44px;font-weight:500;letter-spacing:-.02em}
-.rmid{display:flex;flex-direction:column;gap:3px}
-.rmid .stars{font-size:14px;margin:0}
-.rcount{font-size:13px;color:var(--ink-soft)}
-.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.rcard{background:#fff;border:1px solid var(--line);padding:20px}
-.rcard .stars{font-size:11px;margin:0 0 10px}
-.rcard p{font-size:13.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:12px}
-.rcard b{font-size:12.5px;font-weight:600;display:block}
-.rcard em{font-style:normal;font-size:11.5px;color:var(--ink-soft)}
+.step{background:#fff;border:1px solid var(--line)}
+.step video{width:100%;min-width:0;aspect-ratio:3/3.1;object-fit:cover;background:var(--cream);display:block}
+.step .stx{padding:18px 20px 24px}
+.step .stag{display:inline-block;background:var(--sand);font-size:13px;font-weight:600;padding:7px 13px;margin-bottom:13px}
+.step p{font-size:14px;color:var(--ink-soft);line-height:1.65;margin-bottom:10px}
+.step p:last-child{margin-bottom:0}
 
 /* ---------- sticky ATC ---------- */
 .satc{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(33,26,23,.08);display:flex;align-items:center;gap:14px;padding:10px var(--pagepad);z-index:40;transform:translateY(110%);transition:transform .3s ease}
@@ -249,17 +252,12 @@
   .cmptx .q{font-size:15px}
   .cmptx .btn{width:100%}
   .bslider{margin-top:64px}
-  .bsrow img{flex-basis:88vw;width:88vw}
+  .bsrow img{height:54vh}
   .steps{padding:64px var(--pagepad) 0}
-  .stepgrid{grid-template-columns:1fr;gap:30px}
-  .step video{max-width:340px;margin:0 auto;display:block}
-  .step b{text-align:center}
-  .step p{text-align:center}
-  .revs{padding:64px var(--pagepad) 0}
-  .rnum{font-size:36px}
-  .rgrid{grid-template-columns:1fr 1fr;gap:12px}
-  .rcard{padding:14px}
-  .rcard p{font-size:12.5px}
+  .stepgrid{grid-template-columns:1fr;gap:20px}
+  .step .stx{padding:15px 16px 20px}
+  .lovedrow .lt{font-size:12.5px}
+  .badge{font-size:10.5px;padding:7px 12px}
 }
 
 @media (prefers-reduced-motion: reduce){

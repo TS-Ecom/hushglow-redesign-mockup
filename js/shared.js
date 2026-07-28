@@ -14,6 +14,18 @@ function menuToggle () {
   document.body.style.overflow = open ? 'hidden' : '';
 }
 
+/* footer accordion groups (mobile only) */
+(function () {
+  var mq = window.matchMedia('(max-width: 749px)');
+  document.querySelectorAll('.footer .acc-h').forEach(function (h) {
+    h.addEventListener('click', function () {
+      if (!mq.matches) return;
+      var group = h.closest('.fgroup');
+      if (group) group.classList.toggle('open');
+    });
+  });
+})();
+
 /* footer payment icons */
 (function () {
   var payRow = document.getElementById('payRow');

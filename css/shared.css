@@ -102,12 +102,16 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 .footer p{font-size:13px;line-height:1.7}
 .footer .contact a{transition:color .2s ease}
 .footer .contact a:hover{color:var(--paper);text-decoration:underline;text-underline-offset:3px}
-.tp-row{display:none;align-items:center;justify-content:center;gap:9px;margin:-4px 0 18px}
-.tp-row b{color:var(--paper);font-size:14px;font-weight:600}
-.tp-stars{display:inline-flex;gap:2px}
-.tp-stars i{width:19px;height:19px;background:#00b67a;font-style:normal;position:relative}
-.tp-stars i::after{content:'★';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11.5px}
-.tp-stars i.half{background:linear-gradient(90deg,#00b67a 50%,rgba(251,247,242,.22) 50%)}
+.tp-row{display:none;align-items:center;justify-content:center;gap:10px;margin:-4px 0 24px}
+.tp-row b{color:var(--paper);font-size:15px;font-weight:600}
+.tp-svg{width:103px;height:21px;display:block}
+/* mobile-only footer elements (accordion "Contact" header, Follow us block) */
+.m-only{display:none}
+.follow{display:none}
+.follow .soc svg[fill]:not([fill="none"]){fill:var(--ink)}
+.follow .soc svg [fill]:not([fill="none"]){fill:var(--ink)}
+.follow .soc svg[stroke]:not([stroke="none"]){stroke:var(--ink)}
+.follow .soc svg [stroke]:not([stroke="none"]){stroke:var(--ink)}
 .footer h4{color:var(--paper);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
 .footer ul{list-style:none}
 .footer li{font-size:13.5px;padding:4px 0;cursor:pointer;transition:color .2s ease}
@@ -179,20 +183,36 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .grid3::-webkit-scrollbar{display:none}
   .grid3 .p-card{flex:0 0 220px;scroll-snap-align:start}
   .footer{margin-top:64px;padding:44px 22px 0}
-  /* compact footer: centered brand block + TP stars, link columns side by side */
-  .footer .cols{grid-template-columns:1fr 1fr;gap:0 20px}
-  .footer .col{margin-bottom:26px}
-  .footer .col:first-child,.footer .col:last-child{grid-column:1/-1}
-  .footer .col:first-child{text-align:center;margin-bottom:30px}
-  .footer .logo-img{height:30px;margin:0 auto 16px}
+  /* Meroda-style footer: centered brand + real TP stars, accordion groups, framed signup, Follow us */
+  .footer .cols{grid-template-columns:1fr;gap:0}
+  .footer .col{margin-bottom:0}
+  .footer .col:first-child{text-align:center}
+  .footer .logo-img{height:32px;margin:0 auto 18px}
   .tp-row{display:flex}
   .footer .col:first-child br{display:none}
   .footer .contact a:last-of-type::before{content:'·';margin:0 9px}
-  .footer .col:last-child{text-align:center}
-  .soc{justify-content:center}
+  .footer .acc-h{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;letter-spacing:.14em;color:var(--paper);border-top:1px solid rgba(251,247,242,.16);padding:19px 2px;margin:0;cursor:pointer;text-align:left}
+  .footer .acc-h::after{content:'+';font-size:20px;font-weight:300;color:var(--taupe)}
+  .fgroup.open .acc-h::after{content:'−'}
+  .footer .acc-body{display:none;padding:2px 2px 20px;text-align:left}
+  .fgroup.open .acc-body{display:block}
+  .footer .col:nth-child(3){border-bottom:1px solid rgba(251,247,242,.16)}
+  .footer .col:last-child{margin-top:30px}
+  .footer .col:last-child h4{display:none}
+  .footer .col:last-child p{font-size:14px}
+  .sub-in{border:1px solid rgba(251,247,242,.38);padding:5px 5px 5px 15px;align-items:center;gap:8px;margin-top:14px}
+  .sub-in input{font-size:15px}
+  .sub-in button{background:var(--paper);color:var(--ink);padding:13px 22px;flex:0 0 auto}
+  .sub-in .arr{display:none}
+  .footer .col:last-child .soc{display:none}
   .pay img{height:22px}
-  .pay{justify-content:center;max-width:330px}
-  .footer .bottom{flex-direction:column;gap:4px;font-size:11.5px;padding:16px 0 22px;align-items:center}
+  .pay{justify-content:center;max-width:340px;margin-top:34px}
+  .follow{display:block;margin:32px 0 0;text-align:center}
+  .follow .flbl{font-size:15px;font-weight:500;color:var(--paper);margin-bottom:15px}
+  .follow .soc{margin-top:0;justify-content:center}
+  .follow .soc i{width:38px;height:38px;background:var(--paper);border-color:var(--paper)}
+  .follow .soc i:hover{background:var(--paper);border-color:var(--paper)}
+  .footer .bottom{flex-direction:column;gap:4px;font-size:11.5px;padding:16px 0 22px;align-items:center;border-top:0;margin-top:24px}
 }
 
 

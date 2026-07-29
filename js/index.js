@@ -52,24 +52,32 @@
     var stepOf = function () { return row.children[0].getBoundingClientRect().width + gapOf(); };
     var setOf = function () { return stepOf() * N; };
 
-    var jump = function (x) {
-      row.style.scrollSnapType = 'none';
-      row.scrollLeft = x;
-      row.offsetHeight; /* flush so the snap re-enable doesn't move us */
-      row.style.scrollSnapType = '';
-    };
+    /* Plain scrollLeft assignment: the target is always exactly one set away,
+       which lands on an identical snap offset. Toggling scroll-snap-type here
+       makes WebKit re-snap to the start — never do that. */
+    var jump = function (x) { row.scrollLeft = x; };
     jump(setOf());
 
+    var normalize = function () {
+      var w = setOf();
+      if (row.scrollLeft < w * 0.5) { jump(row.scrollLeft + w); }
+      else if (row.scrollLeft > w * 1.5) { jump(row.scrollLeft - w); }
+    };
     var t;
     row.addEventListener('scroll', function () {
       clearTimeout(t);
-      t = setTimeout(function () {
-        var w = setOf();
-        if (row.scrollLeft < w * 0.5) { jump(row.scrollLeft + w); }
-        else if (row.scrollLeft > w * 1.5) { jump(row.scrollLeft - w); }
-      }, 150);
+      t = setTimeout(normalize, 200);
     }, { passive: true });
-    window.addEventListener('resize', function () { jump(setOf()); });
+    if ('onscrollend' in window) { row.addEventListener('scrollend', normalize); }
+
+    /* iOS fires resize when the URL bar collapses during page scroll — that is
+       a height-only change and must not touch the carousel. */
+    var lastVw = window.innerWidth;
+    window.addEventListener('resize', function () {
+      if (window.innerWidth === lastVw) return;
+      lastVw = window.innerWidth;
+      jump(setOf());
+    });
 
     if (prev) prev.addEventListener('click', function () { row.scrollBy({ left: -stepOf() * 2, behavior: 'smooth' }); });
     if (next) next.addEventListener('click', function () { row.scrollBy({ left: stepOf() * 2, behavior: 'smooth' }); });

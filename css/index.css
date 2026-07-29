@@ -12,6 +12,14 @@
 .hero .ctas{display:flex;gap:14px;margin-top:4px;flex-wrap:wrap}
 
 
+/* ---------- press ticker (Shrine-style: big black logos, no label) ---------- */
+.press{padding:34px 0;overflow:hidden}
+.press .ticker{display:flex;width:max-content}
+.press .half{display:flex;align-items:center;gap:96px;padding-right:96px;animation:tickmove 30s linear infinite}
+.press img{height:30px;width:auto;filter:grayscale(1)}
+@keyframes tickmove{to{transform:translateX(-100%)}}
+
+
 /* ---------- photo banners ---------- */
 .photobanner{margin-top:96px}
 .photobanner img{width:100%;height:auto;display:block}
@@ -26,9 +34,9 @@
 .l-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
 .l-card:hover img{transform:scale(1.045)}
 .l-card::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(23,14,12,.55) 0%,rgba(23,14,12,0) 45%)}
-.l-card .cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
-.l-card .cap b{color:#fff;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;line-height:1.45}
-.l-card .cap a{background:var(--paper);color:var(--ink);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:9px 16px;border-radius:var(--r-btn);transition:background .2s ease,color .2s ease}
+.l-card .cap{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.l-card .cap b{color:#fff;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;line-height:1.45}
+.l-card .cap a{background:var(--paper);color:var(--ink);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:12px 20px;border-radius:var(--r-btn);transition:background .2s ease,color .2s ease}
 .l-card .cap a:hover{background:var(--ink);color:var(--paper)}
 
 
@@ -48,13 +56,19 @@
   .hero .lede{font-size:14.5px}
   .hero .ctas{flex-direction:column;width:100%;gap:10px}
   .hero .btn{width:100%;padding:16px 0}
+  .press{padding:22px 0}
+  .press .half{gap:54px;padding-right:54px;animation-duration:24s}
+  .press img{height:20px}
   .photobanner{margin-top:64px}
   .look{margin-top:64px}
   .l-card{flex:0 0 calc(100% - 40px)}
-  .l-card .cap b{font-size:11px}
+  .l-card .cap{left:16px;right:16px;bottom:16px}
+  .l-card .cap b{font-size:13px}
+  .l-card .cap a{font-size:12.5px;padding:13px 22px}
   .lookarrow{display:none}
 }
 
 @media (prefers-reduced-motion: reduce){
+  .press .half{animation:none}
   video{display:none}
 }

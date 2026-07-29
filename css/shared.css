@@ -290,6 +290,10 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .grid3{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
   .grid3::-webkit-scrollbar{display:none}
   .grid3 .p-card{flex:0 0 220px;scroll-snap-align:start}
+  /* .swipe-m: 4-up grid that becomes the same swipe row as .grid3 on mobile */
+  .grid4.swipe-m{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
+  .grid4.swipe-m::-webkit-scrollbar{display:none}
+  .grid4.swipe-m .p-card{flex:0 0 220px;scroll-snap-align:start}
   .footer{margin-top:64px;padding:44px 22px 0}
   /* Meroda-style footer: centered brand + real TP stars, accordion groups, framed signup, Follow us */
   .footer .cols{grid-template-columns:1fr;gap:0}

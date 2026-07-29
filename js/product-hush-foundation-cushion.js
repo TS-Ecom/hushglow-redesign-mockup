@@ -20,7 +20,6 @@
   /* shade swatches: highlight, swap main photo (per-shade), update texts + sticky bar */
   var swName = document.getElementById('swName');
   var swDesc = document.getElementById('swDesc');
-  var satcMeta = document.getElementById('satcMeta');
   var satcImg = document.getElementById('satcImg');
   document.querySelectorAll('.swb').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -30,7 +29,6 @@
       swDesc.textContent = 'is ' + b.dataset.desc;
       main.src = b.dataset.img;
       thumbs.forEach(function (t) { t.classList.remove('on'); });
-      if (satcMeta) satcMeta.textContent = b.dataset.shade + ' · $39.99';
       if (satcImg) satcImg.src = b.dataset.img;
     });
   });
@@ -175,5 +173,34 @@
     tr.addEventListener('scroll', tsync, { passive: true });
     window.addEventListener('resize', tsync);
     tsync();
+  }
+
+  /* sale countdown bar: ticks to the end of the day (placeholder logic for the prototype) */
+  var cdH = document.getElementById('cdH');
+  var cdM = document.getElementById('cdM');
+  var cdS = document.getElementById('cdS');
+  if (cdH && cdM && cdS) {
+    var pad2 = function (n) { return (n < 10 ? '0' : '') + n; };
+    var cdTick = function () {
+      var end = new Date();
+      end.setHours(23, 59, 59, 999);
+      var d = Math.max(0, end - new Date());
+      cdH.textContent = pad2(Math.floor(d / 3600000));
+      cdM.textContent = pad2(Math.floor(d / 60000) % 60);
+      cdS.textContent = pad2(Math.floor(d / 1000) % 60);
+    };
+    cdTick();
+    setInterval(cdTick, 1000);
+  }
+
+  /* muted payment icons under the shipping bar */
+  var payMini = document.getElementById('payMini');
+  if (payMini) {
+    ['visa-b614b878', 'master-f5a74105', 'american_express-2bdbf0e2', 'paypal-a7c68b85', 'apple_pay-1721ebad', 'google_pay-34c30515', 'maestro-61c41725', 'discover-59880595'].forEach(function (pIcon) {
+      var img = document.createElement('img');
+      img.src = 'https://merodacosmetics.com/cdn/shopifycloud/storefront/assets/payment_icons/' + pIcon + '.svg';
+      img.alt = '';
+      payMini.appendChild(img);
+    });
   }
 })();

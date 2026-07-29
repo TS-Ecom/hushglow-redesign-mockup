@@ -60,11 +60,13 @@
   </header>
 </div>
 
-<!-- trust bar -->
-<div class="trust">
-  <span><i>✓</i>1 Million+ Customers</span>
-  <span><i>✓</i>Free Shade Replacement</span>
-  <span><i>✓</i>Cruelty-Free</span>
+<!-- sale countdown bar (replaces the trust bar on this product template; in the theme
+     the trust bar is a template-level section, not part of the header group) -->
+<div class="salebar" aria-label="Sale countdown">
+  <span class="sl">Summer Sale Ends In</span>
+  <span class="unit"><b id="cdH">09</b><small>Hrs</small></span><i>:</i>
+  <span class="unit"><b id="cdM">02</b><small>Mins</small></span><i>:</i>
+  <span class="unit"><b id="cdS">27</b><small>Secs</small></span>
 </div>
 
 <!-- buy area -->
@@ -177,21 +179,23 @@
 
     <div class="shiprow"><svg viewBox="0 0 24 24"><path d="M1 8h13v8H1z"/><path d="M14 11h4l3 3v2h-7"/><circle cx="6" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg><span><span class="dim">Ships from USA ·</span> <b>2–5 days delivery</b></span></div>
 
+    <div class="paymini" id="payMini" aria-label="Accepted payment methods"></div>
+
     <div class="upsells">
       <div class="uptabs"><b class="on">Often Bought With</b><b>Save with Bundles</b></div>
       <div class="upcard">
         <img src="https://hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?width=200" alt="">
-        <span class="upmid"><b>Multi-Effect Blush Stick</b><small>One swipe of colour that blends into a natural flush.</small><span class="uppr">$32.99</span></span>
+        <span class="upmid"><b>Multi-Effect Blush Stick</b><small>One swipe of colour that blends into a natural flush.</small><span class="uppr"><b>$32.99</b></span></span>
         <button class="upbtn">Add</button>
       </div>
       <div class="upcard">
         <img src="https://hushglow.com/cdn/shop/files/try_hush14_resized.webp?width=200" alt="">
-        <span class="upmid"><b>Pore-Blurring Primer Stick</b><small>A must-have for smoothing pores and fine lines before applying your Hush Foundation.</small><span class="uppr">$19.99</span></span>
+        <span class="upmid"><b>Pore-Blurring Primer Stick</b><small>A must-have for smoothing pores and fine lines before applying your Hush Foundation.</small><span class="uppr"><b>$19.99</b><s>$40.99</s><i class="usave">Save 51%</i></span></span>
         <button class="upbtn">Add</button>
       </div>
       <div class="upcard">
         <img src="https://hushglow.com/cdn/shop/files/try_hush13_resized_1.webp?width=200" alt="">
-        <span class="upmid"><b>Waterproof Setting Spray</b><small>A must-have to keep your flawless Hush Foundation finish lasting all day.</small><span class="uppr">$21.99</span></span>
+        <span class="upmid"><b>Waterproof Setting Spray</b><small>A must-have to keep your flawless Hush Foundation finish lasting all day.</small><span class="uppr"><b>$21.99</b><s>$45.99</s><i class="usave">Save 52%</i></span></span>
         <button class="upbtn">Add</button>
       </div>
     </div>
@@ -450,7 +454,7 @@
 <!-- sticky add to cart -->
 <div class="satc" id="satc">
   <img src="https://hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?width=200" alt="" id="satcImg">
-  <div class="smid"><b>Foundation Cushion</b><span id="satcMeta">Ivory · $39.99</span></div>
+  <div class="smid"><b>Foundation Cushion</b><span class="sprice"><b class="pn">$39.99</b><s>$54.99</s><i class="usave">Save 27%</i></span></div>
   <a class="btn btn-primary" id="satcBtn">Add to Cart</a>
 </div>
 

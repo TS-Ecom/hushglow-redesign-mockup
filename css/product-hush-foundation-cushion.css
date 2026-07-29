@@ -118,9 +118,21 @@
 .subp s{font-size:12.5px;color:var(--berry);display:block}
 .subp b{font-size:15.5px;font-weight:600}
 
-/* shipping row */
-.shiprow{display:flex;align-items:center;justify-content:center;gap:9px;font-size:13.5px;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);padding:9px 14px;margin-top:12px}
-.shiprow svg{width:17px;height:17px;flex:none;stroke:var(--ink-soft);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+/* stock nudge + geo shipping row (mirrors the live nudge/shipping-line blocks) */
+.stockrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:11px;font-size:13.5px}
+.stockrow .ls{display:inline-flex;align-items:center;gap:9px;color:var(--berry);font-weight:600}
+.stockrow .ls i{width:8px;height:8px;border-radius:50%;background:var(--berry);position:relative;flex:none}
+.stockrow .ls i::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid var(--berry);opacity:0;animation:stockpulse 2s ease-out infinite}
+.stockrow .shipto{display:inline-flex;align-items:center;gap:8px;color:var(--ink-soft)}
+.stockrow .shipto b{color:var(--ink);font-weight:600}
+.stockrow .flg{width:20px;height:14px;flex:none;display:block}
+@keyframes stockpulse{0%{transform:scale(.6);opacity:.9}70%{transform:scale(1.4);opacity:0}100%{opacity:0}}
+
+/* shipping row (V1: cream bar, pairs with the guarantee row) */
+.shiprow{display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px;background:var(--cream);padding:11px 14px;margin-top:12px}
+.shiprow .dim{color:var(--ink-soft)}
+.shiprow b{font-weight:600}
+.shiprow svg{width:18px;height:18px;flex:none;stroke:var(--gold);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
 /* upsells */
 .upsells{margin-top:26px}
@@ -292,4 +304,5 @@
 @media (prefers-reduced-motion: reduce){
   .vrow video,.bvid,.step video{display:none}
   .pstrip .half{animation:none}
+  .stockrow .ls i::after{animation:none}
 }

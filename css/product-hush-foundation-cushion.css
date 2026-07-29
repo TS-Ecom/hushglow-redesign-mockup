@@ -25,7 +25,7 @@
 .lovedrow .avs{display:inline-flex}
 .lovedrow .avs img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);background:var(--cream)}
 .lovedrow .avs img+img{margin-left:-9px}
-.lovedrow .lt{font-size:14.5px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap}
+.lovedrow .lt{font-size:14.5px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
 .lovedrow .lt b{color:var(--ink);font-weight:600}
 .lovedrow .hrt{width:14px;height:14px;fill:var(--berry);flex:none}
 .ratrow{display:inline-flex;align-items:center;gap:9px;font-size:14.5px;color:var(--ink);margin-bottom:12px}
@@ -45,9 +45,10 @@
 .acc-c p{font-size:15px;color:var(--ink-soft);line-height:1.65;margin-bottom:8px}
 .acc-c p:last-child{margin-bottom:0}
 .acc-c p b{color:var(--ink);font-weight:600}
-.shrow{display:flex;align-items:baseline;gap:10px;padding:6px 0;font-size:14.5px}
-.shrow .ssw{width:15px;height:15px;border-radius:50%;border:1px solid rgba(0,0,0,.08);flex:none;align-self:center}
-.shrow b{font-weight:600;white-space:nowrap}
+.shrow{display:flex;align-items:flex-start;gap:10px;padding:6px 0}
+.shrow .ssw{width:15px;height:15px;border-radius:50%;border:1px solid rgba(0,0,0,.08);flex:none;margin-top:3px}
+.shrow .sht{flex:1;font-size:14.5px;line-height:1.55}
+.shrow b{font-weight:600;margin-right:2px}
 .shrow em{font-style:normal;color:var(--ink-soft)}
 
 /* guarantee row (mirrors approved cart pill) */
@@ -253,7 +254,6 @@
 /* ---------- sticky ATC ---------- */
 .satc{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(33,26,23,.08);display:flex;align-items:center;gap:14px;padding:10px var(--pagepad);z-index:40;transform:translateY(110%);transition:transform .3s ease}
 .satc.show{transform:none}
-.satc img{display:none;width:44px;height:44px;object-fit:cover;background:var(--cream)}
 .satc .smid{flex:1;min-width:0}
 .satc .smid b{font-size:15px;font-weight:600;display:block}
 .satc .sprice{display:flex;align-items:baseline;gap:8px;font-size:14px;margin-top:2px}
@@ -270,7 +270,7 @@
 .salebar>i{font-style:normal;font-weight:600;opacity:.7;transform:translateY(-7px)}
 
 /* ---------- payment icons in the buy box (muted) ---------- */
-.paymini{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:12px;filter:grayscale(1);opacity:.55}
+.paymini{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:12px}
 .paymini img{height:20px;width:auto;display:block}
 
 /* ---------- mobile ---------- */
@@ -289,15 +289,18 @@
   .bunx{padding-left:0}
   .vrow video{flex-basis:118px}
   .upcard img{width:78px;height:78px}
+  .upmid small{display:none}
+  .lovedrow .avs img{width:22px;height:22px;border-width:1.5px}
+  .lovedrow .avs img+img{margin-left:-7px}
+  .lovedrow{gap:8px}
   .salebar{gap:12px;padding:6px 12px}
   .salebar .sl{font-size:11.5px}
   .salebar .unit b{font-size:14px}
   .salebar .unit small{font-size:8.5px}
   .bslider .lookarrow{width:34px;height:34px}
-  .satc img{display:block}
-  .satc .sprice{display:none}
-  .satc .btn{padding:12px 22px;flex:1}
-  .satc .smid{flex:0 1 auto}
+  .satc .smid b{font-size:14px}
+  .satc .sprice{font-size:13px;gap:6px}
+  .satc .btn{padding:12px 18px}
   .pstrip{margin-top:56px;padding:11px 0}
   .pstrip .half{gap:40px;padding-right:40px;animation-duration:22s}
   .pi{font-size:11.5px;gap:8px}
@@ -326,7 +329,7 @@
   .steps{padding:64px var(--pagepad) 0}
   .stepgrid{grid-template-columns:1fr;gap:20px}
   .step .stx{padding:15px 16px 20px}
-  .lovedrow .lt{font-size:13.5px}
+  .lovedrow .lt{font-size:12.5px}
   .badge{font-size:11px;padding:7px 12px}
 }
 

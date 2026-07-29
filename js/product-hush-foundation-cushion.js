@@ -20,7 +20,6 @@
   /* shade swatches: highlight, swap main photo (per-shade), update texts + sticky bar */
   var swName = document.getElementById('swName');
   var swDesc = document.getElementById('swDesc');
-  var satcImg = document.getElementById('satcImg');
   document.querySelectorAll('.swb').forEach(function (b) {
     b.addEventListener('click', function () {
       document.querySelectorAll('.swb').forEach(function (x) { x.classList.remove('on'); });
@@ -29,7 +28,6 @@
       swDesc.textContent = 'is ' + b.dataset.desc;
       main.src = b.dataset.img;
       thumbs.forEach(function (t) { t.classList.remove('on'); });
-      if (satcImg) satcImg.src = b.dataset.img;
     });
   });
 

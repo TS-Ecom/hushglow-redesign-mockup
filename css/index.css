@@ -35,7 +35,7 @@
 .l-card:hover img{transform:scale(1.045)}
 .l-card::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(23,14,12,.55) 0%,rgba(23,14,12,0) 45%)}
 .l-card .cap{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
-.l-card .cap b{color:#fff;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;line-height:1.45}
+.l-card .cap b{color:#fff;font-size:18px;letter-spacing:.01em;font-weight:600;line-height:1.35}
 .l-card .cap a{background:var(--paper);color:var(--ink);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:12px 20px;border-radius:var(--r-btn);transition:background .2s ease,color .2s ease}
 .l-card .cap a:hover{background:var(--ink);color:var(--paper)}
 
@@ -63,7 +63,6 @@
   .look{margin-top:64px}
   .l-card{flex:0 0 calc(100% - 40px)}
   .l-card .cap{left:16px;right:16px;bottom:16px}
-  .l-card .cap b{font-size:13px}
   .l-card .cap a{font-size:12.5px;padding:13px 22px}
   .lookarrow{display:none}
 }

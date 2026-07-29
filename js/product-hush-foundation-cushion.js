@@ -94,7 +94,31 @@
     apply();
   }
 
-  /* banner slider: arrows + dot indicators */
+  /* trust ticker: two identical halves for a seamless loop */
+  var psIcons = {
+    leaf: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4c0 9.5-4.5 15.5-11.5 16C8 14.5 11.5 6.5 20 4z"/><path d="M4 20C8 14 12 10 17 7"/></svg>',
+    brush: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 3.5l6 6L12 18l-6-6z"/><path d="M6 12l-2.6 2.6a2.4 2.4 0 0 0 3.4 3.4L9.4 15.4"/></svg>',
+    drop: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5s5.8 6.3 5.8 10.4a5.8 5.8 0 0 1-11.6 0C6.2 9.8 12 3.5 12 3.5z"/></svg>'
+  };
+  var psItems = [
+    [psIcons.leaf, 'Cruelty Free'],
+    [psIcons.brush, 'Used by Makeup Artists'],
+    [psIcons.drop, 'Skin Care-Infused']
+  ];
+  ['psHalf1', 'psHalf2'].forEach(function (id) {
+    var half = document.getElementById(id);
+    if (!half) return;
+    for (var r = 0; r < 3; r++) {
+      psItems.forEach(function (it) {
+        var sp = document.createElement('span');
+        sp.className = 'pi';
+        sp.innerHTML = it[0] + it[1];
+        half.appendChild(sp);
+      });
+    }
+  });
+
+  /* banner slider: square cards, paged one card per step, dots + edge-disabled arrows */
   var bs = document.getElementById('bsRow');
   var bp = document.getElementById('bsPrev');
   var bn = document.getElementById('bsNext');
@@ -102,35 +126,29 @@
   if (bs && bp && bn) {
     var slides = Array.prototype.slice.call(bs.querySelectorAll('img'));
     var dots = [];
+    var stepB = function () {
+      var gap = parseFloat(getComputedStyle(bs).gap) || 0;
+      return slides[0].getBoundingClientRect().width + gap;
+    };
+    var maxLeft = function () { return bs.scrollWidth - bs.clientWidth; };
+    var idxB = function () { return Math.round(bs.scrollLeft / stepB()); };
+    var goTo = function (i) {
+      bs.scrollTo({ left: Math.min(i * stepB(), maxLeft()), behavior: 'smooth' });
+    };
     if (bd) {
       slides.forEach(function (s, n) {
         var d = document.createElement('i');
         if (n === 0) d.classList.add('on');
-        d.addEventListener('click', function () {
-          bs.scrollTo({ left: s.offsetLeft - (bs.clientWidth - s.clientWidth) / 2, behavior: 'smooth' });
-        });
+        d.addEventListener('click', function () { goTo(n); });
         bd.appendChild(d); dots.push(d);
       });
     }
-    var nearest = function () {
-      var center = bs.scrollLeft + bs.clientWidth / 2, best = 0, dist = Infinity;
-      slides.forEach(function (s, n) {
-        var c = s.offsetLeft + s.clientWidth / 2;
-        if (Math.abs(c - center) < dist) { dist = Math.abs(c - center); best = n; }
-      });
-      return best;
-    };
-    var go = function (dir) {
-      var i = Math.max(0, Math.min(slides.length - 1, nearest() + dir));
-      var s = slides[i];
-      bs.scrollTo({ left: s.offsetLeft - (bs.clientWidth - s.clientWidth) / 2, behavior: 'smooth' });
-    };
-    bp.addEventListener('click', function () { go(-1); });
-    bn.addEventListener('click', function () { go(1); });
+    bp.addEventListener('click', function () { goTo(idxB() - 1); });
+    bn.addEventListener('click', function () { goTo(idxB() + 1); });
     var sync = function () {
       bp.toggleAttribute('disabled', bs.scrollLeft < 10);
-      bn.toggleAttribute('disabled', bs.scrollLeft > bs.scrollWidth - bs.clientWidth - 10);
-      var i = nearest();
+      bn.toggleAttribute('disabled', bs.scrollLeft > maxLeft() - 10);
+      var i = idxB();
       dots.forEach(function (d, n) { d.classList.toggle('on', n === i); });
     };
     bs.addEventListener('scroll', sync, { passive: true });

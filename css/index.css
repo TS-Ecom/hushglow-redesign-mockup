@@ -17,7 +17,6 @@
 .press .ticker{display:flex;width:max-content}
 .press .half{display:flex;align-items:center;gap:96px;padding-right:96px;animation:tickmove 30s linear infinite}
 .press img{height:30px;width:auto;filter:grayscale(1)}
-@keyframes tickmove{to{transform:translateX(-100%)}}
 
 
 /* ---------- photo banners ---------- */

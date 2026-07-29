@@ -328,6 +328,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 
 
 @keyframes trot{0%{opacity:0}4%{opacity:1}29%{opacity:1}33%{opacity:0}100%{opacity:0}}
+@keyframes tickmove{to{transform:translateX(-100%)}}
 
 @media screen and (min-width:750px){
   .mobmenu{display:none}

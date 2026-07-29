@@ -70,3 +70,9 @@
   .press .half{animation:none}
   video{display:none}
 }
+
+/* 14px minimum type floor — desktop only (mobile keeps its tuned sizes) */
+@media screen and (min-width:750px){
+  .hero .eyebrow{font-size:14px}
+  .l-card .cap a{font-size:14px}
+}

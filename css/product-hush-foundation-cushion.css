@@ -338,3 +338,39 @@
   .pstrip .half{animation:none}
   .stockrow .ls i::after{animation:none}
 }
+
+/* 14px minimum type floor — desktop only (mobile keeps its tuned sizes) */
+@media screen and (min-width:750px){
+  .badge{font-size:14px}
+  .acc-t{font-size:14px}
+  .swlbl{font-size:14px}
+  .quizlink{font-size:14px}
+  .bundlbl{font-size:14px}
+  .bun .bn small{font-size:14px}
+  .off{font-size:14px}
+  .bun .bp s{font-size:14px}
+  .tag2{font-size:14px}
+  .bnote{font-size:14px}
+  .bsel{font-size:14px}
+  .bsel i{font-size:14px}
+  .giftbox .gs{font-size:14px}
+  .fchip{font-size:14px}
+  .gcard s{font-size:14px}
+  .submid small{font-size:14px}
+  .subp s{font-size:14px}
+  .stockrow{font-size:14px}
+  .uptabs b{font-size:14px}
+  .upmid small{font-size:14px}
+  .usave{font-size:14px}
+  .upbtn{font-size:14px}
+  .vh{font-size:14px}
+  .pi{font-size:14px}
+  .tname .stars{font-size:14px}
+  .tver{font-size:14px}
+  .tver i{font-size:14px}
+  .tmore{font-size:14px}
+  .benef-cta .tpc{font-size:14px}
+  .cmpbox .cl{font-size:14px}
+  .salebar .sl{font-size:14px}
+  .salebar .unit small{font-size:14px}
+}

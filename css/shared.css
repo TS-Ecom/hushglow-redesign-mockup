@@ -337,3 +337,41 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 @media (prefers-reduced-motion: reduce){
   .trust span{animation:none;position:static;opacity:1}
 }
+
+/* 14px minimum type floor — desktop only (mobile keeps its tuned sizes) */
+@media screen and (min-width:750px){
+  .announce{font-size:14px}
+  .announce .x{font-size:14px}
+  .bag i{font-size:14px;width:20px;height:20px;right:-9px;bottom:-6px}
+  .mm-tile b{font-size:14px}
+  .mm-view{font-size:14px}
+  .iwt .tx .cap{font-size:14px}
+  .ptag{font-size:14px}
+  .stars{font-size:14px}
+  .stars span{font-size:14px}
+  .pr .save{font-size:14px}
+  .atc{font-size:14px}
+  .footer h4{font-size:14px}
+  .sub-in button{font-size:14px}
+  .tp-foot .tpl{font-size:14px}
+  .footer .bottom{font-size:14px}
+  .cartdrawer .g1mid b{font-size:14px}
+  .cartdrawer .shl{font-size:14px}
+  .cartdrawer .item .shade{font-size:14px}
+  .cartdrawer .item .rm{font-size:14px}
+  .cartdrawer .item .was{font-size:14px}
+  .cartdrawer .strip{font-size:14px}
+  .cartdrawer .hl .hd{font-size:14px}
+  .cartdrawer .hl .nm{font-size:14px}
+  .cartdrawer .hl .pr{font-size:14px}
+  .cartdrawer .hl .pr s{font-size:14px}
+  .cartdrawer .hlbtn{font-size:14px}
+  .cartdrawer .hd2{font-size:14px}
+  .cartdrawer .ccard .nm{font-size:14px}
+  .cartdrawer .row.tsave{font-size:14px}
+  .cartdrawer .row.ship{font-size:14px}
+  .cartdrawer .row.ship .r{font-size:14px}
+  .cartdrawer .gpill{font-size:14px}
+  .mm-shoprow a{font-size:14px}
+  .mm-mtiles .mm-tile b{font-size:14px}
+}

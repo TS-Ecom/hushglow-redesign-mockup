@@ -304,6 +304,16 @@
   .bun .bp b{font-size:17.5px}
   .bunx{padding-left:0}
   .atcbig{padding:18px 0;font-size:16.5px}
+  /* subscription row: title and price share the top line, the description runs full width
+     underneath — three columns of body copy don't fit a phone */
+  .subbox{display:grid;grid-template-columns:auto minmax(0,1fr) auto;column-gap:10px;row-gap:4px;align-items:center;padding:13px 14px}
+  .subbox .rad{grid-column:1;grid-row:1}
+  .submid{display:contents}
+  .submid b{grid-column:2;grid-row:1;font-size:15px;line-height:1.3}
+  .submid small{grid-column:2/4;grid-row:2;display:block;font-size:14.5px;line-height:1.5}
+  .subp{grid-column:3;grid-row:1;text-align:right;line-height:1.25}
+  .subp s{font-size:13.5px}
+  .subp b{font-size:16.5px}
   .vrow video{flex-basis:118px}
   .upcard img{width:78px;height:78px}
   .upmid small{display:none}
@@ -333,11 +343,12 @@
   .bvid{max-width:340px;margin:0 auto}
   .bgrid .bcol:first-child .bitem{text-align:left}
   .bitem{margin-bottom:22px}
-  .benef-cta{margin-top:40px}
+  .benef-cta{margin-top:36px;gap:12px}
   .benef-cta .tp-line{flex-wrap:nowrap}
-  .benef-cta .tp-svg{width:106px;height:22px}
+  .benef-cta .tp-svg{width:100px;height:20px}
   .benef-cta .tpr{font-size:14.5px;white-space:nowrap}
-  .benef-cta .btn{width:100%;white-space:normal}
+  /* long label wraps to two lines here — keep the block tight so it doesn't turn into a slab */
+  .benef-cta .btn{width:100%;white-space:normal;font-size:14.5px;padding:13px 16px;line-height:1.3;box-shadow:0 4px 14px rgba(134,43,40,.22)}
   .cmp{padding:56px var(--pagepad) 0}
   .cmpwrap{grid-template-columns:1fr;gap:22px}
   .cmptx h2{font-size:25px;margin-bottom:10px}
@@ -354,7 +365,11 @@
   .step{flex:0 0 78vw;scroll-snap-align:start}
   .step video{aspect-ratio:3/2.9}
   .step .stx{padding:15px 16px 20px}
-  .lovedrow .lt{font-size:14px;white-space:normal}
+  /* plain inline text: as a flex row each fragment became its own wrapping item */
+  .lovedrow .lt{display:inline;font-size:14px;white-space:normal;line-height:1.45}
+  .lovedrow .hrt{display:inline-block;vertical-align:-2px;margin:0 3px}
+  .lovedrow{align-items:flex-start}
+  .lovedrow .avs{padding-top:2px}
   .badge{font-size:12.5px;padding:7px 12px}
   .grt{font-size:15px}
   .stockrow{font-size:15px;flex-wrap:wrap;row-gap:6px}

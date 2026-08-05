@@ -262,8 +262,10 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 @media screen and (max-width:749px){
   :root{--pagepad:18px}
   .section{padding:64px var(--pagepad) 0}
-  .sec-h{font-size:20px;margin-bottom:24px}
-  .announce{font-size:12px;padding:10px 36px}
+  .sec-h{font-size:23px;margin-bottom:24px}
+  /* buttons stay loud through weight and caps, not through size */
+  .btn{font-size:14.5px;padding:13px 22px;line-height:1.35}
+  .announce{font-size:12.5px;padding:10px 36px}
   .announce .x{right:12px;font-size:12px}
   .head{height:58px}
   .nav{display:none}
@@ -274,23 +276,23 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .icons svg{width:20px;height:20px}
   /* trust: rotate one message at a time */
   .trust{position:relative;height:34px;padding:0;display:block;overflow:hidden}
-  .trust span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;letter-spacing:.1em;opacity:0;animation:trot 9s linear infinite}
+  .trust span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;letter-spacing:.08em;opacity:0;animation:trot 9s linear infinite}
   .trust span:nth-child(2){animation-delay:3s}
   .trust span:nth-child(3){animation-delay:6s}
   .trust i{font-size:13px}
   .grid4{grid-template-columns:1fr 1fr;gap:16px}
-  .p-card .nm{font-size:15px;margin-top:10px}
-  .stars{font-size:11px;letter-spacing:2px;margin:4px 0}
-  .stars span{font-size:11.5px;margin-left:5px}
-  .pr{font-size:14.5px;gap:6px}
-  .pr .save{font-size:10px;padding:3px 7px;letter-spacing:.04em}
-  .atc{height:44px;font-size:12.5px;margin-top:10px}
-  .ptag{top:8px;right:8px;font-size:10px;padding:4px 9px}
-  .iwt{grid-template-columns:1fr;margin-top:64px}
+  .p-card .nm{font-size:16px;margin-top:10px}
+  .stars{font-size:12.5px;letter-spacing:2px;margin:4px 0}
+  .stars span{font-size:13px;margin-left:5px}
+  .pr{font-size:16px;gap:6px}
+  .pr .save{font-size:11.5px;padding:3px 7px;letter-spacing:.04em}
+  .atc{height:46px;font-size:14px;margin-top:10px}
+  .ptag{top:8px;right:8px;font-size:11px;padding:4px 9px}
+  .iwt{grid-template-columns:1fr;margin-top:56px}
   .iwt .ph{height:340px;order:0}
   .iwt .tx{padding:30px 20px 36px;gap:14px}
   .iwt .tx h2{font-size:27px}
-  .iwt .tx p{font-size:15px}
+  .iwt .tx p{font-size:16px}
   .iwt .tx .btn{width:100%}
   .iwt.flip .ph{order:0}
   .iwt.flip .tx{order:1}

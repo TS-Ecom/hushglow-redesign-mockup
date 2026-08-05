@@ -6,7 +6,9 @@
   --line:#e6e6e6;
   --ink:#121212; --ink-soft:#5c5c5c; --berry:#862b28; --berry-deep:#5b1a1d; --gold:#a8823f;
   --ui:'Poppins',-apple-system,sans-serif;
-  --radius:2px; --r-btn:0px; --r-card:6px; --r-chip:6px;
+  /* Sharp corners everywhere — buttons on the live site are 0px too. The card/chip tokens
+     exist as a single switch in case the client asks for rounding later. */
+  --radius:0px; --r-btn:0px; --r-card:0px; --r-chip:0px;
   --pagepad:60px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -19,7 +21,7 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 
 /* ---------- shared ---------- */
 /* Buttons carry the strongest weight on the page: the 60+ audience must spot the CTA first. */
-.btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:var(--r-btn);padding:18px 34px;border:2px solid var(--ink);cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;letter-spacing:.07em;text-transform:uppercase;border-radius:var(--r-btn);padding:14px 28px;border:2px solid var(--ink);cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease}
 .btn-primary{background:var(--ink);color:var(--paper)}
 .btn-secondary{background:transparent;color:var(--ink)}
 .btn-accent{background:var(--berry);border-color:var(--berry);color:#fff}
@@ -117,7 +119,7 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 .price-now{font-weight:600}
 .price-was{color:var(--berry);text-decoration:line-through;font-weight:400}
 .pr .save{background:var(--berry);color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.05em;padding:3px 8px;text-transform:uppercase;border-radius:var(--r-chip)}
-.atc{margin-top:12px;display:flex;align-items:center;justify-content:center;height:52px;background:var(--ink);color:var(--paper);font-size:15px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transition:background .2s ease}
+.atc{margin-top:12px;display:flex;align-items:center;justify-content:center;height:46px;background:var(--ink);color:var(--paper);font-size:14.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transition:background .2s ease}
 .atc:hover{background:#333}
 
 

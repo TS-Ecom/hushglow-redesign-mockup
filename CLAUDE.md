@@ -73,10 +73,12 @@ already on hushglow.com — nothing invented.
   ink-soft `#5C5C5C`, berry `#862B28` (single accent), berry-deep `#5B1A1D`, gold (rare)
 - Type: Poppins 400/500/600/**700**. Body 16px/1.75. No reading copy below 15px on either
   breakpoint; only chips, tags and icon glyphs go smaller, and never carry meaning alone
-- Buttons are the heaviest element on screen: 16px+, weight 700, generous padding, and the
-  primary CTA gets a shadow. Nothing near a CTA (ratings, guarantees) may outweigh it
-- Radius: buttons stay 0px (the live site's buttons are 0 too); media `--radius` 2px,
-  cards/chips `--r-card`/`--r-chip` 6px, swatches round. Sharp-everywhere is retired
+- Buttons are the loudest element on screen — weight 700, uppercase, and the primary CTA
+  carries a shadow — but they stay proportionate: 15px label, 14/28 padding, ATC 17px.
+  Nothing near a CTA (ratings, guarantees) may outweigh it
+- Radius: 0px everywhere (the live site's buttons are 0 too); swatches and spinners stay
+  round by design. `--r-card`/`--r-chip` exist as a single switch if rounding is ever
+  approved — the client raised it once and it was not taken up
 - Selection is shown by fill + shadow, not by a grid of outlines (bundles, upsells, steps)
 - Caps rule: banner/hero headlines, collection-style section headings and ALL button
   labels are uppercase; statement headings (image-with-text) stay in title case

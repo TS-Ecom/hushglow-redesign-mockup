@@ -61,23 +61,33 @@ When changing them, change them on every page in the same commit.
 Wire real relative links (`product-cushion.html`, `index.html`, …) as soon as the target
 page exists — the prototype must be browsable like a real site. Until then leave `href="#"`.
 
-## Design system (locked)
+## Design system (v2 — client feedback 2026-08-05)
 
-Tokens live in `css/shared.css` `:root` and mirror
-`../design/hushglow-design-foundation.html` (LOCKED v1.2):
+Tokens live in `css/shared.css` `:root`. v2 replaces the earlier foundation (LOCKED v1.2)
+after the client review of the product page. The rule behind every change: the reader is a
+woman of 60-70+ who must find the buy button instantly, and the colours must be the ones
+already on hushglow.com — nothing invented.
 
-- Colors: paper `#FAF8F6`, cream `#F5ECE1`, sand, taupe, line, ink `#211A17`,
-  ink-soft, berry `#8C3A46` (single accent), gold `#A8823F` (rare)
-- Type: Poppins only (400/500/600), loaded from Google Fonts
-- Radius: 0px everywhere — buttons, cards, media (sharp corners are the brand)
+- Colors (sampled from the live site): paper `#FFFFFF`, soft `#F7F7F8` (section fill),
+  cream `#F1E9DE`, sand `#DBCFBC`, taupe `#C1B2A0`, line `#E6E6E6`, ink `#121212`,
+  ink-soft `#5C5C5C`, berry `#862B28` (single accent), berry-deep `#5B1A1D`, gold (rare)
+- Type: Poppins 400/500/600/**700**. Body 16px/1.75. No reading copy below 15px on either
+  breakpoint; only chips, tags and icon glyphs go smaller, and never carry meaning alone
+- Buttons are the heaviest element on screen: 16px+, weight 700, generous padding, and the
+  primary CTA gets a shadow. Nothing near a CTA (ratings, guarantees) may outweigh it
+- Radius: buttons stay 0px (the live site's buttons are 0 too); media `--radius` 2px,
+  cards/chips `--r-card`/`--r-chip` 6px, swatches round. Sharp-everywhere is retired
+- Selection is shown by fill + shadow, not by a grid of outlines (bundles, upsells, steps)
 - Caps rule: banner/hero headlines, collection-style section headings and ALL button
   labels are uppercase; statement headings (image-with-text) stay in title case
 - Struck-through compare-at prices are berry, never brighter than the current price
 - Breakpoint: 749/750px, single DOM, mobile styles inside `@media (max-width:749px)`
+- Card rows that overflow on mobile swipe horizontally with the next card peeking in
+  (~78-80vw per card), never stack into a tall column
 
-Hover system (desktop only): solid buttons -> `#3d332d`; outline -> fills ink with paper
-text; berry -> `#7a2f3b`; paper -> cream; card photo zoom 1.045/500ms or crossfade to the
-second photo when the product has one; nav underline slide-in 250ms; no shadows, no lifts.
+Hover system (desktop only): solid buttons -> `#333`; outline -> fills ink with paper
+text; berry -> `#5B1A1D`; paper -> cream; card photo zoom 1.045/500ms or crossfade to the
+second photo when the product has one; nav underline slide-in 250ms.
 Touch devices get no hover states. `focus-visible`: 2px ink outline, 2px offset.
 
 ## Process

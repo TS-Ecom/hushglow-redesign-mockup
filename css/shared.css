@@ -1,36 +1,40 @@
 /* HushGlow Design — shared styles (tokens, header, menus, cards, footer) */
+/* Palette sampled from the live hushglow.com so the prototype uses the brand's own
+   colours: white base, grey section fill, beige accents, brand burgundy. */
 :root{
-  --paper:#faf8f6; --cream:#f5ece1; --sand:#ead9c7; --taupe:#c6b2a0; --line:#e8dccd;
-  --ink:#211a17; --ink-soft:#6f6259; --berry:#8c3a46; --gold:#a8823f;
+  --paper:#ffffff; --soft:#f7f7f8; --cream:#f1e9de; --sand:#dbcfbc; --taupe:#c1b2a0;
+  --line:#e6e6e6;
+  --ink:#121212; --ink-soft:#5c5c5c; --berry:#862b28; --berry-deep:#5b1a1d; --gold:#a8823f;
   --ui:'Poppins',-apple-system,sans-serif;
-  --radius:0px; --r-btn:0px;
+  --radius:2px; --r-btn:0px; --r-card:6px; --r-chip:6px;
   --pagepad:60px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--ui);background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+body{font-family:var(--ui);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:inherit}
 
 
 /* ---------- shared ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;letter-spacing:.09em;text-transform:uppercase;border-radius:var(--r-btn);padding:15px 30px;border:1.5px solid var(--ink);cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease}
+/* Buttons carry the strongest weight on the page: the 60+ audience must spot the CTA first. */
+.btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;letter-spacing:.07em;text-transform:uppercase;border-radius:var(--r-btn);padding:18px 34px;border:2px solid var(--ink);cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease}
 .btn-primary{background:var(--ink);color:var(--paper)}
 .btn-secondary{background:transparent;color:var(--ink)}
 .btn-accent{background:var(--berry);border-color:var(--berry);color:#fff}
 .btn-paper{background:var(--paper);border-color:var(--paper);color:var(--ink)}
-.btn-primary:hover{background:#3d332d;border-color:#3d332d}
+.btn-primary:hover{background:#333;border-color:#333}
 .btn-secondary:hover{background:var(--ink);color:var(--paper)}
-.btn-accent:hover{background:#7a2f3b;border-color:#7a2f3b}
+.btn-accent:hover{background:var(--berry-deep);border-color:var(--berry-deep)}
 .btn-paper:hover{background:var(--cream);border-color:var(--cream)}
-.sec-h{font-size:25px;font-weight:600;text-align:center;letter-spacing:.09em;text-transform:uppercase;margin-bottom:38px}
+.sec-h{font-size:28px;font-weight:600;text-align:center;letter-spacing:.06em;text-transform:uppercase;margin-bottom:38px}
 .section{padding:96px var(--pagepad) 0}
 .inner{max-width:1320px;margin:0 auto}
 
 
 /* ---------- announcement ---------- */
-.announce{background:#e3dbd2;text-align:center;padding:11px 44px;font-size:13px;letter-spacing:.16em;font-weight:600;text-transform:uppercase;position:relative}
+.announce{background:var(--sand);text-align:center;padding:11px 44px;font-size:14px;letter-spacing:.12em;font-weight:600;text-transform:uppercase;position:relative}
 .announce .x{position:absolute;right:26px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:400;transition:opacity .15s ease}
 .announce .x:hover{opacity:.55}
 
@@ -38,7 +42,7 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 /* ---------- header + mega menu ---------- */
 .headwrap{position:sticky;top:0;z-index:50;background:var(--paper)}
 .head{display:flex;align-items:center;justify-content:space-between;padding:0 var(--pagepad);height:78px;border-bottom:1px solid var(--line);position:relative}
-.nav{display:flex;gap:34px;font-size:15.5px;font-weight:500;height:100%;flex:1 1 0}
+.nav{display:flex;gap:34px;font-size:16px;font-weight:500;height:100%;flex:1 1 0}
 .nav.rgt{justify-content:flex-end;align-items:center;gap:28px}
 .nav.rgt>a{position:relative}
 .logo img{height:42px;width:auto}
@@ -82,14 +86,15 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 
 
 /* ---------- image with text (used on home + product pages) ---------- */
-.iwt{display:grid;grid-template-columns:1.08fr 1fr;gap:0;margin-top:96px;background:#fff}
+.iwt{display:grid;grid-template-columns:1.08fr 1fr;gap:0;margin-top:96px;background:var(--soft)}
 .iwt .ph{height:640px;overflow:hidden}
 .iwt .ph img{width:100%;height:100%;object-fit:cover}
 .iwt .tx{display:flex;flex-direction:column;justify-content:center;padding:60px 84px;gap:22px;align-items:flex-start}
-.iwt .tx .cap{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--ink-soft)}
-.iwt .tx h2{font-size:clamp(28px,2.5vw,36px);font-weight:500;letter-spacing:-.015em;line-height:1.12}
-.iwt .tx p{font-size:16.5px;color:var(--ink-soft);line-height:1.7;max-width:52ch}
-.iwt .tx p b{color:var(--ink)}
+.iwt .tx .cap{font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-soft)}
+.iwt .tx h2{font-size:clamp(30px,2.6vw,38px);font-weight:600;letter-spacing:-.01em;line-height:1.15}
+.iwt .tx p{font-size:17px;color:var(--ink-soft);line-height:1.7;max-width:52ch}
+.iwt .tx p b{color:var(--ink);font-weight:600}
+.iwt .tx p u{text-decoration:none;color:var(--ink);font-weight:600}
 .iwt.flip .ph{order:2}
 .iwt.flip .tx{order:1}
 
@@ -105,15 +110,15 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 .p-card:hover .ph img.alt{opacity:1}
 .p-card.has-alt:hover .ph img.main{transform:none}
 .ptag{position:absolute;top:12px;right:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;z-index:2;background:rgba(250,248,246,.92);padding:5px 10px}
-.p-card .nm{font-size:16.5px;font-weight:500;margin:14px 0 0;text-align:center}
-.stars{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:12.5px;letter-spacing:2.5px;margin:5px 0 5px}
-.stars span{color:var(--ink-soft);font-size:13px;letter-spacing:0;margin-left:6px;font-weight:400}
-.pr{display:flex;gap:8px;font-size:16px;align-items:baseline;justify-content:center;flex-wrap:wrap;row-gap:5px}
+.p-card .nm{font-size:17px;font-weight:500;margin:14px 0 0;text-align:center}
+.stars{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:13.5px;letter-spacing:2.5px;margin:5px 0 5px}
+.stars span{color:var(--ink-soft);font-size:14px;letter-spacing:0;margin-left:6px;font-weight:400}
+.pr{display:flex;gap:8px;font-size:16.5px;align-items:baseline;justify-content:center;flex-wrap:wrap;row-gap:5px}
 .price-now{font-weight:600}
 .price-was{color:var(--berry);text-decoration:line-through;font-weight:400}
-.pr .save{background:var(--berry);color:#fff;font-size:11px;font-weight:600;letter-spacing:.06em;padding:3px 8px;text-transform:uppercase}
-.atc{margin-top:12px;display:flex;align-items:center;justify-content:center;height:46px;background:var(--ink);color:var(--paper);font-size:13px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;transition:background .2s ease}
-.atc:hover{background:#3d332d}
+.pr .save{background:var(--berry);color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.05em;padding:3px 8px;text-transform:uppercase;border-radius:var(--r-chip)}
+.atc{margin-top:12px;display:flex;align-items:center;justify-content:center;height:52px;background:var(--ink);color:var(--paper);font-size:15px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transition:background .2s ease}
+.atc:hover{background:#333}
 
 
 /* ---------- footer ---------- */

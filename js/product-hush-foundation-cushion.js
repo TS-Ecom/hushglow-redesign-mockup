@@ -150,6 +150,33 @@
     bs.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('resize', sync);
     sync();
+
+    /* auto-advance every 4s, loops back at the end; pauses on hover, on touch and while
+       the slider is off screen */
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce) {
+      var timer = null;
+      var paused = false;
+      var visible = true;
+      var advance = function () {
+        if (paused || !visible) return;
+        if (bs.scrollLeft >= maxLeft() - 10) { bs.scrollTo({ left: 0, behavior: 'smooth' }); }
+        else { goTo(idxB() + 1); }
+      };
+      var start = function () { if (!timer) timer = setInterval(advance, 4000); };
+      var stop = function () { clearInterval(timer); timer = null; };
+      ['mouseenter', 'touchstart', 'pointerdown'].forEach(function (ev) {
+        bs.addEventListener(ev, function () { paused = true; }, { passive: true });
+      });
+      bs.addEventListener('mouseleave', function () { paused = false; });
+      [bp, bn].forEach(function (b) {
+        b.addEventListener('click', function () { paused = true; setTimeout(function () { paused = false; }, 8000); });
+      });
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }, { threshold: 0.2 }).observe(bs);
+      }
+      start();
+    }
   }
 
   /* testimonials slider arrows */

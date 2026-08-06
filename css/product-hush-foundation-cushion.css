@@ -223,11 +223,12 @@
 .tabs2{margin-top:28px}
 
 /* ---------- trust ticker (marquee like the live strip, our styling) ---------- */
-.pstrip{background:var(--cream);margin-top:72px;padding:13px 0;overflow:hidden}
+/* live ticker: beige band with white type, not a cream band with dark type */
+.pstrip{background:var(--taupe);margin-top:72px;padding:13px 0;overflow:hidden}
 .pstrip .ticker{display:flex;width:max-content}
 .pstrip .half{display:flex;align-items:center;gap:64px;padding-right:64px;animation:tickmove 26s linear infinite}
-.pi{display:inline-flex;align-items:center;gap:10px;font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink);white-space:nowrap}
-.pi svg{width:20px;height:20px;flex:none;stroke:var(--berry);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.pi{display:inline-flex;align-items:center;gap:10px;font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#fff;white-space:nowrap}
+.pi svg{width:20px;height:20px;flex:none;stroke:#fff;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
 /* ---------- testimonials (Smooche-style slider cards) ---------- */
 /* Testimonials: shorter cards so more of the row fits on one screen, type kept large. */
@@ -237,8 +238,9 @@
 .twrap{position:relative}
 .trow{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .trow::-webkit-scrollbar{display:none}
-.tcard{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;background:#fff;border-radius:var(--r-card);box-shadow:0 2px 12px rgba(18,18,18,.08);overflow:hidden;display:flex;flex-direction:column}
-.tcard .tph{aspect-ratio:1.3/1;background:var(--cream);overflow:hidden;flex:none}
+/* live cards sit on grey, not white */
+.tcard{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;background:#e6e6e6;border-radius:var(--r-card);overflow:hidden;display:flex;flex-direction:column}
+.tcard .tph{aspect-ratio:1.2/1;background:var(--cream);overflow:hidden;flex:none}
 .tcard .tph img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
 .tcard .tbody{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
 .tname{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:5px}

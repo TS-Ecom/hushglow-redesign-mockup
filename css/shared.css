@@ -101,8 +101,14 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .iwt .tx p{font-size:17px;color:var(--ink-soft);line-height:1.7;max-width:52ch}
 .iwt .tx p b{color:var(--ink);font-weight:600}
 .iwt .tx p u{text-decoration:none;color:var(--ink);font-weight:600}
+.iwt .tx p.iwt-tail{color:var(--ink);font-size:18px;margin-top:-6px}
 .iwt.flip .ph{order:2}
 .iwt.flip .tx{order:1}
+/* .ovl: the live "Not Sure About Your Shade" block — inset from the page edges, with the
+   text panel riding 40px over the photo. The client singled this overlap out. */
+.iwt.ovl{max-width:1300px;margin:96px auto 0;padding:0 var(--pagepad);background:transparent;align-items:center;grid-template-columns:1fr 1fr}
+.iwt.ovl .ph{height:560px}
+.iwt.ovl .tx{background:#f3f3f3;position:relative;z-index:2;margin-left:-40px;padding:52px 56px}
 
 
 /* ---------- product cards ---------- */
@@ -294,6 +300,10 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .atc{height:46px;font-size:14px;margin-top:10px}
   .ptag{top:8px;right:8px;font-size:12px;padding:4px 9px}
   .iwt{grid-template-columns:1fr;margin-top:56px}
+  /* no room to overlap on a phone: stack like the other image-with-text block */
+  .iwt.ovl{margin:56px auto 0;padding:0}
+  .iwt.ovl .ph{height:340px}
+  .iwt.ovl .tx{margin-left:0;padding:30px 20px 36px}
   .iwt .ph{height:340px;order:0}
   .iwt .tx{padding:30px 20px 36px;gap:14px}
   .iwt .tx h2{font-size:27px}

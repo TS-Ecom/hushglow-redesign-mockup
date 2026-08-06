@@ -42,9 +42,28 @@
 .pricerow .save{background:var(--berry);color:#fff}
 .pricerow .best{background:var(--sand);color:var(--ink)}
 
-/* customer quote */
-.pdpquote{border-left:3px solid var(--sand);padding-left:14px;margin-bottom:18px;font-size:15px;line-height:1.6;color:var(--ink-soft)}
-.pdpquote cite{display:block;margin-top:6px;font-style:normal;font-size:14px;font-weight:600;color:var(--ink)}
+/* customer quote: portrait + italic quote + author with stars, mirroring the live block */
+.pdpquote{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);padding:16px;margin-top:24px}
+.pdpquote .qav{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;background:var(--cream)}
+.pdpquote .qbody{flex:1;min-width:0}
+.pdpquote em{font-style:italic;font-size:15px;line-height:1.6;color:var(--ink);display:block}
+.pdpquote cite{display:flex;align-items:center;gap:8px;margin-top:10px;font-style:normal;font-size:14px;font-weight:600;color:var(--ink)}
+.pdpquote .qstars{color:var(--gold);letter-spacing:1px;font-weight:400}
+
+/* single-product upsell (Travel Puff) */
+.puff{display:flex;align-items:center;gap:12px;border:1px solid var(--line);padding:12px 14px;margin-top:22px}
+.puff img{width:56px;height:56px;object-fit:cover;flex:none;background:var(--cream)}
+.puffmid{flex:1;min-width:0}
+.puffmid b{display:block;font-size:16px;font-weight:600}
+.puffmid small{display:block;font-size:15px;color:var(--ink-soft);line-height:1.5}
+.puffpr{display:flex;align-items:baseline;gap:7px;font-size:15px;flex:none}
+.puffpr b{font-weight:600}
+.puffpr s{color:var(--berry)}
+
+/* upsell tabs switch panes */
+.uppane{display:none}
+.uppane.on{display:block}
+.uptabs b{transition:color .2s ease,border-color .2s ease}
 
 /* Accordions (USP + bottom tabs). The USP rows read as compact tiles rather than full-width
    hairlines, and the type is sized for the 60+ reader. */

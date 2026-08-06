@@ -228,6 +228,20 @@
     setInterval(cdTick, 1000);
   }
 
+  /* upsell tabs: Often Bought With / Save with Bundles */
+  var upTabs = document.getElementById('upTabs');
+  if (upTabs) {
+    upTabs.querySelectorAll('b').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        upTabs.querySelectorAll('b').forEach(function (x) { x.classList.remove('on'); });
+        tab.classList.add('on');
+        document.querySelectorAll('.uppane').forEach(function (p) {
+          p.classList.toggle('on', p.dataset.pane === tab.dataset.tab);
+        });
+      });
+    });
+  }
+
   /* upsell Add: confirm the tap, then return to idle */
   document.querySelectorAll('.upbtn').forEach(function (b) {
     var idle = b.textContent;

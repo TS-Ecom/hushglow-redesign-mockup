@@ -143,7 +143,7 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 .sub-in{display:flex;border-bottom:1px solid rgba(251,247,242,.35);padding-bottom:10px;margin-top:6px}
 .sub-in input{flex:1;background:none;border:none;outline:none;font-family:var(--ui);font-size:14.5px;color:var(--paper)}
 .sub-in input::placeholder{color:rgba(251,247,242,.5)}
-.sub-in button{color:var(--paper);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.sub-in button{color:var(--paper);font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
 .sub-in button:hover{text-decoration:underline;text-underline-offset:3px}
 .soc{display:flex;gap:16px;margin-top:22px}
 .soc i{width:32px;height:32px;border:1px solid rgba(251,247,242,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-style:normal;cursor:pointer;transition:background .2s ease,border-color .2s ease}
@@ -157,7 +157,7 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 .tp-foot .tp-svg{width:96px;height:19px}
 .tp-foot .tpl{font-size:13.5px;color:var(--paper);text-decoration:underline;text-underline-offset:3px}
 .tp-foot .tpb svg{width:84px;height:16px;display:block}
-.footer .bottom{border-top:1px solid rgba(251,247,242,.14);margin-top:20px;padding:20px 0;font-size:12.5px;display:flex;justify-content:space-between;max-width:1320px;margin-left:auto;margin-right:auto}
+.footer .bottom{border-top:1px solid rgba(251,247,242,.14);margin-top:20px;padding:20px 0;font-size:13.5px;display:flex;justify-content:space-between;max-width:1320px;margin-left:auto;margin-right:auto}
 
 
 /* ---------- cart drawer (visual prototype of the approved cart design, dev-handoff v4 Launch) ----------
@@ -246,7 +246,7 @@ button{font-family:var(--ui);background:none;border:none;cursor:pointer;color:in
 .mm-div{border-top:1px solid var(--line);margin:12px 0}
 .mm-shoprow{display:flex;justify-content:space-between;align-items:baseline;margin:6px 0 14px}
 .mm-shoprow b{font-size:14.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
-.mm-shoprow a{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.mm-shoprow a{font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;text-decoration:underline;text-underline-offset:4px}
 .mm-mtiles{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .mm-mtiles::-webkit-scrollbar{display:none}
 .mm-mtiles .mm-tile{flex:0 0 150px;width:auto;text-align:left;scroll-snap-align:start}
@@ -265,7 +265,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .sec-h{font-size:23px;margin-bottom:24px}
   /* buttons stay loud through weight and caps, not through size */
   .btn{font-size:14.5px;padding:13px 22px;line-height:1.35}
-  .announce{font-size:12.5px;padding:10px 36px}
+  .announce{font-size:13.5px;padding:10px 36px;letter-spacing:.09em}
   .announce .x{right:12px;font-size:12px}
   .head{height:58px}
   .nav{display:none}
@@ -282,12 +282,12 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .trust i{font-size:13px}
   .grid4{grid-template-columns:1fr 1fr;gap:16px}
   .p-card .nm{font-size:16px;margin-top:10px}
-  .stars{font-size:12.5px;letter-spacing:2px;margin:4px 0}
-  .stars span{font-size:13px;margin-left:5px}
+  .stars{font-size:13px;letter-spacing:2px;margin:4px 0}
+  .stars span{font-size:13.5px;margin-left:5px}
   .pr{font-size:16px;gap:6px}
-  .pr .save{font-size:11.5px;padding:3px 7px;letter-spacing:.04em}
+  .pr .save{font-size:12px;padding:3px 7px;letter-spacing:.04em}
   .atc{height:46px;font-size:14px;margin-top:10px}
-  .ptag{top:8px;right:8px;font-size:11px;padding:4px 9px}
+  .ptag{top:8px;right:8px;font-size:12px;padding:4px 9px}
   .iwt{grid-template-columns:1fr;margin-top:56px}
   .iwt .ph{height:340px;order:0}
   .iwt .tx{padding:30px 20px 36px;gap:14px}

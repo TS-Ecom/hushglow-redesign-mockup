@@ -31,9 +31,38 @@
     });
   });
 
-  /* accordions (USP + bottom tabs) */
+  /* accordions (USP + bottom tabs): slide open/closed instead of snapping. The panel is
+     measured on each toggle, so copy length never has to be guessed, and once open the
+     height is released to none so reflow (font swap, orientation change) still fits. */
   document.querySelectorAll('.acc .acc-t').forEach(function (t) {
-    t.addEventListener('click', function () { t.parentElement.classList.toggle('open'); });
+    var acc = t.parentElement;
+    var body = acc.querySelector('.acc-c');
+    t.addEventListener('click', function () {
+      if (!body) { acc.classList.toggle('open'); return; }
+      var open = acc.classList.contains('open');
+      if (open) {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        requestAnimationFrame(function () {
+          acc.classList.remove('open');
+          body.style.maxHeight = '0px';
+        });
+      } else {
+        acc.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        /* release the cap once open so later reflow (font swap, rotation) still fits.
+           transitionend is the trigger, with a timer behind it in case the event never
+           lands — otherwise the panel would stay pinned to a stale height. */
+        var release = function () {
+          if (!acc.classList.contains('open')) return;
+          body.style.maxHeight = 'none';
+          body.removeEventListener('transitionend', done);
+          clearTimeout(fallback);
+        };
+        var done = function (e) { if (e.propertyName === 'max-height') release(); };
+        var fallback = setTimeout(release, 420);
+        body.addEventListener('transitionend', done);
+      }
+    });
   });
 
   /* bundle picker: radio behaviour */
@@ -216,6 +245,58 @@
     };
     cdTick();
     setInterval(cdTick, 1000);
+  }
+
+  /* upsell Add: confirm the tap, then return to idle */
+  document.querySelectorAll('.upbtn').forEach(function (b) {
+    var idle = b.textContent;
+    var timer = null;
+    b.addEventListener('click', function () {
+      b.classList.add('added');
+      b.textContent = 'Added ✓';
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        b.classList.remove('added');
+        b.textContent = idle;
+      }, 1600);
+    });
+  });
+
+  /* section reveal: opacity + transform only, one observer, disconnected as it goes.
+     Skipped entirely for reduced motion or without IntersectionObserver, in which case
+     the page renders exactly as it does today. */
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var reveals = document.querySelectorAll('.pstrip, .section, .benef, .iwt, .cmp, .bslider, .steps, .ibar');
+    if (reveals.length) {
+      document.documentElement.classList.add('js-reveal');
+      reveals.forEach(function (el) { el.classList.add('reveal'); });
+      var rio = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('in');
+          obs.unobserve(e.target);
+        });
+      }, { rootMargin: '0px 0px -6% 0px', threshold: 0.04 });
+      reveals.forEach(function (el) { rio.observe(el); });
+
+      /* Failsafe. This effect hides content until the observer says it is on screen, so a
+         browser where callbacks never arrive would leave the whole page below the fold
+         blank. A sentinel that is unquestionably in view proves the observer actually
+         fires; if it hasn't within a second, the effect is torn down and everything shows. */
+      var sentinel = document.createElement('div');
+      sentinel.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none';
+      document.body.appendChild(sentinel);
+      var alive = false;
+      var probe = new IntersectionObserver(function () { alive = true; probe.disconnect(); });
+      probe.observe(sentinel);
+      setTimeout(function () {
+        sentinel.remove();
+        if (alive) return;
+        probe.disconnect();
+        rio.disconnect();
+        document.documentElement.classList.remove('js-reveal');
+      }, 1000);
+    }
   }
 
   /* muted payment icons under the shipping bar */

@@ -39,10 +39,12 @@
 .acc{border-top:1px solid var(--line)}
 .usp .acc:last-child,.tabs2 .acc:last-child{border-bottom:1px solid var(--line)}
 .acc-t{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;padding:15px 2px;font-size:16px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:1.35;cursor:pointer}
-.acc-t i{font-style:normal;font-size:20px;font-weight:400;color:var(--ink);transition:transform .2s ease}
+.acc-t i{font-style:normal;font-size:20px;font-weight:400;color:var(--ink);transition:transform .25s cubic-bezier(.4,0,.2,1)}
 .acc.open .acc-t i{transform:rotate(45deg)}
-.acc-c{display:none;padding:2px 2px 16px}
-.acc.open .acc-c{display:block}
+/* height is animated from JS (max-height set to the measured scrollHeight, then released
+   to none) so the panel slides instead of jumping, with no magic number to outgrow */
+.acc-c{max-height:0;overflow:hidden;padding:0 2px;transition:max-height .3s cubic-bezier(.4,0,.2,1),padding .3s cubic-bezier(.4,0,.2,1),opacity .25s ease;opacity:0}
+.acc.open .acc-c{padding:2px 2px 16px;opacity:1}
 .acc-c p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:8px}
 .acc-c p:last-child{margin-bottom:0}
 .acc-c p b{color:var(--ink);font-weight:600}
@@ -69,7 +71,10 @@
 .swrow{display:flex;gap:12px;flex-wrap:wrap}
 .swb{width:46px;height:46px;border-radius:50%;border:1px solid rgba(0,0,0,.1);cursor:pointer;position:relative;transition:transform .15s ease}
 .swb:hover{transform:scale(1.08)}
-.swb.on::after{content:'';position:absolute;inset:-5px;border:2px solid var(--ink);border-radius:50%}
+.swb:active{transform:scale(.95)}
+/* selection ring fades and scales in rather than appearing on the next frame */
+.swb::after{content:'';position:absolute;inset:-5px;border:2px solid var(--ink);border-radius:50%;opacity:0;transform:scale(.82);transition:opacity .2s ease,transform .2s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.swb.on::after{opacity:1;transform:none}
 .swdesc{font-size:15.5px;color:var(--ink-soft);margin:12px 0 6px}
 .swdesc b{color:var(--ink);font-weight:600}
 /* quiz link: shade-palette strip sits under the text, like the live shadefinder block */
@@ -84,9 +89,10 @@
 .bun{position:relative;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--soft);border:2px solid transparent;border-radius:var(--r-card);padding:15px 16px;cursor:pointer;transition:background .2s ease,border-color .2s ease,box-shadow .2s ease}
 .bun:hover{background:#f0f0f1}
 .bun.on{background:#fff;border-color:var(--ink);box-shadow:0 6px 18px rgba(18,18,18,.12)}
-.rad{width:19px;height:19px;border-radius:50%;border:2px solid var(--taupe);flex:none;position:relative}
+.rad{width:19px;height:19px;border-radius:50%;border:2px solid var(--taupe);flex:none;position:relative;transition:border-color .2s ease}
+.rad::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--ink);opacity:0;transform:scale(.4);transition:opacity .18s ease,transform .18s cubic-bezier(.4,0,.2,1)}
 .bun.on>.rad{border-color:var(--ink)}
-.bun.on>.rad::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--ink)}
+.bun.on>.rad::after{opacity:1;transform:none}
 .bun .bn{flex:1}
 .bun .bn b{font-size:17px;font-weight:600;display:flex;align-items:center;gap:8px}
 .bun .bn small{display:block;font-size:15px;color:var(--ink-soft);margin-top:1px}
@@ -119,7 +125,7 @@
 .subbox:hover{background:#f0f0f1}
 .subbox.on{background:#fff;border-color:var(--ink);box-shadow:0 6px 18px rgba(18,18,18,.12)}
 .subbox.on .rad{border-color:var(--ink)}
-.subbox.on .rad::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--ink)}
+.subbox.on .rad::after{opacity:1;transform:none}
 .submid{flex:1}
 .submid b{font-size:16px;font-weight:600;display:block}
 .submid small{font-size:15px;color:var(--ink-soft);line-height:1.55}
@@ -157,8 +163,10 @@
 .uppr b{font-weight:600}
 .uppr s{color:var(--berry);font-weight:400}
 .usave{font-style:normal;background:var(--berry);color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:var(--r-chip)}
-.upbtn{border:2px solid var(--ink);background:#fff;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:9px 17px;cursor:pointer;transition:background .2s ease,color .2s ease}
+.upbtn{border:2px solid var(--ink);background:#fff;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:9px 17px;cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,transform .12s ease}
 .upbtn:hover{background:var(--ink);color:var(--paper)}
+.upbtn:active{transform:scale(.96)}
+.upbtn.added{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 
 /* video carousel */
 .vidcar{margin-top:28px}
@@ -288,6 +296,16 @@
 .paymini{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:12px}
 .paymini img{height:20px;width:auto;display:block}
 
+/* ---------- section reveal ----------
+   Opt-in from JS: without it (or with reduced motion) every section is simply visible.
+   Only opacity and transform animate, so nothing here triggers layout. */
+.js-reveal .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s cubic-bezier(.4,0,.2,1);will-change:opacity,transform}
+.js-reveal .reveal.in{opacity:1;transform:none;will-change:auto}
+@media (prefers-reduced-motion:reduce){
+  .js-reveal .reveal{opacity:1;transform:none;transition:none}
+}
+
+
 /* ---------- mobile ---------- */
 @media screen and (max-width:749px){
   .pdp{grid-template-columns:1fr;gap:26px;padding:0 0 0}
@@ -334,9 +352,16 @@
   .salebar .unit small{font-size:10px}
   .salebar>i{font-size:17px;transform:translateY(-7px)}
   .bslider .lookarrow{width:34px;height:34px}
-  .satc .smid b{font-size:14px}
-  .satc .sprice{font-size:13px;gap:6px}
-  .satc .btn{padding:12px 18px}
+  /* one line: product name sits with the price, not stacked above it */
+  .satc{gap:10px;padding:9px var(--pagepad)}
+  .satc .smid{display:flex;align-items:center;gap:8px;min-width:0;flex:0 0 auto}
+  /* the name is already the H1 a few screens up; on a phone the width is better spent on
+     the price and the button */
+  .satc .smid > b{display:none}
+  .satc .sprice{margin-top:0;font-size:14px;gap:5px;white-space:nowrap;flex:none}
+  .satc .sprice s{font-size:13px}
+  .satc .sprice .usave{font-size:11px;padding:2px 5px;letter-spacing:.03em}
+  .satc .btn{padding:12px 14px;font-size:14.5px;flex:1 1 auto;min-width:0}
   .pstrip{margin-top:56px;padding:12px 0}
   .pstrip .half{gap:36px;padding-right:36px;animation-duration:24s}
   .pi{font-size:13px;gap:8px;letter-spacing:.1em}

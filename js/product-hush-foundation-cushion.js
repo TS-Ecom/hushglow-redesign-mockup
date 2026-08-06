@@ -43,34 +43,7 @@
      measured on each toggle, so copy length never has to be guessed, and once open the
      height is released to none so reflow (font swap, orientation change) still fits. */
   document.querySelectorAll('.acc .acc-t').forEach(function (t) {
-    var acc = t.parentElement;
-    var body = acc.querySelector('.acc-c');
-    t.addEventListener('click', function () {
-      if (!body) { acc.classList.toggle('open'); return; }
-      var open = acc.classList.contains('open');
-      if (open) {
-        body.style.maxHeight = body.scrollHeight + 'px';
-        requestAnimationFrame(function () {
-          acc.classList.remove('open');
-          body.style.maxHeight = '0px';
-        });
-      } else {
-        acc.classList.add('open');
-        body.style.maxHeight = body.scrollHeight + 'px';
-        /* release the cap once open so later reflow (font swap, rotation) still fits.
-           transitionend is the trigger, with a timer behind it in case the event never
-           lands — otherwise the panel would stay pinned to a stale height. */
-        var release = function () {
-          if (!acc.classList.contains('open')) return;
-          body.style.maxHeight = 'none';
-          body.removeEventListener('transitionend', done);
-          clearTimeout(fallback);
-        };
-        var done = function (e) { if (e.propertyName === 'max-height') release(); };
-        var fallback = setTimeout(release, 420);
-        body.addEventListener('transitionend', done);
-      }
-    });
+    t.addEventListener('click', function () { t.parentElement.classList.toggle('open'); });
   });
 
   /* bundle picker: radio behaviour */

@@ -25,14 +25,14 @@
 .lovedrow .avs{display:inline-flex}
 .lovedrow .avs img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);background:var(--cream)}
 .lovedrow .avs img+img{margin-left:-9px}
-.lovedrow .lt{font-size:15.5px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.lovedrow .lt{font-size:15px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
 .lovedrow .lt b{color:var(--ink);font-weight:600}
 .lovedrow .hrt{width:15px;height:15px;fill:var(--berry);flex:none}
-.ratrow{display:inline-flex;align-items:center;gap:9px;font-size:15.5px;color:var(--ink);margin-bottom:12px}
+.ratrow{display:inline-flex;align-items:center;gap:9px;font-size:15px;color:var(--ink);margin-bottom:12px}
 .ratrow .tp-svg{width:110px;height:22px;display:block}
 .ratrow:hover .rt{text-decoration:underline;text-underline-offset:3px}
-.ratrow .dn{font-style:normal;font-size:15.5px;color:var(--ink-soft)}
-.info h1{font-size:clamp(30px,2.6vw,38px);font-weight:600;letter-spacing:-.01em;line-height:1.15;margin-bottom:18px}
+.ratrow .dn{font-style:normal;font-size:15px;color:var(--ink-soft)}
+.info h1{font-size:36px;font-weight:600;letter-spacing:-.01em;line-height:1.15;margin-bottom:18px}
 
 /* Accordions (USP + bottom tabs). The USP rows read as compact tiles rather than full-width
    hairlines, and the type is sized for the 60+ reader. */
@@ -41,19 +41,24 @@
 .acc-t{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;padding:15px 2px;font-size:16px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:1.35;cursor:pointer}
 .acc-t i{font-style:normal;font-size:20px;font-weight:400;color:var(--ink);transition:transform .25s cubic-bezier(.4,0,.2,1)}
 .acc.open .acc-t i{transform:rotate(45deg)}
-/* height is animated from JS (max-height set to the measured scrollHeight, then released
-   to none) so the panel slides instead of jumping, with no magic number to outgrow */
-/* padding stays constant in both states: box-sizing makes max-height:0 collapse it anyway,
-   and animating it would make the measured scrollHeight smaller than the settled height,
-   which is exactly what made the panel jump at the end of the transition */
-.acc-c{max-height:0;overflow:hidden;padding:2px 2px 16px;transition:max-height .3s cubic-bezier(.4,0,.2,1),opacity .25s ease;opacity:0}
-.acc.open .acc-c{opacity:1}
+/* Collapse via a 0fr -> 1fr grid row rather than max-height. Padding lives on the inner
+   wrapper, so the closed panel is genuinely zero-height (padding does not shrink under
+   max-height, which is what left an 18px gap), and the open height is whatever the copy
+   needs — no measuring, no value to outgrow. Browsers without animatable grid rows simply
+   toggle instantly, which is the behaviour we had before. */
+.acc-c{display:grid;grid-template-rows:0fr;padding:0 2px;transition:grid-template-rows .3s cubic-bezier(.4,0,.2,1),opacity .25s ease;opacity:0}
+.acc.open .acc-c{grid-template-rows:1fr;opacity:1}
+/* vertical spacing sits on the children, not the wrapper: padding on the wrapper survives
+   a zero-height grid row and would leave a gap under every closed panel */
+.acc-in{overflow:hidden;min-height:0}
+.acc-in > :first-child{padding-top:2px}
+.acc-in > :last-child{padding-bottom:16px}
 .acc-c p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:8px}
 .acc-c p:last-child{margin-bottom:0}
 .acc-c p b{color:var(--ink);font-weight:600}
 .shrow{display:flex;align-items:flex-start;gap:10px;padding:6px 0}
 .shrow .ssw{width:17px;height:17px;border-radius:50%;border:1px solid rgba(0,0,0,.08);flex:none;margin-top:4px}
-.shrow .sht{flex:1;font-size:15.5px;line-height:1.6}
+.shrow .sht{flex:1;font-size:15px;line-height:1.6}
 
 /* USP block: tiles on the brand grey, so the rows stop reading as wide empty lines */
 .usp{background:var(--soft);border-radius:var(--r-card);padding:2px 16px;margin-bottom:4px}
@@ -65,7 +70,7 @@
 .shrow em{font-style:normal;color:var(--ink-soft)}
 
 /* guarantee row (mirrors approved cart pill) */
-.grt{display:flex;align-items:center;gap:9px;background:var(--cream);font-size:15.5px;padding:12px 16px;margin:16px 0 18px;border-radius:var(--r-card)}
+.grt{display:flex;align-items:center;gap:9px;background:var(--cream);font-size:15px;padding:12px 16px;margin:16px 0 18px;border-radius:var(--r-card)}
 .grt svg{width:16px;height:16px;flex:none;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .grt b{font-weight:600;color:var(--berry)}
 
@@ -78,7 +83,7 @@
 /* selection ring fades and scales in rather than appearing on the next frame */
 .swb::after{content:'';position:absolute;inset:-5px;border:2px solid var(--ink);border-radius:50%;opacity:0;transform:scale(.82);transition:opacity .2s ease,transform .2s cubic-bezier(.4,0,.2,1);pointer-events:none}
 .swb.on::after{opacity:1;transform:none}
-.swdesc{font-size:15.5px;color:var(--ink-soft);margin:12px 0 6px}
+.swdesc{font-size:15px;color:var(--ink-soft);margin:12px 0 6px}
 .swdesc b{color:var(--ink);font-weight:600}
 /* quiz link: shade-palette strip sits under the text, like the live shadefinder block */
 .quizlink{display:inline-flex;flex-direction:column;align-items:stretch;gap:5px;font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:22px;transition:color .2s ease}
@@ -103,7 +108,7 @@
 .bun .bp{text-align:right}
 .bun .bp b{font-size:18px;font-weight:600;display:block}
 .bun .bp s{font-size:15px;color:var(--berry)}
-.tag2{position:absolute;top:-11px;right:12px;background:var(--ink);color:var(--paper);font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:var(--r-chip)}
+.tag2{position:absolute;top:-11px;right:12px;background:var(--ink);color:var(--paper);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:var(--r-chip)}
 .tag2.gold{background:var(--berry)}
 .bunx{display:none;width:100%;padding-left:31px}
 .bun.on .bunx{display:block}
@@ -147,7 +152,7 @@
 @keyframes stockpulse{0%{transform:scale(.6);opacity:.9}70%{transform:scale(1.4);opacity:0}100%{opacity:0}}
 
 /* shipping row (V1: cream bar, pairs with the guarantee row) */
-.shiprow{display:flex;align-items:center;justify-content:center;gap:10px;font-size:15.5px;background:var(--cream);padding:12px 14px;margin-top:12px;border-radius:var(--r-card)}
+.shiprow{display:flex;align-items:center;justify-content:center;gap:10px;font-size:15px;background:var(--cream);padding:12px 14px;margin-top:12px;border-radius:var(--r-card)}
 .shiprow .dim{color:var(--ink-soft)}
 .shiprow b{font-weight:600}
 .shiprow svg{width:19px;height:19px;flex:none;stroke:var(--berry);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -162,10 +167,10 @@
 .upmid{flex:1;min-width:0}
 .upmid b{font-size:16px;font-weight:600;display:block}
 .upmid small{font-size:15px;color:var(--ink-soft);line-height:1.55;display:block;margin:1px 0 3px}
-.uppr{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;font-size:15.5px}
+.uppr{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;font-size:15px}
 .uppr b{font-weight:600}
 .uppr s{color:var(--berry);font-weight:400}
-.usave{font-style:normal;background:var(--berry);color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:var(--r-chip)}
+.usave{font-style:normal;background:var(--berry);color:#fff;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:var(--r-chip)}
 .upbtn{border:2px solid var(--ink);background:#fff;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:9px 17px;cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,transform .12s ease}
 .upbtn:hover{background:var(--ink);color:var(--paper)}
 .upbtn:active{transform:scale(.96)}
@@ -190,7 +195,7 @@
 
 /* ---------- testimonials (Smooche-style slider cards) ---------- */
 /* Testimonials: shorter cards so more of the row fits on one screen, type kept large. */
-.lovedh{font-size:clamp(28px,2.4vw,34px);margin-bottom:30px}
+.lovedh{font-size:32px;margin-bottom:30px}
 .oval{position:relative;display:inline-block;padding:0 8px}
 .oval svg{position:absolute;left:-12px;top:-9px;width:calc(100% + 24px);height:calc(100% + 20px);fill:none;stroke:var(--berry);stroke-width:2.5;transform:rotate(-2deg);pointer-events:none}
 .twrap{position:relative}
@@ -243,9 +248,9 @@
 .cmpbox .bl{left:14px}
 .cmpbox .al{right:14px}
 .cmpbox input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
-.cmptx h2{font-size:clamp(26px,2.3vw,32px);font-weight:600;letter-spacing:-.01em;line-height:1.2;margin-bottom:14px}
+.cmptx h2{font-size:30px;font-weight:600;letter-spacing:-.01em;line-height:1.2;margin-bottom:14px}
 .cmptx .q{font-size:17px;line-height:1.7;color:var(--ink);margin-bottom:12px}
-.cmptx .qa{display:block;font-size:15.5px;color:var(--ink-soft);margin-bottom:22px}
+.cmptx .qa{display:block;font-size:15px;color:var(--ink-soft);margin-bottom:22px}
 .cmptx .btn{white-space:normal}
 
 /* ---------- banner slider (square banners, 2 full cards per view like live) ---------- */
@@ -261,7 +266,7 @@
 
 /* 3 steps: cards are separated by a soft shadow instead of an outline. */
 .steps{padding:80px var(--pagepad) 0}
-.sec-h.statement{text-transform:none;letter-spacing:-.01em;font-size:clamp(26px,2.4vw,34px);font-weight:600}
+.sec-h.statement{text-transform:none;letter-spacing:-.01em;font-size:32px;font-weight:600}
 .stepgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;max-width:1180px;margin:0 auto}
 .step{background:#fff;border-radius:var(--r-card);box-shadow:0 4px 18px rgba(18,18,18,.10);overflow:hidden}
 .step video{width:100%;min-width:0;aspect-ratio:3/3.1;object-fit:cover;background:var(--cream);display:block}
@@ -284,7 +289,7 @@
 .satc .sprice{display:flex;align-items:baseline;gap:8px;font-size:15px;margin-top:2px}
 .satc .sprice .pn{font-weight:600}
 .satc .sprice s{color:var(--berry);font-weight:400}
-.satc .btn{padding:13px 30px;font-size:15.5px}
+.satc .btn{padding:13px 30px;font-size:15px}
 
 /* ---------- sale countdown bar (this template only) ---------- */
 /* Countdown bar: brand burgundy from the live site, heavier and larger digits. */
@@ -321,20 +326,20 @@
   .info h1{font-size:29px;margin-bottom:14px}
   .usp{padding:2px 14px}
   .bun{padding:14px 13px}
-  .bun .bn b{font-size:16.5px}
-  .bun .bp b{font-size:17.5px}
+  .bun .bn b{font-size:16px}
+  .bun .bp b{font-size:17px}
   .bunx{padding-left:0}
-  .atcbig{padding:18px 0;font-size:16.5px}
+  .atcbig{padding:18px 0;font-size:16px}
   /* subscription row: title and price share the top line, the description runs full width
      underneath — three columns of body copy don't fit a phone */
   .subbox{display:grid;grid-template-columns:auto minmax(0,1fr) auto;column-gap:10px;row-gap:4px;align-items:center;padding:13px 14px}
   .subbox .rad{grid-column:1;grid-row:1}
   .submid{display:contents}
   .submid b{grid-column:2;grid-row:1;font-size:15px;line-height:1.3}
-  .submid small{grid-column:2/4;grid-row:2;display:block;font-size:14.5px;line-height:1.5}
+  .submid small{grid-column:2/4;grid-row:2;display:block;font-size:14px;line-height:1.5}
   .subp{grid-column:3;grid-row:1;text-align:right;line-height:1.25}
-  .subp s{font-size:13.5px}
-  .subp b{font-size:16.5px}
+  .subp s{font-size:13px}
+  .subp b{font-size:16px}
   .vrow video{flex-basis:118px}
   /* upsell card: tab labels must hold one line, and price + save chip must sit together */
   .uptabs{gap:16px}
@@ -343,7 +348,7 @@
   .upcard img{width:56px;height:56px}
   .upmid small{display:none}
   .upmid b{font-size:14px;line-height:1.35}
-  .uppr{font-size:14.5px;gap:6px}
+  .uppr{font-size:14px;gap:6px}
   .usave{font-size:12px;padding:2px 6px}
   .upbtn{font-size:13px;padding:8px 13px}
   .lovedrow .avs img{width:22px;height:22px;border-width:1.5px}
@@ -364,7 +369,7 @@
   .satc .sprice{margin-top:0;font-size:14px;gap:5px;white-space:nowrap;flex:none}
   .satc .sprice s{font-size:13px}
   .satc .sprice .usave{font-size:11px;padding:2px 5px;letter-spacing:.03em}
-  .satc .btn{padding:12px 14px;font-size:14.5px;flex:1 1 auto;min-width:0}
+  .satc .btn{padding:12px 14px;font-size:14px;flex:1 1 auto;min-width:0}
   .pstrip{margin-top:56px;padding:12px 0}
   .pstrip .half{gap:36px;padding-right:36px;animation-duration:24s}
   .pi{font-size:13px;gap:8px;letter-spacing:.1em}
@@ -384,9 +389,9 @@
   .benef-cta{margin-top:36px;gap:12px}
   .benef-cta .tp-line{flex-wrap:nowrap}
   .benef-cta .tp-svg{width:100px;height:20px}
-  .benef-cta .tpr{font-size:14.5px;white-space:nowrap}
+  .benef-cta .tpr{font-size:14px;white-space:nowrap}
   /* long label wraps to two lines here — keep the block tight so it doesn't turn into a slab */
-  .benef-cta .btn{width:100%;white-space:normal;font-size:14.5px;padding:13px 16px;line-height:1.3;box-shadow:0 4px 14px rgba(134,43,40,.22)}
+  .benef-cta .btn{width:100%;white-space:normal;font-size:14px;padding:13px 16px;line-height:1.3;box-shadow:0 4px 14px rgba(134,43,40,.22)}
   .cmp{padding:56px var(--pagepad) 0}
   .cmpwrap{grid-template-columns:1fr;gap:22px}
   .cmptx h2{font-size:25px;margin-bottom:10px}
@@ -411,16 +416,16 @@
   .badge{font-size:13px;padding:7px 12px;letter-spacing:.1em}
   .salebar .unit small{font-size:11px}
   .tag2{font-size:12px}
-  .cmpbox .cl{font-size:12.5px}
+  .cmpbox .cl{font-size:12px}
   .grt{font-size:15px}
   .stockrow{font-size:15px;flex-wrap:wrap;row-gap:6px}
   .bsub{font-size:16px}
   .bitem b{font-size:17px}
-  .bitem p{font-size:15.5px}
-  .tcard p{font-size:15.5px}
-  .step p{font-size:15.5px}
-  .acc-t{font-size:15.5px}
-  .acc-c p{font-size:15.5px}
+  .bitem p{font-size:15px}
+  .tcard p{font-size:15px}
+  .step p{font-size:15px}
+  .acc-t{font-size:15px}
+  .acc-c p{font-size:15px}
 }
 
 @media (prefers-reduced-motion: reduce){

@@ -13,7 +13,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--ui);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body{font-family:var(--ui);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.8;letter-spacing:.06em;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 /* inherit the body size instead of the browser's 13.333px default, so every rendered
@@ -34,7 +34,7 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .btn-secondary:hover{background:var(--ink);color:var(--paper)}
 .btn-accent:hover{background:var(--berry-deep);border-color:var(--berry-deep)}
 .btn-paper:hover{background:var(--cream);border-color:var(--cream)}
-.sec-h{font-size:28px;font-weight:600;text-align:center;letter-spacing:.06em;text-transform:uppercase;margin-bottom:38px}
+.sec-h{font-size:30px;font-weight:600;text-align:center;letter-spacing:.02em;margin-bottom:38px}
 .section{padding:96px var(--pagepad) 0}
 .inner{max-width:1320px;margin:0 auto}
 
@@ -96,12 +96,12 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .iwt .ph{height:640px;overflow:hidden}
 .iwt .ph img{width:100%;height:100%;object-fit:cover}
 .iwt .tx{display:flex;flex-direction:column;justify-content:center;padding:60px 84px;gap:22px;align-items:flex-start}
-.iwt .tx .cap{font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-soft)}
-.iwt .tx h2{font-size:36px;font-weight:600;letter-spacing:-.01em;line-height:1.15}
-.iwt .tx p{font-size:17px;color:var(--ink-soft);line-height:1.7;max-width:52ch}
+.iwt .tx .cap{font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink-soft)}
+.iwt .tx h2{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.15}
+.iwt .tx p{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:52ch}
 .iwt .tx p b{color:var(--ink);font-weight:600}
 .iwt .tx p u{text-decoration:none;color:var(--ink);font-weight:600}
-.iwt .tx p.iwt-tail{color:var(--ink);font-size:18px;margin-top:-6px}
+.iwt .tx p.iwt-tail{color:var(--ink);font-size:16px;margin-top:-6px}
 .iwt.flip .ph{order:2}
 .iwt.flip .tx{order:1}
 /* .ovl: the live "Not Sure About Your Shade" block — inset from the page edges, with the
@@ -273,7 +273,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 @media screen and (max-width:749px){
   :root{--pagepad:18px}
   .section{padding:64px var(--pagepad) 0}
-  .sec-h{font-size:23px;margin-bottom:24px}
+  .sec-h{font-size:24px;margin-bottom:24px}
   /* buttons stay loud through weight and caps, not through size */
   .btn{font-size:14px;padding:13px 22px;line-height:1.35}
   .announce{font-size:13px;padding:10px 36px;letter-spacing:.09em}

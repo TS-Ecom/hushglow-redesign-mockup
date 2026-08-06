@@ -21,21 +21,21 @@
 /* info column */
 .info{max-width:540px}
 /* live label: burgundy text in a thin outline, not a filled slab */
-.badge{display:inline-block;background:transparent;color:var(--berry);border:1px solid var(--berry);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:5px 10px;margin-bottom:12px;border-radius:var(--r-chip)}
+.badge{display:inline-block;background:transparent;color:var(--taupe);font-size:16px;letter-spacing:.06em;text-transform:uppercase;font-weight:400;padding:0;margin-bottom:6px}
 .lovedrow{display:flex;align-items:center;gap:10px;margin-bottom:9px}
 .lovedrow .avs{display:inline-flex}
 .lovedrow .avs img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);background:var(--cream)}
 .lovedrow .avs img+img{margin-left:-9px}
-.lovedrow .lt{font-size:15px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.lovedrow .lt{font-size:13px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
 .lovedrow .lt b{color:var(--ink);font-weight:600}
 .lovedrow .hrt{width:15px;height:15px;fill:var(--berry);flex:none}
-.ratrow{display:inline-flex;align-items:center;gap:9px;font-size:15px;color:var(--ink);margin-bottom:12px}
+.ratrow{display:inline-flex;align-items:center;gap:9px;font-size:16px;color:var(--ink);margin-bottom:12px}
 .ratrow .tp-svg{width:110px;height:22px;display:block}
 .ratrow:hover .rt{text-decoration:underline;text-underline-offset:3px}
-.ratrow .dn{font-style:normal;font-size:15px;color:var(--ink-soft)}
+.ratrow .dn{font-style:normal;font-size:16px;color:var(--ink-soft)}
 /* live title is uppercase; the price is not repeated here, it lives in the bundles and
    in the sticky bar */
-.info h1{font-size:32px;font-weight:600;letter-spacing:.01em;text-transform:uppercase;line-height:1.2;margin-bottom:16px}
+.info h1{font-size:24px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;line-height:1.3;margin-bottom:14px}
 
 /* customer quote: portrait + italic quote + author with stars, mirroring the live block */
 .pdpquote{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);padding:16px;margin-top:24px}
@@ -71,7 +71,7 @@
    hairlines, and the type is sized for the 60+ reader. */
 .acc{border-top:1px solid var(--line)}
 .usp .acc:last-child,.tabs2 .acc:last-child{border-bottom:1px solid var(--line)}
-.acc-t{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;padding:15px 2px;font-size:16px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:1.35;cursor:pointer}
+.acc-t{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;padding:15px 2px;font-size:16px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;line-height:1.4;cursor:pointer}
 .acc-t i{font-style:normal;font-size:20px;font-weight:400;color:var(--ink);transition:transform .25s cubic-bezier(.4,0,.2,1)}
 .acc.open .acc-t i{transform:rotate(45deg)}
 /* Collapse via a 0fr -> 1fr grid row rather than max-height. Padding lives on the inner
@@ -94,8 +94,8 @@
 .shrow .sht{flex:1;font-size:15px;line-height:1.6}
 
 /* USP block: tiles on the brand grey, so the rows stop reading as wide empty lines */
-.usp{background:var(--soft);border-radius:var(--r-card);padding:2px 16px;margin-bottom:4px}
-.usp .acc{border-top:1px solid #e0e0e2}
+.usp{margin-bottom:4px}
+.usp .acc{border-top:1px solid var(--line)}
 .usp .acc:first-child{border-top:none}
 .usp .acc:last-child{border-bottom:none}
 .usp .acc-t{padding:14px 0}
@@ -108,7 +108,7 @@
 .grt b{font-weight:600;color:var(--berry)}
 
 /* swatches */
-.swlbl{font-size:15px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:10px}
+.swlbl{font-size:16px;letter-spacing:.06em;text-transform:uppercase;font-weight:400;margin-bottom:10px}
 .swrow{display:flex;gap:12px;flex-wrap:wrap}
 .swb{width:46px;height:46px;border-radius:50%;border:1px solid rgba(0,0,0,.1);cursor:pointer;position:relative;transition:transform .15s ease}
 .swb:hover{transform:scale(1.08)}
@@ -116,26 +116,26 @@
 /* selection ring fades and scales in rather than appearing on the next frame */
 .swb::after{content:'';position:absolute;inset:-5px;border:2px solid var(--ink);border-radius:50%;opacity:0;transform:scale(.82);transition:opacity .2s ease,transform .2s cubic-bezier(.4,0,.2,1);pointer-events:none}
 .swb.on::after{opacity:1;transform:none}
-.swdesc{font-size:15px;color:var(--ink-soft);margin:12px 0 6px}
+.swdesc{font-size:16px;color:var(--ink-soft);margin:12px 0 6px}
 .swdesc b{color:var(--ink);font-weight:600}
 /* quiz link: shade-palette strip sits under the text, like the live shadefinder block */
-.quizlink{display:inline-flex;flex-direction:column;align-items:stretch;gap:5px;font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:22px;transition:color .2s ease}
+.quizlink{display:inline-flex;flex-direction:column;align-items:stretch;gap:5px;font-size:15px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin-bottom:22px;transition:color .2s ease}
 .quizlink .qico{width:100%;height:4px;display:block}
 .quizlink:hover{color:var(--berry)}
 
 /* Bundle picker: selection is carried by fill + shadow instead of a grid of outlines. */
-.bundlbl{text-align:center;font-size:15px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin:4px 0 12px;display:flex;align-items:center;gap:14px}
+.bundlbl{text-align:center;font-size:16px;letter-spacing:.06em;text-transform:uppercase;font-weight:400;margin:4px 0 12px;display:flex;align-items:center;gap:14px}
 .bundlbl::before,.bundlbl::after{content:'';height:1px;background:var(--line);flex:1}
 .bundles{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
 .bun{position:relative;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--soft);border:2px solid transparent;border-radius:var(--r-card);padding:15px 16px;cursor:pointer;transition:background .2s ease,border-color .2s ease,box-shadow .2s ease}
 .bun:hover{background:#f0f0f1}
-.bun.on{background:#fff;border-color:var(--ink);box-shadow:0 6px 18px rgba(18,18,18,.12)}
+.bun.on{background:#fff;border-color:var(--ink)}
 .rad{width:19px;height:19px;border-radius:50%;border:2px solid var(--taupe);flex:none;position:relative;transition:border-color .2s ease}
 .rad::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--ink);opacity:0;transform:scale(.4);transition:opacity .18s ease,transform .18s cubic-bezier(.4,0,.2,1)}
 .bun.on>.rad{border-color:var(--ink)}
 .bun.on>.rad::after{opacity:1;transform:none}
 .bun .bn{flex:1}
-.bun .bn b{font-size:17px;font-weight:600;display:flex;align-items:center;gap:8px}
+.bun .bn b{font-size:16px;font-weight:500;display:flex;align-items:center;gap:8px}
 .bun .bn small{display:block;font-size:15px;color:var(--ink-soft);margin-top:1px}
 .off{font-style:normal;background:var(--berry);color:#fff;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:var(--r-chip)}
 .bun .bp{text-align:right}
@@ -154,7 +154,7 @@
 .giftbox{background:var(--cream);padding:16px;margin-bottom:16px;text-align:center;border-radius:var(--r-card)}
 .giftbox .gt{font-size:17px;font-weight:600}
 .giftbox .gs{font-size:15px;color:var(--ink-soft);margin:2px 0 10px}
-.gcard{display:flex;align-items:center;gap:12px;background:#fff;border-radius:var(--r-card);box-shadow:0 2px 10px rgba(18,18,18,.08);padding:10px 12px;text-align:left}
+.gcard{display:flex;align-items:center;gap:12px;background:#fff;border-radius:var(--r-card);border:1px solid var(--sand);padding:10px 12px;text-align:left}
 .gcard img{width:46px;height:46px;object-fit:cover;flex:none;border-radius:var(--radius)}
 .gcard b{flex:1;font-size:16px;font-weight:600}
 .fchip{background:#e3efe3;color:#2e6b3a;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:var(--r-chip)}
@@ -164,7 +164,7 @@
 .atcbig{width:100%;padding:19px 0;font-size:17px;letter-spacing:.06em;box-shadow:0 6px 20px rgba(18,18,18,.18)}
 .subbox{display:flex;align-items:center;gap:12px;background:var(--soft);border:2px solid transparent;border-radius:var(--r-card);padding:14px 16px;margin-top:12px;cursor:pointer;transition:background .2s ease,border-color .2s ease,box-shadow .2s ease}
 .subbox:hover{background:#f0f0f1}
-.subbox.on{background:#fff;border-color:var(--ink);box-shadow:0 6px 18px rgba(18,18,18,.12)}
+.subbox.on{background:#fff;border-color:var(--ink)}
 .subbox.on .rad{border-color:var(--ink)}
 .subbox.on .rad::after{opacity:1;transform:none}
 .submid{flex:1}
@@ -196,7 +196,7 @@
 .uptabs b{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);padding-bottom:9px;cursor:pointer;border-bottom:2px solid transparent}
 .uptabs b.on{color:var(--ink);border-bottom-color:var(--ink)}
 /* photo left, copy and a full-width Add to Cart on the right — the live arrangement */
-.upcard{display:flex;align-items:center;gap:14px;border-radius:var(--r-card);box-shadow:0 2px 10px rgba(18,18,18,.08);padding:12px 14px;margin-bottom:10px;background:#fff}
+.upcard{display:flex;align-items:center;gap:14px;border-radius:var(--r-card);border:1px solid var(--line);padding:12px 14px;margin-bottom:10px;background:#fff}
 .upcard img{width:84px;height:84px;object-fit:cover;flex:none;background:var(--cream);border-radius:var(--radius)}
 .upmid{flex:1;min-width:0}
 .upmid b{font-size:16px;font-weight:600;display:block}
@@ -232,7 +232,7 @@
 
 /* ---------- testimonials (Smooche-style slider cards) ---------- */
 /* Testimonials: shorter cards so more of the row fits on one screen, type kept large. */
-.lovedh{font-size:32px;margin-bottom:30px}
+.lovedh{font-size:34px;font-weight:700;margin-bottom:30px}
 .oval{position:relative;display:inline-block;padding:0 8px}
 .oval svg{position:absolute;left:-12px;top:-9px;width:calc(100% + 24px);height:calc(100% + 20px);fill:none;stroke:var(--berry);stroke-width:2.5;transform:rotate(-2deg);pointer-events:none}
 .twrap{position:relative}
@@ -254,14 +254,14 @@
 
 /* ---------- benefits around video ---------- */
 .benef{padding:96px var(--pagepad) 0}
-.bsub{text-align:center;font-size:17px;color:var(--ink-soft);max-width:56ch;margin:-22px auto 40px}
+.bsub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:56ch;margin:-22px auto 40px}
 .bgrid{display:grid;grid-template-columns:minmax(0,1fr) 340px minmax(0,1fr);gap:44px;align-items:center;max-width:1180px;margin:0 auto}
 .bvid{width:100%;min-width:0;aspect-ratio:4/5;object-fit:cover;background:var(--cream);border-radius:var(--radius)}
 .bitem{display:flex;gap:11px;margin-bottom:32px}
 .bitem:last-child{margin-bottom:0}
 .bitem .chk{font-style:normal;color:var(--berry);font-size:17px;font-weight:700;flex:none;line-height:1.5}
-.bitem b{font-size:18px;font-weight:600;display:block;margin-bottom:6px;line-height:1.35}
-.bitem p{font-size:16px;color:var(--ink-soft);line-height:1.65}
+.bitem b{font-size:22px;font-weight:600;display:block;margin-bottom:6px;line-height:1.3}
+.bitem p{font-size:16px;color:var(--ink-soft);line-height:1.8}
 
 /* ---------- benefits CTA tail (part of the benefits block, mirrors live) ---------- */
 /* Rating line steps back so the CTA is clearly the loudest thing in the block. */
@@ -289,7 +289,7 @@
 .cmpbox .bl{left:14px}
 .cmpbox .al{right:14px}
 .cmpbox input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
-.cmptx h2{font-size:30px;font-weight:600;letter-spacing:-.01em;line-height:1.2;margin-bottom:14px}
+.cmptx h2{font-size:30px;font-weight:600;letter-spacing:.02em;line-height:1.2;margin-bottom:14px}
 .cmptx .q{font-size:17px;line-height:1.7;color:var(--ink);margin-bottom:12px}
 .cmptx .qa{display:block;font-size:15px;color:var(--ink-soft);margin-bottom:22px}
 .cmptx .btn{white-space:normal}
@@ -307,9 +307,9 @@
 
 /* 3 steps: cards are separated by a soft shadow instead of an outline. */
 .steps{padding:80px var(--pagepad) 0}
-.sec-h.statement{text-transform:none;letter-spacing:-.01em;font-size:32px;font-weight:600}
+.sec-h.statement{text-transform:none;letter-spacing:.02em;font-size:42px;font-weight:600}
 .stepgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;max-width:1180px;margin:0 auto}
-.step{background:#fff;border-radius:var(--r-card);box-shadow:0 4px 18px rgba(18,18,18,.10);overflow:hidden}
+.step{background:#fff;border-radius:var(--r-card);border:1px solid var(--line);overflow:hidden}
 .step video{width:100%;min-width:0;aspect-ratio:3/3.1;object-fit:cover;background:var(--cream);display:block}
 .step .stx{padding:18px 20px 24px}
 .step .stag{display:inline-block;background:var(--sand);font-size:15px;font-weight:600;padding:7px 14px;margin-bottom:13px;border-radius:var(--r-chip)}
@@ -376,8 +376,8 @@
   .thumbs img{width:62px;height:62px}
   .galarrow{width:36px;height:36px}
   .info{max-width:none;padding:0 var(--pagepad)}
-  .info h1{font-size:26px;margin-bottom:12px}
-  .badge{font-size:11px;padding:4px 9px}
+  .info h1{font-size:22px;margin-bottom:12px}
+  .badge{font-size:14px;padding:0}
   .pdpquote{font-size:15px;padding-left:12px;margin-bottom:16px}
   .pdpquote cite{font-size:14px}
   .usp{padding:2px 14px}
@@ -467,22 +467,22 @@
   .step video{aspect-ratio:3/2.9}
   .step .stx{padding:15px 16px 20px}
   /* plain inline text: as a flex row each fragment became its own wrapping item */
-  .lovedrow .lt{display:inline;font-size:14px;white-space:normal;line-height:1.45}
+  .lovedrow .lt{display:inline;font-size:13px;white-space:normal;line-height:1.45}
   .lovedrow .hrt{display:inline-block;vertical-align:-2px;margin:0 3px}
   .lovedrow{align-items:flex-start}
   .lovedrow .avs{padding-top:2px}
-  .badge{font-size:13px;padding:7px 12px;letter-spacing:.1em}
+  .badge{font-size:14px;padding:0;letter-spacing:.06em}
   .salebar .unit small{font-size:11px}
   .tag2{font-size:12px}
   .cmpbox .cl{font-size:12px}
   .grt{font-size:15px}
   .stockrow{font-size:15px;flex-wrap:wrap;row-gap:6px}
-  .bsub{font-size:16px}
-  .bitem b{font-size:17px}
+  .bsub{font-size:15px}
+  .bitem b{font-size:20px}
   .bitem p{font-size:15px}
   .tcard p{font-size:15px}
   .step p{font-size:15px}
-  .acc-t{font-size:15px}
+  .acc-t{font-size:15px;font-weight:400}
   .acc-c p{font-size:15px}
 }
 

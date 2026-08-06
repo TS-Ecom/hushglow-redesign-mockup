@@ -228,6 +228,15 @@
     setInterval(cdTick, 1000);
   }
 
+  /* Travel Puff toggle: on by default, so the add-on is opted out of rather than into */
+  var puffToggle = document.getElementById('puffToggle');
+  if (puffToggle) {
+    puffToggle.addEventListener('click', function () {
+      var on = puffToggle.classList.toggle('on');
+      puffToggle.setAttribute('aria-checked', on ? 'true' : 'false');
+    });
+  }
+
   /* upsell tabs: Often Bought With / Save with Bundles */
   var upTabs = document.getElementById('upTabs');
   if (upTabs) {

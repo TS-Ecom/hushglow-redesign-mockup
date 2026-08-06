@@ -17,7 +17,10 @@
   if (gp) gp.addEventListener('click', function () { show(current - 1); });
   if (gn) gn.addEventListener('click', function () { show(current + 1); });
 
-  /* shade swatches: highlight, swap main photo (per-shade), update texts + sticky bar */
+  /* Shade swatches: the shade photo becomes the first slide, the way a variant image does
+     on a real product page. Previously it was dropped straight into the main <img> while
+     the thumb list kept its own position, so the next arrow jumped to an unrelated photo
+     and no thumb stayed marked. */
   var swName = document.getElementById('swName');
   var swDesc = document.getElementById('swDesc');
   document.querySelectorAll('.swb').forEach(function (b) {
@@ -26,8 +29,13 @@
       b.classList.add('on');
       swName.textContent = b.dataset.shade;
       swDesc.textContent = 'is ' + b.dataset.desc;
-      main.src = b.dataset.img;
-      thumbs.forEach(function (t) { t.classList.remove('on'); });
+      if (thumbs.length) {
+        thumbs[0].dataset.full = b.dataset.img;
+        thumbs[0].src = b.dataset.img.replace('width=1200', 'width=200');
+        show(0);
+      } else {
+        main.src = b.dataset.img;
+      }
     });
   });
 

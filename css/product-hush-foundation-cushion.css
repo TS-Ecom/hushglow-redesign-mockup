@@ -43,8 +43,11 @@
 .acc.open .acc-t i{transform:rotate(45deg)}
 /* height is animated from JS (max-height set to the measured scrollHeight, then released
    to none) so the panel slides instead of jumping, with no magic number to outgrow */
-.acc-c{max-height:0;overflow:hidden;padding:0 2px;transition:max-height .3s cubic-bezier(.4,0,.2,1),padding .3s cubic-bezier(.4,0,.2,1),opacity .25s ease;opacity:0}
-.acc.open .acc-c{padding:2px 2px 16px;opacity:1}
+/* padding stays constant in both states: box-sizing makes max-height:0 collapse it anyway,
+   and animating it would make the measured scrollHeight smaller than the settled height,
+   which is exactly what made the panel jump at the end of the transition */
+.acc-c{max-height:0;overflow:hidden;padding:2px 2px 16px;transition:max-height .3s cubic-bezier(.4,0,.2,1),opacity .25s ease;opacity:0}
+.acc.open .acc-c{opacity:1}
 .acc-c p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:8px}
 .acc-c p:last-child{margin-bottom:0}
 .acc-c p b{color:var(--ink);font-weight:600}

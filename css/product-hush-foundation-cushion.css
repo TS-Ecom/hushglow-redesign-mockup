@@ -20,8 +20,9 @@
 
 /* info column */
 .info{max-width:540px}
-/* badge V6, picked by the client: solid burgundy, white type */
-.badge{display:inline-block;background:var(--berry-deep);color:#fff;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:8px 14px;margin-bottom:10px}
+/* badge exactly as live: 2px beige outline, beige 16px/700, centred in the column.
+   Measured on .urgency-text — width is fit-content, the block is auto-centred. */
+.badge{display:block;width:fit-content;margin:9px auto 3px;background:transparent;color:var(--taupe);border:2px solid var(--taupe);font-size:16px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:0 8px;text-align:center}
 .lovedrow{display:flex;align-items:center;gap:10px;margin-bottom:9px}
 .lovedrow .avs{display:inline-flex}
 .lovedrow .avs img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);background:var(--cream)}
@@ -379,7 +380,7 @@
   .galarrow{width:36px;height:36px}
   .info{max-width:none;padding:0 var(--pagepad)}
   .info h1{font-size:22px;margin-bottom:12px}
-  .badge{font-size:12px;padding:7px 12px}
+  .badge{font-size:14px;padding:0 8px}
   .pdpquote{font-size:15px;padding-left:12px;margin-bottom:16px}
   .pdpquote cite{font-size:14px}
   .usp{padding:2px 14px}
@@ -473,7 +474,7 @@
   .lovedrow .hrt{display:inline-block;vertical-align:-2px;margin:0 3px}
   .lovedrow{align-items:flex-start}
   .lovedrow .avs{padding-top:2px}
-  .badge{font-size:12px;padding:7px 12px;letter-spacing:.07em}
+  .badge{font-size:14px;padding:0 8px;letter-spacing:.06em}
   .salebar .unit small{font-size:11px}
   .tag2{font-size:12px}
   .cmpbox .cl{font-size:12px}

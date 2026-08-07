@@ -242,6 +242,15 @@
     });
   }
 
+  /* Read More expands a clamped testimonial, so every card starts the same height */
+  document.querySelectorAll('.tcard .tmore').forEach(function (link) {
+    var card = link.closest('.tcard');
+    link.addEventListener('click', function () {
+      var open = card.classList.toggle('open');
+      link.textContent = open ? 'Read Less' : 'Read More';
+    });
+  });
+
   /* upsell tabs: Often Bought With / Save with Bundles */
   var upTabs = document.getElementById('upTabs');
   if (upTabs) {

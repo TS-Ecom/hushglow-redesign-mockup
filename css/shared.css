@@ -92,11 +92,11 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 
 
 /* ---------- image with text (used on home + product pages) ---------- */
-.iwt{display:grid;grid-template-columns:1.08fr 1fr;gap:0;margin-top:96px;background:var(--soft)}
+.iwt{display:grid;grid-template-columns:1.08fr 1fr;gap:0;margin-top:96px;background:#e6e6e6}
 .iwt .ph{height:640px;overflow:hidden}
 .iwt .ph img{width:100%;height:100%;object-fit:cover}
-.iwt .tx{display:flex;flex-direction:column;justify-content:center;padding:60px 84px;gap:22px;align-items:flex-start}
-.iwt .tx .cap{font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink-soft)}
+.iwt .tx{display:flex;flex-direction:column;justify-content:center;padding:60px 84px;gap:20px;align-items:flex-start}
+.iwt .tx .cap{font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink-soft);margin-bottom:-14px}
 .iwt .tx h2{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.15}
 .iwt .tx p{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:52ch}
 .iwt .tx p b{color:var(--ink);font-weight:600}

@@ -233,8 +233,8 @@
 /* ---------- testimonials (Smooche-style slider cards) ---------- */
 /* Testimonials: shorter cards so more of the row fits on one screen, type kept large. */
 .sec-h.statement.lovedh{font-size:34px;font-weight:700;margin-bottom:30px}
-.oval{position:relative;display:inline-block;padding:0 8px;color:var(--berry-deep)}
-.oval svg{position:absolute;left:-12px;top:-9px;width:calc(100% + 24px);height:calc(100% + 20px);fill:none;stroke:var(--berry-deep);stroke-width:2.5;transform:rotate(-2deg);pointer-events:none}
+.oval{position:relative;display:inline-block;padding:0 8px;color:var(--berry)}
+.oval svg{position:absolute;left:-12px;top:-9px;width:calc(100% + 24px);height:calc(100% + 20px);fill:none;stroke:var(--berry);stroke-width:2.5;transform:rotate(-2deg);pointer-events:none}
 .twrap{position:relative}
 /* arrows line up with the middle of the card photo, as on the live slider */
 .twrap .lookarrow{top:22%}

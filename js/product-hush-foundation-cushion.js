@@ -77,10 +77,15 @@
     var vio = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         var v = e.target;
+        var cell = v.closest('.vcell');
         if (e.isIntersecting) {
           if (!v.getAttribute('src')) { v.src = v.dataset.src; }
-          var p = v.play(); if (p && p.catch) p.catch(function () {});
-        } else { v.pause(); }
+          var p = v.play();
+          if (p && p.then) { p.then(function () { if (cell) cell.classList.add('playing'); }).catch(function () {}); }
+        } else {
+          v.pause();
+          if (cell) cell.classList.remove('playing');
+        }
       });
     }, { threshold: 0.35 });
     vids.forEach(function (v) { vio.observe(v); });

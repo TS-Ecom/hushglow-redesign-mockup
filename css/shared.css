@@ -6,9 +6,9 @@
   --line:#e6e6e6;
   --ink:#121212; --ink-soft:#5c5c5c; --berry:#862b28; --berry-deep:#5b1a1d; --gold:#a8823f;
   --ui:'Poppins',-apple-system,sans-serif;
-  /* Sharp corners everywhere — buttons on the live site are 0px too. The card/chip tokens
-     exist as a single switch in case the client asks for rounding later. */
-  --radius:0px; --r-btn:0px; --r-card:0px; --r-chip:0px;
+  /* 4px on everything — one radius for the whole system, agreed on the call after we
+     showed that the live theme carries eleven different values. */
+  --radius:4px; --r-btn:4px; --r-card:4px; --r-chip:4px;
   --pagepad:60px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -300,8 +300,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .atc{height:46px;font-size:14px;margin-top:10px}
   .ptag{top:8px;right:8px;font-size:12px;padding:4px 9px}
   .iwt{grid-template-columns:1fr;margin-top:56px}
-  /* no room to overlap on a phone: stack like the other image-with-text block */
-  .iwt.ovl{margin:56px auto 0;padding:0}
+  /* no room to overlap on a phone: stack like the other image-with-text block.
+     Needs .iwt.ovl specificity — the base rule sets two columns. */
+  .iwt.ovl{grid-template-columns:1fr;margin:56px auto 0;padding:0}
   .iwt.ovl .ph{height:340px}
   .iwt.ovl .tx{margin-left:0;padding:30px 20px 36px}
   .iwt .ph{height:340px;order:0}

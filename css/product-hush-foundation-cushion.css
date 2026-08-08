@@ -166,7 +166,10 @@
 .gcard s{font-size:15px;color:var(--ink-soft)}
 
 /* ATC + subscription. The main CTA is deliberately the heaviest element in the buy box. */
-.atcbig{width:100%;padding:13px 0;font-size:19px;line-height:1.3;letter-spacing:.06em;box-shadow:0 6px 20px rgba(91,26,29,.22)}
+/* Add to Cart is black; burgundy stays for the secondary calls (Try Now, Find My Shade,
+   Meet the #1 Foundation), so buying reads as the strongest action on the page. */
+.atcbig{width:100%;padding:13px 0;font-size:19px;line-height:1.3;letter-spacing:.06em;background:var(--ink);border-color:var(--ink);box-shadow:0 6px 20px rgba(18,18,18,.2)}
+.atcbig:hover{background:#333;border-color:#333}
 .subbox{display:flex;align-items:center;gap:12px;background:var(--soft);border:2px solid transparent;border-radius:var(--r-card);padding:14px 16px;margin-top:12px;cursor:pointer;transition:background .2s ease,border-color .2s ease,box-shadow .2s ease}
 .subbox:hover{background:#f0f0f1}
 .subbox.on{background:#fff;border-color:var(--ink)}
@@ -353,7 +356,8 @@
 .satc .sprice{display:flex;align-items:baseline;gap:8px;font-size:15px;margin-top:2px}
 .satc .sprice .pn{font-weight:600}
 .satc .sprice s{color:var(--berry);font-weight:400}
-.satc .btn{padding:13px 30px;font-size:15px}
+.satc .btn{padding:13px 30px;font-size:15px;background:var(--ink);border-color:var(--ink)}
+.satc .btn:hover{background:#333;border-color:#333}
 
 /* ---------- sale countdown bar (this template only) ---------- */
 /* Countdown bar: brand burgundy from the live site, heavier and larger digits. */

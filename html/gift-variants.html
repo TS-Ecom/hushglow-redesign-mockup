@@ -11,14 +11,17 @@
   :root{
     --paper:#fff; --soft:#f7f7f8; --cream:#f1e9de; --sand:#dbcfbc; --taupe:#c1b2a0;
     --line:#e6e6e6; --ink:#121212; --ink-soft:#5c5c5c; --berry:#862b28; --berry-deep:#5b1a1d;
+    --gold:#a8823f; --green:#2e6b3a;
     --ui:'Poppins',-apple-system,sans-serif; --r:4px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:var(--ui);background:#efefef;color:var(--ink);font-size:16px;line-height:1.8;letter-spacing:.06em;-webkit-font-smoothing:antialiased;padding:48px 24px 80px}
   .page{max-width:1180px;margin:0 auto}
-  .lede{max-width:720px;margin:0 auto 40px;text-align:center}
+  .lede{max-width:760px;margin:0 auto 20px;text-align:center}
   .lede h1{font-size:26px;font-weight:600;letter-spacing:.02em;margin-bottom:10px}
   .lede p{font-size:15px;color:var(--ink-soft)}
+  .rule{max-width:760px;margin:0 auto 40px;background:#fff;border-radius:var(--r);padding:16px 20px;font-size:14px;line-height:1.6;color:var(--ink-soft);border-left:3px solid var(--ink)}
+  .rule b{color:var(--ink)}
   .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
   .card{background:var(--paper);padding:28px 30px 32px;border:1px solid var(--line);border-radius:var(--r)}
   .no{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
@@ -27,51 +30,54 @@
   .note{font-size:13px;color:var(--ink-soft);line-height:1.6;margin-bottom:20px}
   .demo{border-top:1px solid var(--line);padding-top:22px}
 
-  /* context above and below, so the block is judged in place */
+  /* context: the block always sits between the chosen bundle and the buy button */
   .ctx-bundle{display:flex;align-items:center;gap:12px;background:var(--soft);border:2px solid var(--ink);border-radius:var(--r);padding:13px 15px;margin-bottom:14px}
   .ctx-bundle .rad{width:18px;height:18px;border-radius:50%;border:2px solid var(--ink);position:relative;flex:none}
   .ctx-bundle .rad::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--ink)}
   .ctx-bundle b{flex:1;font-size:16px;font-weight:700}
-  .ctx-bundle .p{font-size:16px;font-weight:700}
   .ctx-atc{display:block;width:100%;text-align:center;background:var(--berry-deep);color:#fff;font-size:17px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:13px 0;line-height:1.3;border-radius:var(--r);margin-top:14px}
 
-  /* shared bits */
-  .gt{font-size:17px;font-weight:700}
-  .gs{font-size:15px;color:var(--ink-soft)}
-  .free{background:var(--berry);color:#fff;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r)}
-  s{color:var(--berry);font-size:15px}
+  /* shared gift block skeleton — only the colours change between variants */
+  .gift{border-radius:var(--r);overflow:hidden}
+  .gift .ribbon{font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:9px 12px}
+  .gift .ribbon em{font-style:normal;font-size:17px;font-weight:700}
+  .gift .body{background:var(--soft);padding:14px;display:flex;align-items:center;gap:14px}
+  .gift img{width:96px;height:96px;object-fit:cover;border-radius:var(--r);flex:none;background:#fff}
+  .gift .mid{flex:1;min-width:0}
+  .gift .gt{display:block;font-size:17px;font-weight:700}
+  .gift .sub{display:block;font-size:14px;color:var(--ink-soft);line-height:1.5;margin-top:2px}
+  .gift .pricing{display:flex;align-items:center;gap:9px;margin-top:7px}
+  .gift s{font-size:15px;color:var(--ink-soft)}
+  .chip{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r)}
 
-  /* ---- V1: wide photo, one line of copy ---- */
-  .v1{background:var(--cream);border-radius:var(--r);padding:14px;display:flex;align-items:center;gap:14px}
-  .v1 img{width:104px;height:104px;object-fit:cover;border-radius:var(--r);flex:none;background:#fff}
-  .v1 .mid{flex:1;min-width:0}
-  .v1 .mid .gt{display:block}
-  .v1 .mid .gs{display:block;font-size:14px;line-height:1.5}
-  .v1 .pricing{display:flex;align-items:center;gap:9px;margin-top:6px}
+  /* A — beige band. Dark type: white on this beige lands near 1.9:1, unreadable for the
+     audience this page is built for. */
+  .a .ribbon{background:var(--taupe);color:var(--ink)}
+  .a .chip{background:var(--ink);color:#fff}
 
-  /* ---- V2: burgundy ribbon above a plain card ---- */
-  .v2 .ribbon{background:var(--berry-deep);color:#fff;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:8px 12px;border-radius:var(--r) var(--r) 0 0}
-  .v2 .body{background:var(--soft);border-radius:0 0 var(--r) var(--r);padding:14px;display:flex;align-items:center;gap:14px}
-  .v2 img{width:96px;height:96px;object-fit:cover;border-radius:var(--r);flex:none;background:#fff}
-  .v2 .mid{flex:1;min-width:0}
-  .v2 .sub{font-size:14px;color:var(--ink-soft);line-height:1.5;display:block;margin-top:2px}
+  /* B — near-black band */
+  .b .ribbon{background:var(--ink);color:#fff}
+  .b .chip{background:var(--ink);color:#fff}
 
-  /* ---- V3: bare row, no container ---- */
-  .v3{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;display:flex;align-items:center;gap:14px}
-  .v3 img{width:96px;height:96px;object-fit:cover;border-radius:var(--r);flex:none;background:var(--cream)}
-  .v3 .mid{flex:1;min-width:0}
-  .v3 .lbl{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--berry);display:block}
-  .v3 .pricing{display:flex;align-items:center;gap:9px;margin-top:5px}
+  /* C — cream band, dark type, amount underlined */
+  .c .ribbon{background:var(--cream);color:var(--ink)}
+  .c .ribbon em{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+  .c .chip{background:var(--ink);color:#fff}
 
-  /* ---- V4: FREE as the loudest element ---- */
-  .v4{background:var(--cream);border-radius:var(--r);padding:14px;display:flex;align-items:center;gap:16px}
-  .v4 .shout{flex:none;text-align:center;line-height:1}
-  .v4 .shout b{display:block;font-size:30px;font-weight:700;letter-spacing:.02em;color:var(--berry)}
-  .v4 .shout span{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
-  .v4 img{width:104px;height:104px;object-fit:cover;border-radius:var(--r);flex:none;background:#fff}
-  .v4 .mid{flex:1;min-width:0}
-  .v4 .mid .gt{display:block}
-  .v4 .mid .gs{display:block;font-size:14px;line-height:1.5}
+  /* D — gold band */
+  .d .ribbon{background:var(--gold);color:#fff}
+  .d .chip{background:var(--ink);color:#fff}
+
+  /* E — green, the colour people read as "no charge" */
+  .e .ribbon{background:var(--green);color:#fff}
+  .e .chip{background:var(--green);color:#fff}
+
+  /* F — no band: the condition becomes the heading of the card */
+  .f .body{display:block;background:var(--cream)}
+  .f .row{display:flex;align-items:center;gap:14px;margin-top:10px}
+  .f .cond{font-size:17px;font-weight:700;line-height:1.35}
+  .f .cond em{font-style:normal;background:var(--sand);padding:1px 7px;border-radius:var(--r)}
+  .f .chip{background:var(--ink);color:#fff}
 
   @media (max-width:900px){
     .grid{grid-template-columns:1fr}
@@ -83,44 +89,30 @@
 <div class="page">
 
   <div class="lede">
-    <h1>Free gift block: four options</h1>
-    <p>Each shown between the selected bundle and Add to Cart, where it actually sits. Brief from the call: bigger photo of the bag, simpler, and the word FREE should shout.</p>
+    <h1>Free gift block: colour round</h1>
+    <p>The ribbon layout stays — it was the one that worked. What changes is the colour and how loudly the $80 threshold is stated.</p>
+  </div>
+
+  <div class="rule">
+    <b>Two rules this round follows.</b> Nothing in the block uses the burgundy of the buy button, so there is only one thing on screen that looks clickable. And the amount is set larger inside the ribbon, because in the earlier options “on orders over $80” was small enough to be missed entirely.
   </div>
 
   <div class="grid">
 
-    <!-- V1 -->
+    <!-- A -->
     <div class="card">
-      <div class="no"><b>V1</b><span>One line, big photo</span></div>
-      <p class="note">The heading becomes the gift itself — no separate title row above the card. Photo is the largest of the four, price crossed out beside FREE.</p>
+      <div class="no"><b>A</b><span>Beige band</span></div>
+      <p class="note">The beige already carries the trust strip on this page, so the block reads as brand furniture rather than as a second button. Softest of the set.</p>
       <div class="demo">
-        <div class="ctx-bundle"><span class="rad"></span><b>2 Pieces</b><span class="p">$69.99</span></div>
-        <div class="v1">
-          <img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=300" alt="Cosmetic Bag">
-          <span class="mid">
-            <b class="gt">Cosmetic Bag</b>
-            <span class="gs">Yours on orders over $80</span>
-            <span class="pricing"><span class="free">Free</span><s>$14.00</s></span>
-          </span>
-        </div>
-        <span class="ctx-atc">Add to Cart</span>
-      </div>
-    </div>
-
-    <!-- V2 -->
-    <div class="card">
-      <div class="no"><b>V2</b><span>Burgundy ribbon</span></div>
-      <p class="note">Keeps the "Free Gift on $80+ Orders" line but turns it into a ribbon, so the threshold is stated once and loudly instead of as two stacked sentences.</p>
-      <div class="demo">
-        <div class="ctx-bundle"><span class="rad"></span><b>2 Pieces</b><span class="p">$69.99</span></div>
-        <div class="v2">
-          <div class="ribbon">Free gift on $80+ orders</div>
+        <div class="ctx-bundle"><span class="rad"></span><b>2 Pieces</b><span>$69.99</span></div>
+        <div class="gift a">
+          <div class="ribbon">Free gift on orders <em>$80+</em></div>
           <div class="body">
             <img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=300" alt="Cosmetic Bag">
             <span class="mid">
               <b class="gt">Cosmetic Bag</b>
               <span class="sub">Added automatically at checkout</span>
-              <span class="pricing" style="display:flex;align-items:center;gap:9px;margin-top:6px"><span class="free">Free</span><s>$14.00</s></span>
+              <span class="pricing"><span class="chip">Free</span><s>$14.00</s></span>
             </span>
           </div>
         </div>
@@ -128,37 +120,108 @@
       </div>
     </div>
 
-    <!-- V3 -->
+    <!-- B -->
     <div class="card">
-      <div class="no"><b>V3</b><span>Bare row, no box</span></div>
-      <p class="note">No container at all, just rules above and below. Lightest option — nothing competes with the bundle above or the button below.</p>
+      <div class="no"><b>B</b><span>Near-black band</span></div>
+      <p class="note">Maximum contrast without touching burgundy. Black reads as information on this page, never as an action — every button is burgundy now.</p>
       <div class="demo">
-        <div class="ctx-bundle"><span class="rad"></span><b>2 Pieces</b><span class="p">$69.99</span></div>
-        <div class="v3">
-          <img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=300" alt="Cosmetic Bag">
-          <span class="mid">
-            <span class="lbl">Free gift on $80+</span>
-            <b class="gt">Cosmetic Bag</b>
-            <span class="pricing"><span class="free">Free</span><s>$14.00</s></span>
-          </span>
+        <div class="ctx-bundle"><span class="rad"></span><b>2 Pieces</b><span>$69.99</span></div>
+        <div class="gift b">
+          <div class="ribbon">Free gift on orders <em>$80+</em></div>
+          <div class="body">
+            <img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=300" alt="Cosmetic Bag">
+            <span class="mid">
+              <b class="gt">Cosmetic Bag</b>
+              <span class="sub">Added automatically at checkout</span>
+              <span class="pricing"><span class="chip">Free</span><s>$14.00</s></span>
+            </span>
+          </div>
         </div>
         <span class="ctx-atc">Add to Cart</span>
       </div>
     </div>
 
-    <!-- V4 -->
+    <!-- C -->
     <div class="card">
-      <div class="no"><b>V4</b><span>FREE as the headline</span></div>
-      <p class="note">The word carries the block instead of a chip. Loudest of the four at a glance, which is what was asked for, though it leans hard on one word.</p>
+      <div class="no"><b>C</b><span>Cream band, underlined amount</span></div>
+      <p class="note">Quietest option. The threshold is carried by the underline and the larger figure rather than by a fill, so the block adds almost no weight to the buy box.</p>
       <div class="demo">
-        <div class="ctx-bundle"><span class="rad"></span><b>2 Pieces</b><span class="p">$69.99</span></div>
-        <div class="v4">
-          <span class="shout"><b>FREE</b><span>$14 value</span></span>
-          <img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=300" alt="Cosmetic Bag">
-          <span class="mid">
-            <b class="gt">Cosmetic Bag</b>
-            <span class="gs">On every order over $80</span>
-          </span>
+        <div class="ctx-bundle"><span class="rad"></span><b>2 Pieces</b><span>$69.99</span></div>
+        <div class="gift c">
+          <div class="ribbon">Free gift on orders <em>$80+</em></div>
+          <div class="body">
+            <img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=300" alt="Cosmetic Bag">
+            <span class="mid">
+              <b class="gt">Cosmetic Bag</b>
+              <span class="sub">Added automatically at checkout</span>
+              <span class="pricing"><span class="chip">Free</span><s>$14.00</s></span>
+            </span>
+          </div>
+        </div>
+        <span class="ctx-atc">Add to Cart</span>
+      </div>
+    </div>
+
+    <!-- D -->
+    <div class="card">
+      <div class="no"><b>D</b><span>Gold band</span></div>
+      <p class="note">Gold says gift without borrowing the action colour. It is already in the palette, though used sparingly — this would become its main appearance on the page.</p>
+      <div class="demo">
+        <div class="ctx-bundle"><span class="rad"></span><b>2 Pieces</b><span>$69.99</span></div>
+        <div class="gift d">
+          <div class="ribbon">Free gift on orders <em>$80+</em></div>
+          <div class="body">
+            <img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=300" alt="Cosmetic Bag">
+            <span class="mid">
+              <b class="gt">Cosmetic Bag</b>
+              <span class="sub">Added automatically at checkout</span>
+              <span class="pricing"><span class="chip">Free</span><s>$14.00</s></span>
+            </span>
+          </div>
+        </div>
+        <span class="ctx-atc">Add to Cart</span>
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="card">
+      <div class="no"><b>E</b><span>Green band</span></div>
+      <p class="note">Green is what shoppers already read as “no charge” — the same cue as free shipping in a cart. Clearest meaning of the set, but it is a colour the brand does not otherwise use.</p>
+      <div class="demo">
+        <div class="ctx-bundle"><span class="rad"></span><b>2 Pieces</b><span>$69.99</span></div>
+        <div class="gift e">
+          <div class="ribbon">Free gift on orders <em>$80+</em></div>
+          <div class="body">
+            <img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=300" alt="Cosmetic Bag">
+            <span class="mid">
+              <b class="gt">Cosmetic Bag</b>
+              <span class="sub">Added automatically at checkout</span>
+              <span class="pricing"><span class="chip">Free</span><s>$14.00</s></span>
+            </span>
+          </div>
+        </div>
+        <span class="ctx-atc">Add to Cart</span>
+      </div>
+    </div>
+
+    <!-- F -->
+    <div class="card">
+      <div class="no"><b>F</b><span>No band, condition as heading</span></div>
+      <p class="note">The condition becomes a sentence in full size with the amount highlighted, so it cannot be skimmed past. No band at all, which keeps the buy box lighter.</p>
+      <div class="demo">
+        <div class="ctx-bundle"><span class="rad"></span><b>2 Pieces</b><span>$69.99</span></div>
+        <div class="gift f">
+          <div class="body">
+            <span class="cond">Spend <em>$80+</em> and your Cosmetic Bag is free</span>
+            <span class="row">
+              <img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=300" alt="Cosmetic Bag">
+              <span class="mid">
+                <b class="gt">Cosmetic Bag</b>
+                <span class="sub">Added automatically at checkout</span>
+                <span class="pricing"><span class="chip">Free</span><s>$14.00</s></span>
+              </span>
+            </span>
+          </div>
         </div>
         <span class="ctx-atc">Add to Cart</span>
       </div>

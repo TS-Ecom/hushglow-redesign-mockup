@@ -400,3 +400,406 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .mm-shoprow a{font-size:14px}
   .mm-mtiles .mm-tile b{font-size:14px}
 }
+
+
+/* ================= PRODUCT PAGE FRAMEWORK ================= */
+/* Moved out of product-hush-foundation-cushion.css when the second product page
+   (blush stick) was added: buy box, gallery, accordions, swatches, bundles, upsells,
+   video row, ticker, testimonials, steps, banner slider, recommendations, sticky ATC.
+   Page files now only carry what is unique to that product. */
+/* HushGlow Design — Foundation Cushion product page */
+/* ---------- buy area layout ---------- */
+.pdp{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;padding:36px var(--pagepad) 0;max-width:1400px;margin:0 auto;align-items:start}
+.pdp .gal,.pdp .info{min-width:0}
+/* gallery */
+.gal{position:sticky;top:98px}
+.gmain{position:relative;aspect-ratio:1/1;background:var(--cream);overflow:hidden}
+.gmain img{width:100%;height:100%;object-fit:cover}
+.galarrow{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 4px 14px rgba(33,26,23,.14);transition:background .2s ease,color .2s ease;z-index:2}
+.galarrow:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.galarrow.prev{left:16px}
+.galarrow.next{right:16px}
+.thumbs{display:flex;gap:8px;margin-top:8px;overflow-x:auto;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumbs img{width:76px;height:76px;object-fit:cover;flex:none;cursor:pointer;border:1.5px solid transparent;background:var(--cream);opacity:.75;transition:opacity .2s ease,border-color .2s ease}
+.thumbs img:hover{opacity:1}
+.thumbs img.on{border-color:var(--ink);opacity:1}
+/* info column */
+.info{max-width:540px}
+/* badge V6, the variant we approved: solid burgundy, white type, flush left */
+.badge{display:inline-block;background:var(--berry-deep);color:#fff;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:8px 14px;margin:0 0 16px;border-radius:var(--r-chip)}
+.lovedrow{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.lovedrow .avs{display:inline-flex}
+.lovedrow .avs img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);background:var(--cream)}
+.lovedrow .avs img+img{margin-left:-9px}
+.lovedrow .lt{font-size:13px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.lovedrow .lt b{color:var(--ink);font-weight:600}
+.lovedrow .hrt{width:15px;height:15px;fill:var(--berry);flex:none}
+.ratrow{display:inline-flex;align-items:center;gap:9px;font-size:16px;color:var(--ink);margin-bottom:12px}
+.ratrow .tp-svg{width:110px;height:22px;display:block}
+.ratrow:hover .rt{text-decoration:underline;text-underline-offset:3px}
+.ratrow .dn{font-style:normal;font-size:16px;color:var(--ink-soft)}
+/* live title is uppercase; the price is not repeated here, it lives in the bundles and
+   in the sticky bar */
+.info h1{font-size:24px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;line-height:1.3;margin-bottom:14px}
+/* customer quote: portrait + italic quote + author with stars, mirroring the live block */
+.pdpquote{display:flex;gap:12px;align-items:flex-start;border-radius:var(--r-card);box-shadow:0 2px 10px rgba(18,18,18,.09);padding:13px 14px;margin-top:20px}
+.pdpquote .qav{width:46px;height:46px;border-radius:50%;object-fit:cover;flex:none;background:var(--cream)}
+.pdpquote .qbody{flex:1;min-width:0}
+.pdpquote em{font-style:italic;font-size:13px;line-height:1.55;color:var(--ink);display:block}
+.pdpquote cite{display:flex;align-items:center;gap:8px;margin-top:8px;font-style:normal;font-size:13px;font-weight:600;color:var(--ink)}
+.pdpquote .qstars{color:var(--gold);letter-spacing:1px;font-weight:400}
+/* Single-product upsell (Travel Puff). Opt-out rather than opt-in: the toggle ships on,
+   which is the whole point of the block for AOV, so the card reads as already added. */
+.puffmid{flex:1;min-width:0}
+.puffmid b{display:block;font-size:16px;font-weight:600}
+.puffmid small{display:block;font-size:13px;color:var(--ink-soft);line-height:1.5}
+.puffpr{display:flex;align-items:baseline;gap:7px;font-size:15px;flex:none}
+.puffpr b{font-weight:600}
+.puffpr s{color:var(--berry)}
+/* upsell tabs switch panes */
+.uppane{display:none}
+.uppane.on{display:block}
+.uptabs b{transition:color .2s ease,border-color .2s ease}
+/* Accordions (USP + bottom tabs). The USP rows read as compact tiles rather than full-width
+   hairlines, and the type is sized for the 60+ reader. */
+.acc{border-top:1px solid var(--line)}
+.usp .acc:last-child,.tabs2 .acc:last-child{border-bottom:1px solid var(--line)}
+.acc-t{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;padding:15px 0;font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;line-height:1.3;cursor:pointer}
+.acc-t i{font-style:normal;font-size:20px;font-weight:400;color:var(--ink);transition:transform .25s cubic-bezier(.4,0,.2,1)}
+.acc.open .acc-t i{transform:rotate(45deg)}
+/* Collapse via a 0fr -> 1fr grid row rather than max-height. Padding lives on the inner
+   wrapper, so the closed panel is genuinely zero-height (padding does not shrink under
+   max-height, which is what left an 18px gap), and the open height is whatever the copy
+   needs — no measuring, no value to outgrow. Browsers without animatable grid rows simply
+   toggle instantly, which is the behaviour we had before. */
+.acc-c{display:grid;grid-template-rows:0fr;padding:0;transition:grid-template-rows .3s cubic-bezier(.4,0,.2,1),opacity .25s ease;opacity:0}
+.acc.open .acc-c{grid-template-rows:1fr;opacity:1}
+/* vertical spacing sits on the children, not the wrapper: padding on the wrapper survives
+   a zero-height grid row and would leave a gap under every closed panel */
+.acc-in{overflow:hidden;min-height:0}
+.acc-in > :first-child{padding-top:2px}
+.acc-in > :last-child{padding-bottom:16px}
+.acc-c p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:8px}
+.acc-c p:last-child{margin-bottom:0}
+.acc-c p b{color:var(--ink);font-weight:600}
+.shrow{display:flex;align-items:flex-start;gap:10px;padding:6px 0}
+.shrow .ssw{width:17px;height:17px;border-radius:50%;border:1px solid rgba(0,0,0,.08);flex:none;margin-top:4px}
+.shrow .sht{flex:1;font-size:14px;line-height:1.7}
+/* USP block: tiles on the brand grey, so the rows stop reading as wide empty lines */
+.usp{margin-bottom:4px}
+.usp .acc{border-top:1px solid var(--line)}
+.usp .acc:first-child{border-top:none}
+.usp .acc:last-child{border-bottom:none}
+.usp .acc-t{padding:14px 0}
+.shrow b{font-weight:600;margin-right:2px}
+.shrow em{font-style:normal;color:var(--ink-soft)}
+/* guarantee row (mirrors approved cart pill) */
+/* the copy is one flex item, not a text node plus a <b>: as two items each was being
+   squeezed into its own narrow column and broke mid-phrase at 390px */
+.grt{display:flex;align-items:center;gap:7px;background:var(--cream);font-size:13px;font-weight:600;padding:12px 16px;margin:16px 0 18px;border-radius:var(--r-card)}
+.grt-t{flex:1;min-width:0}
+.grt svg{width:16px;height:16px;flex:none;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.grt b{font-weight:600;color:var(--berry)}
+/* swatches */
+.swlbl{font-size:13px;letter-spacing:.03em;text-transform:uppercase;font-weight:600;margin-bottom:10px}
+.swrow{display:flex;gap:12px;flex-wrap:wrap}
+.swb{width:46px;height:46px;border-radius:50%;border:1px solid rgba(0,0,0,.1);cursor:pointer;position:relative;transition:transform .15s ease}
+.swb:hover{transform:scale(1.08)}
+.swb:active{transform:scale(.95)}
+/* selection ring fades and scales in rather than appearing on the next frame */
+.swb::after{content:'';position:absolute;inset:-5px;border:2px solid #9a9a9a;border-radius:50%;opacity:0;transform:scale(.82);transition:opacity .2s ease,transform .2s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.swb.on::after{opacity:1;transform:none}
+.swdesc{font-size:14px;color:var(--ink-soft);margin:12px 0 6px}
+.swdesc b{color:var(--ink);font-weight:600}
+/* quiz link: shade-palette strip sits under the text, like the live shadefinder block */
+.quizlink{display:inline-flex;flex-direction:column;align-items:stretch;gap:5px;font-size:14px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;margin-bottom:22px;transition:color .2s ease}
+.quizlink .qico{width:100%;height:4px;display:block}
+.quizlink:hover{color:var(--berry)}
+/* Bundle picker: selection is carried by fill + shadow instead of a grid of outlines. */
+.bundlbl{text-align:center;font-size:15px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;margin:4px 0 12px;display:flex;align-items:center;gap:14px}
+.bundlbl::before,.bundlbl::after{content:'';height:1px;background:var(--line);flex:1}
+.bundles{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.bun{position:relative;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--soft);border:2px solid transparent;border-radius:var(--r-card);padding:15px 16px;cursor:pointer;transition:background .2s ease,border-color .2s ease,box-shadow .2s ease}
+.bun:hover{background:#f0f0f1}
+.bun.on{background:#fff;border-color:var(--ink);box-shadow:0 4px 14px rgba(18,18,18,.10)}
+.rad{width:19px;height:19px;border-radius:50%;border:2px solid var(--taupe);flex:none;position:relative;transition:border-color .2s ease}
+.rad::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--ink);opacity:0;transform:scale(.4);transition:opacity .18s ease,transform .18s cubic-bezier(.4,0,.2,1)}
+.bun.on>.rad{border-color:var(--ink)}
+.bun.on>.rad::after{opacity:1;transform:none}
+.bun .bn{flex:1}
+.bun .bn b{font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px}
+.bun .bn small{display:block;font-size:15px;color:var(--ink-soft);margin-top:1px}
+.off{font-style:normal;background:var(--berry);color:#fff;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:var(--r-chip)}
+.bun .bp{text-align:right}
+.bun .bp b{font-size:18px;font-weight:600;display:block}
+.bun .bp s{font-size:15px;color:var(--berry)}
+.tag2{position:absolute;top:-11px;right:12px;background:var(--ink);color:var(--paper);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:var(--r-chip)}
+.tag2.gold{background:var(--berry)}
+.bunx{display:none;width:100%;padding-left:31px}
+.bun.on .bunx{display:block}
+.bnote{display:block;font-size:15px;color:var(--ink-soft);margin:2px 0 10px}
+.bsel{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:var(--r-chip);padding:9px 13px;font-size:15px;margin:0 8px 8px 0;background:#fff}
+.bsel .bsw{width:16px;height:16px;border-radius:50%;border:1px solid rgba(0,0,0,.08)}
+.bsel i{font-style:normal;font-size:11px;color:var(--ink-soft)}
+/* gift box (mirrors cart gift bar) */
+/* Gift block, variant C. Cream ribbon with the threshold underlined and set larger — it
+   was being skimmed past before. Nothing here uses the buy button's burgundy, so the CTA
+   stays the only thing on screen that looks clickable. */
+/* ATC + subscription. The main CTA is deliberately the heaviest element in the buy box. */
+/* Add to Cart is black; burgundy stays for the secondary calls (Try Now, Find My Shade,
+   Meet the #1 Foundation), so buying reads as the strongest action on the page. */
+.atcbig{width:100%;padding:13px 0;font-size:19px;line-height:1.3;letter-spacing:.06em;background:var(--ink);border-color:var(--ink);box-shadow:0 6px 20px rgba(18,18,18,.2)}
+.atcbig:hover{background:#333;border-color:#333}
+/* stock nudge + geo shipping row (mirrors the live nudge/shipping-line blocks) */
+.stockrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:13px;font-size:13px;font-weight:600}
+.stockrow .ls{display:inline-flex;align-items:center;gap:9px;color:var(--berry);font-weight:600}
+.stockrow .ls i{width:8px;height:8px;border-radius:50%;background:var(--berry);position:relative;flex:none}
+.stockrow .ls i::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid var(--berry);opacity:0;animation:stockpulse 2s ease-out infinite}
+.stockrow .shipto{display:inline-flex;align-items:center;gap:8px;color:var(--ink-soft)}
+.stockrow .shipto b{color:var(--ink);font-weight:600}
+.stockrow .flg{width:20px;height:14px;flex:none;display:block}
+@keyframes stockpulse{
+  0%{transform:scale(.6);opacity:.9}
+  70%{transform:scale(1.4);opacity:0}
+  100%{opacity:0}
+}
+/* shipping row (V1: cream bar, pairs with the guarantee row) */
+.shiprow{display:flex;align-items:center;justify-content:center;gap:10px;font-size:15px;padding:10px 0;margin-top:12px}
+.shiprow .dim{color:var(--ink-soft)}
+.shiprow b{font-weight:600}
+.shiprow svg{width:19px;height:19px;flex:none;stroke:var(--berry);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+/* upsells */
+.upsells{margin-top:26px}
+.uptabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.uptabs b{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);padding-bottom:9px;cursor:pointer;border-bottom:2px solid transparent}
+.uptabs b.on{color:var(--ink);border-bottom-color:var(--ink)}
+/* photo left, copy and a full-width Add to Cart on the right — the live arrangement */
+.upcard{display:flex;align-items:center;gap:14px;border-radius:var(--r-card);box-shadow:0 2px 10px rgba(18,18,18,.09);padding:12px 14px;margin-bottom:12px;background:#fff}
+.upcard img{width:112px;height:112px;object-fit:cover;flex:none;background:var(--cream);border-radius:var(--r-card)}
+.upmid{flex:1;min-width:0}
+.upmid b{font-size:16px;font-weight:600;display:block}
+.upmid small{font-size:14px;color:var(--ink-soft);line-height:1.55;display:block;margin:1px 0 3px}
+.uppr{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;font-size:14px}
+.uppr b{font-weight:600}
+.uppr s{color:var(--berry);font-weight:400}
+.usave{font-style:normal;background:var(--berry);color:#fff;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:1px 7px;line-height:1.5;border-radius:var(--r-chip)}
+/* compact Add beside the copy — the arrangement the client singled out as the one they
+   liked, kept as is and only recoloured to the brand palette */
+.upbtn{flex:none;border:2px solid var(--ink);border-radius:var(--r-btn);background:#fff;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:14px 22px;cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,transform .12s ease}
+.upbtn:hover{background:var(--ink);color:var(--paper)}
+.upbtn:active{transform:scale(.96)}
+.upbtn.added{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+/* video carousel */
+.vidcar{margin-top:28px}
+.vh{font-size:15px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:12px}
+.vrow{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory}
+.vrow::-webkit-scrollbar{display:none}
+.vcell{position:relative;flex:0 0 132px;width:132px;scroll-snap-align:start;cursor:pointer}
+.vrow video{width:100%;min-width:0;aspect-ratio:9/16;object-fit:cover;background:var(--cream);border-radius:var(--radius);display:block}
+/* play badge so it reads as a video, not a still */
+.vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);box-shadow:0 2px 8px rgba(18,18,18,.25);pointer-events:none;transition:opacity .2s ease}
+.vplay::after{content:'';position:absolute;left:52%;top:50%;transform:translate(-50%,-50%);border-left:11px solid var(--ink);border-top:7px solid transparent;border-bottom:7px solid transparent}
+/* badge stays put: it marks the tile as a video, not just a loading state */
+/* bottom tabs */
+.tabs2{margin-top:28px}
+/* ---------- trust ticker (marquee like the live strip, our styling) ---------- */
+/* live ticker: beige band with white type, not a cream band with dark type */
+.pstrip{background:var(--taupe);margin-top:72px;padding:13px 0;overflow:hidden}
+.pstrip .ticker{display:flex;width:max-content}
+.pstrip .half{display:flex;align-items:center;gap:64px;padding-right:64px;animation:tickmove 26s linear infinite}
+.pi{display:inline-flex;align-items:center;gap:10px;font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#fff;white-space:nowrap}
+.pi svg{width:20px;height:20px;flex:none;stroke:#fff;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+/* ---------- testimonials (Smooche-style slider cards) ---------- */
+/* Testimonials: shorter cards so more of the row fits on one screen, type kept large. */
+.sec-h.statement.lovedh{font-size:34px;font-weight:700;margin-bottom:30px}
+.oval{position:relative;display:inline-block;padding:0 8px;color:var(--berry)}
+.oval svg{position:absolute;left:-12px;top:-9px;width:calc(100% + 24px);height:calc(100% + 20px);fill:none;stroke:var(--berry);stroke-width:2.5;transform:rotate(-2deg);pointer-events:none}
+.twrap{position:relative}
+/* arrows line up with the middle of the card photo, as on the live slider */
+.twrap .lookarrow{top:22%}
+.trow{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.trow::-webkit-scrollbar{display:none}
+/* live cards sit on grey, not white */
+.tcard{flex:0 0 calc((100% - 54px)/4);scroll-snap-align:start;background:#e6e6e6;border-radius:var(--r-card);overflow:hidden;display:flex;flex-direction:column}
+.tcard .tph{aspect-ratio:1.2/1;background:var(--cream);overflow:hidden;flex:none}
+.tcard .tph img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.tcard .tbody{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.tname{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:5px}
+.tname b{font-size:17px;font-weight:600}
+.tname .stars{font-size:14px;margin:0}
+.tver{display:flex;align-items:center;gap:7px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--berry);margin-bottom:8px}
+.tver i{font-style:normal;width:18px;height:18px;border-radius:50%;background:var(--berry);color:#fff;font-size:11px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.tcard p{font-size:16px;color:var(--ink-soft);line-height:1.6;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.tcard.open p{-webkit-line-clamp:unset;overflow:visible}
+.tmore{display:block;text-align:center;font-size:15px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px;margin-top:12px;cursor:pointer}
+.tmore:hover{color:var(--berry)}
+/* ---------- benefits around video ---------- */
+/* ---------- benefits CTA tail (part of the benefits block, mirrors live) ---------- */
+/* Rating line steps back so the CTA is clearly the loudest thing in the block. */
+.benef-cta{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;margin-top:48px;margin-bottom:-24px}
+.benef-cta .tp-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+.benef-cta .tp-svg{width:108px;height:22px;display:block}
+.benef-cta .tpr{font-size:15px;font-weight:500;color:var(--ink-soft)}
+.benef-cta .btn{font-size:14px;padding:13px 22px;max-width:340px;white-space:normal;line-height:1.35;box-shadow:none}
+.benef-cta .tpc{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+/* Before / after: headline lives with the copy in the text column (like the live block)
+   and the whole section is tighter. */
+/* live layout puts the copy on the left and the before/after on the right */
+/* ---------- banner slider (square banners, 2 full cards per view like live) ---------- */
+.bslider{margin-top:96px;position:relative}
+.bslider .lookarrow{width:40px;height:40px;font-size:15px;background:rgba(250,248,246,.55);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);box-shadow:none;border:1px solid rgba(33,26,23,.14)}
+.bslider .lookarrow:hover{background:var(--ink)}
+.bsrow{display:flex;gap:4px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.bsrow::-webkit-scrollbar{display:none}
+.bsrow img{flex:0 0 calc((100% - 4px)/2);width:calc((100% - 4px)/2);height:auto;aspect-ratio:1/1;object-fit:cover;scroll-snap-align:start;background:var(--cream)}
+.bsdots{display:flex;justify-content:center;gap:9px;margin-top:20px}
+.bsdots i{width:8px;height:8px;border-radius:50%;background:var(--taupe);opacity:.5;cursor:pointer;transition:opacity .2s ease,background .2s ease}
+.bsdots i.on{background:var(--ink);opacity:1}
+/* 3 steps: cards are separated by a soft shadow instead of an outline. */
+.steps{padding:80px var(--pagepad) 0}
+.sec-h.statement{text-transform:none;letter-spacing:.02em;font-size:42px;font-weight:600}
+.stepgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;max-width:1180px;margin:0 auto}
+.step{background:#fff;border-radius:var(--r-card);box-shadow:0 3px 14px rgba(18,18,18,.10);overflow:hidden}
+.step video{width:100%;min-width:0;aspect-ratio:3/3.1;object-fit:cover;background:var(--cream);display:block}
+.step .stx{padding:18px 20px 24px}
+.step .stag{display:inline-block;background:var(--sand);font-size:15px;font-weight:600;padding:7px 14px;margin-bottom:13px;border-radius:var(--r-chip)}
+.step p{font-size:16px;color:var(--ink-soft);line-height:1.65;margin-bottom:10px}
+.step p:last-child{margin-bottom:0}
+/* ---------- recommendations: banner + three products (live arrangement) ---------- */
+.recgrid{display:grid;grid-template-columns:minmax(0,1fr) 3fr;gap:26px;max-width:1320px;margin:0 auto;align-items:start}
+.recrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.recbanner{position:relative;display:block;overflow:hidden;border-radius:var(--r-card);aspect-ratio:1/1.42;cursor:pointer;background:var(--cream)}
+.recbanner img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.recbanner:hover img{transform:scale(1.04)}
+.recbanner-in{position:absolute;left:0;right:0;bottom:0;padding:22px 20px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;color:#fff;background:linear-gradient(to top,rgba(18,18,18,.62),rgba(18,18,18,0))}
+.recbanner-in b{font-size:22px;font-weight:600;line-height:1.2;letter-spacing:.01em}
+.recbanner-in i{font-style:normal;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px}
+/* ---------- reassurance bar (pre-footer icon row) ---------- */
+.ibar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px;max-width:1180px;margin:96px auto 0;padding:0 var(--pagepad);text-align:center}
+.ib svg{width:38px;height:38px;stroke:var(--ink);stroke-width:1.2;fill:none;stroke-linecap:round;stroke-linejoin:round;margin:0 auto 14px;display:block}
+.ib b{display:block;font-size:17px;font-weight:600;margin-bottom:8px}
+.ib p{font-size:16px;color:var(--ink-soft);line-height:1.65;max-width:34ch;margin:0 auto}
+/* ---------- sticky ATC ---------- */
+.satc{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(18,18,18,.10);display:flex;align-items:center;gap:14px;padding:11px var(--pagepad);z-index:40;transform:translateY(110%);transition:transform .3s ease}
+.satc.show{transform:none}
+.satc .smid{flex:1;min-width:0}
+.satc .smid b{font-size:16px;font-weight:600;display:block}
+.satc .sprice{display:flex;align-items:baseline;gap:8px;font-size:15px;margin-top:2px}
+.satc .sprice .pn{font-weight:600}
+.satc .sprice s{color:var(--berry);font-weight:400}
+.satc .btn{padding:13px 30px;font-size:15px;background:var(--ink);border-color:var(--ink)}
+.satc .btn:hover{background:#333;border-color:#333}
+/* ---------- sale countdown bar (this template only) ---------- */
+/* Countdown bar: brand burgundy from the live site, heavier and larger digits. */
+/* ---------- payment icons in the buy box (muted) ---------- */
+.paymini{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:12px}
+.paymini img{height:20px;width:auto;display:block}
+/* ---------- section reveal ----------
+   Opt-in from JS: without it (or with reduced motion) every section is simply visible.
+   Only opacity and transform animate, so nothing here triggers layout. */
+.js-reveal .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s cubic-bezier(.4,0,.2,1);will-change:opacity,transform}
+.js-reveal .reveal.in{opacity:1;transform:none;will-change:auto}
+@media (prefers-reduced-motion:reduce){
+  .js-reveal .reveal{opacity:1;transform:none;transition:none}
+}
+/* ---------- mobile ---------- */
+@media screen and (max-width:749px){
+  .puffmid{grid-column:2;grid-row:1;min-width:0}
+  .puffmid b{font-size:15px;line-height:1.3}
+  .puffmid small{font-size:13px;line-height:1.45}
+  .puffpr{grid-column:2;grid-row:2;font-size:15px;gap:6px}
+  .pdp{grid-template-columns:1fr;gap:26px;padding:0 0 0}
+  .gal{position:static}
+  .gmain{aspect-ratio:1/1}
+  .thumbs{padding:0 var(--pagepad)}
+  .thumbs img{width:62px;height:62px}
+  .galarrow{width:36px;height:36px}
+  .info{max-width:none;padding:0 var(--pagepad);margin-top:-6px}
+  .info h1{font-size:22px;margin-bottom:12px}
+  .badge{font-size:12px;padding:7px 12px}
+  .pdpquote{font-size:15px;padding-left:12px;margin-bottom:16px}
+  .pdpquote cite{font-size:14px}
+  .bun{padding:14px 13px}
+  .bun .bn b{font-size:16px}
+  .bun .bp b{font-size:17px}
+  .bunx{padding-left:0}
+  .atcbig{padding:12px 0;font-size:18px;line-height:1.3}
+  .vcell{flex-basis:118px}
+  .vplay{width:30px;height:30px}
+  .uptabs{gap:16px}
+  .uptabs b{font-size:14px;letter-spacing:.03em}
+  .upcard{gap:10px;padding:10px 12px}
+  .upcard img{width:56px;height:56px}
+  .upmid small{display:none}
+  .upmid b{font-size:14px;line-height:1.35}
+  .uppr{font-size:14px;gap:6px}
+  .usave{font-size:12px;padding:2px 6px}
+  .upbtn{font-size:13px;padding:11px 14px}
+  .lovedrow .avs img{width:22px;height:22px;border-width:1.5px}
+  .lovedrow .avs img+img{margin-left:-7px}
+  .lovedrow{gap:8px}
+  .bslider .lookarrow{width:34px;height:34px}
+  .satc{gap:10px;padding:9px var(--pagepad)}
+  .satc .smid{display:flex;align-items:center;gap:8px;min-width:0;flex:0 0 auto}
+  .satc .smid > b{display:none}
+  .satc .sprice{margin-top:0;font-size:14px;gap:5px;white-space:nowrap;flex:none}
+  .satc .sprice s{font-size:13px}
+  .satc .sprice .usave{font-size:11px;padding:2px 5px;letter-spacing:.03em}
+  .satc .btn{padding:12px 14px;font-size:14px;flex:1 1 auto;min-width:0}
+  .pstrip{margin-top:44px;padding:12px 0;margin-bottom:-14px}
+  .pstrip .half{gap:36px;padding-right:36px;animation-duration:24s}
+  .pi{font-size:13px;gap:8px;letter-spacing:.1em}
+  .pi svg{width:17px;height:17px}
+  .trow{gap:12px;margin:0 calc(-1 * var(--pagepad));padding:4px var(--pagepad) 6px;scroll-padding-inline:var(--pagepad)}
+  .tcard{flex:0 0 76vw}
+  .tcard .tph{aspect-ratio:1.3/1}
+  .tcard .tph img{object-position:center 14%}
+  .twrap .lookarrow{display:none}
+  .benef-cta{margin-top:36px;gap:12px}
+  .benef-cta .tp-line{flex-wrap:nowrap}
+  .benef-cta .tp-svg{width:100px;height:20px}
+  .benef-cta .tpr{font-size:14px;white-space:nowrap}
+  .benef-cta .btn{width:auto;max-width:300px;white-space:normal;font-size:13px;padding:11px 16px;line-height:1.3;box-shadow:none}
+  .bslider{margin-top:64px}
+  .bsrow{gap:8px}
+  .bsrow img{flex-basis:84%;width:84%}
+  .ibar{grid-template-columns:1fr;gap:30px;margin-top:64px}
+  .steps{padding:56px var(--pagepad) 0}
+  .sec-h.statement{font-size:26px;line-height:1.25;margin-bottom:22px}
+  .recgrid{display:block}
+  .recbanner{aspect-ratio:1/1;margin-bottom:16px}
+  .recbanner-in b{font-size:22px}
+  .recrow{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:2px var(--pagepad) 6px;scroll-padding-inline:var(--pagepad)}
+  .recrow::-webkit-scrollbar{display:none}
+  .recrow .p-card{flex:0 0 62vw;scroll-snap-align:start}
+  .stepgrid{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:6px var(--pagepad) 8px;scroll-padding-inline:var(--pagepad)}
+  .stepgrid::-webkit-scrollbar{display:none}
+  .step{flex:0 0 78vw;scroll-snap-align:start}
+  .step video{aspect-ratio:3/2.9}
+  .step .stx{padding:15px 16px 20px}
+  .lovedrow .lt{display:inline;font-size:13px;white-space:normal;line-height:1.45}
+  .lovedrow .hrt{display:inline-block;vertical-align:-2px;margin:0 3px}
+  .lovedrow{align-items:flex-start}
+  .lovedrow .avs{padding-top:2px}
+  .badge{font-size:12px;padding:7px 12px;letter-spacing:.07em}
+  .tag2{font-size:12px}
+  .grt{font-size:15px}
+  .stockrow{font-size:15px;flex-wrap:wrap;row-gap:6px}
+  .tcard p{font-size:15px}
+  .step p{font-size:15px}
+  .acc-t{font-size:14px;font-weight:500}
+  .acc-c p{font-size:15px}
+}
+@media (prefers-reduced-motion: reduce){
+  .vrow video,.step video{display:none}
+  .pstrip .half{animation:none}
+  .stockrow .ls i::after{animation:none}
+}
+/* Type floor: every piece of reading copy sits at 15px+ on both breakpoints, so nothing on
+   the page is small or thin for a 70-year-old reader. Only chips, tags and icon glyphs
+   (SAVE 51%, MOST POPULAR, ✓) stay below that, and they never carry information alone. */
+@media screen and (min-width:750px){
+  .acc-c p,.shrow .sht,.swdesc,.bnote,.bun .bn small,.tcard p,.step p,.ib p,.tmore,.bsel{font-size:16px}
+  .bun .bp s,.uppr s{font-size:15px}
+}

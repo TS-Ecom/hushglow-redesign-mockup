@@ -1,0 +1,113 @@
+/* HushGlow Design — Multi-Effect Blush Stick product page.
+   Only what is unique to this product lives here: the buy-box price row, the mix & match
+   bundle timer, the shade gallery, the review cards, the consumer-study block and the FAQ.
+   Everything else (buy box, gallery, accordions, swatches, bundles, upsells, video row,
+   ticker, steps, banner slider, recommendations, sticky ATC) comes from shared.css. */
+
+/* ---------- price row (live buy box shows price + BESTSELLER badge) ---------- */
+.pricerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+.pricerow .pnow{font-size:26px;font-weight:700;letter-spacing:.01em}
+.pricerow .pbadge{background:var(--berry);color:#fff;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-chip)}
+
+/* ---------- mix & match bundles ----------
+   The offer timer sits above the tiers, as the app renders it on the live page. */
+.bundtimer{text-align:center;font-size:15px;font-weight:600;color:var(--berry);margin:-4px 0 12px}
+.bundtimer b{font-variant-numeric:tabular-nums;font-weight:700}
+/* the shade pickers stack one per unit, so three units read as three separate choices */
+.bun .bsel{cursor:pointer}
+.bun .bsel:hover{border-color:var(--ink)}
+
+/* single-pane cross-sell: the live block has one heading, not switchable tabs */
+.uptabs.single b{cursor:default;color:var(--ink);border-bottom-color:transparent}
+
+/* ---------- shade gallery ---------- */
+.shades .eyebrow{text-align:center;font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:10px}
+.shades .sec-h.statement{margin-bottom:14px}
+.shsub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:60ch;margin:0 auto 40px}
+.shgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;max-width:1320px;margin:0 auto}
+.shcard{min-width:0}
+.shph{aspect-ratio:1/1.18;overflow:hidden;background:var(--cream)}
+.shph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.shcard:hover .shph img{transform:scale(1.045)}
+.shcard figcaption{display:flex;flex-direction:column;gap:3px;margin-top:12px}
+.shname{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1.3}
+.shname i{width:14px;height:14px;border-radius:50%;flex:none;border:1px solid rgba(0,0,0,.08)}
+.shdesc{font-size:15px;color:var(--ink-soft);line-height:1.5}
+.shades .benef-cta{margin-top:46px;margin-bottom:0}
+
+/* ---------- review cards (text only, no photo) ---------- */
+.rcards .rcard{flex:0 0 calc((100% - 54px)/4);scroll-snap-align:start;background:var(--soft);border-radius:var(--r-card);padding:22px 22px 20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.rcards .rcard .stars{justify-content:flex-start;margin:0;color:#00b67a;letter-spacing:2px}
+.rcards .rcard b{font-size:17px;font-weight:700;line-height:1.3}
+.rcards .rcard p{font-size:16px;color:var(--ink-soft);line-height:1.6;flex:1}
+.rcards .rcard cite{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-style:normal;font-size:15px;font-weight:600;margin-top:4px}
+.rcards .rcard cite span{font-weight:400;color:var(--ink-soft);font-size:14px}
+
+/* ---------- ingredients block ----------
+   Photo right, copy left (live layout), on the brand sand fill. */
+.iwt.ingr{background:#e3dbd2}
+.iwt.ingr .tx p b{display:block;margin-bottom:2px}
+.iwt-badge{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:-8px}
+
+/* ---------- consumer study results ---------- */
+.results{margin-top:96px;background:var(--soft)}
+.resgrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1320px;margin:0 auto}
+.resph{height:560px;overflow:hidden}
+.resph img{width:100%;height:100%;object-fit:cover}
+.restx{padding:60px 84px;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.resrow{display:flex;align-items:center;gap:20px}
+/* the number is the element that has to land first, so it carries the weight */
+.resnum{flex:none;width:96px;height:96px;border-radius:50%;border:2px solid var(--taupe);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;letter-spacing:-.01em;background:var(--paper)}
+.resrow p{font-size:16px;color:var(--ink-soft);line-height:1.6;max-width:34ch}
+.rescap{font-size:14px;color:var(--ink-soft);margin-top:-8px}
+
+/* ---------- how to use ----------
+   Four steps on this product, not three, so the row keeps them on one line. */
+.steps .stepgrid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1320px}
+.steps .step video{aspect-ratio:1/1}
+.steps .benef-cta{margin-top:44px;margin-bottom:0}
+
+/* ---------- faq ---------- */
+.faq .faqlist{max-width:860px;margin:0 auto}
+.faq .acc:last-child{border-bottom:1px solid var(--line)}
+.faq .acc-t{font-size:16px;text-transform:none;letter-spacing:.01em;font-weight:600;padding:20px 0}
+.faq .acc-c p{font-size:16px}
+
+
+/* ---------- mobile ---------- */
+@media screen and (max-width:749px){
+  .pricerow{gap:10px;margin-bottom:14px}
+  .pricerow .pnow{font-size:24px}
+  .pricerow .pbadge{font-size:12px;padding:4px 9px}
+  .bundtimer{font-size:14px}
+
+  /* six portraits do not fit a phone row: swipe with the next card peeking in */
+  .shgrid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
+  .shgrid::-webkit-scrollbar{display:none}
+  .shcard{flex:0 0 62vw;scroll-snap-align:start}
+  .shsub{font-size:15px;margin-bottom:26px}
+  .shades .eyebrow{font-size:13px}
+  .shades .benef-cta{margin-top:32px}
+
+  .rcards .rcard{flex:0 0 78vw;padding:18px 18px 16px}
+  .rcards .rcard b{font-size:16px}
+  .rcards .rcard p{font-size:15px}
+
+  .results{margin-top:56px}
+  .resgrid{grid-template-columns:1fr}
+  .resph{height:320px}
+  .restx{padding:30px 20px 36px;gap:18px}
+  .resrow{gap:14px}
+  .resnum{width:74px;height:74px;font-size:21px}
+  .resrow p{font-size:15px}
+  .restx .btn{width:100%}
+
+  .faq .acc-t{font-size:15px;padding:17px 0}
+  .faq .acc-c p{font-size:15px}
+  .iwt-badge{font-size:13px}
+}
+
+/* type floor: reading copy stays at 16px on desktop */
+@media screen and (min-width:750px){
+  .shdesc,.rcards .rcard p,.resrow p,.rescap,.faq .acc-c p{font-size:16px}
+}

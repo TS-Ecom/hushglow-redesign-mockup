@@ -102,7 +102,10 @@
 .shrow em{font-style:normal;color:var(--ink-soft)}
 
 /* guarantee row (mirrors approved cart pill) */
-.grt{display:flex;align-items:center;gap:9px;background:var(--cream);font-size:13px;font-weight:600;padding:12px 16px;margin:16px 0 18px;border-radius:var(--r-card)}
+/* the copy is one flex item, not a text node plus a <b>: as two items each was being
+   squeezed into its own narrow column and broke mid-phrase at 390px */
+.grt{display:flex;align-items:center;gap:7px;background:var(--cream);font-size:13px;font-weight:600;padding:12px 16px;margin:16px 0 18px;border-radius:var(--r-card)}
+.grt-t{flex:1;min-width:0}
 .grt svg{width:16px;height:16px;flex:none;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .grt b{font-weight:600;color:var(--berry)}
 

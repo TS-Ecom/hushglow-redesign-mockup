@@ -1,24 +1,74 @@
 /* HushGlow Design — Multi-Effect Blush Stick product page.
-   Only what is unique to this product lives here: the buy-box price row, the mix & match
-   bundle timer, the shade gallery, the review cards, the consumer-study block and the FAQ.
-   Everything else (buy box, gallery, accordions, swatches, bundles, upsells, video row,
-   ticker, steps, banner slider, recommendations, sticky ATC) comes from shared.css. */
+   Only what is unique to this product lives here: buy-box price row, the mix & match
+   bundle block, the shade gallery, review cards, the consumer-study block and the FAQ.
+   Everything else (buy box, gallery, accordions, swatches, upsell frame, video row,
+   ticker, steps, banner slider, recommendations, sticky ATC) comes from shared.css.
 
-/* ---------- price row (live buy box shows price + BESTSELLER badge) ---------- */
-.pricerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}
-.pricerow .pnow{font-size:26px;font-weight:700;letter-spacing:.01em}
-.pricerow .pbadge{background:var(--berry);color:#fff;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-chip)}
+   Layout, copy, fills and accents are matched to the live blush page; type, radii and
+   button weights stay on the agreed design system (v2). */
+
+/* ---------- buy box: title, price, shop pay ---------- */
+/* the live H1 is title case here, not the uppercase used on the cushion page */
+.info h1{text-transform:none;font-size:32px;letter-spacing:.01em;margin-bottom:10px}
+.pricerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 6px}
+.pricerow .pnow{font-size:30px;font-weight:700;letter-spacing:.01em}
+.pricerow .pbadge{background:var(--berry);color:#fff;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-chip)}
+.shoppay{font-size:15px;color:var(--ink-soft);margin:0 0 18px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.shoppay b{color:var(--ink);font-weight:600}
+.shoppay .sp-logo{background:#5a31f4;color:#fff;font-size:13px;font-weight:700;letter-spacing:.02em;padding:2px 8px;border-radius:3px}
+.shoppay .sp-logo i{font-style:normal}
+.shoppay a{text-decoration:underline;text-underline-offset:3px}
+
+/* guarantee row: live uses the warm gold accent, not burgundy */
+.grt{background:#f6f1ea}
+.grt b{color:#a8824a}
+.grt svg{stroke:#a8824a}
+
+/* swatch label is sentence case on the live page */
+.swlbl{text-transform:none;font-size:15px;font-weight:600;letter-spacing:.01em}
 
 /* ---------- mix & match bundles ----------
-   The offer timer sits above the tiers, as the app renders it on the live page. */
-.bundtimer{text-align:center;font-size:15px;font-weight:600;color:var(--berry);margin:-4px 0 12px}
+   The live block is rendered by the Kaching app: a full-width burgundy offer bar, three
+   tiers with sand ribbons, and one shade select per unit under the chosen tier. */
+.bundtimer{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--berry-deep);color:#fff;font-size:16px;font-weight:700;text-align:center;padding:12px 14px;margin:0 0 12px;border-radius:var(--r-card)}
 .bundtimer b{font-variant-numeric:tabular-nums;font-weight:700}
-/* the shade pickers stack one per unit, so three units read as three separate choices */
-.bun .bsel{cursor:pointer}
+.bundtimer .tclock{font-size:15px}
+/* ribbons on the live tiers are sand with dark type, not burgundy */
+.bun .tag2,.bun .tag2.gold{background:var(--sand);color:var(--ink)}
+.bun .off{background:var(--sand);color:var(--ink);font-weight:700}
+.bsellbl{display:block;font-size:14px;color:var(--ink-soft);margin:2px 0 6px}
+/* each unit is its own select-looking control, stacked one per line */
+.bun .bsel{display:flex;align-items:center;gap:10px;width:100%;margin:0 0 8px;padding:8px 12px;background:#fff;font-size:15px;cursor:pointer}
+.bun .bsel .bsw{width:30px;height:30px;border-radius:50%}
+.bun .bsel i{margin-left:auto;font-size:12px}
 .bun .bsel:hover{border-color:var(--ink)}
 
-/* single-pane cross-sell: the live block has one heading, not switchable tabs */
-.uptabs.single b{cursor:default;color:var(--ink);border-bottom-color:transparent}
+/* ---------- cross-sell: live block is a checkbox list, not add buttons ---------- */
+.upsells{margin-top:26px}
+.uphead{text-align:center;font-size:18px;font-weight:700;margin-bottom:14px}
+.upcard{display:flex;align-items:center;gap:14px;background:var(--soft);border-radius:var(--r-card);padding:14px;margin-bottom:12px;cursor:pointer;box-shadow:none;transition:background .2s ease}
+.upcard:hover{background:#f0f0f1}
+.upcard img{width:88px;height:88px;object-fit:cover;flex:none;background:var(--cream);border-radius:var(--r-card)}
+.upmid b{font-size:17px;font-weight:700;display:block}
+.upmid small{font-size:15px;color:var(--ink-soft);line-height:1.5;display:block;margin:2px 0 6px}
+.upvar{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:#fff;font-size:14px;padding:6px 12px;margin-bottom:6px}
+.upvar i{font-style:normal;font-size:11px;color:var(--ink-soft)}
+/* live prices sit in the warm gold, with the compare-at in plain grey */
+.uppr{display:flex;align-items:baseline;gap:8px;font-size:17px}
+.uppr b{color:#a8824a;font-weight:700}
+.uppr s{color:var(--ink-soft);font-weight:400;font-size:15px}
+.upbox{width:22px;height:22px;flex:none;border:2px solid var(--taupe);background:#fff;position:relative;transition:background .2s ease,border-color .2s ease}
+.upbox::after{content:'';position:absolute;left:6px;top:2px;width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) scale(.4);opacity:0;transition:opacity .18s ease,transform .18s ease}
+.upcard.on .upbox{background:var(--ink);border-color:var(--ink)}
+.upcard.on .upbox::after{opacity:1;transform:rotate(45deg) scale(1)}
+
+/* ---------- ticker: burgundy on this template ---------- */
+.pstrip.berry{background:var(--berry-deep)}
+
+/* ---------- section fills copied from the live sections ---------- */
+.section.fill,.steps.fill{background:#f3f3f3}
+.section.fill{padding-top:80px;padding-bottom:80px}
+.steps.fill{padding-top:80px;padding-bottom:80px}
 
 /* ---------- shade gallery ---------- */
 .shades .eyebrow{text-align:center;font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:10px}
@@ -35,37 +85,47 @@
 .shdesc{font-size:15px;color:var(--ink-soft);line-height:1.5}
 .shades .benef-cta{margin-top:46px;margin-bottom:0}
 
-/* ---------- review cards (text only, no photo) ---------- */
-.rcards .rcard{flex:0 0 calc((100% - 54px)/4);scroll-snap-align:start;background:var(--soft);border-radius:var(--r-card);padding:22px 22px 20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+/* ---------- review cards (white on the grey fill, like the live slider) ---------- */
+.revsec .sec-h.statement{font-size:34px;font-weight:700}
+/* arrows sit level with the cards and clear of the copy, as on the live slider */
+.revsec .twrap .lookarrow{top:50%}
+.revsec .twrap .lookarrow.prev{left:-22px}
+.revsec .twrap .lookarrow.next{right:-22px}
+.rcards .rcard{flex:0 0 calc((100% - 54px)/4);scroll-snap-align:start;background:var(--paper);border-radius:var(--r-card);padding:22px 22px 20px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .rcards .rcard .stars{justify-content:flex-start;margin:0;color:#00b67a;letter-spacing:2px}
 .rcards .rcard b{font-size:17px;font-weight:700;line-height:1.3}
 .rcards .rcard p{font-size:16px;color:var(--ink-soft);line-height:1.6;flex:1}
 .rcards .rcard cite{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-style:normal;font-size:15px;font-weight:600;margin-top:4px}
 .rcards .rcard cite span{font-weight:400;color:var(--ink-soft);font-size:14px}
 
-/* ---------- ingredients block ----------
-   Photo right, copy left (live layout), on the brand sand fill. */
+/* ---------- ingredients block (photo right, sand fill) ---------- */
 .iwt.ingr{background:#e3dbd2}
 .iwt.ingr .tx p b{display:block;margin-bottom:2px}
 .iwt-badge{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:-8px}
 
 /* ---------- consumer study results ---------- */
-.results{margin-top:96px;background:var(--soft)}
+.results{margin-top:0;background:#f3f3f3}
 .resgrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1320px;margin:0 auto}
 .resph{height:560px;overflow:hidden}
 .resph img{width:100%;height:100%;object-fit:cover}
 .restx{padding:60px 84px;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
 .resrow{display:flex;align-items:center;gap:20px}
-/* the number is the element that has to land first, so it carries the weight */
+/* the number lands first, so it carries the weight */
 .resnum{flex:none;width:96px;height:96px;border-radius:50%;border:2px solid var(--taupe);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;letter-spacing:-.01em;background:var(--paper)}
 .resrow p{font-size:16px;color:var(--ink-soft);line-height:1.6;max-width:34ch}
 .rescap{font-size:14px;color:var(--ink-soft);margin-top:-8px}
 
-/* ---------- how to use ----------
-   Four steps on this product, not three, so the row keeps them on one line. */
+/* ---------- how to use: four steps, not three ---------- */
 .steps .stepgrid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1320px}
+.steps .step{background:var(--paper)}
 .steps .step video{aspect-ratio:1/1}
 .steps .benef-cta{margin-top:44px;margin-bottom:0}
+
+/* ---------- shade guarantee: dark text panel over the photo ---------- */
+.iwt.ovl.dark .tx{background:#2e2a39;color:#fff}
+.iwt.ovl.dark .tx h2{color:#fff}
+.iwt.ovl.dark .tx p{color:rgba(255,255,255,.86)}
+.iwt.ovl.dark .tx p b,.iwt.ovl.dark .tx p u{color:#fff}
 
 /* ---------- faq ---------- */
 .faq .faqlist{max-width:860px;margin:0 auto}
@@ -73,13 +133,31 @@
 .faq .acc-t{font-size:16px;text-transform:none;letter-spacing:.01em;font-weight:600;padding:20px 0}
 .faq .acc-c p{font-size:16px}
 
+/* ---------- sticky bar: sand button and title case, as on the live page ---------- */
+.satc .satcbtn{background:var(--sand);border-color:var(--sand);color:var(--ink);text-transform:none;font-size:17px;padding:13px 34px}
+.satc .satcbtn:hover{background:var(--taupe);border-color:var(--taupe)}
+
 
 /* ---------- mobile ---------- */
 @media screen and (max-width:749px){
-  .pricerow{gap:10px;margin-bottom:14px}
-  .pricerow .pnow{font-size:24px}
+  .info h1{font-size:24px}
+  .pricerow{gap:10px;margin-bottom:5px}
+  .pricerow .pnow{font-size:26px}
   .pricerow .pbadge{font-size:12px;padding:4px 9px}
-  .bundtimer{font-size:14px}
+  .shoppay{font-size:14px;margin-bottom:14px}
+  .bundtimer{font-size:15px;padding:11px 12px}
+  .bun .bsel{font-size:14px;padding:7px 10px}
+  .bun .bsel .bsw{width:26px;height:26px}
+
+  .uphead{font-size:17px}
+  .upcard{gap:11px;padding:11px 12px}
+  .upcard img{width:64px;height:64px}
+  .upmid b{font-size:15px;line-height:1.3}
+  .upmid small{font-size:13px;line-height:1.45;margin-bottom:4px}
+  .uppr{font-size:16px}
+  .uppr s{font-size:14px}
+
+  .section.fill,.steps.fill{padding-top:56px;padding-bottom:56px}
 
   /* six portraits do not fit a phone row: swipe with the next card peeking in */
   .shgrid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
@@ -89,11 +167,12 @@
   .shades .eyebrow{font-size:13px}
   .shades .benef-cta{margin-top:32px}
 
+  .revsec .sec-h.statement{font-size:24px}
   .rcards .rcard{flex:0 0 78vw;padding:18px 18px 16px}
   .rcards .rcard b{font-size:16px}
   .rcards .rcard p{font-size:15px}
 
-  .results{margin-top:56px}
+  .results{margin-top:0}
   .resgrid{grid-template-columns:1fr}
   .resph{height:320px}
   .restx{padding:30px 20px 36px;gap:18px}
@@ -105,9 +184,10 @@
   .faq .acc-t{font-size:15px;padding:17px 0}
   .faq .acc-c p{font-size:15px}
   .iwt-badge{font-size:13px}
+  .satc .satcbtn{font-size:15px;padding:12px 18px}
 }
 
 /* type floor: reading copy stays at 16px on desktop */
 @media screen and (min-width:750px){
-  .shdesc,.rcards .rcard p,.resrow p,.rescap,.faq .acc-c p{font-size:16px}
+  .shdesc,.rcards .rcard p,.resrow p,.rescap,.faq .acc-c p,.upmid small{font-size:16px}
 }

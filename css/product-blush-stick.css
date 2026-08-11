@@ -21,6 +21,12 @@
 /* single-pane cross-sell: the live block has one heading, not switchable tabs */
 .uptabs.single b{cursor:default;color:var(--ink);border-bottom-color:transparent}
 
+/* ---------- grey fills, matching the live sections ---------- */
+.section.fill,.steps.fill{background:#f3f3f3}
+.section.fill{padding-top:80px;padding-bottom:80px}
+.steps.fill{padding-top:80px;padding-bottom:80px}
+.results{background:#f3f3f3}
+
 /* ---------- shade gallery ---------- */
 .shades .eyebrow{text-align:center;font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:10px}
 .shades .sec-h.statement{margin-bottom:14px}
@@ -40,10 +46,11 @@
    Rebuilt from the theme's own eg-reviews card: quote mark and Trustpilot stars on one
    row, then title, text and a small-caps author line. Values measured off the live
    section, including its 14px radius and lifted shadow. */
-.tpline{text-align:center;font-size:15px;color:var(--ink-soft);margin:-18px 0 34px;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+.tpline{text-align:center;font-size:14px;color:var(--ink-soft);margin:-20px 0 36px;display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap}
 .tpline a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-weight:600}
-.tpline-stars{width:84px;height:17px}
-.rcards .rcard{flex:0 0 calc((100% - 54px)/4);scroll-snap-align:start;background:var(--paper);border-radius:14px;box-shadow:0 12px 30px -8px rgba(18,18,18,.16);padding:24px 24px 26px;display:flex;flex-direction:column;min-width:0}
+.tpline .tpstar{width:15px;height:14px;display:block}
+.tpline .tpword{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.rcards .rcard{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;background:var(--paper);border-radius:14px;box-shadow:0 12px 30px -8px rgba(18,18,18,.16);padding:24px 24px 26px;display:flex;flex-direction:column;min-width:0}
 .rtop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
 .rq{width:28px;height:24px;flex:none;color:rgba(18,18,18,.16)}
 .tpmini{width:107px;height:20px;flex:none;display:block}
@@ -63,14 +70,19 @@
 .iwt-badge{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:-8px}
 
 /* ---------- consumer study results ---------- */
-.results{margin-top:96px;background:var(--soft)}
+.results{margin-top:96px;background:#f3f3f3}
 .resgrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1320px;margin:0 auto}
 .resph{aspect-ratio:3/4;overflow:hidden}
 .resph img{width:100%;height:100%;object-fit:cover}
 .restx{padding:60px 84px;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
 .resrow{display:flex;align-items:center;gap:20px}
 /* the number is the element that has to land first, so it carries the weight */
-.resnum{flex:none;width:96px;height:96px;border-radius:50%;border:2px solid var(--taupe);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;letter-spacing:-.01em;background:var(--paper)}
+.resnum{flex:none;width:104px;height:104px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;background:var(--paper)}
+.resnum .ringsvg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.resnum .ringbg{fill:none;stroke:rgba(193,178,160,.35);stroke-width:4}
+/* stroke-dasharray is set per number, so 94% stops at 94% of the circle */
+.resnum .ringfg{fill:none;stroke:var(--taupe);stroke-width:4;stroke-linecap:round}
+.resnum i{font-style:normal;font-size:26px;font-weight:700;letter-spacing:-.01em;position:relative}
 .resrow p{font-size:16px;color:var(--ink-soft);line-height:1.6;max-width:34ch}
 .rescap{font-size:14px;color:var(--ink-soft);margin-top:-8px}
 
@@ -81,7 +93,7 @@
 .steps .benef-cta{margin-top:44px;margin-bottom:0}
 
 /* ---------- how to use: live step tags are burgundy with white caps ---------- */
-.steps .step .stag{background:var(--berry-deep);color:#fff;font-weight:700;letter-spacing:.03em;border-radius:0}
+.steps .step .stag{background:var(--berry-deep);color:#fff;font-weight:700;letter-spacing:.03em;border:2px solid var(--berry-deep);border-radius:0}
 
 /* ---------- faq ---------- */
 .faq .faqlist{max-width:860px;margin:0 auto}
@@ -114,7 +126,8 @@
   .resph{aspect-ratio:3/4}
   .restx{padding:30px 20px 36px;gap:18px}
   .resrow{gap:14px}
-  .resnum{width:74px;height:74px;font-size:21px}
+  .resnum{width:80px;height:80px}
+  .resnum i{font-size:20px}
   .resrow p{font-size:15px}
   .restx .btn{width:100%}
 

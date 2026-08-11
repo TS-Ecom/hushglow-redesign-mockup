@@ -115,7 +115,7 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:1120px;margin:0 auto}
 .p-card{cursor:pointer;position:relative;display:block}
-.p-card .ph{border-radius:var(--radius);overflow:hidden;background:var(--cream);aspect-ratio:1/1;position:relative}
+.p-card .ph{display:block;border-radius:var(--radius);overflow:hidden;background:var(--cream);aspect-ratio:1/1;position:relative}
 .p-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,opacity .25s ease}
 .p-card .ph img.alt{position:absolute;inset:0;opacity:0}
 .p-card:hover .ph img.main{transform:scale(1.045)}
@@ -647,12 +647,12 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
    and the whole section is tighter. */
 /* live layout puts the copy on the left and the before/after on the right */
 /* ---------- banner slider (square banners, 2 full cards per view like live) ---------- */
-.bslider{margin-top:96px;position:relative}
+.bslider{margin-top:96px;position:relative;max-width:1440px;margin-left:auto;margin-right:auto;padding:0 var(--pagepad)}
 .bslider .lookarrow{width:40px;height:40px;font-size:15px;background:rgba(250,248,246,.55);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);box-shadow:none;border:1px solid rgba(33,26,23,.14)}
 .bslider .lookarrow:hover{background:var(--ink)}
-.bsrow{display:flex;gap:4px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.bsrow{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .bsrow::-webkit-scrollbar{display:none}
-.bsrow img{flex:0 0 calc((100% - 4px)/2);width:calc((100% - 4px)/2);height:auto;aspect-ratio:1/1;object-fit:cover;scroll-snap-align:start;background:var(--cream)}
+.bsrow img{flex:0 0 50%;width:50%;height:auto;aspect-ratio:1/1;object-fit:cover;scroll-snap-align:start;background:var(--cream)}
 .bsdots{display:flex;justify-content:center;gap:9px;margin-top:20px}
 .bsdots i{width:8px;height:8px;border-radius:50%;background:var(--taupe);opacity:.5;cursor:pointer;transition:opacity .2s ease,background .2s ease}
 .bsdots i.on{background:var(--ink);opacity:1}

@@ -11,7 +11,8 @@
 
 /* ---------- mix & match bundles ----------
    The offer timer sits above the tiers, as the app renders it on the live page. */
-.bundtimer{text-align:center;font-size:15px;font-weight:600;color:var(--berry);margin:-4px 0 12px}
+.bundtimer{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--berry-deep);color:#fff;font-size:16px;font-weight:700;text-align:center;padding:12px 14px;margin:0 0 12px;border-radius:var(--r-card)}
+.bundtimer .tclock{font-size:15px}
 .bundtimer b{font-variant-numeric:tabular-nums;font-weight:700}
 /* the shade pickers stack one per unit, so three units read as three separate choices */
 .bun .bsel{cursor:pointer}
@@ -35,13 +36,25 @@
 .shdesc{font-size:15px;color:var(--ink-soft);line-height:1.5}
 .shades .benef-cta{margin-top:46px;margin-bottom:0}
 
-/* ---------- review cards (text only, no photo) ---------- */
-.rcards .rcard{flex:0 0 calc((100% - 54px)/4);scroll-snap-align:start;background:var(--soft);border-radius:var(--r-card);padding:22px 22px 20px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.rcards .rcard .stars{justify-content:flex-start;margin:0;color:#00b67a;letter-spacing:2px}
-.rcards .rcard b{font-size:17px;font-weight:700;line-height:1.3}
-.rcards .rcard p{font-size:16px;color:var(--ink-soft);line-height:1.6;flex:1}
-.rcards .rcard cite{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-style:normal;font-size:15px;font-weight:600;margin-top:4px}
-.rcards .rcard cite span{font-weight:400;color:var(--ink-soft);font-size:14px}
+/* ---------- review cards ----------
+   Rebuilt from the theme's own eg-reviews card: quote mark and Trustpilot stars on one
+   row, then title, text and a small-caps author line. Values measured off the live
+   section, including its 14px radius and lifted shadow. */
+.tpline{text-align:center;font-size:15px;color:var(--ink-soft);margin:-18px 0 34px;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+.tpline a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-weight:600}
+.tpline-stars{width:84px;height:17px}
+.rcards .rcard{flex:0 0 calc((100% - 54px)/4);scroll-snap-align:start;background:var(--paper);border-radius:14px;box-shadow:0 12px 30px -8px rgba(18,18,18,.16);padding:24px 24px 26px;display:flex;flex-direction:column;min-width:0}
+.rtop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.rq{width:28px;height:24px;flex:none;color:rgba(18,18,18,.16)}
+.tpmini{width:107px;height:20px;flex:none;display:block}
+.rcards .rcard b{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:9px}
+.rcards .rcard p{font-size:15px;color:rgba(18,18,18,.82);line-height:1.55;flex:1;margin:0}
+.rcards .rcard cite{font-style:normal;font-size:13px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:rgba(18,18,18,.55);margin-top:22px}
+.rcards .rcard cite i{font-style:normal;margin:0 3px}
+/* arrows sit level with the cards, clear of the copy */
+.revsec .twrap .lookarrow{top:50%}
+.revsec .twrap .lookarrow.prev{left:-22px}
+.revsec .twrap .lookarrow.next{right:-22px}
 
 /* ---------- ingredients block ----------
    Photo right, copy left (live layout), on the brand sand fill. */
@@ -52,7 +65,7 @@
 /* ---------- consumer study results ---------- */
 .results{margin-top:96px;background:var(--soft)}
 .resgrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1320px;margin:0 auto}
-.resph{height:560px;overflow:hidden}
+.resph{aspect-ratio:3/4;overflow:hidden}
 .resph img{width:100%;height:100%;object-fit:cover}
 .restx{padding:60px 84px;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
 .resrow{display:flex;align-items:center;gap:20px}
@@ -66,6 +79,9 @@
 .steps .stepgrid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1320px}
 .steps .step video{aspect-ratio:1/1}
 .steps .benef-cta{margin-top:44px;margin-bottom:0}
+
+/* ---------- how to use: live step tags are burgundy with white caps ---------- */
+.steps .step .stag{background:var(--berry-deep);color:#fff;font-weight:700;letter-spacing:.03em;border-radius:0}
 
 /* ---------- faq ---------- */
 .faq .faqlist{max-width:860px;margin:0 auto}
@@ -95,7 +111,7 @@
 
   .results{margin-top:56px}
   .resgrid{grid-template-columns:1fr}
-  .resph{height:320px}
+  .resph{aspect-ratio:3/4}
   .restx{padding:30px 20px 36px;gap:18px}
   .resrow{gap:14px}
   .resnum{width:74px;height:74px;font-size:21px}

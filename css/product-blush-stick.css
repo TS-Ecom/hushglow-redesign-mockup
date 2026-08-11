@@ -104,6 +104,16 @@
 
 /* ---------- mobile ---------- */
 @media screen and (max-width:749px){
+  /* tight vertical rhythm on a phone: the grey sections were still on desktop padding
+     and the blocks between them were 56-64px apart */
+  .section.fill,.steps.fill{padding-top:40px;padding-bottom:40px}
+  .bslider{margin-top:40px}
+  .iwt,.iwt.ingr{margin-top:40px}
+  .iwt.ovl{margin-top:40px}
+  .results{margin-top:40px}
+  .section{padding-top:40px}
+  .ibar{margin-top:40px}
+
   .pricerow{gap:10px;margin-bottom:14px}
   .pricerow .pnow{font-size:24px}
   .pricerow .pbadge{font-size:12px;padding:4px 9px}
@@ -121,7 +131,7 @@
   .rcards .rcard b{font-size:16px}
   .rcards .rcard p{font-size:15px}
 
-  .results{margin-top:56px}
+  .results{margin-top:40px}
   .resgrid{grid-template-columns:1fr}
   .resph{aspect-ratio:3/4}
   .restx{padding:30px 20px 36px;gap:18px}

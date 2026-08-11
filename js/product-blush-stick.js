@@ -18,16 +18,6 @@
     setInterval(tick, 1000);
   }
 
-  /* Cross-sell rows are checkboxes on the live page, not add buttons: tapping the row
-     ticks it, which is what the merchant sees when the app adds the item to the order. */
-  document.querySelectorAll('.upcard').forEach(function (card) {
-    card.addEventListener('click', function () {
-      var on = card.classList.toggle('on');
-      var box = card.querySelector('.upbox');
-      if (box) box.setAttribute('aria-checked', on ? 'true' : 'false');
-    });
-  });
-
   /* Per-unit shade pickers inside a bundle. On the live page this is the Kaching Bundles
      app; here each chip cycles through the six shades so the flow can be seen: every unit
      in the tier is chosen separately, which is the part of the block worth reviewing. */

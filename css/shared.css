@@ -427,7 +427,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* info column */
 .info{max-width:540px}
 /* badge V6, the variant we approved: solid burgundy, white type, flush left */
-.badge{display:inline-block;background:var(--berry-deep);color:#fff;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:8px 14px;margin:0 0 16px;border-radius:var(--r-chip)}
+.badge{display:inline-block;background:transparent;color:var(--berry-deep);border:1.5px solid var(--berry-deep);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:7px 13px;margin:0 0 16px;border-radius:var(--r-chip)}
 .lovedrow{display:flex;align-items:center;gap:10px;margin-bottom:9px}
 .lovedrow .avs{display:inline-flex}
 .lovedrow .avs img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);background:var(--cream)}
@@ -553,9 +553,10 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .atcbig:hover{background:#333;border-color:#333}
 /* stock nudge + geo shipping row (mirrors the live nudge/shipping-line blocks) */
 .stockrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:13px;font-size:13px;font-weight:600}
-.stockrow .ls{display:inline-flex;align-items:center;gap:9px;color:var(--berry);font-weight:600}
-.stockrow .ls i{width:8px;height:8px;border-radius:50%;background:var(--berry);position:relative;flex:none}
-.stockrow .ls i::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid var(--berry);opacity:0;animation:stockpulse 2s ease-out infinite}
+.stockrow .ls{display:inline-flex;align-items:center;gap:9px;color:#dd1d1d;font-weight:700}
+.stockrow .ls.ok{color:#1aa34a}
+.stockrow .ls i{width:8px;height:8px;border-radius:50%;background:currentColor;position:relative;flex:none}
+.stockrow .ls i::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid currentColor;opacity:0;animation:stockpulse 2s ease-out infinite}
 .stockrow .shipto{display:inline-flex;align-items:center;gap:8px;color:var(--ink-soft)}
 .stockrow .shipto b{color:var(--ink);font-weight:600}
 .stockrow .flg{width:20px;height:14px;flex:none;display:block}
@@ -565,8 +566,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   100%{opacity:0}
 }
 /* shipping row (V1: cream bar, pairs with the guarantee row) */
-.shiprow{display:flex;align-items:center;justify-content:center;gap:10px;font-size:15px;padding:10px 0;margin-top:12px}
-.shiprow .dim{color:var(--ink-soft)}
+.shiprow{display:flex;align-items:center;justify-content:center;gap:10px;font-size:15px;font-weight:700;padding:10px 0;margin-top:12px}
+.shiprow .dim{color:var(--ink);font-weight:700}
 .shiprow b{font-weight:600}
 .shiprow svg{width:19px;height:19px;flex:none;stroke:var(--berry);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
 /* upsells */
@@ -590,6 +591,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .upbtn:hover{background:var(--ink);color:var(--paper)}
 .upbtn:active{transform:scale(.96)}
 .upbtn.added{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.upbtn .lg{display:none}
 /* video carousel */
 .vidcar{margin-top:28px}
 .vh{font-size:15px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:12px}
@@ -693,8 +695,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* ---------- sale countdown bar (this template only) ---------- */
 /* Countdown bar: brand burgundy from the live site, heavier and larger digits. */
 /* ---------- payment icons in the buy box (muted) ---------- */
-.paymini{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:12px}
-.paymini img{height:20px;width:auto;display:block}
+.paymini{display:flex;justify-content:center;margin-top:12px}
+.paymini img{height:auto;width:100%;max-width:420px;display:block}
 /* ---------- section reveal ----------
    Opt-in from JS: without it (or with reduced motion) every section is simply visible.
    Only opacity and transform animate, so nothing here triggers layout. */
@@ -729,13 +731,18 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .vplay{width:30px;height:30px}
   .uptabs{gap:16px}
   .uptabs b{font-size:14px;letter-spacing:.03em}
-  .upcard{gap:10px;padding:10px 12px}
-  .upcard img{width:56px;height:56px}
-  .upmid small{display:none}
-  .upmid b{font-size:14px;line-height:1.35}
-  .uppr{font-size:14px;gap:6px}
+  /* phone: the row became too small to read, so the photo grows and the button runs
+     the full width under the copy, the way the live page shows it */
+  .upcard{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:12px;row-gap:10px;padding:12px}
+  .upcard img{width:96px;height:96px;grid-column:1;grid-row:1}
+  .upmid{grid-column:2;grid-row:1}
+  .upmid small{display:block;font-size:13px;line-height:1.45;margin:2px 0 4px}
+  .upmid b{font-size:16px;line-height:1.3}
+  .uppr{font-size:16px;gap:7px}
   .usave{font-size:12px;padding:2px 6px}
-  .upbtn{font-size:13px;padding:11px 14px}
+  .upbtn{grid-column:1/3;grid-row:2;width:100%;font-size:15px;padding:13px 14px}
+  .upbtn .sm{display:none}
+  .upbtn .lg{display:inline}
   .lovedrow .avs img{width:22px;height:22px;border-width:1.5px}
   .lovedrow .avs img+img{margin-left:-7px}
   .lovedrow{gap:8px}

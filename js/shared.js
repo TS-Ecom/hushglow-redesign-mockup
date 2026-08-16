@@ -297,6 +297,16 @@ function cartToggle (open) {
     });
   }
 
+  /* the whole upsell row is the target, not just the button: on a phone people tap the
+     photo or the name and expect the item to be added */
+  document.querySelectorAll('.upcard').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('.upbtn')) return;
+      var btn = card.querySelector('.upbtn');
+      if (btn) btn.click();
+    });
+  });
+
   /* upsell Add: confirm the tap, then return to idle */
   document.querySelectorAll('.upbtn').forEach(function (b) {
     var idle = b.textContent;

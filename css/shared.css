@@ -431,18 +431,18 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* info column */
 .info{max-width:540px}
 /* badge V6, the variant we approved: solid burgundy, white type, flush left */
-.badge{display:inline-block;background:transparent;color:var(--berry-deep);border:1.5px solid var(--berry-deep);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:7px 13px;margin:0 0 16px;border-radius:var(--r-chip)}
-.lovedrow{display:flex;align-items:center;gap:10px;margin-bottom:9px}
-.lovedrow .avs{display:inline-flex}
+.badge{display:inline-block;max-width:100%;background:transparent;color:var(--berry-deep);border:1.5px solid var(--berry-deep);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;line-height:1.35;padding:7px 13px;margin:0 0 16px;border-radius:var(--r-chip);white-space:normal;overflow-wrap:break-word}
+.lovedrow{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px}
+.lovedrow .avs{display:inline-flex;flex:none}
 .lovedrow .avs img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);background:var(--cream)}
 .lovedrow .avs img+img{margin-left:-9px}
-.lovedrow .lt{font-size:13px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:5px;white-space:normal;flex-wrap:wrap;min-width:0}
+.lovedrow .lt{font-size:13px;color:var(--ink-soft);display:block;white-space:normal;flex:1 1 0;min-width:0;line-height:1.45}
 .lovedrow .lt b{color:var(--ink);font-weight:600}
-.lovedrow .hrt{width:15px;height:15px;fill:var(--berry);flex:none}
-.ratrow{display:inline-flex;align-items:center;flex-wrap:wrap;gap:9px;font-size:16px;color:var(--ink);margin-bottom:12px;max-width:100%}
-.ratrow .tp-svg{width:110px;height:22px;display:block}
+.lovedrow .hrt{width:1em;height:1em;fill:var(--berry);flex:none;vertical-align:-.12em;margin:0 2px}
+.ratrow{display:block;font-size:16px;color:var(--ink);margin-bottom:12px;max-width:100%;text-align:left;line-height:1.5}
+.ratrow .tp-svg{width:110px;height:22px;display:inline-block;vertical-align:-.35em;margin-right:9px}
 .ratrow:hover .rt{text-decoration:underline;text-underline-offset:3px}
-.ratrow .dn{font-style:normal;font-size:16px;color:var(--ink-soft)}
+.ratrow .dn{font-style:normal;font-size:16px;color:var(--ink-soft);margin-left:6px}
 /* live title is uppercase; the price is not repeated here, it lives in the bundles and
    in the sticky bar */
 .info h1{font-size:24px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;line-height:1.3;margin-bottom:14px}
@@ -501,9 +501,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* guarantee row (mirrors approved cart pill) */
 /* the copy is one flex item, not a text node plus a <b>: as two items each was being
    squeezed into its own narrow column and broke mid-phrase at 390px */
-.grt{display:flex;align-items:center;flex-wrap:wrap;gap:7px;background:var(--cream);font-size:13px;font-weight:600;padding:12px 16px;margin:16px 0 18px;border-radius:var(--r-card)}
-.grt-t{flex:1 1 auto;min-width:0}
-.grt svg{width:16px;height:16px;flex:none;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.grt{display:flex;align-items:center;gap:9px;background:var(--cream);font-size:13px;font-weight:600;padding:12px 16px;margin:16px 0 18px;border-radius:var(--r-card)}
+.grt-t{flex:1 1 0;min-width:0}
+.grt svg{width:1.15em;height:1.15em;flex:none;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .grt b{font-weight:600;color:var(--berry)}
 /* swatches */
 .swlbl{font-size:13px;letter-spacing:.03em;text-transform:uppercase;font-weight:600;margin-bottom:10px}
@@ -570,10 +570,10 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   100%{opacity:0}
 }
 /* shipping row (V1: cream bar, pairs with the guarantee row) */
-.shiprow{display:flex;align-items:center;justify-content:center;gap:10px;font-size:15px;font-weight:700;padding:10px 0;margin-top:12px}
+.shiprow{display:flex;align-items:center;justify-content:center;gap:9px;font-size:15px;font-weight:700;padding:10px 0;margin-top:12px;text-align:left}
 .shiprow .dim{color:var(--ink);font-weight:700}
 .shiprow b{font-weight:600}
-.shiprow svg{width:19px;height:19px;flex:none;stroke:var(--berry);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.shiprow svg{width:1.25em;height:1.25em;flex:none;stroke:var(--berry);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
 /* upsells */
 .upsells{margin-top:26px}
 .uptabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-bottom:14px}
@@ -838,7 +838,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .resgrid > *,
 .rcards .rcard > *{min-width:0}
 /* rows that carry a price or a rating must be free to drop onto a second line */
-.gpr,.uppr,.puffpr,.stockrow,.shiprow,.pricerow,.tname,.satc .sprice{flex-wrap:wrap}
+.gpr,.uppr,.puffpr,.stockrow,.pricerow,.tname,.satc .sprice{flex-wrap:wrap}
+.shiprow > span{flex:0 1 auto;min-width:0}
+.puffmid,.upmid,.gmid,.submid,.smid{flex:1 1 0}
 
 /* ---------- very narrow screens with a very large font ----------
    360px at 175% leaves roughly the reading width of a business card. Rows that still

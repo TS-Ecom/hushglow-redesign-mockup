@@ -71,16 +71,19 @@
    exactly the failures we are looking for. */
 function applyScale (doc, k, bold) {
   if (k === 1 && !bold) return;
-  doc.querySelectorAll('*').forEach(function (el) {
+  /* Read every computed size FIRST, then write. Reading and writing in the same pass
+     re-multiplies nested elements, because by the time a child is measured its parent
+     has already been enlarged: a node five levels deep ends up at k^5, not k. That is
+     not what a phone does; Android scales the base size once and inheritance does the
+     rest. */
+  var nodes = Array.prototype.slice.call(doc.querySelectorAll('*'));
+  var sizes = nodes.map(function (el) {
     var cs = doc.defaultView.getComputedStyle(el);
-    if (k !== 1) {
-      var fs = parseFloat(cs.fontSize);
-      if (fs) el.style.fontSize = (fs * k) + 'px';
-    }
-    if (bold) {
-      var w = parseInt(cs.fontWeight, 10) || 400;
-      el.style.fontWeight = Math.min(900, w + 300);
-    }
+    return { fs: parseFloat(cs.fontSize), fw: parseInt(cs.fontWeight, 10) || 400 };
+  });
+  nodes.forEach(function (el, i) {
+    if (k !== 1 && sizes[i].fs) el.style.fontSize = (sizes[i].fs * k) + 'px';
+    if (bold) el.style.fontWeight = Math.min(900, sizes[i].fw + 300);
   });
 }
 

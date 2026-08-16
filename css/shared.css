@@ -874,3 +874,29 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .mm-tiles{gap:16px}
   .mm-tile{width:auto;flex:1 1 0;min-width:0}
 }
+
+/* ---------- 360-389px: keep the 390 composition, just a notch smaller ----------
+   These rows sit on one line at 390. A few pixels narrower and each of them wraps:
+   the rating breaks before "reviews", the guarantee drops "free." to its own line,
+   the stock and shipping rows split in two, and the sixth swatch falls to a second
+   row. Rather than let the structure change, the type and the swatches step down a
+   size here, which buys back the room. */
+@media screen and (max-width:389px){
+  .ratrow{font-size:14px}
+  .ratrow .tp-svg{width:92px;height:18px}
+  .ratrow .dn{font-size:14px}
+
+  .grt{font-size:13px;padding:11px 13px;gap:8px}
+
+  .stockrow{font-size:13px;gap:8px}
+  .stockrow .flg{width:18px;height:13px}
+
+  .shiprow{font-size:13.5px;gap:8px}
+
+  .swrow{gap:9px}
+  .swb{width:40px;height:40px}
+  .swb::after{inset:-4px}
+
+  .lovedrow .avs img{width:20px;height:20px}
+  .lovedrow .lt{font-size:12.5px}
+}

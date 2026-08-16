@@ -80,7 +80,7 @@
 /* live cards sit on grey, not white */
 /* ---------- benefits around video ---------- */
 .benef{padding:96px var(--pagepad) 0}
-.bsub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:56ch;margin:-22px auto 40px}
+.bsub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:min(56ch,100%);margin:-22px auto 40px}
 .bgrid{display:grid;grid-template-columns:minmax(0,1fr) 340px minmax(0,1fr);gap:44px;align-items:center;max-width:1180px;margin:0 auto}
 .bvid{width:100%;min-width:0;aspect-ratio:4/5;object-fit:cover;background:var(--cream);border-radius:var(--radius)}
 .bitem{display:flex;gap:11px;margin-bottom:32px}
@@ -118,7 +118,7 @@
 /* ---------- sticky ATC ---------- */
 /* ---------- sale countdown bar (this template only) ---------- */
 /* Countdown bar: brand burgundy from the live site, heavier and larger digits. */
-.salebar{display:flex;justify-content:center;align-items:center;gap:18px;background:var(--berry-deep);color:#fff;padding:9px 16px}
+.salebar{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px 18px;background:var(--berry-deep);color:#fff;padding:9px 16px}
 .salebar .sl{font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .salebar .unit{display:flex;flex-direction:column;align-items:center;line-height:1.1}
 .salebar .unit b{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
@@ -143,7 +143,9 @@
   .subp{grid-column:3;grid-row:1;text-align:right;line-height:1.25}
   .subp s{font-size:13px}
   .subp b{font-size:16px}
-  .salebar{gap:11px;padding:8px 12px}
+  .salebar{gap:5px 11px;padding:8px 12px}
+  /* once the units no longer fit beside it, the label takes its own line */
+  .salebar .sl{flex:1 0 100%;text-align:center}
   .salebar .sl{font-size:14px;letter-spacing:.05em}
   .salebar .unit b{font-size:19px}
   .salebar .unit small{font-size:10px}
@@ -177,4 +179,12 @@
 @media screen and (min-width:750px){
   .gmid small,.bitem p{font-size:16px}
   .subp s,.gcard s{font-size:15px}
+}
+
+/* Benefits run text | video | text. Between 750 and 950px the fixed 340px video leaves
+   the copy columns too narrow once the system font grows, so the block stacks there. */
+@media screen and (min-width:750px) and (max-width:950px){
+  .bgrid{display:flex;flex-direction:column;gap:24px}
+  .bvid{order:-1;max-width:360px;margin:0 auto}
+  .bitem{margin-bottom:20px}
 }

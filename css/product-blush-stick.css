@@ -11,7 +11,7 @@
 
 /* ---------- mix & match bundles ----------
    The offer timer sits above the tiers, as the app renders it on the live page. */
-.bundtimer{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--berry-deep);color:#fff;font-size:16px;font-weight:700;text-align:center;padding:12px 14px;margin:0 0 12px;border-radius:var(--r-card)}
+.bundtimer{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;background:var(--berry-deep);color:#fff;font-size:16px;font-weight:700;text-align:center;padding:12px 14px;margin:0 0 12px;border-radius:var(--r-card)}
 .bundtimer .tclock{font-size:15px}
 .bundtimer b{font-variant-numeric:tabular-nums;font-weight:700}
 /* the shade pickers stack one per unit, so three units read as three separate choices */
@@ -30,7 +30,7 @@
 /* ---------- shade gallery ---------- */
 .shades .eyebrow{text-align:center;font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:10px}
 .shades .sec-h.statement{margin-bottom:14px}
-.shsub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:60ch;margin:0 auto 40px}
+.shsub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:min(60ch,100%);margin:0 auto 40px}
 .shgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;max-width:1320px;margin:0 auto}
 .shcard{min-width:0}
 .shph{aspect-ratio:1/1.18;overflow:hidden;background:var(--cream)}
@@ -83,7 +83,7 @@
 /* stroke-dasharray is set per number, so 94% stops at 94% of the circle */
 .resnum .ringfg{fill:none;stroke:var(--taupe);stroke-width:4;stroke-linecap:round}
 .resnum i{font-style:normal;font-size:26px;font-weight:700;letter-spacing:-.01em;position:relative}
-.resrow p{font-size:16px;color:var(--ink-soft);line-height:1.6;max-width:34ch}
+.resrow p{font-size:16px;color:var(--ink-soft);line-height:1.6;max-width:min(34ch,100%)}
 .rescap{font-size:14px;color:var(--ink-soft);margin-top:-8px}
 
 /* ---------- how to use ----------

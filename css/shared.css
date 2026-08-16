@@ -13,7 +13,10 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--ui);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.8;letter-spacing:.06em;-webkit-font-smoothing:antialiased}
+body{font-family:var(--ui);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.8;letter-spacing:.06em;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+/* Last line of defence against a sideways page. clip, not hidden: hidden would kill
+   position:sticky on the header and the gallery. */
+html{overflow-x:clip}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 /* inherit the body size instead of the browser's 13.333px default, so every rendered
@@ -97,8 +100,8 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .iwt .ph img{width:100%;height:100%;object-fit:cover}
 .iwt .tx{display:flex;flex-direction:column;justify-content:center;padding:60px 84px;gap:20px;align-items:flex-start}
 .iwt .tx .cap{font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink-soft);margin-bottom:-14px}
-.iwt .tx h2{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.15}
-.iwt .tx p{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:52ch}
+.iwt .tx h2{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.15;overflow-wrap:anywhere;hyphens:auto}
+.iwt .tx p{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:min(52ch,100%)}
 .iwt .tx p b{color:var(--ink);font-weight:600}
 .iwt .tx p u{text-decoration:none;color:var(--ink);font-weight:600}
 .iwt .tx p.iwt-tail{color:var(--ink);font-size:16px;margin-top:-6px}
@@ -137,6 +140,7 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 /* ---------- footer ---------- */
 .footer{background:var(--ink);color:var(--taupe);margin-top:104px;padding:64px var(--pagepad) 0}
 .footer .cols{display:grid;grid-template-columns:1.3fr .8fr .8fr 1.1fr;gap:48px;max-width:1320px;margin:0 auto}
+.footer .col,.footer .col *{min-width:0}
 .footer .logo-img{height:32px;width:auto;filter:brightness(0) invert(1);margin-bottom:18px}
 .footer p{font-size:14px;line-height:1.7}
 .footer .contact a{transition:color .2s ease}
@@ -432,10 +436,10 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .lovedrow .avs{display:inline-flex}
 .lovedrow .avs img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);background:var(--cream)}
 .lovedrow .avs img+img{margin-left:-9px}
-.lovedrow .lt{font-size:13px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.lovedrow .lt{font-size:13px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:5px;white-space:normal;flex-wrap:wrap;min-width:0}
 .lovedrow .lt b{color:var(--ink);font-weight:600}
 .lovedrow .hrt{width:15px;height:15px;fill:var(--berry);flex:none}
-.ratrow{display:inline-flex;align-items:center;gap:9px;font-size:16px;color:var(--ink);margin-bottom:12px}
+.ratrow{display:inline-flex;align-items:center;flex-wrap:wrap;gap:9px;font-size:16px;color:var(--ink);margin-bottom:12px;max-width:100%}
 .ratrow .tp-svg{width:110px;height:22px;display:block}
 .ratrow:hover .rt{text-decoration:underline;text-underline-offset:3px}
 .ratrow .dn{font-style:normal;font-size:16px;color:var(--ink-soft)}
@@ -447,8 +451,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .pdpquote .qav{width:46px;height:46px;border-radius:50%;object-fit:cover;flex:none;background:var(--cream)}
 .pdpquote .qbody{flex:1;min-width:0}
 .pdpquote em{font-style:italic;font-size:13px;line-height:1.55;color:var(--ink);display:block}
-.pdpquote cite{display:flex;align-items:center;gap:8px;margin-top:8px;font-style:normal;font-size:13px;font-weight:600;color:var(--ink)}
-.pdpquote .qstars{color:var(--gold);letter-spacing:1px;font-weight:400}
+.pdpquote cite{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:8px;font-style:normal;font-size:13px;font-weight:600;color:var(--ink)}
+.pdpquote .qstars{color:var(--gold);letter-spacing:1px;font-weight:400;flex:0 1 auto;min-width:0}
 /* Single-product upsell (Travel Puff). Opt-out rather than opt-in: the toggle ships on,
    which is the whole point of the block for AOV, so the card reads as already added. */
 .puffmid{flex:1;min-width:0}
@@ -485,7 +489,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .acc-c p b{color:var(--ink);font-weight:600}
 .shrow{display:flex;align-items:flex-start;gap:10px;padding:6px 0}
 .shrow .ssw{width:17px;height:17px;border-radius:50%;border:1px solid rgba(0,0,0,.08);flex:none;margin-top:4px}
-.shrow .sht{flex:1;font-size:14px;line-height:1.7}
+.shrow .sht{flex:1 1 auto;min-width:0;font-size:14px;line-height:1.7}
 /* USP block: tiles on the brand grey, so the rows stop reading as wide empty lines */
 .usp{margin-bottom:4px}
 .usp .acc{border-top:1px solid var(--line)}
@@ -497,8 +501,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* guarantee row (mirrors approved cart pill) */
 /* the copy is one flex item, not a text node plus a <b>: as two items each was being
    squeezed into its own narrow column and broke mid-phrase at 390px */
-.grt{display:flex;align-items:center;gap:7px;background:var(--cream);font-size:13px;font-weight:600;padding:12px 16px;margin:16px 0 18px;border-radius:var(--r-card)}
-.grt-t{flex:1;min-width:0}
+.grt{display:flex;align-items:center;flex-wrap:wrap;gap:7px;background:var(--cream);font-size:13px;font-weight:600;padding:12px 16px;margin:16px 0 18px;border-radius:var(--r-card)}
+.grt-t{flex:1 1 auto;min-width:0}
 .grt svg{width:16px;height:16px;flex:none;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .grt b{font-weight:600;color:var(--berry)}
 /* swatches */
@@ -557,7 +561,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .stockrow .ls.ok{color:#1aa34a}
 .stockrow .ls i{width:8px;height:8px;border-radius:50%;background:currentColor;position:relative;flex:none}
 .stockrow .ls i::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid currentColor;opacity:0;animation:stockpulse 2s ease-out infinite}
-.stockrow .shipto{display:inline-flex;align-items:center;gap:8px;color:var(--ink-soft)}
+.stockrow .shipto{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--ink-soft);min-width:0}
 .stockrow .shipto b{color:var(--ink);font-weight:600}
 .stockrow .flg{width:20px;height:14px;flex:none;display:block}
 @keyframes stockpulse{
@@ -578,7 +582,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* photo left, copy and a full-width Add to Cart on the right — the live arrangement */
 .upcard{display:flex;align-items:center;gap:14px;border-radius:var(--r-card);box-shadow:0 2px 10px rgba(18,18,18,.09);padding:12px 14px;margin-bottom:12px;background:#fff}
 .upcard img{width:112px;height:112px;object-fit:cover;flex:none;background:var(--cream);border-radius:var(--r-card)}
-.upmid{flex:1;min-width:0}
+.upmid{flex:1 1 auto;min-width:0;max-width:100%}
 .upmid b{font-size:16px;font-weight:600;display:block}
 .upmid small{font-size:14px;color:var(--ink-soft);line-height:1.55;display:block;margin:1px 0 3px}
 .uppr{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;font-size:14px}
@@ -615,8 +619,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* ---------- testimonials (Smooche-style slider cards) ---------- */
 /* Testimonials: shorter cards so more of the row fits on one screen, type kept large. */
 .sec-h.statement.lovedh{font-size:34px;font-weight:700;margin-bottom:30px}
-.oval{position:relative;display:inline-block;padding:0 8px;color:var(--berry)}
-.oval svg{position:absolute;left:-12px;top:-9px;width:calc(100% + 24px);height:calc(100% + 20px);fill:none;stroke:var(--berry);stroke-width:2.5;transform:rotate(-2deg);pointer-events:none}
+.oval{position:relative;display:inline-block;padding:0 8px;color:var(--berry);max-width:calc(100% - 16px)}
+.oval svg{position:absolute;left:-8px;top:-9px;width:calc(100% + 16px);height:calc(100% + 20px);fill:none;stroke:var(--berry);stroke-width:2.5;transform:rotate(-2deg);pointer-events:none}
 .twrap{position:relative}
 /* arrows line up with the middle of the card photo, as on the live slider */
 .twrap .lookarrow{top:22%}
@@ -640,9 +644,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* ---------- benefits CTA tail (part of the benefits block, mirrors live) ---------- */
 /* Rating line steps back so the CTA is clearly the loudest thing in the block. */
 .benef-cta{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;margin-top:48px;margin-bottom:-24px}
-.benef-cta .tp-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+.benef-cta .tp-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;max-width:100%}
 .benef-cta .tp-svg{width:108px;height:22px;display:block}
-.benef-cta .tpr{font-size:15px;font-weight:500;color:var(--ink-soft)}
+.benef-cta .tpr{font-size:15px;font-weight:500;color:var(--ink-soft);white-space:normal}
 .benef-cta .btn{font-size:14px;padding:13px 22px;max-width:340px;white-space:normal;line-height:1.35;box-shadow:none}
 .benef-cta .tpc{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
 /* Before / after: headline lives with the copy in the text column (like the live block)
@@ -681,16 +685,17 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .ibar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px;max-width:1180px;margin:96px auto 0;padding:0 var(--pagepad);text-align:center}
 .ib svg{width:38px;height:38px;stroke:var(--ink);stroke-width:1.2;fill:none;stroke-linecap:round;stroke-linejoin:round;margin:0 auto 14px;display:block}
 .ib b{display:block;font-size:17px;font-weight:600;margin-bottom:8px}
-.ib p{font-size:16px;color:var(--ink-soft);line-height:1.65;max-width:34ch;margin:0 auto}
+.ib p{font-size:16px;color:var(--ink-soft);line-height:1.65;max-width:min(34ch,100%);margin:0 auto}
 /* ---------- sticky ATC ---------- */
-.satc{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(18,18,18,.10);display:flex;align-items:center;gap:14px;padding:11px var(--pagepad);z-index:40;transform:translateY(110%);transition:transform .3s ease}
+.satc{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(18,18,18,.10);display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;padding:11px var(--pagepad);padding-bottom:calc(11px + env(safe-area-inset-bottom));z-index:40;transform:translateY(110%);transition:transform .3s ease}
 .satc.show{transform:none}
 .satc .smid{flex:1;min-width:0}
 .satc .smid b{font-size:16px;font-weight:600;display:block}
 .satc .sprice{display:flex;align-items:baseline;gap:8px;font-size:15px;margin-top:2px}
 .satc .sprice .pn{font-weight:600}
 .satc .sprice s{color:var(--berry);font-weight:400}
-.satc .btn{padding:13px 30px;font-size:15px;background:var(--ink);border-color:var(--ink)}
+.satc .btn{padding:13px 30px;font-size:15px;background:var(--ink);border-color:var(--ink);white-space:normal;flex:1 1 auto;min-width:0}
+.satc .btn span,.upbtn span{white-space:normal}
 .satc .btn:hover{background:#333;border-color:#333}
 /* ---------- sale countdown bar (this template only) ---------- */
 /* Countdown bar: brand burgundy from the live site, heavier and larger digits. */
@@ -748,9 +753,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .lovedrow{gap:8px}
   .bslider .lookarrow{width:34px;height:34px}
   .satc{gap:10px;padding:9px var(--pagepad)}
-  .satc .smid{display:flex;align-items:center;gap:8px;min-width:0;flex:0 0 auto}
+  .satc .smid{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;min-width:0;flex:1 1 auto}
   .satc .smid > b{display:none}
-  .satc .sprice{margin-top:0;font-size:14px;gap:5px;white-space:nowrap;flex:none}
+  .satc .sprice{margin-top:0;font-size:14px;gap:5px;white-space:normal;flex:1 1 auto;min-width:0}
   .satc .sprice s{font-size:13px}
   .satc .sprice .usave{font-size:11px;padding:2px 5px;letter-spacing:.03em}
   .satc .btn{padding:12px 14px;font-size:14px;flex:1 1 auto;min-width:0}
@@ -764,9 +769,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .tcard .tph img{object-position:center 14%}
   .twrap .lookarrow{display:none}
   .benef-cta{margin-top:36px;gap:12px}
-  .benef-cta .tp-line{flex-wrap:nowrap}
+  .benef-cta .tp-line{flex-wrap:wrap}
   .benef-cta .tp-svg{width:100px;height:20px}
-  .benef-cta .tpr{font-size:14px;white-space:nowrap}
+  .benef-cta .tpr{font-size:14px;white-space:normal}
   .benef-cta .btn{width:auto;max-width:300px;white-space:normal;font-size:13px;padding:11px 16px;line-height:1.3;box-shadow:none}
   .bslider{margin-top:64px}
   .bsrow{gap:8px}
@@ -809,4 +814,61 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 @media screen and (min-width:750px){
   .acc-c p,.shrow .sht,.swdesc,.bnote,.bun .bn small,.tcard p,.step p,.ib p,.tmore,.bsel{font-size:16px}
   .bun .bp s,.uppr s{font-size:15px}
+}
+
+/* ---------- grid / flex children need a floor of zero ----------
+   A grid or flex item defaults to min-width:auto, which means "never shrink below my
+   content". With a larger system font that turns every long word into a stretched
+   column and pushes the page sideways. Every layout container on the product pages
+   gets the floor here, once, instead of being patched block by block. */
+.iwt > .ph,.iwt > .tx,
+.pdp > .gal,.pdp > .info,
+.ibar > .ib,
+.stockrow > *,
+.shiprow > *,
+.grt > *,
+.bgrid > *,
+.cmpwrap > *,
+.recgrid > *,
+.bun > *,
+.upcard > *,
+.gcard > *,
+.satc > *,
+.step > *,
+.resgrid > *,
+.rcards .rcard > *{min-width:0}
+/* rows that carry a price or a rating must be free to drop onto a second line */
+.gpr,.uppr,.puffpr,.stockrow,.shiprow,.pricerow,.tname,.satc .sprice{flex-wrap:wrap}
+
+/* ---------- very narrow screens with a very large font ----------
+   360px at 175% leaves roughly the reading width of a business card. Rows that still
+   try to hold a photo and a column of copy side by side stack instead. */
+@media screen and (max-width:380px){
+  /* the hand-drawn oval is absolutely placed and overhangs the word by 12px each side;
+     at a doubled font that overhang is what pushed the page 3px sideways */
+  .oval svg{left:-4px;width:calc(100% + 8px)}
+  .pdpquote .qstars{letter-spacing:0;font-size:.9em}
+  .upcard{grid-template-columns:1fr}
+  .upcard img{grid-column:1;grid-row:1;width:100%;height:auto;aspect-ratio:1/1;max-height:180px;object-fit:cover}
+  .upmid{grid-column:1;grid-row:2}
+  .upbtn{grid-column:1;grid-row:3}
+  .pdpquote{flex-wrap:wrap}
+  .pdpquote .qstars{letter-spacing:0}
+  .gcard{flex-wrap:wrap}
+  .gcard img{width:72px;height:72px}
+}
+
+/* ---------- narrow desktop / tablet with a larger font ----------
+   Between 750 and 950px the desktop header is still in use, and at 130% text the menu,
+   logo and icons stop fitting on one line. Nothing is hidden, the row just tightens. */
+@media screen and (min-width:750px) and (max-width:950px){
+  :root{--pagepad:26px}
+  .head{gap:14px}
+  .nav{gap:20px;min-width:0}
+  .nav.rgt{gap:16px}
+  .nav,.nav.rgt>a{font-size:15px}
+  .icons{gap:14px}
+  .logo img{height:34px}
+  .mm-tiles{gap:16px}
+  .mm-tile{width:auto;flex:1 1 0;min-width:0}
 }

@@ -114,6 +114,26 @@ function cartToggle (open) {
     });
   });
 
+  /* Swipe the photo itself. Until now the only way to change the image was the arrows,
+     which is not what a thumb expects on a phone. Horizontal intent only: if the finger
+     is travelling more vertically, it is a page scroll and we stay out of the way. */
+  var gmain = document.querySelector('.gmain');
+  if (gmain && gp && gn) {
+    var sx = 0, sy = 0, tracking = false;
+    gmain.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1) { tracking = false; return; }
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY; tracking = true;
+    }, { passive: true });
+    gmain.addEventListener('touchend', function (e) {
+      if (!tracking) return;
+      tracking = false;
+      var t = e.changedTouches[0];
+      var dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+      show(dx < 0 ? current + 1 : current - 1);
+    }, { passive: true });
+  }
+
   /* accordions (USP + bottom tabs): slide open/closed instead of snapping. The panel is
      measured on each toggle, so copy length never has to be guessed, and once open the
      height is released to none so reflow (font swap, orientation change) still fits. */

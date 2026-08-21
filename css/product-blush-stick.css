@@ -37,7 +37,7 @@
 .shph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
 .shcard:hover .shph img{transform:scale(1.045)}
 .shcard figcaption{display:flex;flex-direction:column;gap:3px;margin-top:12px}
-.shname{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1.3}
+.shname{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1.3}
 .shname i{width:14px;height:14px;border-radius:50%;flex:none;border:1px solid rgba(0,0,0,.08)}
 .shdesc{font-size:15px;color:var(--ink-soft);line-height:1.5}
 .shades .benef-cta{margin-top:46px;margin-bottom:0}
@@ -66,7 +66,9 @@
 /* ---------- ingredients block ----------
    Photo right, copy left (live layout), on the brand sand fill. */
 .iwt.ingr{background:#e3dbd2}
-.iwt.ingr .tx p b{display:block;margin-bottom:2px}
+.iwt.ingr .tx p b{display:block;margin-bottom:1px;line-height:1.35}
+.iwt.ingr .tx p{margin-bottom:0}
+.iwt.ingr .tx{gap:14px}
 .iwt-badge{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:-8px}
 
 /* ---------- consumer study results ---------- */
@@ -79,10 +81,10 @@
 /* the number is the element that has to land first, so it carries the weight */
 .resnum{flex:none;width:104px;height:104px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;background:var(--paper)}
 .resnum .ringsvg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
-.resnum .ringbg{fill:none;stroke:rgba(193,178,160,.35);stroke-width:4}
+.resnum .ringbg{fill:none;stroke:rgba(193,178,160,.28);stroke-width:2.5}
 /* stroke-dasharray is set per number, so 94% stops at 94% of the circle */
-.resnum .ringfg{fill:none;stroke:var(--taupe);stroke-width:4;stroke-linecap:round}
-.resnum i{font-style:normal;font-size:26px;font-weight:700;letter-spacing:-.01em;position:relative}
+.resnum .ringfg{fill:none;stroke:var(--taupe);stroke-width:2.5;stroke-linecap:round}
+.resnum i{font-style:normal;font-size:23px;font-weight:600;letter-spacing:-.01em;color:var(--ink);position:relative}
 .resrow p{font-size:16px;color:var(--ink-soft);line-height:1.6;max-width:min(34ch,100%)}
 .rescap{font-size:14px;color:var(--ink-soft);margin-top:-8px}
 
@@ -120,9 +122,10 @@
   .bundtimer{font-size:14px}
 
   /* six portraits do not fit a phone row: swipe with the next card peeking in */
-  .shgrid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
+  .shgrid{display:flex;grid-template-columns:none;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
   .shgrid::-webkit-scrollbar{display:none}
-  .shcard{flex:0 0 62vw;scroll-snap-align:start}
+  /* two shades in view with the third peeking, so it reads as a row you can swipe */
+  .shcard{flex:0 0 42vw;scroll-snap-align:start}
   .shsub{font-size:15px;margin-bottom:26px}
   .shades .eyebrow{font-size:13px}
   .shades .benef-cta{margin-top:32px}

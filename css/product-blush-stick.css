@@ -79,16 +79,18 @@
 .restx{padding:60px 84px;display:flex;flex-direction:column;gap:0;align-items:flex-start}
 .restx .btn{margin-top:24px}
 
-.resrow{display:flex;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid rgba(193,178,160,.4)}
+.resrow{display:flex;align-items:center;gap:18px;padding:15px 0;border-bottom:1px solid rgba(193,178,160,.32)}
 .resrow:last-of-type{border-bottom:0}
 /* the number is the element that has to land first, so it carries the weight */
-.resnum{flex:none;width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;background:var(--paper)}
+.resnum{flex:none;width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;background:var(--paper)}
 .resnum .ringsvg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
-.resnum .ringbg{fill:none;stroke:rgba(193,178,160,.38);stroke-width:5}
-/* stroke-dasharray is set per number, so 94% stops at 94% of the circle */
-.resnum .ringfg{fill:none;stroke:var(--taupe);stroke-width:5;stroke-linecap:round}
-.resnum i{font-style:normal;font-size:19px;font-weight:600;letter-spacing:-.01em;color:#a4917c;position:relative}
-.resrow p{font-size:16px;color:var(--ink-soft);line-height:1.6;max-width:min(34ch,100%)}
+/* Two-tone ring in the brand's own warm palette: the full circle sits in cream, the
+   share achieved is drawn over it in sand. Reads as one drawn object rather than a
+   faint outline, and it stays quieter than the burgundy CTA below it. */
+.resnum .ringbg{fill:none;stroke:var(--cream);stroke-width:6}
+.resnum .ringfg{fill:none;stroke:var(--sand);stroke-width:6;stroke-linecap:round}
+.resnum i{font-style:normal;font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--ink);position:relative}
+.resrow p{font-size:16px;color:var(--ink-soft);line-height:1.55;max-width:min(34ch,100%)}
 .rescap{font-size:14px;color:var(--ink-soft);margin-top:14px}
 
 /* ---------- how to use ----------
@@ -142,8 +144,8 @@
   .resph{aspect-ratio:3/4}
   .restx{padding:30px 20px 36px;gap:0}
   .resrow{gap:14px;padding:11px 0}
-  .resnum{width:64px;height:64px}
-  .resnum i{font-size:16px}
+  .resnum{width:62px;height:62px}
+  .resnum i{font-size:15px}
   .resrow p{font-size:15px}
   .restx .btn{width:100%}
 

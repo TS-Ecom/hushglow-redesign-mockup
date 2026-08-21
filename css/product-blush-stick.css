@@ -76,22 +76,21 @@
 .resgrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1320px;margin:0 auto}
 .resph{aspect-ratio:3/4;overflow:hidden}
 .resph img{width:100%;height:100%;object-fit:cover}
-.restx{padding:60px 84px;display:flex;flex-direction:column;gap:0;align-items:flex-start}
-.restx .btn{margin-top:24px}
+.restx{padding:60px 84px;display:flex;flex-direction:column;gap:0;align-items:stretch}
+.restx .btn{margin-top:22px;padding-left:34px;padding-right:34px;align-self:flex-start}
 
-.resrow{display:flex;align-items:center;gap:18px;padding:15px 0;border-bottom:1px solid rgba(193,178,160,.32)}
-.resrow:last-of-type{border-bottom:0}
+.resrow{display:flex;align-items:center;gap:20px;padding:17px 0;border-bottom:1px solid rgba(18,18,18,.10)}
+.resrow:first-of-type{border-top:1px solid rgba(18,18,18,.10)}
 /* the number is the element that has to land first, so it carries the weight */
-.resnum{flex:none;width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;background:var(--paper)}
+.resnum{flex:none;width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative}
 .resnum .ringsvg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
-/* Two-tone ring in the brand's own warm palette: the full circle sits in cream, the
-   share achieved is drawn over it in sand. Reads as one drawn object rather than a
-   faint outline, and it stays quieter than the burgundy CTA below it. */
-.resnum .ringbg{fill:none;stroke:var(--cream);stroke-width:6}
-.resnum .ringfg{fill:none;stroke:var(--sand);stroke-width:6;stroke-linecap:round}
-.resnum i{font-style:normal;font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--ink);position:relative}
-.resrow p{font-size:16px;color:var(--ink-soft);line-height:1.55;max-width:min(34ch,100%)}
-.rescap{font-size:14px;color:var(--ink-soft);margin-top:14px}
+/* Single taupe arc drawn straight on the section fill, exactly as the live page does
+   it: no track behind it, so the missing share reads as an open gap. Thick enough to
+   register at a glance, and quieter than the burgundy CTA below. */
+.resnum .ringfg{fill:none;stroke:var(--taupe);stroke-width:10;stroke-linecap:round}
+.resnum i{font-style:normal;font-size:21px;font-weight:600;letter-spacing:-.02em;color:var(--taupe);position:relative}
+.resrow p{font-size:17px;color:var(--ink);line-height:1.5;max-width:min(34ch,100%)}
+.rescap{font-size:14px;color:var(--ink-soft);margin-top:16px}
 
 /* ---------- how to use ----------
    Four steps on this product, not three, so the row keeps them on one line. */
@@ -140,14 +139,15 @@
   .rcards .rcard p{font-size:15px}
 
   .results{margin-top:40px}
-  .resgrid{grid-template-columns:1fr}
+  .resgrid{grid-template-columns:1fr;padding:0 var(--pagepad)}
   .resph{aspect-ratio:3/4}
-  .restx{padding:30px 20px 36px;gap:0}
-  .resrow{gap:14px;padding:11px 0}
-  .resnum{width:62px;height:62px}
-  .resnum i{font-size:15px}
-  .resrow p{font-size:15px}
-  .restx .btn{width:100%}
+  /* the grid carries the page padding here, so the photo lines up with the rows below it */
+  .restx{padding:15px 0 34px;gap:0}
+  .resrow{gap:18px;padding:13px 0}
+  .resnum{width:68px;height:68px}
+  .resnum i{font-size:18px}
+  .resrow p{font-size:16px}
+  .restx .btn{align-self:center}
 
   .faq .acc-t{font-size:15px;padding:17px 0}
   .faq .acc-c p{font-size:15px}

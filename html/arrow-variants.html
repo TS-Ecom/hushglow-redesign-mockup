@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HUSH GLOW — slider arrow options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Self-contained on purpose: the page has to be judged on the arrows alone, without
+     the site's own styles leaking in. -->
+<style>
+  :root{
+    --paper:#fff; --cream:#f1e9de; --sand:#dbcfbc; --taupe:#c1b2a0;
+    --ink:#121212; --ink-soft:#5c5c5c; --berry:#862b28; --berry-deep:#5b1a1d; --line:#e6e6e6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Poppins',-apple-system,sans-serif;background:#fafafa;color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  header{padding:34px 30px 10px;max-width:1280px;margin:0 auto}
+  h1{font-size:22px;font-weight:600;letter-spacing:.01em}
+  .lede{color:var(--ink-soft);font-size:15px;margin-top:8px;max-width:74ch}
+  .controls{display:flex;gap:10px;align-items:center;margin-top:18px;flex-wrap:wrap}
+  .controls button{font:inherit;font-size:14px;font-weight:600;background:#fff;border:1.5px solid var(--line);padding:8px 16px;cursor:pointer;transition:border-color .15s ease,background .15s ease}
+  .controls button.on{border-color:var(--ink);background:var(--ink);color:#fff}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:26px;padding:26px 30px 70px;max-width:1280px;margin:0 auto}
+  .opt{background:#fff;border:1px solid var(--line)}
+  .shot{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--cream)}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block}
+  .cap{padding:14px 16px 16px}
+  .cap b{display:block;font-size:15px;font-weight:600}
+  .cap b i{font-style:normal;color:var(--ink-soft);font-weight:500}
+  .cap p{font-size:13.5px;color:var(--ink-soft);line-height:1.5;margin-top:4px}
+
+  /* shared geometry: every option is the same size and position, so the comparison is
+     about the treatment and nothing else */
+  .a{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;display:flex;
+     align-items:center;justify-content:center;cursor:pointer;z-index:2;
+     transition:background .2s ease,border-color .2s ease,opacity .2s ease,box-shadow .2s ease}
+  .a.l{left:14px} .a.r{right:14px}
+  .a svg{width:17px;height:17px;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;display:block}
+
+  /* 1 — current: dark glass */
+  .v1 .a{border-radius:50%;background:rgba(18,18,18,.34);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.34);box-shadow:0 6px 18px rgba(18,18,18,.18)}
+  .v1 .a svg{stroke:#fff}
+
+  /* 2 — light glass */
+  .v2 .a{border-radius:50%;background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%);border:1px solid rgba(255,255,255,.75);box-shadow:0 2px 12px rgba(18,18,18,.10)}
+  .v2 .a svg{stroke:var(--ink);stroke-width:1.5}
+
+  /* 3 — bare chevron */
+  .v3 .a{background:none;border:0;filter:drop-shadow(0 1px 4px rgba(18,18,18,.45))}
+  .v3 .a svg{stroke:#fff;stroke-width:1.4;width:22px;height:22px}
+
+  /* 4 — hairline ring */
+  .v4 .a{border-radius:50%;background:rgba(18,18,18,.10);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.85)}
+  .v4 .a svg{stroke:#fff;stroke-width:1.4}
+
+  /* 5 — paper square */
+  .v5 .a{border-radius:0;width:40px;height:52px;background:rgba(255,255,255,.92);border:0;box-shadow:0 2px 10px rgba(18,18,18,.12)}
+  .v5 .a.l{left:0} .v5 .a.r{right:0}
+  .v5 .a svg{stroke:var(--ink);stroke-width:1.5}
+
+  /* 6 — cream disc */
+  .v6 .a{border-radius:50%;background:var(--cream);border:0;box-shadow:0 3px 12px rgba(18,18,18,.16)}
+  .v6 .a svg{stroke:var(--berry-deep);stroke-width:1.7}
+
+  /* hover states, desktop only */
+  @media (hover:hover){
+    .v1 .a:hover{background:rgba(18,18,18,.6)}
+    .v2 .a:hover{background:rgba(255,255,255,.9)}
+    .v3 .a:hover{opacity:.72}
+    .v4 .a:hover{background:rgba(18,18,18,.24)}
+    .v5 .a:hover{background:#fff}
+    .v6 .a:hover{background:var(--sand)}
+  }
+
+  @media screen and (max-width:749px){
+    header{padding:24px 18px 6px}
+    .grid{padding:18px 18px 60px;gap:18px;grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Slider arrows — options</h1>
+  <p class="lede">Same size and position in every option, so only the treatment differs. Switch the photo to see each one over a light and a dark image, which is where these controls usually fall apart.</p>
+  <div class="controls">
+    <button class="on" data-img="light">Light photo</button>
+    <button data-img="dark">Dark photo</button>
+    <button data-img="busy">Busy photo</button>
+  </div>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<script>
+var PHOTOS = {
+  light: 'https://hushglow.com/cdn/shop/files/1_1296_1296_Vintage_Red.webp?width=900',
+  dark:  'https://hushglow.com/cdn/shop/files/19_92979c0f-f719-41c3-91d6-188fa3976575.webp?width=900',
+  busy:  'https://hushglow.com/cdn/shop/files/15_05e9dfaa-8596-461f-9665-d36c6e7e40b4.webp?width=900'
+};
+
+var OPTIONS = [
+  ['v1','Dark glass','current','Blurred dark fill, white glyph. Reads on any photo, but it is the heaviest of the set and sits on the image like a sticker.'],
+  ['v2','Light glass','','Frosted white with a dark glyph. The quietest option on pale packshots, and it matches the way the buy box already looks. Needs a check on dark photos.'],
+  ['v3','Bare chevron','','No button at all, just the mark with a soft shadow. The most expensive-looking and the least intrusive. Also the smallest tap target, which matters for a 60+ audience.'],
+  ['v4','Hairline ring','','Almost invisible fill, one crisp white hairline. Elegant, holds together on busy images, still clearly a control.'],
+  ['v5','Paper edge','','Flush to the edge, square, opaque paper. Reads as part of the layout rather than an overlay, and echoes the 0px radius of the system.'],
+  ['v6','Cream disc','','Brand cream with a burgundy glyph. Warmest and most branded, but it is a solid shape on top of the photo.']
+];
+
+var CHEV = {
+  l: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',
+  r: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>'
+};
+
+function render (key) {
+  document.getElementById('grid').innerHTML = OPTIONS.map(function (o, i) {
+    return '<div class="opt ' + o[0] + '">' +
+      '<div class="shot"><img src="' + PHOTOS[key] + '" alt="">' +
+        '<button class="a l" aria-label="Previous">' + CHEV.l + '</button>' +
+        '<button class="a r" aria-label="Next">' + CHEV.r + '</button>' +
+      '</div>' +
+      '<div class="cap"><b>' + (i + 1) + '. ' + o[1] + (o[2] ? ' <i>· ' + o[2] + '</i>' : '') + '</b><p>' + o[3] + '</p></div>' +
+    '</div>';
+  }).join('');
+}
+
+document.querySelectorAll('.controls button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.querySelectorAll('.controls button').forEach(function (x) { x.classList.remove('on'); });
+    b.classList.add('on');
+    render(b.dataset.img);
+  });
+});
+
+render('light');
+</script>
+</body>
+</html>

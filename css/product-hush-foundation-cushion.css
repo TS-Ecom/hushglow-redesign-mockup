@@ -148,13 +148,13 @@
   .salebar .unit b{font-size:16px}
   .salebar .unit small{font-size:9px;letter-spacing:.05em}
   .salebar>i{font-size:13px;transform:translateY(-6px)}
-  .benef{padding:64px var(--pagepad) 0}
+  .benef{padding:40px var(--pagepad) 0}
   .bsub{font-size:15px;margin:-8px auto 26px}
   .bgrid{display:flex;flex-direction:column;gap:22px}
   .bvid{order:-1;max-width:340px;margin:0 auto}
   .bgrid .bcol:first-child .bitem{text-align:left}
   .bitem{margin-bottom:22px}
-  .cmp{padding:56px var(--pagepad) 0}
+  .cmp{padding:40px var(--pagepad) 0}
   .cmpwrap{grid-template-columns:1fr;gap:22px}
   .cmpwrap .cmpbox{order:1}
   .cmpwrap .cmptx{order:2}

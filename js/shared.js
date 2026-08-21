@@ -327,18 +327,14 @@ function cartToggle (open) {
     });
   });
 
-  /* upsell Add: confirm the tap, then return to idle */
+  /* upsell Add: the item is in the cart, so the button stays on Added.
+     It must not fall back to its idle label: the idle label lives in two spans, a short
+     one for desktop and a long one for mobile, and restoring it as text printed both. */
   document.querySelectorAll('.upbtn').forEach(function (b) {
-    var idle = b.textContent;
-    var timer = null;
     b.addEventListener('click', function () {
+      if (b.classList.contains('added')) return;
       b.classList.add('added');
       b.textContent = 'Added ✓';
-      clearTimeout(timer);
-      timer = setTimeout(function () {
-        b.classList.remove('added');
-        b.textContent = idle;
-      }, 1600);
     });
   });
 

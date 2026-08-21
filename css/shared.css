@@ -279,7 +279,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* ---------- mobile ---------- */
 @media screen and (max-width:749px){
   :root{--pagepad:18px}
-  .section{padding:64px var(--pagepad) 0}
+  /* one mobile rhythm for every section break: 40px. Anything larger reads as a hole
+     on a phone, which is what the client kept flagging. */
+  .section{padding:40px var(--pagepad) 0}
   .sec-h{font-size:24px;margin-bottom:24px}
   /* buttons stay loud through weight and caps, not through size */
   .btn{font-size:14px;padding:13px 22px;line-height:1.35}
@@ -306,14 +308,14 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .pr .save{font-size:12px;padding:3px 7px;letter-spacing:.04em}
   .atc{height:46px;font-size:14px;margin-top:10px}
   .ptag{top:8px;right:8px;font-size:12px;padding:4px 9px}
-  .iwt{grid-template-columns:1fr;margin-top:56px}
+  .iwt{grid-template-columns:1fr;margin-top:40px}
   /* no room to overlap on a phone: stack like the other image-with-text block.
      Needs .iwt.ovl specificity — the base rule sets two columns. */
-  .iwt.ovl{grid-template-columns:1fr;margin:56px auto 0;padding:0}
+  .iwt.ovl{grid-template-columns:1fr;margin:40px auto 0;padding:0}
   .iwt.ovl .ph{height:340px}
-  .iwt.ovl .tx{margin-left:0;padding:30px 20px 36px}
+  .iwt.ovl .tx{margin-left:0;padding:26px 20px 30px}
   .iwt .ph{height:340px;order:0}
-  .iwt .tx{padding:30px 20px 36px;gap:14px}
+  .iwt .tx{padding:26px 20px 30px;gap:14px}
   .iwt .tx h2{font-size:27px}
   .iwt .tx p{font-size:16px}
   .iwt .tx .btn{width:100%}
@@ -326,7 +328,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .grid4.swipe-m{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
   .grid4.swipe-m::-webkit-scrollbar{display:none}
   .grid4.swipe-m .p-card{flex:0 0 220px;scroll-snap-align:start}
-  .footer{margin-top:64px;padding:44px 22px 0}
+  .footer{margin-top:44px;padding:40px 22px 0}
   /* Meroda-style footer: centered brand + real TP stars, accordion groups, framed signup, Follow us */
   .footer .cols{grid-template-columns:1fr;gap:0}
   .footer .col{margin-bottom:0}
@@ -663,6 +665,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* ---------- banner slider (square banners, 2 full cards per view like live) ---------- */
 .bslider{margin-top:96px;position:relative;max-width:1440px;margin-left:auto;margin-right:auto;padding:0 var(--pagepad)}
 .bslider .lookarrow{width:36px;height:36px}
+/* the banners carry copy near their left edge, so the controls sit right at the rim */
+.bslider .lookarrow.prev{left:8px}
+.bslider .lookarrow.next{right:8px}
 
 .bsrow{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .bsrow::-webkit-scrollbar{display:none}
@@ -741,7 +746,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .bun .bp b{font-size:17px}
   .bunx{padding-left:0}
   .atcbig{padding:12px 0;font-size:18px;line-height:1.3}
-  .vcell{flex-basis:118px}
+  /* half of the third clip stays in view, so the row reads as scrollable rather than
+     as exactly three videos (client note: "чтобы было видно, что еще есть видосы") */
+  .vcell{flex:0 0 38%;width:38%}
   .vplay{width:30px;height:30px}
   .uptabs{gap:16px}
   .uptabs b{font-size:14px;letter-spacing:.03em}
@@ -777,7 +784,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .pi{font-size:13px;gap:8px;letter-spacing:.1em}
   .pi svg{width:17px;height:17px}
   /* the rail scrolls, so it also has to leave room for the cards' own shadow */
-  .trow{gap:12px;margin:0 calc(-1 * var(--pagepad));padding:12px var(--pagepad) 40px;scroll-padding-inline:var(--pagepad)}
+  .trow{gap:12px;margin:0 calc(-1 * var(--pagepad)) -14px;padding:12px var(--pagepad) 26px;scroll-padding-inline:var(--pagepad)}
   .tcard{flex:0 0 76vw}
   .tcard .tph{aspect-ratio:1.3/1}
   .tcard .tph img{object-position:center 14%}
@@ -787,11 +794,11 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .benef-cta .tp-svg{width:100px;height:20px}
   .benef-cta .tpr{font-size:14px;white-space:normal}
   .benef-cta .btn{width:auto;max-width:300px;white-space:normal;font-size:13px;padding:11px 16px;line-height:1.3;box-shadow:none}
-  .bslider{margin-top:64px}
+  .bslider{margin-top:40px}
   .bsrow{gap:8px}
   .bsrow img{flex-basis:84%;width:84%}
-  .ibar{grid-template-columns:1fr;gap:30px;margin-top:64px}
-  .steps{padding:56px var(--pagepad) 0}
+  .ibar{grid-template-columns:1fr;gap:30px;margin-top:40px}
+  .steps{padding:40px var(--pagepad) 0}
   .sec-h.statement{font-size:26px;line-height:1.25;margin-bottom:22px}
   .recgrid{display:block}
   .recbanner{aspect-ratio:1/1;margin-bottom:16px}
@@ -799,7 +806,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .recrow{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:2px var(--pagepad) 6px;scroll-padding-inline:var(--pagepad)}
   .recrow::-webkit-scrollbar{display:none}
   .recrow .p-card{flex:0 0 62vw;scroll-snap-align:start}
-  .stepgrid{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:12px var(--pagepad) 40px;scroll-padding-inline:var(--pagepad)}
+  .stepgrid{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad)) -14px;padding:12px var(--pagepad) 26px;scroll-padding-inline:var(--pagepad)}
   .stepgrid::-webkit-scrollbar{display:none}
   .step{flex:0 0 78vw;scroll-snap-align:start}
   .step video{aspect-ratio:3/2.9}

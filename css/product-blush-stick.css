@@ -113,12 +113,9 @@
   /* tight vertical rhythm on a phone: the grey sections were still on desktop padding
      and the blocks between them were 56-64px apart */
   .section.fill,.steps.fill{padding-top:40px;padding-bottom:40px}
-  .bslider{margin-top:40px}
-  .iwt,.iwt.ingr{margin-top:40px}
-  .iwt.ovl{margin-top:40px}
+  .iwt.ingr{margin-top:40px}
   .results{margin-top:40px}
   .section{padding-top:40px}
-  .ibar{margin-top:40px}
 
   .pricerow{gap:10px;margin-bottom:14px}
   .pricerow .pnow{font-size:24px}

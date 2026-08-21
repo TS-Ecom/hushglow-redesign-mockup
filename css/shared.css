@@ -611,7 +611,11 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .vh{font-size:15px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:12px}
 .vrow{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory}
 .vrow::-webkit-scrollbar{display:none}
-.vcell{position:relative;flex:0 0 132px;width:132px;scroll-snap-align:start;cursor:pointer}
+/* Proportional, not a fixed 132px: at a fixed width a wide enough buy-box column fits
+   all five clips and the row stops looking scrollable. A share of the rail always
+   leaves the fifth tile half in view. The floor keeps the tile readable when the
+   column is narrow. */
+.vcell{position:relative;flex:0 0 21%;width:21%;min-width:96px;scroll-snap-align:start;cursor:pointer}
 .vrow video{width:100%;min-width:0;aspect-ratio:9/16;object-fit:cover;background:var(--cream);border-radius:var(--radius);display:block}
 /* play badge so it reads as a video, not a still */
 .vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);box-shadow:0 2px 8px rgba(18,18,18,.25);pointer-events:none;transition:opacity .2s ease}

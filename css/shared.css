@@ -702,7 +702,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .satc .sprice{display:flex;align-items:baseline;gap:8px;font-size:15px;margin-top:2px}
 .satc .sprice .pn{font-weight:600}
 .satc .sprice s{color:var(--berry);font-weight:400}
-.satc .btn{padding:13px 30px;font-size:15px;background:var(--ink);border-color:var(--ink);white-space:normal;flex:1 1 auto;min-width:0}
+.satc .btn{padding:13px 30px;font-size:15px;background:var(--ink);border-color:var(--ink);white-space:normal;flex:0 1 auto;min-width:0}
 .satc .btn span,.upbtn span{white-space:normal}
 .satc .btn:hover{background:#333;border-color:#333}
 /* ---------- sale countdown bar (this template only) ---------- */
@@ -761,15 +761,17 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .lovedrow .avs img+img{margin-left:-7px}
   .lovedrow{gap:8px}
   .bslider .lookarrow{width:34px;height:34px}
-  .satc{gap:10px;padding:9px var(--pagepad)}
-  .satc .smid{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;min-width:0;flex:1 1 auto}
-  /* live theme keeps the product name in the sticky bar, so it does not read as an
-     anonymous price with a button */
-  .satc .smid > b{display:block;font-size:13px;line-height:1.25;flex:1 0 100%;margin-bottom:1px}
-  .satc .sprice{margin-top:0;font-size:14px;gap:5px;white-space:normal;flex:1 1 auto;min-width:0}
-  .satc .sprice s{font-size:13px}
+  .satc{gap:8px 12px;padding:9px var(--pagepad)}
+  /* One row, the way the live bar sits: name over price on the left, button on the right.
+     The name column is elastic with a floor, so the button keeps its natural width and
+     never gets pushed onto a line of its own at normal text sizes. Only genuinely
+     oversized text (system font scaling) makes the row wrap. */
+  .satc .smid{display:block;flex:1 1 0;min-width:112px}
+  .satc .smid > b{display:block;font-size:14px;line-height:1.25;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .satc .sprice{margin-top:0;font-size:15px;gap:5px;min-width:0}
+  .satc .sprice s{font-size:13.5px}
   .satc .sprice .usave{font-size:11px;padding:2px 5px;letter-spacing:.03em}
-  .satc .btn{padding:12px 14px;font-size:14px;flex:1 1 auto;min-width:0}
+  .satc .btn{padding:13px 20px;font-size:14px;flex:0 1 auto;min-width:0}
   .pstrip{margin-top:32px;padding:9px 0;margin-bottom:0}
   .pstrip .half{gap:36px;padding-right:36px;animation-duration:24s}
   .pi{font-size:13px;gap:8px;letter-spacing:.1em}
@@ -894,6 +896,13 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
    row. Rather than let the structure change, the type and the swatches step down a
    size here, which buys back the room. */
 @media screen and (max-width:389px){
+  /* the sticky bar has the least room to give: shave the price row so it stays one line */
+  .satc .smid > b{font-size:13px}
+  .satc .sprice{font-size:14px;gap:4px}
+  .satc .sprice s{font-size:12.5px}
+  .satc .sprice .usave{font-size:10px;padding:2px 4px}
+  .satc .btn{padding:13px 15px;font-size:13.5px}
+
   .ratrow{font-size:13px}
   .ratrow .tp-svg{width:86px;height:17px}
   .ratrow .dn{font-size:13px}

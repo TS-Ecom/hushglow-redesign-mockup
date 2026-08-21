@@ -119,11 +119,11 @@
 /* ---------- sale countdown bar (this template only) ---------- */
 /* Countdown bar: brand burgundy from the live site, heavier and larger digits. */
 .salebar{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px 18px;background:var(--berry-deep);color:#fff;padding:9px 16px}
-.salebar .sl{font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.salebar .sl{font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .salebar .unit{display:flex;flex-direction:column;align-items:center;line-height:1.1}
-.salebar .unit b{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.salebar .unit b{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
 .salebar .unit small{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
-.salebar>i{font-style:normal;font-size:20px;font-weight:700;opacity:.8;transform:translateY(-8px)}
+.salebar>i{font-style:normal;font-size:17px;font-weight:700;opacity:.8;transform:translateY(-7px)}
 /* ---------- payment icons in the buy box (muted) ---------- */
 /* ---------- section reveal ----------
    Opt-in from JS: without it (or with reduced motion) every section is simply visible.
@@ -143,13 +143,11 @@
   .subp{grid-column:3;grid-row:1;text-align:right;line-height:1.25}
   .subp s{font-size:13px}
   .subp b{font-size:16px}
-  .salebar{gap:5px 11px;padding:8px 12px}
-  /* once the units no longer fit beside it, the label takes its own line */
-  .salebar .sl{flex:1 0 100%;text-align:center}
-  .salebar .sl{font-size:14px;letter-spacing:.05em}
-  .salebar .unit b{font-size:19px}
-  .salebar .unit small{font-size:10px}
-  .salebar>i{font-size:17px;transform:translateY(-7px)}
+  .salebar{gap:4px 10px;padding:6px 10px}
+  .salebar .sl{font-size:12px;letter-spacing:.04em;line-height:1.2}
+  .salebar .unit b{font-size:16px}
+  .salebar .unit small{font-size:9px;letter-spacing:.05em}
+  .salebar>i{font-size:13px;transform:translateY(-6px)}
   .benef{padding:64px var(--pagepad) 0}
   .bsub{font-size:15px;margin:-8px auto 26px}
   .bgrid{display:flex;flex-direction:column;gap:22px}
@@ -164,7 +162,7 @@
   .cmptx .q{font-size:16px}
   .cmptx .qa{font-size:15px;margin-bottom:18px}
   .cmptx .btn{width:100%}
-  .salebar .unit small{font-size:11px}
+  .salebar .unit small{font-size:10px}
   .cmpbox .cl{font-size:12px}
   .bsub{font-size:15px}
   .bitem b{font-size:20px}
@@ -187,4 +185,14 @@
   .bgrid{display:flex;flex-direction:column;gap:24px}
   .bvid{order:-1;max-width:360px;margin:0 auto}
   .bitem{margin-bottom:20px}
+}
+
+/* 360-389px: one more notch down, so the bar still holds its single line when the
+   phone's own font setting enlarges it. Below that the wrap stays as a safety net. */
+@media screen and (max-width:389px){
+  .salebar{gap:3px 8px;padding:6px 8px}
+  .salebar .sl{font-size:11px;letter-spacing:.03em}
+  .salebar .unit b{font-size:15px}
+  .salebar .unit small{font-size:8.5px}
+  .salebar>i{font-size:12px;transform:translateY(-5px)}
 }

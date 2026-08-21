@@ -87,12 +87,14 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 
 
 /* ---------- slider arrows (used on home + product pages) ---------- */
-.lookarrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(18,18,18,.34);-webkit-backdrop-filter:blur(8px) saturate(120%);backdrop-filter:blur(8px) saturate(120%);border:1px solid rgba(255,255,255,.34);color:#fff;display:flex;align-items:center;justify-content:center;z-index:3;font-size:17px;box-shadow:0 6px 18px rgba(18,18,18,.18);transition:background .2s ease,color .2s ease,opacity .2s ease,transform .15s ease}
-.lookarrow:hover{background:rgba(18,18,18,.62);color:#fff;border-color:rgba(255,255,255,.5)}
+.lookarrow{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(18,18,18,.38);border:0;color:#fff;display:flex;align-items:center;justify-content:center;z-index:3;transition:background .2s ease,color .2s ease,opacity .2s ease,transform .15s ease}
+.lookarrow:hover{background:rgba(18,18,18,.62);color:#fff}
 .lookarrow:active{transform:translateY(-50%) scale(.94)}
 .lookarrow.prev{left:26px}
 .lookarrow.next{right:26px}
 .lookarrow[disabled]{opacity:.35;pointer-events:none}
+/* the glyph carries the button, so it runs large inside a small disc */
+.lookarrow svg,.galarrow svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;display:block}
 
 
 /* ---------- image with text (used on home + product pages) ---------- */
@@ -422,8 +424,10 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .gmain img{width:100%;height:100%;object-fit:cover}
 /* Glass buttons over the photo: translucent, blurred, thin light rim. Same treatment on
    every slider so the controls read as one family. */
-.galarrow{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(18,18,18,.34);-webkit-backdrop-filter:blur(8px) saturate(120%);backdrop-filter:blur(8px) saturate(120%);border:1px solid rgba(255,255,255,.34);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 6px 18px rgba(18,18,18,.18);transition:background .2s ease,color .2s ease,transform .15s ease;z-index:2}
-.galarrow:hover{background:rgba(18,18,18,.62);border-color:rgba(255,255,255,.5)}
+/* Plain translucent black disc: no blur, no rim, no shadow. Small circle with a large
+   glyph, so the arrow itself carries the control rather than the fill around it. */
+.galarrow{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(18,18,18,.38);border:0;color:#fff;display:flex;align-items:center;justify-content:center;transition:background .2s ease,transform .15s ease;z-index:2}
+.galarrow:hover{background:rgba(18,18,18,.62)}
 .galarrow:active{transform:translateY(-50%) scale(.94)}
 .galarrow.prev{left:16px}
 .galarrow.next{right:16px}
@@ -658,7 +662,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* live layout puts the copy on the left and the before/after on the right */
 /* ---------- banner slider (square banners, 2 full cards per view like live) ---------- */
 .bslider{margin-top:96px;position:relative;max-width:1440px;margin-left:auto;margin-right:auto;padding:0 var(--pagepad)}
-.bslider .lookarrow{width:40px;height:40px;font-size:15px}
+.bslider .lookarrow{width:36px;height:36px}
 
 .bsrow{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .bsrow::-webkit-scrollbar{display:none}
@@ -725,7 +729,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .gmain{aspect-ratio:1/1}
   .thumbs{padding:0 var(--pagepad)}
   .thumbs img{width:62px;height:62px}
-  .galarrow{width:36px;height:36px}
+  .galarrow{width:34px;height:34px}
+  .lookarrow svg,.galarrow svg{width:19px;height:19px}
   .info{max-width:none;padding:0 var(--pagepad);margin-top:-6px}
   .info h1{font-size:22px;margin-bottom:12px}
   .badge{font-size:12px;padding:7px 12px}

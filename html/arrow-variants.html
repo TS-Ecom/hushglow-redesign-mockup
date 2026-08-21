@@ -41,8 +41,8 @@
   .a svg{width:17px;height:17px;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;display:block}
 
   /* 1 — current: dark glass */
-  .v1 .a{border-radius:50%;background:rgba(18,18,18,.34);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.34);box-shadow:0 6px 18px rgba(18,18,18,.18)}
-  .v1 .a svg{stroke:#fff}
+  .v1 .a{width:36px;height:36px;border-radius:50%;background:rgba(18,18,18,.38);border:0;box-shadow:none}
+  .v1 .a svg{stroke:#fff;stroke-width:1.8;width:21px;height:21px}
 
   /* 2 — light glass */
   .v2 .a{border-radius:50%;background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%);border:1px solid rgba(255,255,255,.75);box-shadow:0 2px 12px rgba(18,18,18,.10)}
@@ -103,7 +103,7 @@ var PHOTOS = {
 };
 
 var OPTIONS = [
-  ['v1','Dark glass','current','Blurred dark fill, white glyph. Reads on any photo, but it is the heaviest of the set and sits on the image like a sticker.'],
+  ['v1','Dark translucent','chosen','Plain translucent black, no blur and no rim. Smaller disc with a larger glyph, so the mark carries the button instead of the fill.'],
   ['v2','Light glass','','Frosted white with a dark glyph. The quietest option on pale packshots, and it matches the way the buy box already looks. Needs a check on dark photos.'],
   ['v3','Bare chevron','','No button at all, just the mark with a soft shadow. The most expensive-looking and the least intrusive. Also the smallest tap target, which matters for a 60+ audience.'],
   ['v4','Hairline ring','','Almost invisible fill, one crisp white hairline. Elegant, holds together on busy images, still clearly a control.'],

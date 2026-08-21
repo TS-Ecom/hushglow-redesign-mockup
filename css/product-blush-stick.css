@@ -84,9 +84,9 @@
 /* the number is the element that has to land first, so it carries the weight */
 .resnum{flex:none;width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;background:var(--paper)}
 .resnum .ringsvg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
-.resnum .ringbg{fill:none;stroke:rgba(193,178,160,.3);stroke-width:2}
+.resnum .ringbg{fill:none;stroke:rgba(193,178,160,.34);stroke-width:3.4}
 /* stroke-dasharray is set per number, so 94% stops at 94% of the circle */
-.resnum .ringfg{fill:none;stroke:var(--taupe);stroke-width:2;stroke-linecap:round}
+.resnum .ringfg{fill:none;stroke:var(--taupe);stroke-width:3.4;stroke-linecap:round}
 .resnum i{font-style:normal;font-size:19px;font-weight:600;letter-spacing:-.01em;color:#a4917c;position:relative}
 .resrow p{font-size:16px;color:var(--ink-soft);line-height:1.6;max-width:min(34ch,100%)}
 .rescap{font-size:14px;color:var(--ink-soft);margin-top:14px}

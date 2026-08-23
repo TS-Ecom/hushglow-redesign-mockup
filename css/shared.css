@@ -670,6 +670,19 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* Before / after: headline lives with the copy in the text column (like the live block)
    and the whole section is tighter. */
 /* live layout puts the copy on the left and the before/after on the right */
+/* ---------- free-gift threshold block ---------- */
+.giftbox{border-radius:var(--r-card);overflow:hidden;margin-bottom:16px}
+.gribbon{background:var(--cream);color:var(--ink);font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:9px 12px}
+.gribbon em{font-style:normal;font-size:17px;font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+.gcard{display:flex;align-items:center;gap:14px;background:var(--soft);padding:14px;text-align:left}
+.gcard img{width:96px;height:96px;object-fit:cover;flex:none;border-radius:var(--r-card);background:#fff}
+.gmid{flex:1;min-width:0}
+.gmid b{display:block;font-size:17px;font-weight:700}
+.gmid small{display:block;font-size:14px;color:var(--ink-soft);line-height:1.5;margin-top:2px}
+.gpr{display:flex;align-items:center;gap:9px;margin-top:7px}
+.fchip{font-style:normal;background:var(--ink);color:#fff;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-chip)}
+.gcard s{font-size:15px;color:var(--ink-soft)}
+
 /* ---------- buy-box price row ---------- */
 .pricerow .pnow{font-size:26px;font-weight:700;letter-spacing:.01em}
 .pricerow .pbadge{background:var(--berry);color:#fff;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-chip)}
@@ -880,6 +893,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .pricerow .pbadge{font-size:12px;padding:4px 9px}
   .pricerow s{font-size:17px}
   .pricerow .psave{font-size:12px;padding:4px 8px}
+  .gmid small{font-size:16px}
+  .gcard s{font-size:15px}
   .bslider{margin-top:40px}
   .bsrow{gap:8px}
   .bsrow img{flex-basis:84%;width:84%}

@@ -300,13 +300,17 @@ function cartToggle (open) {
     }
   }
 
-  /* testimonials slider arrows */
-  var tr = document.getElementById('tRow');
-  var tp = document.getElementById('tPrev');
-  var tn = document.getElementById('tNext');
-  if (tr && tp && tn) {
+  /* Testimonial rails. Wired per wrapper rather than by id: the concealer template
+     carries two review rails, and the cards are .tcard on one page and .rcard on the
+     others, so the step is measured from whichever card the rail actually holds. */
+  document.querySelectorAll('.twrap').forEach(function (wrap) {
+    var tr = wrap.querySelector('.trow');
+    var tp = wrap.querySelector('.lookarrow.prev');
+    var tn = wrap.querySelector('.lookarrow.next');
+    if (!tr || !tp || !tn) return;
     var tstep = function () {
-      var card = tr.querySelector('.tcard');
+      var card = tr.querySelector('.tcard, .rcard');
+      if (!card) return tr.clientWidth;
       var gap = parseFloat(getComputedStyle(tr).gap) || 0;
       return card.getBoundingClientRect().width + gap;
     };
@@ -319,7 +323,7 @@ function cartToggle (open) {
     tr.addEventListener('scroll', tsync, { passive: true });
     window.addEventListener('resize', tsync);
     tsync();
-  }
+  });
 
   /* Read More expands a clamped testimonial, so every card starts the same height */
   document.querySelectorAll('.tcard .tmore').forEach(function (link) {

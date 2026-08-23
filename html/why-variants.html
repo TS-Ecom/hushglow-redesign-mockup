@@ -1,0 +1,212 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HUSH GLOW — "Why Hush Glow?" block options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Self-contained on purpose: the block has to be judged on its own, with the brand
+     tokens but without the product page's other sections around it.
+
+     All five keep the live construction — copy on the left, table on the right, our
+     column carried by a band that runs behind it. What changes is how that band and
+     the marks are treated. -->
+<style>
+  :root{
+    --paper:#fff; --soft:#f7f7f8; --cream:#f1e9de; --sand:#dbcfbc; --taupe:#c1b2a0;
+    --line:#e6e6e6; --ink:#121212; --ink-soft:#5c5c5c;
+    --berry:#862b28; --berry-deep:#5b1a1d; --gold:#a8823f; --green:#3d9b3d;
+    --r:4px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Poppins',-apple-system,sans-serif;background:#eef0f3;color:var(--ink);
+       font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+  /* ---------- page chrome (not part of any design) ---------- */
+  .top{position:sticky;top:0;z-index:9;background:#fff;border-bottom:1px solid #dfe3e8;padding:22px 30px}
+  .top .in{max-width:1280px;margin:0 auto}
+  h1{font-size:21px;font-weight:600;letter-spacing:.01em}
+  .lede{color:var(--ink-soft);font-size:14.5px;margin-top:6px;max-width:84ch}
+  .ctl{display:flex;gap:9px;align-items:center;margin-top:16px;flex-wrap:wrap}
+  .ctl span{font-size:13px;color:var(--ink-soft);margin-right:2px}
+  .ctl button{font:inherit;font-size:13.5px;font-weight:600;background:#fff;color:var(--ink);
+    border:1.5px solid #d7dbe0;border-radius:var(--r);padding:7px 15px;cursor:pointer;
+    transition:border-color .15s ease,background .15s ease,color .15s ease}
+  .ctl button.on{border-color:var(--ink);background:var(--ink);color:#fff}
+
+  .stack{max-width:1280px;margin:0 auto;padding:30px 30px 90px}
+  .case{margin-bottom:34px}
+  .caseh{display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+  .num{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--berry)}
+  .name{font-size:18px;font-weight:600}
+  .why{font-size:14.5px;color:var(--ink-soft);margin-bottom:14px;max-width:92ch}
+  .frame{background:#fff;border:1px solid #dfe3e8;border-radius:var(--r);overflow:hidden}
+  body.narrow .frame{max-width:390px}
+
+  /* =====================================================================
+     THE SHARED SKELETON — identical in all five, this is the live layout
+     ===================================================================== */
+  .v{background:var(--soft);padding:70px 56px;display:grid;
+     grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  body.narrow .v{grid-template-columns:1fr;gap:28px;padding:34px 18px}
+
+  .say{text-align:center;padding:0 10px}
+  .say h2{font-size:30px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+  body.narrow .say h2{font-size:25px}
+  .say p{font-size:16px;color:var(--ink-soft);line-height:1.65;margin-top:14px}
+  body.narrow .say p{font-size:15px}
+
+  /* the band sits behind the table and overshoots it, exactly as on the live block */
+    /* the overshoot is measured off the live block: a tall head above the table where the
+     wordmark sits, and a short foot below it */
+  .tw{--cw:112px;position:relative;padding:98px 0 30px;display:flex;justify-content:center}
+  body.narrow .tw{--cw:78px;padding:70px 0 22px}
+    /* The band is placed off the column width, not measured in JS: a block that starts
+     hidden reports a zero-width cell, and the band would be sized to nothing. */
+  .band{position:absolute;top:0;bottom:0;width:var(--cw);right:var(--cw);background:var(--sand);
+    border-radius:var(--r);display:flex;justify-content:center;padding-top:26px}
+  body.narrow .band{padding-top:16px}
+  .band b{font-size:21px;font-weight:600;line-height:1.05;letter-spacing:.01em;text-align:center;color:var(--ink)}
+  body.narrow .band b{font-size:13px}
+
+  .tbl{position:relative;display:grid;grid-template-columns:1fr var(--cw) var(--cw);
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--r);width:100%}
+    .tbl > *{display:flex;align-items:center;justify-content:center;padding:16px 10px;
+    border-bottom:1px solid var(--line)}
+  .tbl > .last{border-bottom:0}
+  .lab{font-size:15.5px;font-weight:700;line-height:1.35;text-align:center;padding:16px 14px}
+  body.narrow .lab{font-size:13.5px;padding:14px 8px}
+  .hd{position:absolute;top:-46px;right:0;width:var(--cw);text-align:center;font-size:14px;
+    font-weight:700;line-height:1.25;color:var(--ink)}
+  body.narrow .hd{top:-36px;font-size:11.5px}
+
+  svg.tick,svg.cross{width:20px;height:20px;flex:none;display:block}
+  svg.tick path,svg.cross path{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  svg.tick path{stroke:var(--green)}
+  svg.cross path{stroke:var(--ink)}
+
+  /* --------- 1. band behind, done properly (the live look, fixed) --------- */
+  /* nothing extra: the skeleton above already is option 1 */
+
+  /* --------- 2. ink band --------- */
+  .v2 .band{background:var(--ink)}
+  .v2 .band b{color:var(--paper)}
+  .v2 .us{background:rgba(18,18,18,.04)}
+
+  /* --------- 3. band + tinted companion column --------- */
+  .v3{background:var(--paper)}
+  .v3 .band{background:var(--cream)}
+  .v3 .us{background:rgba(219,207,188,.28)}
+  .v3 .them{background:var(--soft)}
+  .v3 .tbl{border-color:#dcdcdc}
+  .v3 svg.cross path{stroke:#a9a9a9}
+
+  /* --------- 4. no band: the column is a lifted card --------- */
+  .v4{background:var(--cream)}
+  .v4 .band{background:var(--paper);box-shadow:0 14px 34px -18px rgba(18,18,18,.45)}
+  .v4 .band b{color:var(--ink)}
+  .v4 .us{background:transparent}
+  .v4 .tbl{background:transparent;border-color:rgba(18,18,18,.10)}
+  .v4 .them{background:transparent}
+  .v4 svg.cross path{stroke:#b3a99c}
+
+  /* --------- 5. brand marks instead of the stock green --------- */
+  .v5 .band{background:var(--taupe)}
+  .v5 svg.tick path{stroke:var(--berry-deep);stroke-width:2.6}
+  .v5 svg.cross path{stroke:#c2c2c2}
+  .v5 .lab{text-align:left;justify-content:flex-start;font-weight:600}
+  .v5 .tbl{border-color:#e0e0e0}
+  .v5 .hd{color:var(--ink-soft);font-weight:600;letter-spacing:.02em}
+</style>
+
+<div class="top"><div class="in">
+  <h1>“Why Hush Glow?” — five treatments</h1>
+  <p class="lede">All five keep the construction that is on the store today: the copy on the left,
+    the table on the right, and our column carried by a band that runs behind it and overshoots
+    it top and bottom. What changes is the colour of that band and how the two marks are drawn.
+    Switch to the phone width to see how each one folds.</p>
+  <div class="ctl">
+    <span>Width</span>
+    <button class="on" data-w="wide">Desktop</button>
+    <button data-w="narrow">Phone · 390</button>
+  </div>
+</div></div>
+
+<div class="stack">
+
+  <section class="case">
+    <div class="caseh"><span class="num">Option 1</span><span class="name">The live block, built properly</span></div>
+    <p class="why">Same design as today. The only change is that the band is one shape running the
+      full height behind our column, so it reads as holding the column rather than as a rectangle
+      parked above the table. Both headers sit on the same line.</p>
+    <div class="frame"><div class="v v1" data-v></div></div>
+  </section>
+
+  <section class="case">
+    <div class="caseh"><span class="num">Option 2</span><span class="name">Ink band</span></div>
+    <p class="why">Same geometry, band in the brand’s black with the wordmark reversed out and the
+      ticks in sand. The beige band currently sits very close to the section fill, so the column
+      barely reads as ours; black makes the ownership unmistakable.</p>
+    <div class="frame"><div class="v v2" data-v></div></div>
+  </section>
+
+  <section class="case">
+    <div class="caseh"><span class="num">Option 3</span><span class="name">Band plus a tinted pair</span></div>
+    <p class="why">On paper rather than grey, with a cream band and both columns lightly tinted —
+      ours warm, theirs cool. The two read as a pair being compared instead of one column with a
+      decoration behind it.</p>
+    <div class="frame"><div class="v v3" data-v></div></div>
+  </section>
+
+  <section class="case">
+    <div class="caseh"><span class="num">Option 4</span><span class="name">Lifted card, no band</span></div>
+    <p class="why">The whole section moves onto cream and our column becomes a white card that
+      lifts off it, wordmark included. Nothing is tinted, the shadow does the work — the quietest
+      of the five and the most in line with the rest of the page.</p>
+    <div class="frame"><div class="v v4" data-v></div></div>
+  </section>
+
+  <section class="case">
+    <div class="caseh"><span class="num">Option 5</span><span class="name">Brand marks, left-aligned rows</span></div>
+    <p class="why">Live geometry kept, but the stock green tick and hard black cross are replaced by
+      a burgundy tick and a soft grey cross, and the claims are set flush left instead of centred so
+      the eye runs down them. The smallest change of the five, the biggest gain in polish.</p>
+    <div class="frame"><div class="v v5" data-v></div></div>
+  </section>
+
+</div>
+
+<script>
+  /* one source of markup for all five, so the only difference between them is CSS */
+  var ROWS = ['Built-In Blending Brush', 'Won’t Crease Into Fine Lines',
+              'Hydrates While It Conceals', 'Made For Mature Skin'];
+  var TICK = '<svg class="tick" viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>';
+  var CROSS = '<svg class="cross" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
+  document.querySelectorAll('[data-v]').forEach(function (v) {
+    var rows = ROWS.map(function (t, i) {
+      var last = i === ROWS.length - 1 ? ' last' : '';
+      return '<div class="lab' + last + '">' + t + '</div>' +
+             '<div class="us' + last + '">' + TICK + '</div>' +
+             '<div class="them' + last + '">' + CROSS + '</div>';
+    }).join('');
+    v.innerHTML =
+      '<div class="say">' +
+        '<h2>Why Hush Glow?</h2>' +
+        '<p>Liquid concealers crease and dry out under-eyes by noon. Traditional sticks need a ' +
+        'separate brush. Hush Glow fixes both — hydrating, crease-proof, brush built right in.</p>' +
+      '</div>' +
+      '<div class="tw">' +
+        '<span class="band"><b>HUSH<br>GLOW</b></span>' +
+        '<div class="tbl"><span class="hd">Liquid<br>Concealer</span>' + rows + '</div>' +
+      '</div>';
+  });
+
+  document.querySelectorAll('.ctl button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.ctl button').forEach(function (o) { o.classList.remove('on'); });
+      b.classList.add('on');
+      document.body.classList.toggle('narrow', b.dataset.w === 'narrow');
+    });
+  });
+</script>

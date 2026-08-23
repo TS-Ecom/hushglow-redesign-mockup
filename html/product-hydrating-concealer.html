@@ -7,9 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="../js/viewport-lock.js?v=93"></script>
-<link rel="stylesheet" href="../css/shared.css?v=93">
-<link rel="stylesheet" href="../css/product-hydrating-concealer.css?v=93">
+<script src="../js/viewport-lock.js?v=95"></script>
+<link rel="stylesheet" href="../css/shared.css?v=95">
+<link rel="stylesheet" href="../css/product-hydrating-concealer.css?v=95">
 </head>
 <body>
 
@@ -350,15 +350,30 @@
           <p class="shgal__gtext"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.6-5.7L20 8m0 0V4m0 4h-4M20 12a8 8 0 0 1-13.6 5.7L4 16m0 0v4m0-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Wrong shade? <b>We&#39;ll replace it free.</b></p>
         </div>
       </div>
-      <aside class="shgal__detail">
+      <aside class="shgal__detail" data-shade-detail aria-label="Selected shade">
+        <button type="button" class="shgal__close" data-shade-close aria-label="Close">
+          <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        </button>
         <div class="shgal__photo">
           <img data-shade-photo src="https://hushglow.com/cdn/shop/files/HUSH1183_1.webp?v=1783879856&width=900" alt="01 Soft Porcelain">
           <button type="button" class="shgal__nav shgal__nav--prev" data-shade-prev aria-label="Previous shade">&#8249;</button>
           <button type="button" class="shgal__nav shgal__nav--next" data-shade-next aria-label="Next shade">&#8250;</button>
         </div>
+        <!-- phone only: the sheet carries its own thumb strip, the grid is behind it -->
+        <div class="shgal__strip" data-shade-stripwrap>
+          <button type="button" class="shgal__striph is-selected" data-shade-strip="0" aria-label="01 Soft Porcelain"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/HUSH1183_1.webp?v=1783879856&width=140" alt=""></button>
+          <button type="button" class="shgal__striph" data-shade-strip="1" aria-label="02 Light Apricot"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/HUSH0201_1.webp?v=1783879621&width=140" alt=""></button>
+          <button type="button" class="shgal__striph" data-shade-strip="2" aria-label="03 Natural Nude"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/HUSH1377_1.webp?v=1783879320&width=140" alt=""></button>
+          <button type="button" class="shgal__striph" data-shade-strip="3" aria-label="04 Light Caramel"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/HUSH1716_1.webp?v=1783879463&width=140" alt=""></button>
+          <button type="button" class="shgal__striph" data-shade-strip="4" aria-label="05 Warm Brown"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/HUSH0544_1.webp?v=1783880177&width=140" alt=""></button>
+          <button type="button" class="shgal__striph" data-shade-strip="5" aria-label="06 Cocoa Tan"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/HUSH0642_1.webp?v=1783880385&width=140" alt=""></button>
+          <button type="button" class="shgal__striph" data-shade-strip="6" aria-label="07 Dark Mocha"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/HUSH1129_1.webp?v=1783880551&width=140" alt=""></button>
+          <button type="button" class="shgal__striph" data-shade-strip="7" aria-label="08 Deep Chocolate"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/HUSH1350_1.webp?v=1783880660&width=140" alt=""></button>
+        </div>
         <p class="shgal__name" data-shade-name>01 Soft Porcelain</p>
         <button type="button" class="shgal__atc">Add to bag<i></i><span>$37.99</span></button>
       </aside>
+      <div class="shgal__backdrop" data-shade-backdrop></div>
     </div>
   </div>
 </section>
@@ -695,7 +710,7 @@
   </div>
 </aside>
 
-<script src="../js/shared.js?v=93"></script>
-<script src="../js/product-hydrating-concealer.js?v=93"></script>
+<script src="../js/shared.js?v=95"></script>
+<script src="../js/product-hydrating-concealer.js?v=95"></script>
 </body>
 </html>

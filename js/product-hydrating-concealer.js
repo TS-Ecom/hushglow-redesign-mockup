@@ -33,11 +33,43 @@ document.addEventListener('DOMContentLoaded', function () {
       if (on) t.setAttribute('aria-current', 'true');
       else t.removeAttribute('aria-current');
     });
+    gal.querySelectorAll('[data-shade-strip]').forEach((t, n) => {
+      t.classList.toggle('is-selected', n === current);
+      if (n === current) t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    });
   }
 
-  thumbs.forEach((t, i) => t.addEventListener('click', () => select(i)));
+  const strip = [...gal.querySelectorAll('[data-shade-strip]')];
+  const detail = gal.querySelector('[data-shade-detail]');
+  const backdrop = gal.querySelector('[data-shade-backdrop]');
+  const phone = () => window.matchMedia('(max-width: 749px)').matches;
+
+  /* On a phone the panel is a sheet: tapping a shade opens it over the grid, the way
+     the live block behaves. On desktop the same panel is simply always in view. */
+  /* The backdrop stays in the DOM and is transparent with pointer-events off when
+     closed, so opening is a single synchronous class change: no waiting on a frame,
+     which a throttled or background tab may not give us. */
+  function openSheet () {
+    if (!phone()) return;
+    detail.classList.add('is-open');
+    backdrop.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSheet () {
+    detail.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  thumbs.forEach((t, i) => t.addEventListener('click', () => { select(i); openSheet(); }));
+  strip.forEach((t, i) => t.addEventListener('click', () => select(i)));
   gal.querySelector('[data-shade-prev]').addEventListener('click', () => select(current - 1));
   gal.querySelector('[data-shade-next]').addEventListener('click', () => select(current + 1));
+  gal.querySelector('[data-shade-close]').addEventListener('click', closeSheet);
+  backdrop.addEventListener('click', closeSheet);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSheet(); });
+  /* a rotation into desktop must not leave the page scroll-locked */
+  window.addEventListener('resize', () => { if (!phone()) closeSheet(); });
 })();
 
 /* ---- Upsell tabs: Often bought with / Save with bundles ---- */

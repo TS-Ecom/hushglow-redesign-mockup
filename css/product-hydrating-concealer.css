@@ -43,6 +43,8 @@
 .shgal__gtext svg{width:17px;height:17px;flex:none;color:var(--gold)}
 .shgal__gtext b{color:var(--gold);font-weight:700}
 .shgal__detail{min-width:0}
+/* sheet furniture is phone-only: on desktop the panel simply sits beside the grid */
+.shgal__close,.shgal__strip,.shgal__backdrop{display:none}
 .shgal__photo{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--cream);border-radius:var(--r-card)}
 .shgal__photo img{width:100%;height:100%;object-fit:cover;display:block}
 .shgal__nav{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border:0;border-radius:50%;background:var(--paper);color:var(--ink);font-size:19px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 6px rgba(0,0,0,.14);transition:background .2s ease}
@@ -60,6 +62,31 @@
   .shgal__layout{grid-template-columns:1fr;gap:22px}
   .shgal__grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .shgal__thumb-label{font-size:10px;letter-spacing:.06em;padding:5px 3px}
+
+  /* The shade panel becomes a sheet, the way the live block behaves on a phone: the
+     grid stays put behind a dimmed backdrop and the panel slides up over it. */
+  .shgal__detail{position:fixed;inset:0;z-index:60;width:100%;height:100dvh;max-height:100dvh;
+    background:var(--paper);border-radius:0;transform:translateY(100%);
+    transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+  .shgal__detail.is-open{transform:none}
+  .shgal__close{display:flex;position:absolute;top:12px;right:12px;z-index:2;width:34px;height:34px;
+    align-items:center;justify-content:center;padding:0;border:0;border-radius:50%;
+    background:rgba(255,255,255,.92);color:var(--ink);box-shadow:0 1px 6px rgba(18,18,18,.2);cursor:pointer}
+  .shgal__close svg{width:14px;height:14px;stroke:currentColor}
+  .shgal__photo{border-radius:0}
+  .shgal__strip{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    padding:12px var(--pagepad) 2px}
+  .shgal__strip::-webkit-scrollbar{display:none}
+  .shgal__striph{flex:0 0 58px;width:58px;aspect-ratio:1/1;padding:0;border:2px solid transparent;
+    border-radius:var(--r-card);overflow:hidden;background:var(--cream);cursor:pointer;scroll-snap-align:start}
+  .shgal__striph.is-selected{border-color:var(--ink)}
+  .shgal__striph img{width:100%;height:100%;object-fit:cover;display:block}
+  .shgal__name{padding:0 var(--pagepad)}
+  .shgal__atc{width:calc(100% - var(--pagepad) * 2);margin:0 var(--pagepad)}
+  .shgal__backdrop{display:block;position:fixed;inset:0;z-index:59;background:rgba(18,18,18,.5);
+    opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.4,0,.2,1)}
+  .shgal__backdrop.is-open{opacity:1;pointer-events:auto}
   .shsub{margin-bottom:26px}
   .shgal__photo{aspect-ratio:1/1}
 }

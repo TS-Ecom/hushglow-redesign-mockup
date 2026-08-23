@@ -39,7 +39,9 @@
 .shgal__thumb.is-selected .shgal__thumb-label{opacity:1}
 .shgal__guarantee{margin-top:10px;background:var(--cream);border-radius:var(--r-card);padding:18px 16px;text-align:center}
 .shgal__gtitle{margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
-.shgal__gtext{margin:0;display:flex;align-items:center;justify-content:center;gap:8px;font-size:16px;color:var(--ink)}
+/* the phrase and the promise are separate flex items, so they must be allowed to move
+   to a second line instead of each being squeezed into a narrow column */
+.shgal__gtext{margin:0;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;font-size:16px;color:var(--ink)}
 .shgal__gtext svg{width:17px;height:17px;flex:none;color:var(--gold)}
 .shgal__gtext b{color:var(--gold);font-weight:700}
 .shgal__detail{min-width:0}
@@ -62,6 +64,8 @@
   .shgal__layout{grid-template-columns:1fr;gap:22px}
   .shgal__grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .shgal__thumb-label{font-size:10px;letter-spacing:.06em;padding:5px 3px}
+  .shgal__guarantee{padding:14px 12px}
+  .shgal__gtext{font-size:15px}
 
   /* The shade panel becomes a sheet, the way the live block behaves on a phone: the
      grid stays put behind a dimmed backdrop and the panel slides up over it. */

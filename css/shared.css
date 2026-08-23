@@ -108,6 +108,8 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .iwt .tx p b{color:var(--ink);font-weight:600}
 .iwt .tx p u{text-decoration:none;color:var(--ink);font-weight:600}
 .iwt .tx p.iwt-tail{color:var(--ink);font-size:16px;margin-top:-6px}
+/* attribution under a quote in this block */
+.iwt .tx p.iwt-auth{color:var(--ink-soft);font-size:15px;margin-top:-6px}
 .iwt.flip .ph{order:2}
 .iwt.flip .tx{order:1}
 /* .ovl: the live "Not Sure About Your Shade" block — inset from the page edges, with the
@@ -487,8 +489,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
    max-height, which is what left an 18px gap), and the open height is whatever the copy
    needs — no measuring, no value to outgrow. Browsers without animatable grid rows simply
    toggle instantly, which is the behaviour we had before. */
-.acc-c{display:grid;grid-template-rows:0fr;padding:0;transition:grid-template-rows .3s cubic-bezier(.4,0,.2,1),opacity .25s ease;opacity:0}
-.acc.open .acc-c{grid-template-rows:1fr;opacity:1}
+.acc-c{display:block;max-height:0;overflow:hidden;padding:0;transition:max-height .3s cubic-bezier(.4,0,.2,1),opacity .25s ease;opacity:0}
+.acc.open .acc-c{max-height:var(--acc-h,900px);opacity:1}
 /* vertical spacing sits on the children, not the wrapper: padding on the wrapper survives
    a zero-height grid row and would leave a gap under every closed panel */
 .acc-in{overflow:hidden;min-height:0}
@@ -626,6 +628,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* ---------- trust ticker (marquee like the live strip, our styling) ---------- */
 /* live ticker: beige band with white type, not a cream band with dark type */
 .pstrip{background:var(--taupe);margin-top:72px;padding:13px 0;overflow:hidden}
+/* deep variant: same strip, the darker brand red the concealer template uses */
+.pstrip.deep{background:var(--berry-deep)}
 .pstrip .ticker{display:flex;width:max-content}
 .pstrip .half{display:flex;align-items:center;gap:64px;padding-right:64px;animation:tickmove 26s linear infinite}
 .pi{display:inline-flex;align-items:center;gap:10px;font-size:15px;line-height:1.2;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#fff;white-space:nowrap}
@@ -666,6 +670,60 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* Before / after: headline lives with the copy in the text column (like the live block)
    and the whole section is tighter. */
 /* live layout puts the copy on the left and the before/after on the right */
+/* ---------- buy-box price row ---------- */
+.pricerow .pnow{font-size:26px;font-weight:700;letter-spacing:.01em}
+.pricerow .pbadge{background:var(--berry);color:#fff;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-chip)}
+/* compare-at stays quieter than the price it is struck against */
+.pricerow s{color:var(--berry);font-weight:400;font-size:19px;text-decoration:line-through}
+.pricerow .psave{background:var(--cream);color:var(--berry-deep);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:var(--r-chip)}
+
+/* ---------- consumer study results ---------- */
+.results{margin-top:96px;background:#f3f3f3}
+.resgrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1320px;margin:0 auto}
+.resph{aspect-ratio:3/4;overflow:hidden}
+.resph img{width:100%;height:100%;object-fit:cover}
+.restx{padding:60px 84px;display:flex;flex-direction:column;gap:0;align-items:stretch}
+.restx .btn{margin-top:22px;padding-left:34px;padding-right:34px;align-self:flex-start}
+
+.resrow{display:flex;align-items:center;gap:20px;padding:17px 0;border-bottom:1px solid rgba(18,18,18,.10)}
+.resrow:first-of-type{border-top:1px solid rgba(18,18,18,.10)}
+/* the number is the element that has to land first, so it carries the weight */
+.resnum{flex:none;width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative}
+.resnum .ringsvg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+/* Single taupe arc drawn straight on the section fill, exactly as the live page does
+   it: no track behind it, so the missing share reads as an open gap. Thick enough to
+   register at a glance, and quieter than the burgundy CTA below. */
+.resnum .ringfg{fill:none;stroke:var(--taupe);stroke-width:10;stroke-linecap:round}
+.resnum i{font-style:normal;font-size:21px;font-weight:600;letter-spacing:-.02em;color:var(--taupe);position:relative}
+.resrow p{font-size:17px;color:var(--ink);line-height:1.5;max-width:min(34ch,100%)}
+.rescap{font-size:14px;color:var(--ink-soft);margin-top:16px}
+/* the concealer template puts a heading above the rows; blush has none */
+.restx > .sec-h{text-align:left;margin-bottom:6px}
+
+/* ---------- before / after slider (foundation + concealer) ---------- */
+/* Headline lives with the copy in the text column, like the live block. */
+/* Before / after: headline lives with the copy in the text column (like the live block)
+   and the whole section is tighter. */
+.cmp{padding:72px var(--pagepad) 0}
+/* live layout puts the copy on the left and the before/after on the right */
+.cmpwrap{display:grid;grid-template-columns:1fr 1.1fr;gap:44px;align-items:center;max-width:1080px;margin:0 auto}
+.cmpwrap .cmpbox{order:2}
+.cmpwrap .cmptx{order:1}
+.cmpbox{position:relative;aspect-ratio:1/0.92;overflow:hidden;background:var(--cream);border-radius:var(--radius)}
+.cmpbox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.beforewrap{position:absolute;inset:0;clip-path:inset(0 50% 0 0)}
+.beforewrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cmphandle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;pointer-events:none}
+.cmphandle span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink);box-shadow:0 4px 14px rgba(33,26,23,.2)}
+.cmpbox .cl{position:absolute;top:14px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;background:rgba(255,255,255,.94);padding:5px 11px;border-radius:var(--r-chip)}
+.cmpbox .bl{left:14px}
+.cmpbox .al{right:14px}
+.cmpbox input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.cmptx h2{font-size:30px;font-weight:600;letter-spacing:.02em;line-height:1.2;margin-bottom:14px}
+.cmptx .q{font-size:17px;line-height:1.7;color:var(--ink);margin-bottom:12px}
+.cmptx .qa{display:block;font-size:15px;color:var(--ink-soft);margin-bottom:22px}
+.cmptx .btn{white-space:normal}
+
 /* ---------- banner slider (square banners, 2 full cards per view like live) ---------- */
 .bslider{margin-top:96px;position:relative;max-width:1440px;margin-left:auto;margin-right:auto;padding:0 var(--pagepad)}
 .bslider .lookarrow{width:36px;height:36px}
@@ -798,6 +856,30 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .benef-cta .tp-svg{width:100px;height:20px}
   .benef-cta .tpr{font-size:14px;white-space:normal}
   .benef-cta .btn{width:auto;max-width:300px;white-space:normal;font-size:13px;padding:11px 16px;line-height:1.3;box-shadow:none}
+  .cmp{padding:40px var(--pagepad) 0}
+  .cmpwrap{grid-template-columns:1fr;gap:22px}
+  .cmpwrap .cmpbox{order:1}
+  .cmpwrap .cmptx{order:2}
+  .cmptx h2{font-size:25px;margin-bottom:10px}
+  .cmptx .q{font-size:16px}
+  .cmptx .qa{font-size:15px;margin-bottom:18px}
+  .cmptx .btn{width:100%}
+  .cmpbox .cl{font-size:12px}
+  .results{margin-top:40px}
+  .resgrid{grid-template-columns:1fr;padding:0 var(--pagepad)}
+  .resph{aspect-ratio:3/4}
+  /* the grid carries the page padding here, so the photo lines up with the rows below it */
+  .restx{padding:15px 0 34px;gap:0}
+  .resrow{gap:18px;padding:13px 0}
+  .resnum{width:68px;height:68px}
+  .resnum i{font-size:18px}
+  .resrow p{font-size:16px}
+  .restx .btn{align-self:center}
+  .pricerow{gap:10px;margin-bottom:14px}
+  .pricerow .pnow{font-size:24px}
+  .pricerow .pbadge{font-size:12px;padding:4px 9px}
+  .pricerow s{font-size:17px}
+  .pricerow .psave{font-size:12px;padding:4px 8px}
   .bslider{margin-top:40px}
   .bsrow{gap:8px}
   .bsrow img{flex-basis:84%;width:84%}

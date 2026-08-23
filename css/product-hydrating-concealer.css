@@ -1,0 +1,216 @@
+/* HushGlow Design — Multi-Effect Blush Stick product page.
+   Only what is unique to this product lives here: the buy-box price row, the mix & match
+   bundle timer, the shade gallery, the review cards, the consumer-study block and the FAQ.
+   Everything else (buy box, gallery, accordions, swatches, bundles, upsells, video row,
+   ticker, steps, banner slider, recommendations, sticky ATC) comes from shared.css. */
+
+/* ---------- price row (live buy box shows price + BESTSELLER badge) ---------- */
+.pricerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+
+/* ---------- mix & match bundles ----------
+   The offer timer sits above the tiers, as the app renders it on the live page. */
+.bundtimer{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;background:var(--berry-deep);color:#fff;font-size:16px;font-weight:700;text-align:center;padding:12px 14px;margin:0 0 12px;border-radius:var(--r-card)}
+.bundtimer .tclock{font-size:15px}
+.bundtimer b{font-variant-numeric:tabular-nums;font-weight:700}
+/* the shade pickers stack one per unit, so three units read as three separate choices */
+.bun .bsel{cursor:pointer}
+.bun .bsel:hover{border-color:var(--ink)}
+
+/* single-pane cross-sell: the live block has one heading, not switchable tabs */
+.uptabs.single b{cursor:default;color:var(--ink);border-bottom-color:transparent}
+
+/* ---------- grey fills, matching the live sections ---------- */
+.section.fill,.steps.fill{background:#f3f3f3}
+.section.fill{padding-top:80px;padding-bottom:80px}
+.steps.fill{padding-top:80px;padding-bottom:80px}
+
+/* ---------- shade gallery ---------- */
+/* ---- Shade gallery (EIGHT SHADES) ---- */
+.shgal .eyebrow{text-align:center;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--berry);margin-bottom:10px}
+.shgal .sec-h{text-transform:uppercase;font-weight:700;letter-spacing:.01em;margin-bottom:14px}
+.shsub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:min(62ch,100%);margin:0 auto 34px}
+.shgal__layout{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:26px;align-items:start;max-width:1320px;margin:0 auto}
+.shgal__main{min-width:0}
+.shgal__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.shgal__thumb{position:relative;display:block;padding:0;margin:0;min-width:0;aspect-ratio:1/1;overflow:hidden;background:var(--cream);border:2px solid transparent;border-radius:var(--r-card);cursor:pointer;font:inherit;color:inherit}
+.shgal__thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.shgal__thumb-label{position:absolute;left:0;right:0;bottom:0;background:var(--paper);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 4px;opacity:0;transition:opacity .2s ease}
+.shgal__thumb.is-selected{border-color:var(--ink)}
+.shgal__thumb.is-selected .shgal__thumb-label{opacity:1}
+.shgal__guarantee{margin-top:10px;background:var(--cream);border-radius:var(--r-card);padding:18px 16px;text-align:center}
+.shgal__gtitle{margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.shgal__gtext{margin:0;display:flex;align-items:center;justify-content:center;gap:8px;font-size:16px;color:var(--ink)}
+.shgal__gtext svg{width:17px;height:17px;flex:none;color:var(--gold)}
+.shgal__gtext b{color:var(--gold);font-weight:700}
+.shgal__detail{min-width:0}
+.shgal__photo{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--cream);border-radius:var(--r-card)}
+.shgal__photo img{width:100%;height:100%;object-fit:cover;display:block}
+.shgal__nav{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border:0;border-radius:50%;background:var(--paper);color:var(--ink);font-size:19px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 6px rgba(0,0,0,.14);transition:background .2s ease}
+.shgal__nav--prev{left:12px}
+.shgal__nav--next{right:12px}
+.shgal__name{margin:14px 0 12px;font-size:17px;font-weight:600;color:var(--ink)}
+.shgal__atc{width:100%;display:flex;align-items:center;justify-content:center;gap:14px;background:var(--ink);color:var(--paper);border:0;border-radius:var(--r-btn);padding:15px 18px;font:inherit;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s ease}
+.shgal__atc i{width:1px;height:14px;background:rgba(255,255,255,.42);display:block}
+@media (hover:hover){
+  .shgal__thumb:hover img{transform:scale(1.045)}
+  .shgal__nav:hover{background:var(--cream)}
+  .shgal__atc:hover{background:#333}
+}
+@media screen and (max-width:749px){
+  .shgal__layout{grid-template-columns:1fr;gap:22px}
+  .shgal__grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .shgal__thumb-label{font-size:10px;letter-spacing:.06em;padding:5px 3px}
+  .shsub{margin-bottom:26px}
+  .shgal__photo{aspect-ratio:1/1}
+}
+
+/* ---------- review cards ----------
+   Rebuilt from the theme's own eg-reviews card: quote mark and Trustpilot stars on one
+   row, then title, text and a small-caps author line. Values measured off the live
+   section, including its 14px radius and lifted shadow. */
+.tpline{text-align:center;font-size:14px;color:var(--ink-soft);margin:-20px 0 36px;display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap}
+.tpline a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-weight:600}
+.tpline .tpstar{width:15px;height:14px;display:block}
+.tpline .tpword{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.rcards .rcard{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;background:var(--paper);border-radius:14px;box-shadow:0 8px 22px -10px rgba(18,18,18,.20);padding:24px 24px 26px;display:flex;flex-direction:column;min-width:0}
+.rtop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.rq{width:28px;height:24px;flex:none;color:rgba(18,18,18,.16)}
+.tpmini{width:107px;height:20px;flex:none;display:block}
+.rcards .rcard b{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:9px}
+.rcards .rcard p{font-size:15px;color:rgba(18,18,18,.82);line-height:1.55;flex:1;margin:0}
+.rcards .rcard cite{font-style:normal;font-size:13px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:rgba(18,18,18,.55);margin-top:22px}
+.rcards .rcard cite i{font-style:normal;margin:0 3px}
+/* arrows sit level with the cards, clear of the copy */
+.revsec .twrap .lookarrow{top:50%}
+.revsec .twrap .lookarrow.prev{left:-22px}
+.revsec .twrap .lookarrow.next{right:-22px}
+
+/* ---------- ingredients block ----------
+   Photo right, copy left (live layout), on the brand sand fill. */
+.iwt.ingr{background:#e3dbd2}
+.iwt.ingr .tx p b{display:block;margin-bottom:1px;line-height:1.35}
+.iwt.ingr .tx p{margin-bottom:0}
+.iwt.ingr .tx{gap:14px}
+.iwt-badge{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:-8px}
+
+/* ---------- consumer study results ---------- */
+
+/* the number is the element that has to land first, so it carries the weight */
+/* Single taupe arc drawn straight on the section fill, exactly as the live page does
+   it: no track behind it, so the missing share reads as an open gap. Thick enough to
+   register at a glance, and quieter than the burgundy CTA below. */
+
+/* ---------- how to use ----------
+   Four steps on this product, not three, so the row keeps them on one line. */
+.steps .stepgrid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1320px}
+.steps .step video{aspect-ratio:1/1}
+.steps .benef-cta{margin-top:44px;margin-bottom:0}
+
+/* ---------- how to use: live step tags are burgundy with white caps ---------- */
+.steps .step .stag{background:var(--berry-deep);color:#fff;font-weight:700;letter-spacing:.03em;border:2px solid var(--berry-deep);border-radius:0}
+
+/* ---------- faq ---------- */
+.faq .faqlist{max-width:860px;margin:0 auto}
+.faq .acc:last-child{border-bottom:1px solid var(--line)}
+.faq .acc-t{font-size:16px;text-transform:none;letter-spacing:.01em;font-weight:600;padding:20px 0}
+.faq .acc-c p{font-size:16px}
+
+
+/* ---------- mobile ---------- */
+@media screen and (max-width:749px){
+  /* tight vertical rhythm on a phone: the grey sections were still on desktop padding
+     and the blocks between them were 56-64px apart */
+  .section.fill,.steps.fill{padding-top:40px;padding-bottom:40px}
+  .iwt.ingr{margin-top:40px}
+    .section{padding-top:40px}
+
+  .bundtimer{font-size:14px}
+
+  /* six portraits do not fit a phone row: swipe with the next card peeking in */
+  .shgrid{display:flex;grid-template-columns:none;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
+  .shgrid::-webkit-scrollbar{display:none}
+  /* two shades in view with the third peeking, so it reads as a row you can swipe */
+  .shcard{flex:0 0 42vw;scroll-snap-align:start}
+  .shsub{font-size:15px;margin-bottom:26px}
+  .shades .eyebrow{font-size:13px}
+  .shades .benef-cta{margin-top:32px}
+
+  .rcards .rcard{flex:0 0 78vw;padding:18px 18px 16px}
+  .rcards .rcard b{font-size:16px}
+  .rcards .rcard p{font-size:15px}
+
+        /* the grid carries the page padding here, so the photo lines up with the rows below it */
+            
+  .faq .acc-t{font-size:15px;padding:17px 0}
+  .faq .acc-c p{font-size:15px}
+  .iwt-badge{font-size:13px}
+}
+
+/* type floor: reading copy stays at 16px on desktop */
+@media screen and (min-width:750px){
+  .shdesc,.rcards .rcard p,.faq .acc-c p{font-size:16px}
+}
+
+/* ---- Why Hush Glow table ---- */
+.cmptab__sub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:66ch;margin:0 auto 34px}
+.cmptab__wrap{overflow-x:auto;max-width:900px;margin:0 auto}
+.cmptab__t{width:100%;border-collapse:collapse;font-size:15px}
+.cmptab__t th,.cmptab__t td{padding:15px 12px;text-align:center;border-bottom:1px solid var(--line)}
+.cmptab__t thead th{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.cmptab__t thead .cmptab__us{background:var(--ink);color:var(--paper);border-radius:var(--r-card) var(--r-card) 0 0}
+.cmptab__t tbody th{text-align:left;font-weight:600;color:var(--ink);min-width:210px}
+.cmptab__t tbody tr td:first-of-type{background:var(--cream)}
+.cmp__y span,.cmp__n span{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:13px;font-weight:700}
+.cmp__y span{background:#53af01;color:#fff}
+.cmp__n span{background:#dbdbdb;color:var(--ink)}
+@media screen and (max-width:749px){
+  .cmptab__t tbody th{min-width:150px;font-size:14px}
+  .cmptab__t th,.cmptab__t td{padding:12px 8px}
+}
+
+/* ---- Feel The Difference ---- */
+.iwt.feel .sec-h{text-align:left;margin-bottom:16px}
+.iwp{font-size:17px;line-height:1.7;color:var(--ink);margin:0 0 14px;max-width:54ch}
+.iwauth{font-size:15px;font-weight:600;color:var(--ink-soft);margin:0 0 22px}
+
+/* ---- Upsell tabs ---- */
+.uptabs{display:flex;gap:26px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.uptabs b{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);padding:0 0 10px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.uptabs b.on{color:var(--ink);border-bottom-color:var(--ink)}
+.uppane{display:none}
+.uppane.on{display:block}
+.uppr{display:flex;align-items:center;gap:8px;margin-top:4px}
+.upnow{font-weight:700}
+.upwas{color:var(--berry);text-decoration:line-through;font-size:14px}
+.upsave{background:var(--cream);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:var(--r-chip)}
+
+/* ---- Price row: struck compare-at first, like the live buy box ---- */
+.pricerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+
+
+/* ---- Real results: percentage column wide enough for the numbers ---- */
+
+/* ---- Why Hush Glow: copy left, table right, brand column as a standing band ---- */
+.cmptab__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center}
+.cmptab__copy .sec-h{text-align:center;margin-bottom:16px}
+.cmptab__sub{text-align:center;font-size:16px;line-height:1.7;color:var(--ink-soft);margin:0;max-width:52ch}
+.cmptab__table{position:relative;padding-top:74px}
+.cmptab__band{position:absolute;top:0;bottom:14px;left:calc(50% - 54px);width:108px;background:var(--taupe);display:flex;align-items:flex-start;justify-content:center;padding-top:18px;z-index:0}
+.cmptab__band img{width:74px;height:auto;display:block}
+.cmptab__head{display:grid;grid-template-columns:minmax(0,1fr) 108px minmax(0,140px);align-items:end;margin-bottom:6px;position:relative;z-index:1}
+.cmptab__them-h{font-size:15px;font-weight:700;line-height:1.3;text-align:center;color:var(--ink)}
+.cmptab__rows{position:relative;z-index:1}
+.cmpr{display:grid;grid-template-columns:minmax(0,1fr) 108px minmax(0,140px);align-items:center;background:var(--paper);border:1px solid var(--line);border-bottom:0}
+.cmpr:last-child{border-bottom:1px solid var(--line)}
+.cmpr__b{font-size:16px;font-weight:700;line-height:1.35;padding:16px 18px;text-align:center}
+.cmpr__us{display:flex;align-items:center;justify-content:center;align-self:stretch;background:transparent}
+.cmpr__us svg{width:26px;height:26px}
+.cmpr__them{display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--ink);padding:16px 0}
+@media screen and (max-width:749px){
+  .cmptab__grid{grid-template-columns:1fr;gap:26px}
+  .cmptab__sub{max-width:none}
+  .cmptab__band{left:calc(50% - 42px);width:84px}
+  .cmptab__head,.cmpr{grid-template-columns:minmax(0,1fr) 84px minmax(0,86px)}
+  .cmpr__b{font-size:14px;padding:13px 10px}
+  .cmptab__them-h{font-size:13px}
+}

@@ -138,8 +138,29 @@ function cartToggle (open) {
      measured on each toggle, so copy length never has to be guessed, and once open the
      height is released to none so reflow (font swap, orientation change) still fits. */
   document.querySelectorAll('.acc .acc-t').forEach(function (t) {
-    t.addEventListener('click', function () { t.parentElement.classList.toggle('open'); });
+    t.addEventListener('click', function () {
+      var acc = t.parentElement;
+      var panel = acc.querySelector('.acc-c');
+      /* measured per panel, so copy length never has to be guessed */
+      if (panel) acc.style.setProperty('--acc-h', panel.scrollHeight + 'px');
+      acc.classList.toggle('open');
+    });
   });
+
+  /* before / after slider: the range input covers the whole box, so dragging anywhere
+     over the image moves the seam */
+  var cmpRange = document.getElementById('cmpRange');
+  var cmpBefore = document.getElementById('beforeWrap');
+  var cmpHandle = document.getElementById('cmpHandle');
+  if (cmpRange && cmpBefore && cmpHandle) {
+    var cmpApply = function () {
+      var v = cmpRange.value;
+      cmpBefore.style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
+      cmpHandle.style.left = v + '%';
+    };
+    cmpRange.addEventListener('input', cmpApply);
+    cmpApply();
+  }
 
   /* bundle picker: radio behaviour */
   document.querySelectorAll('.bun').forEach(function (b) {
@@ -190,11 +211,17 @@ function cartToggle (open) {
     brush: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 3.5l6 6L12 18l-6-6z"/><path d="M6 12l-2.6 2.6a2.4 2.4 0 0 0 3.4 3.4L9.4 15.4"/></svg>',
     drop: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5s5.8 6.3 5.8 10.4a5.8 5.8 0 0 1-11.6 0C6.2 9.8 12 3.5 12 3.5z"/></svg>'
   };
-  var psItems = [
-    [psIcons.leaf, 'Cruelty Free'],
-    [psIcons.brush, 'Used by Makeup Artists'],
-    [psIcons.drop, 'Skin Care-Infused']
-  ];
+  /* A page can carry its own line on the strip: the concealer runs three text-only
+     claims, the other products run the brand's three icon claims. */
+  var strip = document.querySelector('.pstrip');
+  var ownItems = strip && strip.dataset.items ? strip.dataset.items.split('|') : null;
+  var psItems = ownItems
+    ? ownItems.map(function (t) { return ['', t.trim()]; })
+    : [
+      [psIcons.leaf, 'Cruelty Free'],
+      [psIcons.brush, 'Used by Makeup Artists'],
+      [psIcons.drop, 'Skin Care-Infused']
+    ];
   ['psHalf1', 'psHalf2'].forEach(function (id) {
     var half = document.getElementById(id);
     if (!half) return;

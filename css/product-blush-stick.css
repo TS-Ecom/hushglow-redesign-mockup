@@ -6,8 +6,6 @@
 
 /* ---------- price row (live buy box shows price + BESTSELLER badge) ---------- */
 .pricerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}
-.pricerow .pnow{font-size:26px;font-weight:700;letter-spacing:.01em}
-.pricerow .pbadge{background:var(--berry);color:#fff;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-chip)}
 
 /* ---------- mix & match bundles ----------
    The offer timer sits above the tiers, as the app renders it on the live page. */
@@ -25,7 +23,6 @@
 .section.fill,.steps.fill{background:#f3f3f3}
 .section.fill{padding-top:80px;padding-bottom:80px}
 .steps.fill{padding-top:80px;padding-bottom:80px}
-.results{background:#f3f3f3}
 
 /* ---------- shade gallery ---------- */
 .shades .eyebrow{text-align:center;font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:10px}
@@ -71,26 +68,6 @@
 .iwt.ingr .tx{gap:14px}
 .iwt-badge{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:-8px}
 
-/* ---------- consumer study results ---------- */
-.results{margin-top:96px;background:#f3f3f3}
-.resgrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1320px;margin:0 auto}
-.resph{aspect-ratio:3/4;overflow:hidden}
-.resph img{width:100%;height:100%;object-fit:cover}
-.restx{padding:60px 84px;display:flex;flex-direction:column;gap:0;align-items:stretch}
-.restx .btn{margin-top:22px;padding-left:34px;padding-right:34px;align-self:flex-start}
-
-.resrow{display:flex;align-items:center;gap:20px;padding:17px 0;border-bottom:1px solid rgba(18,18,18,.10)}
-.resrow:first-of-type{border-top:1px solid rgba(18,18,18,.10)}
-/* the number is the element that has to land first, so it carries the weight */
-.resnum{flex:none;width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative}
-.resnum .ringsvg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
-/* Single taupe arc drawn straight on the section fill, exactly as the live page does
-   it: no track behind it, so the missing share reads as an open gap. Thick enough to
-   register at a glance, and quieter than the burgundy CTA below. */
-.resnum .ringfg{fill:none;stroke:var(--taupe);stroke-width:10;stroke-linecap:round}
-.resnum i{font-style:normal;font-size:21px;font-weight:600;letter-spacing:-.02em;color:var(--taupe);position:relative}
-.resrow p{font-size:17px;color:var(--ink);line-height:1.5;max-width:min(34ch,100%)}
-.rescap{font-size:14px;color:var(--ink-soft);margin-top:16px}
 
 /* ---------- how to use ----------
    Four steps on this product, not three, so the row keeps them on one line. */
@@ -114,12 +91,8 @@
      and the blocks between them were 56-64px apart */
   .section.fill,.steps.fill{padding-top:40px;padding-bottom:40px}
   .iwt.ingr{margin-top:40px}
-  .results{margin-top:40px}
   .section{padding-top:40px}
 
-  .pricerow{gap:10px;margin-bottom:14px}
-  .pricerow .pnow{font-size:24px}
-  .pricerow .pbadge{font-size:12px;padding:4px 9px}
   .bundtimer{font-size:14px}
 
   /* six portraits do not fit a phone row: swipe with the next card peeking in */
@@ -135,16 +108,6 @@
   .rcards .rcard b{font-size:16px}
   .rcards .rcard p{font-size:15px}
 
-  .results{margin-top:40px}
-  .resgrid{grid-template-columns:1fr;padding:0 var(--pagepad)}
-  .resph{aspect-ratio:3/4}
-  /* the grid carries the page padding here, so the photo lines up with the rows below it */
-  .restx{padding:15px 0 34px;gap:0}
-  .resrow{gap:18px;padding:13px 0}
-  .resnum{width:68px;height:68px}
-  .resnum i{font-size:18px}
-  .resrow p{font-size:16px}
-  .restx .btn{align-self:center}
 
   .faq .acc-t{font-size:15px;padding:17px 0}
   .faq .acc-c p{font-size:15px}
@@ -153,5 +116,5 @@
 
 /* type floor: reading copy stays at 16px on desktop */
 @media screen and (min-width:750px){
-  .shdesc,.rcards .rcard p,.resrow p,.rescap,.faq .acc-c p{font-size:16px}
+  .shdesc,.rcards .rcard p,.faq .acc-c p{font-size:16px}
 }

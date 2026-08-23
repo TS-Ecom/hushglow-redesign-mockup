@@ -6,20 +6,6 @@
   var sub = document.querySelector('.subbox');
   if (sub) sub.addEventListener('click', function () { sub.classList.toggle('on'); });
 
-  /* before / after slider */
-  var range = document.getElementById('cmpRange');
-  var beforeWrap = document.getElementById('beforeWrap');
-  var handle = document.getElementById('cmpHandle');
-  if (range && beforeWrap && handle) {
-    var apply = function () {
-      var v = range.value;
-      beforeWrap.style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
-      handle.style.left = v + '%';
-    };
-    range.addEventListener('input', apply);
-    apply();
-  }
-
   /* sale countdown bar: ticks to the end of the day (placeholder logic for the prototype) */
   var cdH = document.getElementById('cdH');
   var cdM = document.getElementById('cdM');

@@ -7,9 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="../js/viewport-lock.js?v=97"></script>
-<link rel="stylesheet" href="../css/shared.css?v=97">
-<link rel="stylesheet" href="../css/product-hydrating-concealer.css?v=97">
+<script src="../js/viewport-lock.js?v=102"></script>
+<link rel="stylesheet" href="../css/shared.css?v=102">
+<link rel="stylesheet" href="../css/product-hydrating-concealer.css?v=102">
 </head>
 <body>
 
@@ -386,28 +386,34 @@
         <p class="cmptab__sub">Liquid concealers crease and dry out under-eyes by noon. Traditional sticks need a separate brush. Hush Glow fixes both, hydrating, crease-proof, brush built right in.</p>
       </div>
       <div class="cmptab__table">
-        <div class="cmptab__band"><img src="https://hushglow.com/cdn/shop/files/hush_glow_logo_1_1.png?width=200" alt="Hush Glow"></div>
-        <div class="cmptab__head"><span></span><span></span><span class="cmptab__them-h">Liquid<br>Concealer</span></div>
+        <!-- the band runs the full height behind our column and overshoots the rows -->
+        <span class="cmptab__band" aria-hidden="true"></span>
+        <!-- both headers live in the same strip, so the logo and the competitor label
+             sit on one line instead of each finding its own height -->
+        <div class="cmptab__heads">
+          <span class="cmptab__h cmptab__h--us"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/hush_glow_logo_1_1.png?width=240" alt="Hush Glow"></span>
+          <span class="cmptab__h">Liquid<br>Concealer</span>
+        </div>
         <div class="cmptab__rows">
           <div class="cmpr">
             <span class="cmpr__b">Built-In Blending Brush</span>
-            <span class="cmpr__us"><svg viewBox="0 0 24 24" aria-label="Yes"><path d="M4 12.5l5.2 5.2L20 7" fill="none" stroke="#53af01" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="cmpr__them">✕</span>
+            <span class="cmpr__us"><svg class="cmpr__tick" viewBox="0 0 24 24" aria-label="Yes"><path d="M4 12.5l5.2 5.2L20 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="cmpr__them"><svg class="cmpr__cross" viewBox="0 0 24 24" aria-label="No"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
           </div>
           <div class="cmpr">
-            <span class="cmpr__b">Won't Crease Into Fine Lines</span>
-            <span class="cmpr__us"><svg viewBox="0 0 24 24" aria-label="Yes"><path d="M4 12.5l5.2 5.2L20 7" fill="none" stroke="#53af01" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="cmpr__them">✕</span>
+            <span class="cmpr__b">Won&rsquo;t Crease Into Fine Lines</span>
+            <span class="cmpr__us"><svg class="cmpr__tick" viewBox="0 0 24 24" aria-label="Yes"><path d="M4 12.5l5.2 5.2L20 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="cmpr__them"><svg class="cmpr__cross" viewBox="0 0 24 24" aria-label="No"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
           </div>
           <div class="cmpr">
             <span class="cmpr__b">Hydrates While It Conceals</span>
-            <span class="cmpr__us"><svg viewBox="0 0 24 24" aria-label="Yes"><path d="M4 12.5l5.2 5.2L20 7" fill="none" stroke="#53af01" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="cmpr__them">✕</span>
+            <span class="cmpr__us"><svg class="cmpr__tick" viewBox="0 0 24 24" aria-label="Yes"><path d="M4 12.5l5.2 5.2L20 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="cmpr__them"><svg class="cmpr__cross" viewBox="0 0 24 24" aria-label="No"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
           </div>
           <div class="cmpr">
             <span class="cmpr__b">Made For Mature Skin</span>
-            <span class="cmpr__us"><svg viewBox="0 0 24 24" aria-label="Yes"><path d="M4 12.5l5.2 5.2L20 7" fill="none" stroke="#53af01" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="cmpr__them">✕</span>
+            <span class="cmpr__us"><svg class="cmpr__tick" viewBox="0 0 24 24" aria-label="Yes"><path d="M4 12.5l5.2 5.2L20 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="cmpr__them"><svg class="cmpr__cross" viewBox="0 0 24 24" aria-label="No"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
           </div>
         </div>
       </div>
@@ -506,7 +512,7 @@
 
 <!-- sticky add to cart -->
 <div class="satc" id="satc">
-  <div class="smid"><b>Hydrating Concealer Stick</b><span class="sprice"><b class="pn">$37.99</b></span></div>
+  <div class="smid"><b>Hydrating Concealer Stick</b><span class="sprice"><b class="pn">$37.99</b><s>$49.99</s><i class="usave">Save 24%</i></span></div>
   <a class="btn btn-primary" id="satcBtn">Add to Cart</a>
 </div>
 
@@ -684,7 +690,7 @@
   </div>
 </aside>
 
-<script src="../js/shared.js?v=97"></script>
-<script src="../js/product-hydrating-concealer.js?v=97"></script>
+<script src="../js/shared.js?v=102"></script>
+<script src="../js/product-hydrating-concealer.js?v=102"></script>
 </body>
 </html>

@@ -849,11 +849,11 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
      never gets pushed onto a line of its own at normal text sizes. Only genuinely
      oversized text (system font scaling) makes the row wrap. */
   .satc .smid{display:block;flex:1 1 0;min-width:112px}
-  .satc .smid > b{display:block;font-size:14px;line-height:1.25;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .satc .smid > b{display:block;font-size:13px;line-height:1.25;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .satc .sprice{margin-top:0;font-size:15px;gap:5px;min-width:0}
   .satc .sprice s{font-size:13.5px}
   .satc .sprice .usave{font-size:11px;padding:2px 5px;letter-spacing:.03em}
-  .satc .btn{padding:13px 20px;font-size:14px;flex:0 1 auto;min-width:0}
+  .satc .btn{padding:13px 16px;font-size:14px;flex:0 1 auto;min-width:0}
   .pstrip{margin-top:32px;padding:9px 0;margin-bottom:0}
   .pstrip .half{gap:36px;padding-right:36px;animation-duration:24s}
   .pi{font-size:13px;gap:8px;letter-spacing:.1em}

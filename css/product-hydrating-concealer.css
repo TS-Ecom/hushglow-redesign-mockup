@@ -34,7 +34,13 @@
 .shgal__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .shgal__thumb{position:relative;display:block;padding:0;margin:0;min-width:0;aspect-ratio:1/1;overflow:hidden;background:var(--cream);border:2px solid transparent;border-radius:var(--r-card);cursor:pointer;font:inherit;color:inherit}
 .shgal__thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
-.shgal__thumb-label{position:absolute;left:0;right:0;bottom:0;background:var(--paper);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 4px;opacity:0;transition:opacity .2s ease}
+/* One line, clipped with an ellipsis when the name is longer than the tile, which is
+   what the live block does. Inset from the tile edges so it reads as a chip on the
+   photo rather than a bar welded to it. */
+.shgal__thumb-label{position:absolute;left:4px;right:4px;bottom:4px;border-radius:2px;
+  background:rgba(255,255,255,.94);color:var(--ink);font-size:11px;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;line-height:1.25;padding:5px 6px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;transition:opacity .2s ease}
 .shgal__thumb.is-selected{border-color:var(--ink)}
 .shgal__thumb.is-selected .shgal__thumb-label{opacity:1}
 .shgal__guarantee{margin-top:10px;background:var(--cream);border-radius:var(--r-card);padding:18px 16px;text-align:center}
@@ -63,7 +69,7 @@
 @media screen and (max-width:749px){
   .shgal__layout{grid-template-columns:1fr;gap:22px}
   .shgal__grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-  .shgal__thumb-label{font-size:10px;letter-spacing:.06em;padding:5px 3px}
+  .shgal__thumb-label{font-size:10px;letter-spacing:.02em;padding:4px 5px;left:3px;right:3px;bottom:3px}
   .shgal__guarantee{padding:14px 12px}
   .shgal__gtext{font-size:15px}
 

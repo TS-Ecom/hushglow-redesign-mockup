@@ -43,10 +43,6 @@
    Rebuilt from the theme's own eg-reviews card: quote mark and Trustpilot stars on one
    row, then title, text and a small-caps author line. Values measured off the live
    section, including its 14px radius and lifted shadow. */
-.tpline{text-align:center;font-size:14px;color:var(--ink-soft);margin:-20px 0 36px;display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap}
-.tpline a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-weight:600}
-.tpline .tpstar{width:15px;height:14px;display:block}
-.tpline .tpword{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
 .rcards .rcard{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;background:var(--paper);border-radius:14px;box-shadow:0 8px 22px -10px rgba(18,18,18,.20);padding:24px 24px 26px;display:flex;flex-direction:column;min-width:0}
 .rtop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
 .rq{width:28px;height:24px;flex:none;color:rgba(18,18,18,.16)}

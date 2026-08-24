@@ -76,16 +76,40 @@ function cartToggle (open) {
    Every block guards on its own elements, so pages that lack a widget simply skip it. */
 (function () {
 
-  /* gallery: thumbnails swap the main image, arrows walk the thumb list */
+  /* Gallery. The markup carries one <img> plus the thumb list; that image is replaced
+     here by a track holding every photo, so changing frame is a slide rather than a src
+     swap. The live theme's media gallery moves the same way, and a still swap reads as
+     broken next to it. Markup is left alone so all product pages get this for free. */
   var main = document.getElementById('galMain');
   var thumbs = Array.prototype.slice.call(document.querySelectorAll('#galThumbs img'));
+  var track = null;
   var current = 0;
+  if (main && thumbs.length) {
+    track = document.createElement('div');
+    track.className = 'gtrack';
+    thumbs.forEach(function (t, i) {
+      var slide = document.createElement('div');
+      slide.className = 'gslide';
+      var im = document.createElement('img');
+      im.src = t.dataset.full;
+      im.alt = i === 0 ? (main.getAttribute('alt') || '') : '';
+      im.decoding = 'async';
+      if (i > 1) im.loading = 'lazy';
+      slide.appendChild(im);
+      track.appendChild(slide);
+    });
+    main.parentNode.replaceChild(track, main);
+  }
   function show(i) {
     if (!thumbs.length) return;
     current = (i + thumbs.length) % thumbs.length;
-    main.src = thumbs[current].dataset.full;
+    if (track) track.style.transform = 'translateX(' + (-current * 100) + '%)';
+    else main.src = thumbs[current].dataset.full;
     thumbs.forEach(function (t, n) { t.classList.toggle('on', n === current); });
+    var on = thumbs[current];
+    if (on && on.scrollIntoView) on.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }
+  show(0);
   thumbs.forEach(function (t, n) { t.addEventListener('click', function () { show(n); }); });
   var gp = document.getElementById('galPrev');
   var gn = document.getElementById('galNext');
@@ -107,8 +131,10 @@ function cartToggle (open) {
       if (thumbs.length) {
         thumbs[0].dataset.full = b.dataset.img;
         thumbs[0].src = b.dataset.img.replace('width=1200', 'width=200');
+        var first = track && track.querySelector('.gslide img');
+        if (first) first.src = b.dataset.img;
         show(0);
-      } else {
+      } else if (main) {
         main.src = b.dataset.img;
       }
     });

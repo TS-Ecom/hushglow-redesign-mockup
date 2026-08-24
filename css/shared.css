@@ -425,7 +425,13 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* gallery */
 .gal{position:sticky;top:98px}
 .gmain{position:relative;aspect-ratio:1/1;background:var(--cream);overflow:hidden}
-.gmain img{width:100%;height:100%;object-fit:cover}
+/* The gallery slides between photos rather than swapping the src underneath, which is
+   how the live theme's product media behaves. The track holds every photo and moves as
+   one, so a swipe follows the finger to the next frame instead of the image blinking. */
+.gtrack{display:flex;height:100%;transition:transform .45s cubic-bezier(.4,0,.2,1);will-change:transform}
+.gslide{flex:0 0 100%;width:100%;height:100%}
+.gmain img{width:100%;height:100%;object-fit:cover;display:block}
+@media (prefers-reduced-motion:reduce){.gtrack{transition:none}}
 /* Glass buttons over the photo: translucent, blurred, thin light rim. Same treatment on
    every slider so the controls read as one family. */
 /* Plain translucent black disc: no blur, no rim, no shadow. Small circle with a large

@@ -535,8 +535,6 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .grt b{font-weight:600;color:var(--berry)}
 /* swatches */
 .swlbl{font-size:13px;letter-spacing:.03em;text-transform:uppercase;font-weight:600;margin-bottom:10px}
-/* same label heading the USP group at the top of the buy box */
-.swlbl.uspL{margin-bottom:12px}
 .swrow{display:flex;gap:12px;flex-wrap:wrap}
 .swb{width:46px;height:46px;border-radius:50%;border:1px solid rgba(0,0,0,.1);cursor:pointer;position:relative;transition:transform .15s ease}
 .swb:hover{transform:scale(1.08)}

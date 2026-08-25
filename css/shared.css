@@ -544,6 +544,12 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .grt b{font-weight:600;color:var(--berry)}
 /* swatches */
 .swlbl{font-size:13px;letter-spacing:.03em;text-transform:uppercase;font-weight:600;margin-bottom:10px}
+/* Compact claim list for a buy box whose product has no shades to pick: the same check
+   rows the benefits block uses, tightened for the column they sit in. */
+.usplist{margin:0 0 18px}
+.usplist .bitem{margin-bottom:11px;align-items:flex-start}
+.usplist .bitem:last-child{margin-bottom:0}
+.usplist .bitem b{font-size:16px;font-weight:600;line-height:1.4;display:block}
 .swrow{display:flex;gap:12px;flex-wrap:wrap}
 .swb{width:46px;height:46px;border-radius:50%;border:1px solid rgba(0,0,0,.1);cursor:pointer;position:relative;transition:transform .15s ease}
 .swb:hover{transform:scale(1.08)}

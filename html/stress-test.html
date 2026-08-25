@@ -39,7 +39,14 @@
   <label>Page
     <select id="page">
       <option value="product-hush-foundation-cushion.html">Foundation Cushion</option>
-      <option value="product-blush-stick.html">Blush Stick</option>
+      <option value="product-blush-stick.html">Multi-Effect Blush Stick</option>
+      <option value="product-hydrating-concealer.html">Hydrating Concealer Stick</option>
+      <option value="product-pore-blurring-primer-stick.html">Pore-Blurring Primer Stick</option>
+      <option value="product-waterproof-setting-spray.html">Waterproof Setting Spray</option>
+      <option value="product-glow-travel-kit.html">Glow Travel Kit</option>
+      <option value="product-perfect-base-bundle.html">Perfect Base Bundle</option>
+      <option value="product-all-day-glow-bundle.html">All Day Glow Bundle</option>
+      <option value="product-sunkissed-trio.html">Sunkissed Trio</option>
       <option value="index.html">Home</option>
     </select>
   </label>
@@ -47,9 +54,11 @@
     <select id="widths">
       <option value="320,360,375,390,430">320 / 360 / 375 / 390 / 430</option>
       <option value="360,375,390">360 / 375 / 390</option>
+      <option value="390">390 only (the width the pages are drawn at)</option>
       <option value="375">375 only (iPhone SE, 8, mini)</option>
       <option value="360">360 only (most Android)</option>
       <option value="320">320 only</option>
+      <option value="1024,1440">1024 / 1440 (desktop)</option>
     </select>
   </label>
   <label>Font scale
@@ -94,9 +103,12 @@ function applyScale (doc, k, bold) {
    skipped: overflowing is what they are for. */
 function audit (win, width) {
   var doc = win.document;
-  var rails = ['.thumbs', '.vrow', '.bsrow', '.trow', '.grid3', '.grid4', '.recrow', '.stepgrid', '.shgrid', '.cylrow', '.mm-mtiles', '.ticker', '.pstrip'];
+  var rails = ['.thumbs', '.vrow', '.bsrow', '.trow', '.grid3', '.grid4', '.recrow', '.stepgrid',
+               '.shgrid', '.cylrow', '.mm-mtiles', '.ticker', '.pstrip', '.rcards',
+               '.gmain', '.shgal__strip', '.cmptab__rows'];
   /* panels that live off-screen until opened would otherwise report as broken layout */
-  var offstage = ['.cartdrawer', '.cart-ovl', '.mobmenu', '.mm-panel', '.satc'];
+  var offstage = ['.cartdrawer', '.cart-ovl', '.mobmenu', '.mm-panel', '.satc',
+                  '.shgal__detail', '.shgal__backdrop'];
   var isRail = function (el) { return rails.some(function (s) { return el.closest(s); }); };
   var isOffstage = function (el) { return offstage.some(function (s) { return el.closest(s); }); };
 
@@ -117,7 +129,7 @@ function audit (win, width) {
     var r = el.getBoundingClientRect();
     if (!r.width || !r.height) return;
 
-    var clipped = el.scrollWidth > el.clientWidth + 1 && cs.overflowX !== 'visible';
+    var clipped = el.scrollWidth > el.clientWidth + 1 && cs.overflowX !== 'visible' && cs.textOverflow !== 'ellipsis';
     var offscreen = r.right > width + 1 || r.left < -1;
 
     if (clipped) push('clipped', el, el.scrollWidth + ' > ' + el.clientWidth + 'px' + (cs.whiteSpace === 'nowrap' ? ' (nowrap)' : ''));

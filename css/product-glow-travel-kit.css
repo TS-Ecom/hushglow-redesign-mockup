@@ -1,0 +1,11 @@
+/* HushGlow Design — Glow Travel Kit.
+
+   The page is built entirely from blocks that already live in shared.css: buy box,
+   trust strip, benefits-around-video, image-with-text, banner slider, steps, shade
+   guarantee, FAQ, recommendations and the reassurance bar. Nothing here redefines any
+   of them — this file exists for what is genuinely specific to this product, and is
+   deliberately short. */
+
+/* the kit sells one set in six shades, so the swatch row names the shade but never
+   swaps the photo; the description line carries the whole message */
+.swdesc{max-width:min(46ch,100%)}

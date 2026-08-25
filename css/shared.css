@@ -667,6 +667,17 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* ---------- benefits around video ---------- */
 /* ---------- benefits CTA tail (part of the benefits block, mirrors live) ---------- */
 /* Rating line steps back so the CTA is clearly the loudest thing in the block. */
+/* ---------- benefits around a video (foundation + travel kit) ---------- */
+.benef{padding:96px var(--pagepad) 0}
+.bsub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:min(56ch,100%);margin:-22px auto 40px}
+.bgrid{display:grid;grid-template-columns:minmax(0,1fr) 340px minmax(0,1fr);gap:44px;align-items:center;max-width:1180px;margin:0 auto}
+.bvid{width:100%;min-width:0;aspect-ratio:4/5;object-fit:cover;background:var(--cream);border-radius:var(--radius)}
+.bitem{display:flex;gap:11px;margin-bottom:32px}
+.bitem:last-child{margin-bottom:0}
+.bitem .chk{font-style:normal;color:var(--berry);font-size:17px;font-weight:700;flex:none;line-height:1.5}
+.bitem b{font-size:22px;font-weight:600;display:block;margin-bottom:6px;line-height:1.3}
+.bitem p{font-size:16px;color:var(--ink-soft);line-height:1.8}
+
 .benef-cta{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;margin-top:48px;margin-bottom:-24px}
 .benef-cta .tp-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;max-width:100%}
 .benef-cta .tp-svg{width:108px;height:22px;display:block}
@@ -702,6 +713,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .pricerow .pbadge{background:var(--berry);color:#fff;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-chip)}
 /* compare-at stays quieter than the price it is struck against */
 .pricerow s{color:var(--berry);font-weight:400;font-size:19px;text-decoration:line-through}
+/* optional saving chip: shown on the products whose live buy box carries one */
+.pricerow .psave{background:var(--cream);color:var(--berry-deep);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:var(--r-chip)}
 
 /* ---------- consumer study results ---------- */
 .results{margin-top:96px;background:#f3f3f3}
@@ -877,6 +890,15 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .tcard .tph{aspect-ratio:1.3/1}
   .tcard .tph img{object-position:center 14%}
   .twrap .lookarrow{display:none}
+  .benef{padding:40px var(--pagepad) 0}
+  .bsub{font-size:15px;margin:-8px auto 26px}
+  .bgrid{display:flex;flex-direction:column;gap:22px}
+  .bvid{order:-1;max-width:340px;margin:0 auto}
+  .bgrid .bcol:first-child .bitem{text-align:left}
+  .bitem{margin-bottom:22px}
+  .bsub{font-size:15px}
+  .bitem b{font-size:20px}
+  .bitem p{font-size:15px}
   .benef-cta{margin-top:36px;gap:12px}
   .benef-cta .tp-line{flex-wrap:wrap}
   .benef-cta .tp-svg{width:100px;height:20px}
@@ -905,6 +927,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .pricerow .pnow{font-size:24px}
   .pricerow .pbadge{font-size:12px;padding:4px 9px}
   .pricerow s{font-size:17px}
+  .pricerow .psave{font-size:12px;padding:4px 8px}
     .gmid small{font-size:16px}
   .gcard s{font-size:15px}
   .bslider{margin-top:40px}

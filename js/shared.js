@@ -128,6 +128,10 @@ function cartToggle (open) {
       b.classList.add('on');
       swName.textContent = b.dataset.shade;
       swDesc.textContent = 'is ' + b.dataset.desc;
+      /* Only products whose shades have their own photo swap the first frame. The kit
+         sells one set in six shades and carries no per-shade image, so there the swatch
+         changes the name and nothing else. */
+      if (!b.dataset.img) return;
       if (thumbs.length) {
         thumbs[0].dataset.full = b.dataset.img;
         thumbs[0].src = b.dataset.img.replace('width=1200', 'width=200');
@@ -186,6 +190,15 @@ function cartToggle (open) {
     };
     cmpRange.addEventListener('input', cmpApply);
     cmpApply();
+  }
+
+  /* Travel Puff toggle: on by default, so the add-on is opted out of rather than into */
+  var puffToggle = document.getElementById('puffToggle');
+  if (puffToggle) {
+    puffToggle.addEventListener('click', function () {
+      var on = puffToggle.classList.toggle('on');
+      puffToggle.setAttribute('aria-checked', on ? 'true' : 'false');
+    });
   }
 
   /* bundle picker: radio behaviour */

@@ -135,7 +135,6 @@
 
 /* ---------- how to use ----------
    Four steps on this product, not three, so the row keeps them on one line. */
-.steps .stepgrid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1320px}
 .steps .step video{aspect-ratio:1/1}
 .steps .benef-cta{margin-top:44px;margin-bottom:0}
 

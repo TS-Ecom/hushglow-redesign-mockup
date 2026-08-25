@@ -116,6 +116,11 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .iwt .tx p.iwt-tail{color:var(--ink);font-size:16px;margin-top:-6px}
 /* attribution under a quote in this block */
 .iwt .tx p.iwt-auth{color:var(--ink-soft);font-size:15px;margin-top:-6px}
+/* warm variant: the trio's routine block sits on beige on the live page */
+.iwt.warm{background:#e3dbd2}
+/* reassurance line closing the block, as live carries it under the button */
+.iwt .tx .iwt-guar{display:flex;align-items:center;gap:9px;font-size:15px;color:var(--ink-soft);margin-top:-4px}
+.iwt .tx .iwt-guar svg{width:19px;height:19px;flex:none;stroke:currentColor}
 .iwt.flip .ph{order:2}
 .iwt.flip .tx{order:1}
 /* .ovl: the live "Not Sure About Your Shade" block — inset from the page edges, with the
@@ -704,7 +709,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
    and the whole section is tighter. */
 /* live layout puts the copy on the left and the before/after on the right */
 /* ---------- free-gift threshold block ---------- */
-.giftbox{border-radius:var(--r-card);overflow:hidden;margin-bottom:16px}
+.giftbox{border-radius:var(--r-card);overflow:hidden;margin:18px 0 16px}
 .gribbon{background:var(--cream);color:var(--ink);font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:9px 12px}
 .gribbon em{font-style:normal;font-size:17px;font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
 .gcard{display:flex;align-items:center;gap:14px;background:var(--soft);padding:14px;text-align:left}
@@ -722,11 +727,12 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .shsub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:min(60ch,100%);margin:0 auto 40px}
 .shgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;max-width:1320px;margin:0 auto}
 .shcard{min-width:0}
-.shph{aspect-ratio:1/1.18;overflow:hidden;background:var(--cream)}
+/* square, as on the live block: a taller box cropped the model photos */
+.shph{aspect-ratio:1/1;overflow:hidden;background:var(--cream)}
 .shph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
 .shcard:hover .shph img{transform:scale(1.045)}
-.shcard figcaption{display:flex;flex-direction:column;gap:3px;margin-top:12px}
-.shname{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1.3}
+.shcard figcaption{display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;margin-top:12px}
+.shname{display:flex;align-items:center;justify-content:center;gap:7px;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1.3}
 .shname i{width:14px;height:14px;border-radius:50%;flex:none;border:1px solid rgba(0,0,0,.08)}
 .shdesc{font-size:15px;color:var(--ink-soft);line-height:1.5}
 .shades .benef-cta{margin-top:46px;margin-bottom:0}
@@ -757,6 +763,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 
 /* ---------- consumer study results ---------- */
 .results{margin-top:64px;background:#f3f3f3}
+/* when the study follows a filled image-with-text, the two tints meet instead of
+   leaving a strip of page background between them */
+.iwt + .results{margin-top:0}
 .resgrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1320px;margin:0 auto}
 .resph{aspect-ratio:3/4;overflow:hidden}
 .resph img{width:100%;height:100%;object-fit:cover}

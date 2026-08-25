@@ -142,10 +142,6 @@
 .steps .step .stag{background:var(--berry-deep);color:#fff;font-weight:700;letter-spacing:.03em;border:2px solid var(--berry-deep);border-radius:0}
 
 /* ---------- faq ---------- */
-.faq .faqlist{max-width:860px;margin:0 auto}
-.faq .acc:last-child{border-bottom:1px solid var(--line)}
-.faq .acc-t{font-size:16px;text-transform:none;letter-spacing:.01em;font-weight:600;padding:20px 0}
-.faq .acc-c p{font-size:16px}
 
 
 /* ---------- mobile ---------- */

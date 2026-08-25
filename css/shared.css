@@ -38,7 +38,9 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .btn-accent:hover{background:#4a1518;border-color:#4a1518}
 .btn-paper:hover{background:var(--cream);border-color:var(--cream)}
 .sec-h{font-size:30px;font-weight:600;text-align:center;letter-spacing:.02em;margin-bottom:38px}
-.section{padding:96px var(--pagepad) 0}
+/* desktop section rhythm: 64px between blocks. The page used to run 96-104 and read
+   as a series of holes on a wide screen. */
+.section{padding:64px var(--pagepad) 0}
 .inner{max-width:1320px;margin:0 auto}
 
 
@@ -98,7 +100,7 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 
 
 /* ---------- image with text (used on home + product pages) ---------- */
-.iwt{display:grid;grid-template-columns:1.08fr 1fr;gap:0;margin-top:96px;background:#e6e6e6}
+.iwt{display:grid;grid-template-columns:1.08fr 1fr;gap:0;margin-top:64px;background:#e6e6e6}
 .iwt .ph{height:640px;overflow:hidden}
 .iwt .ph img{width:100%;height:100%;object-fit:cover}
 .iwt .tx{display:flex;flex-direction:column;justify-content:center;padding:60px 84px;gap:20px;align-items:flex-start}
@@ -114,7 +116,7 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .iwt.flip .tx{order:1}
 /* .ovl: the live "Not Sure About Your Shade" block — inset from the page edges, with the
    text panel riding 40px over the photo. The client singled this overlap out. */
-.iwt.ovl{max-width:1300px;margin:96px auto 0;padding:0 var(--pagepad);background:transparent;align-items:center;grid-template-columns:1fr 1fr}
+.iwt.ovl{max-width:1300px;margin:64px auto 0;padding:0 var(--pagepad);background:transparent;align-items:center;grid-template-columns:1fr 1fr}
 .iwt.ovl .ph{height:560px}
 .iwt.ovl .tx{background:#f3f3f3;position:relative;z-index:2;margin-left:-40px;padding:52px 56px}
 
@@ -143,7 +145,7 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 
 
 /* ---------- footer ---------- */
-.footer{background:var(--ink);color:var(--taupe);margin-top:104px;padding:64px var(--pagepad) 0}
+.footer{background:var(--ink);color:var(--taupe);margin-top:72px;padding:64px var(--pagepad) 0}
 .footer .cols{display:grid;grid-template-columns:1.3fr .8fr .8fr 1.1fr;gap:48px;max-width:1320px;margin:0 auto}
 .footer .col,.footer .col *{min-width:0}
 .footer .logo-img{height:32px;width:auto;filter:brightness(0) invert(1);margin-bottom:18px}
@@ -643,7 +645,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .tabs2{margin-top:28px}
 /* ---------- trust ticker (marquee like the live strip, our styling) ---------- */
 /* live ticker: beige band with white type, not a cream band with dark type */
-.pstrip{background:var(--taupe);margin-top:72px;padding:13px 0;overflow:hidden}
+.pstrip{background:var(--taupe);margin-top:52px;padding:13px 0;overflow:hidden}
 /* deep variant: same strip, the darker brand red the concealer template uses */
 .pstrip.deep{background:var(--berry-deep)}
 .pstrip .ticker{display:flex;width:max-content}
@@ -678,7 +680,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* ---------- benefits CTA tail (part of the benefits block, mirrors live) ---------- */
 /* Rating line steps back so the CTA is clearly the loudest thing in the block. */
 /* ---------- benefits around a video (foundation + travel kit) ---------- */
-.benef{padding:96px var(--pagepad) 0}
+.benef{padding:64px var(--pagepad) 0}
 .bsub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:min(56ch,100%);margin:-22px auto 40px}
 .bgrid{display:grid;grid-template-columns:minmax(0,1fr) 340px minmax(0,1fr);gap:44px;align-items:center;max-width:1180px;margin:0 auto}
 .bvid{width:100%;min-width:0;aspect-ratio:4/5;object-fit:cover;background:var(--cream);border-radius:var(--radius)}
@@ -710,6 +712,14 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .fchip{font-style:normal;background:var(--ink);color:#fff;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-chip)}
 .gcard s{font-size:15px;color:var(--ink-soft)}
 
+/* ---------- FAQ ---------- */
+/* Narrower column than the rest of the page: a question set reads better as a single
+   measured column than as full-bleed rows. */
+.faq .faqlist{max-width:720px;margin:0 auto}
+.faq .acc:last-child{border-bottom:1px solid var(--line)}
+.faq .acc-t{font-size:16px;text-transform:none;letter-spacing:.01em;font-weight:600;padding:20px 0}
+.faq .acc-c p{font-size:16px}
+
 /* ---------- Trustpilot line under a reviews heading ---------- */
 /* The line belongs to the heading above it, not to the cards below: it sits close under
    the title and keeps a clear gap before the rail starts. */
@@ -727,7 +737,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .pricerow .psave{background:var(--cream);color:var(--berry-deep);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:var(--r-chip)}
 
 /* ---------- consumer study results ---------- */
-.results{margin-top:96px;background:#f3f3f3}
+.results{margin-top:64px;background:#f3f3f3}
 .resgrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1320px;margin:0 auto}
 .resph{aspect-ratio:3/4;overflow:hidden}
 .resph img{width:100%;height:100%;object-fit:cover}
@@ -753,7 +763,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* Headline lives with the copy in the text column, like the live block. */
 /* Before / after: headline lives with the copy in the text column (like the live block)
    and the whole section is tighter. */
-.cmp{padding:72px var(--pagepad) 0}
+.cmp{padding:56px var(--pagepad) 0}
 /* live layout puts the copy on the left and the before/after on the right */
 .cmpwrap{display:grid;grid-template-columns:1fr 1.1fr;gap:44px;align-items:center;max-width:1080px;margin:0 auto}
 .cmpwrap .cmpbox{order:2}
@@ -774,7 +784,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .cmptx .btn{white-space:normal}
 
 /* ---------- banner slider (square banners, 2 full cards per view like live) ---------- */
-.bslider{margin-top:96px;position:relative;max-width:1440px;margin-left:auto;margin-right:auto;padding:0 var(--pagepad)}
+.bslider{margin-top:64px;position:relative;max-width:1440px;margin-left:auto;margin-right:auto;padding:0 var(--pagepad)}
 .bslider .lookarrow{width:36px;height:36px}
 /* the banners carry copy near their left edge, so the controls sit right at the rim */
 .bslider .lookarrow.prev{left:8px}
@@ -787,7 +797,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .bsdots i{width:8px;height:8px;border-radius:50%;background:var(--taupe);opacity:.5;cursor:pointer;transition:opacity .2s ease,background .2s ease}
 .bsdots i.on{background:var(--ink);opacity:1}
 /* 3 steps: cards are separated by a soft shadow instead of an outline. */
-.steps{padding:80px var(--pagepad) 0}
+.steps{padding:56px var(--pagepad) 0}
 .sec-h.statement{text-transform:none;letter-spacing:.02em;font-size:42px;font-weight:600}
 /* One column per step, whatever the count: three products run three steps and the
    travel kit runs four, and a fixed three left the fourth stranded on its own row. */
@@ -808,7 +818,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .recbanner-in b{font-size:22px;font-weight:600;line-height:1.2;letter-spacing:.01em}
 .recbanner-in i{font-style:normal;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px}
 /* ---------- reassurance bar (pre-footer icon row) ---------- */
-.ibar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px;max-width:1180px;margin:96px auto 0;padding:0 var(--pagepad);text-align:center}
+.ibar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px;max-width:1180px;margin:64px auto 0;padding:0 var(--pagepad);text-align:center}
 .ib svg{width:38px;height:38px;stroke:var(--ink);stroke-width:1.2;fill:none;stroke-linecap:round;stroke-linejoin:round;margin:0 auto 14px;display:block}
 .ib b{display:block;font-size:17px;font-weight:600;margin-bottom:8px}
 .ib p{font-size:16px;color:var(--ink-soft);line-height:1.65;max-width:min(34ch,100%);margin:0 auto}

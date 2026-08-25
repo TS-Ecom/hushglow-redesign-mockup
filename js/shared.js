@@ -116,31 +116,35 @@ function cartToggle (open) {
   if (gp) gp.addEventListener('click', function () { show(current - 1); });
   if (gn) gn.addEventListener('click', function () { show(current + 1); });
 
-  /* Shade swatches: the shade photo becomes the first slide, the way a variant image does
-     on a real product page. Previously it was dropped straight into the main <img> while
-     the thumb list kept its own position, so the next arrow jumped to an unrelated photo
-     and no thumb stayed marked. */
-  var swName = document.getElementById('swName');
-  var swDesc = document.getElementById('swDesc');
-  document.querySelectorAll('.swb').forEach(function (b) {
-    b.addEventListener('click', function () {
-      document.querySelectorAll('.swb').forEach(function (x) { x.classList.remove('on'); });
-      b.classList.add('on');
-      swName.textContent = b.dataset.shade;
-      swDesc.textContent = 'is ' + b.dataset.desc;
-      /* Only products whose shades have their own photo swap the first frame. The kit
-         sells one set in six shades and carries no per-shade image, so there the swatch
-         changes the name and nothing else. */
-      if (!b.dataset.img) return;
-      if (thumbs.length) {
-        thumbs[0].dataset.full = b.dataset.img;
-        thumbs[0].src = b.dataset.img.replace('width=1200', 'width=200');
-        var first = track && track.querySelector('.gslide img');
-        if (first) first.src = b.dataset.img;
-        show(0);
-      } else if (main) {
-        main.src = b.dataset.img;
-      }
+  /* Shade swatches. Wired per row rather than across the page: the trio sells a
+     foundation shade and a blush shade together, so it carries two rows, and a flat
+     query would have cleared the other row's choice on every click. Each row writes
+     into the description line that follows it. */
+  document.querySelectorAll('.swrow').forEach(function (row) {
+    var line = row.nextElementSibling;
+    while (line && !line.classList.contains('swdesc')) line = line.nextElementSibling;
+    var nameEl = line && line.querySelector('[data-sw-name]');
+    var descEl = line && line.querySelector('[data-sw-desc]');
+    row.querySelectorAll('.swb').forEach(function (b) {
+      b.addEventListener('click', function () {
+        row.querySelectorAll('.swb').forEach(function (x) { x.classList.remove('on'); });
+        b.classList.add('on');
+        if (nameEl) nameEl.textContent = b.dataset.shade;
+        if (descEl) descEl.textContent = b.dataset.desc;
+        /* Only products whose shades have their own photo swap the first frame. The kit
+           and the trio sell a set in several shades and carry no per-shade image, so
+           there the swatch changes the name and nothing else. */
+        if (!b.dataset.img) return;
+        if (thumbs.length) {
+          thumbs[0].dataset.full = b.dataset.img;
+          thumbs[0].src = b.dataset.img.replace('width=1200', 'width=200');
+          var first = track && track.querySelector('.gslide img');
+          if (first) first.src = b.dataset.img;
+          show(0);
+        } else if (main) {
+          main.src = b.dataset.img;
+        }
+      });
     });
   });
 

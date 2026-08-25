@@ -1,0 +1,8 @@
+/* HushGlow Design — Sunkissed Trio.
+
+   Assembled from blocks that already live in shared.css. The one thing specific to this
+   product is that it is bought as two choices at once, a foundation shade and a blush
+   shade, so the buy box carries two swatch rows instead of one. Both rows and their
+   description lines are the shared components; only the spacing between the pair is
+   set here, so the second label does not crowd the first row's description. */
+.swrow + .swdesc + .swlbl{margin-top:18px}

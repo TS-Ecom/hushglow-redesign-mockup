@@ -762,9 +762,10 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .pricerow .psave{background:var(--cream);color:var(--berry-deep);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:var(--r-chip)}
 
 /* ---------- consumer study results ---------- */
-.results{margin-top:64px;background:#f3f3f3}
-/* when the study follows a filled image-with-text, the two tints meet instead of
-   leaving a strip of page background between them */
+/* The section carries its own vertical padding in its own fill, which is what the live
+   block does. Butting the photo straight against the block above it read as a cut, and
+   leaving a margin there read as a strip of bare page between two tinted blocks. */
+.results{margin-top:64px;background:#f3f3f3;padding:44px 0}
 .iwt + .results{margin-top:0}
 .resgrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1320px;margin:0 auto}
 .resph{aspect-ratio:3/4;overflow:hidden}
@@ -968,7 +969,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .cmptx .qa{font-size:15px;margin-bottom:18px}
   .cmptx .btn{width:100%}
   .cmpbox .cl{font-size:12px}
-  .results{margin-top:40px}
+  .results{margin-top:40px;padding:26px 0}
   .resgrid{grid-template-columns:1fr;padding:0 var(--pagepad)}
   .resph{aspect-ratio:3/4}
   /* the grid carries the page padding here, so the photo lines up with the rows below it */

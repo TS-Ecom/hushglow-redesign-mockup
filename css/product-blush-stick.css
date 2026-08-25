@@ -17,7 +17,6 @@
 .bun .bsel:hover{border-color:var(--ink)}
 
 /* single-pane cross-sell: the live block has one heading, not switchable tabs */
-.uptabs.single b{cursor:default;color:var(--ink);border-bottom-color:transparent}
 
 /* ---------- grey fills, matching the live sections ---------- */
 .section.fill,.steps.fill{background:#f3f3f3}

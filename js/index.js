@@ -24,9 +24,8 @@
     ['https://hushglow.com/cdn/shop/files/2560px-Grazia-Logo_1.png?width=300', 'Grazia'],
     ['https://hushglow.com/cdn/shop/files/Elle_logo_1.png?width=300', 'Elle']
   ];
-  ['pressHalf1', 'pressHalf2'].forEach(function (id) {
-    var half = document.getElementById(id);
-    if (!half) return;
+  document.querySelectorAll('.press .ticker .half').forEach(function (half) {
+    half.innerHTML = '';
     for (var r = 0; r < 3; r++) {
       logos.forEach(function (l) {
         var img = document.createElement('img');
@@ -39,10 +38,11 @@
   /* get the look slider: infinite loop via one cloned set on each side.
      After scrolling settles, the position is silently normalized back into
      the middle set (sets are identical, so the jump is invisible). */
-  var row = document.getElementById('lookRow');
-  var prev = document.getElementById('lookPrev');
-  var next = document.getElementById('lookNext');
-  if (row) {
+  document.querySelectorAll('.look').forEach(function (look) {
+    var row = look.querySelector('.lookrow');
+    var prev = look.querySelector('.lookarrow.prev');
+    var next = look.querySelector('.lookarrow.next');
+    if (!row) return;
     var cards = Array.prototype.slice.call(row.children);
     var N = cards.length;
     cards.forEach(function (c) { row.appendChild(c.cloneNode(true)); });
@@ -81,5 +81,5 @@
 
     if (prev) prev.addEventListener('click', function () { row.scrollBy({ left: -stepOf() * 2, behavior: 'smooth' }); });
     if (next) next.addEventListener('click', function () { row.scrollBy({ left: stepOf() * 2, behavior: 'smooth' }); });
-  }
+  });
 })();

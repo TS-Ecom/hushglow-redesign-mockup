@@ -441,154 +441,162 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
    one, so a swipe follows the finger to the next frame instead of the image blinking. */
 .gtrack{display:flex;height:100%;transition:transform .45s cubic-bezier(.4,0,.2,1);will-change:transform}
 .gslide{flex:0 0 100%;width:100%;height:100%}
-.gmain img{width:100%;height:100%;object-fit:cover;display:block}
+.gmain img,.gmain video{width:100%;height:100%;object-fit:cover;display:block}
+/* a thumb that opens a video frame carries the same play badge as the video rail */
+.thumbs .thumbvid{position:relative;display:block;flex:none}
+.thumbs .thumbvid::after{content:'';position:absolute;left:50%;top:50%;width:22px;height:22px;
+  transform:translate(-50%,-50%);border-radius:50%;background:rgba(255,255,255,.92);
+  box-shadow:0 1px 6px rgba(18,18,18,.3)}
+.thumbs .thumbvid::before{content:'';position:absolute;left:50%;top:50%;z-index:2;
+  transform:translate(-38%,-50%);border-style:solid;border-width:5px 0 5px 8px;
+  border-color:transparent transparent transparent var(--ink)}
 @media (prefers-reduced-motion:reduce){.gtrack{transition:none}}
 /* Glass buttons over the photo: translucent, blurred, thin light rim. Same treatment on
    every slider so the controls read as one family. */
 /* Plain translucent black disc: no blur, no rim, no shadow. Small circle with a large
    glyph, so the arrow itself carries the control rather than the fill around it. */
-.galarrow{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(18,18,18,.38);border:0;color:#fff;display:flex;align-items:center;justify-content:center;transition:background .2s ease,transform .15s ease;z-index:2}
-.galarrow:hover{background:rgba(18,18,18,.62)}
-.galarrow:active{transform:translateY(-50%) scale(.94)}
-.galarrow.prev{left:16px}
-.galarrow.next{right:16px}
-.thumbs{display:flex;gap:8px;margin-top:8px;overflow-x:auto;scrollbar-width:none}
-.thumbs::-webkit-scrollbar{display:none}
-.thumbs img{width:76px;height:76px;object-fit:cover;flex:none;cursor:pointer;border:1.5px solid transparent;background:var(--cream);opacity:.75;transition:opacity .2s ease,border-color .2s ease}
-.thumbs img:hover{opacity:1}
-.thumbs img.on{border-color:var(--ink);opacity:1}
+  .galarrow{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(18,18,18,.38);border:0;color:#fff;display:flex;align-items:center;justify-content:center;transition:background .2s ease,transform .15s ease;z-index:2}
+  .galarrow:hover{background:rgba(18,18,18,.62)}
+  .galarrow:active{transform:translateY(-50%) scale(.94)}
+  .galarrow.prev{left:16px}
+  .galarrow.next{right:16px}
+  .thumbs{display:flex;gap:8px;margin-top:8px;overflow-x:auto;scrollbar-width:none}
+  .thumbs::-webkit-scrollbar{display:none}
+  .thumbs img{width:76px;height:76px;object-fit:cover;flex:none;cursor:pointer;border:1.5px solid transparent;background:var(--cream);opacity:.75;transition:opacity .2s ease,border-color .2s ease}
+  .thumbs img:hover{opacity:1}
+  .thumbs img.on{border-color:var(--ink);opacity:1}
 /* info column */
-.info{max-width:540px}
+  .info{max-width:540px}
 /* badge V6, the variant we approved: solid burgundy, white type, flush left */
-.badge{display:inline-block;max-width:100%;background:transparent;color:var(--berry-deep);border:1.5px solid var(--berry-deep);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;line-height:1.35;padding:7px 13px;margin:0 0 16px;border-radius:var(--r-chip);white-space:normal;overflow-wrap:break-word}
-.lovedrow{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px}
-.lovedrow .avs{display:inline-flex;flex:none}
-.lovedrow .avs img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);background:var(--cream)}
-.lovedrow .avs img+img{margin-left:-9px}
-.lovedrow .lt{font-size:13px;color:var(--ink-soft);display:block;white-space:normal;flex:1 1 0;min-width:0;line-height:1.45}
-.lovedrow .lt b{color:var(--ink);font-weight:600}
-.lovedrow .hrt{width:1em;height:1em;fill:var(--berry);flex:none;vertical-align:-.12em;margin:0 2px}
-.ratrow{display:block;font-size:14px;color:var(--ink);margin-bottom:12px;max-width:100%;text-align:left;line-height:1.5}
-.ratrow .tp-svg{width:96px;height:19px;display:inline-block;vertical-align:-.35em;margin-right:2px}
-.ratrow:hover .rt{text-decoration:underline;text-underline-offset:3px}
-.ratrow .dn{font-style:normal;font-size:14px;color:var(--ink-soft);margin-left:6px}
+  .badge{display:inline-block;max-width:100%;background:transparent;color:var(--berry-deep);border:1.5px solid var(--berry-deep);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;line-height:1.35;padding:7px 13px;margin:0 0 16px;border-radius:var(--r-chip);white-space:normal;overflow-wrap:break-word}
+  .lovedrow{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px}
+  .lovedrow .avs{display:inline-flex;flex:none}
+  .lovedrow .avs img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);background:var(--cream)}
+  .lovedrow .avs img+img{margin-left:-9px}
+  .lovedrow .lt{font-size:13px;color:var(--ink-soft);display:block;white-space:normal;flex:1 1 0;min-width:0;line-height:1.45}
+  .lovedrow .lt b{color:var(--ink);font-weight:600}
+  .lovedrow .hrt{width:1em;height:1em;fill:var(--berry);flex:none;vertical-align:-.12em;margin:0 2px}
+  .ratrow{display:block;font-size:14px;color:var(--ink);margin-bottom:12px;max-width:100%;text-align:left;line-height:1.5}
+  .ratrow .tp-svg{width:96px;height:19px;display:inline-block;vertical-align:-.35em;margin-right:2px}
+  .ratrow:hover .rt{text-decoration:underline;text-underline-offset:3px}
+  .ratrow .dn{font-style:normal;font-size:14px;color:var(--ink-soft);margin-left:6px}
 /* live title is uppercase; the price is not repeated here, it lives in the bundles and
    in the sticky bar */
-.info h1{font-size:24px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;line-height:1.3;margin-bottom:14px}
+  .info h1{font-size:24px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;line-height:1.3;margin-bottom:14px}
 /* customer quote: portrait + italic quote + author with stars, mirroring the live block */
-.pdpquote{display:flex;gap:12px;align-items:flex-start;border-radius:var(--r-card);box-shadow:0 2px 10px rgba(18,18,18,.09);padding:13px 14px;margin-top:20px}
-.pdpquote .qav{width:46px;height:46px;border-radius:50%;object-fit:cover;flex:none;background:var(--cream)}
-.pdpquote .qbody{flex:1;min-width:0}
-.pdpquote em{font-style:italic;font-size:13px;line-height:1.55;color:var(--ink);display:block}
-.pdpquote cite{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:8px;font-style:normal;font-size:13px;font-weight:600;color:var(--ink)}
-.pdpquote .qstars{color:var(--gold);letter-spacing:1px;font-weight:400;flex:0 1 auto;min-width:0}
+  .pdpquote{display:flex;gap:12px;align-items:flex-start;border-radius:var(--r-card);box-shadow:0 2px 10px rgba(18,18,18,.09);padding:13px 14px;margin-top:20px}
+  .pdpquote .qav{width:46px;height:46px;border-radius:50%;object-fit:cover;flex:none;background:var(--cream)}
+  .pdpquote .qbody{flex:1;min-width:0}
+  .pdpquote em{font-style:italic;font-size:13px;line-height:1.55;color:var(--ink);display:block}
+  .pdpquote cite{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:8px;font-style:normal;font-size:13px;font-weight:600;color:var(--ink)}
+  .pdpquote .qstars{color:var(--gold);letter-spacing:1px;font-weight:400;flex:0 1 auto;min-width:0}
 /* Single-product upsell (Travel Puff). Opt-out rather than opt-in: the toggle ships on,
    which is the whole point of the block for AOV, so the card reads as already added. */
 /* ---------- travel puff add-on (foundation + travel kit) ---------- */
-.puff{display:flex;align-items:center;gap:12px;border-radius:var(--r-card);box-shadow:0 2px 10px rgba(18,18,18,.09);padding:12px 14px;margin-top:20px}
-.ptoggle{width:46px;height:26px;border-radius:999px;background:#cfcfcf;position:relative;flex:none;cursor:pointer;transition:background .2s ease;padding:0}
-.ptoggle span{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(18,18,18,.28);transition:transform .22s cubic-bezier(.4,0,.2,1)}
-.ptoggle.on{background:var(--berry)}
-.ptoggle.on span{transform:translateX(20px)}
-.ptoggle:active span{width:23px}
-.puff img{width:56px;height:56px;object-fit:cover;flex:none;background:var(--cream)}
-.puffmid{flex:1;min-width:0}
-.puffmid b{display:block;font-size:16px;font-weight:600}
-.puffmid small{display:block;font-size:13px;color:var(--ink-soft);line-height:1.5}
-.puffpr{display:flex;align-items:baseline;gap:7px;font-size:15px;flex:none}
-.puffpr b{font-weight:600}
-.puffpr s{color:var(--berry)}
+  .puff{display:flex;align-items:center;gap:12px;border-radius:var(--r-card);box-shadow:0 2px 10px rgba(18,18,18,.09);padding:12px 14px;margin-top:20px}
+  .ptoggle{width:46px;height:26px;border-radius:999px;background:#cfcfcf;position:relative;flex:none;cursor:pointer;transition:background .2s ease;padding:0}
+  .ptoggle span{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(18,18,18,.28);transition:transform .22s cubic-bezier(.4,0,.2,1)}
+  .ptoggle.on{background:var(--berry)}
+  .ptoggle.on span{transform:translateX(20px)}
+  .ptoggle:active span{width:23px}
+  .puff img{width:56px;height:56px;object-fit:cover;flex:none;background:var(--cream)}
+  .puffmid{flex:1;min-width:0}
+  .puffmid b{display:block;font-size:16px;font-weight:600}
+  .puffmid small{display:block;font-size:13px;color:var(--ink-soft);line-height:1.5}
+  .puffpr{display:flex;align-items:baseline;gap:7px;font-size:15px;flex:none}
+  .puffpr b{font-weight:600}
+  .puffpr s{color:var(--berry)}
 /* upsell tabs switch panes */
-.uppane{display:none}
-.uppane.on{display:block}
-.uptabs b{transition:color .2s ease,border-color .2s ease}
+  .uppane{display:none}
+  .uppane.on{display:block}
+  .uptabs b{transition:color .2s ease,border-color .2s ease}
 /* Accordions (USP + bottom tabs). The USP rows read as compact tiles rather than full-width
    hairlines, and the type is sized for the 60+ reader. */
-.acc{border-top:1px solid var(--line)}
-.usp .acc:last-child,.tabs2 .acc:last-child{border-bottom:1px solid var(--line)}
-.acc-t{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;padding:15px 0;font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;line-height:1.3;cursor:pointer}
-.acc-t i{font-style:normal;font-size:20px;font-weight:400;color:var(--ink);transition:transform .25s cubic-bezier(.4,0,.2,1)}
-.acc.open .acc-t i{transform:rotate(45deg)}
+  .acc{border-top:1px solid var(--line)}
+  .usp .acc:last-child,.tabs2 .acc:last-child{border-bottom:1px solid var(--line)}
+  .acc-t{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;padding:15px 0;font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;line-height:1.3;cursor:pointer}
+  .acc-t i{font-style:normal;font-size:20px;font-weight:400;color:var(--ink);transition:transform .25s cubic-bezier(.4,0,.2,1)}
+  .acc.open .acc-t i{transform:rotate(45deg)}
 /* Collapse via a 0fr -> 1fr grid row rather than max-height. Padding lives on the inner
    wrapper, so the closed panel is genuinely zero-height (padding does not shrink under
    max-height, which is what left an 18px gap), and the open height is whatever the copy
    needs — no measuring, no value to outgrow. Browsers without animatable grid rows simply
    toggle instantly, which is the behaviour we had before. */
-.acc-c{display:block;max-height:0;overflow:hidden;padding:0;transition:max-height .3s cubic-bezier(.4,0,.2,1),opacity .25s ease;opacity:0}
-.acc.open .acc-c{max-height:var(--acc-h,900px);opacity:1}
+  .acc-c{display:block;max-height:0;overflow:hidden;padding:0;transition:max-height .3s cubic-bezier(.4,0,.2,1),opacity .25s ease;opacity:0}
+  .acc.open .acc-c{max-height:var(--acc-h,900px);opacity:1}
 /* vertical spacing sits on the children, not the wrapper: padding on the wrapper survives
    a zero-height grid row and would leave a gap under every closed panel */
-.acc-in{overflow:hidden;min-height:0}
-.acc-in > :first-child{padding-top:2px}
-.acc-in > :last-child{padding-bottom:16px}
-.acc-c p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:8px}
-.acc-c p:last-child{margin-bottom:0}
-.acc-c p b{color:var(--ink);font-weight:600}
-.shrow{display:flex;align-items:flex-start;gap:10px;padding:6px 0}
-.shrow .ssw{width:17px;height:17px;border-radius:50%;border:1px solid rgba(0,0,0,.08);flex:none;margin-top:4px}
-.shrow .sht{flex:1 1 auto;min-width:0;font-size:14px;line-height:1.7}
+  .acc-in{overflow:hidden;min-height:0}
+  .acc-in > :first-child{padding-top:2px}
+  .acc-in > :last-child{padding-bottom:16px}
+  .acc-c p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:8px}
+  .acc-c p:last-child{margin-bottom:0}
+  .acc-c p b{color:var(--ink);font-weight:600}
+  .shrow{display:flex;align-items:flex-start;gap:10px;padding:6px 0}
+  .shrow .ssw{width:17px;height:17px;border-radius:50%;border:1px solid rgba(0,0,0,.08);flex:none;margin-top:4px}
+  .shrow .sht{flex:1 1 auto;min-width:0;font-size:14px;line-height:1.7}
 /* USP block: tiles on the brand grey, so the rows stop reading as wide empty lines */
-.usp{margin-bottom:4px}
-.usp .acc{border-top:1px solid var(--line)}
-.usp .acc:first-child{border-top:none}
-.usp .acc:last-child{border-bottom:none}
-.usp .acc-t{padding:14px 0}
-.shrow b{font-weight:600;margin-right:2px}
-.shrow em{font-style:normal;color:var(--ink-soft)}
+  .usp{margin-bottom:4px}
+  .usp .acc{border-top:1px solid var(--line)}
+  .usp .acc:first-child{border-top:none}
+  .usp .acc:last-child{border-bottom:none}
+  .usp .acc-t{padding:14px 0}
+  .shrow b{font-weight:600;margin-right:2px}
+  .shrow em{font-style:normal;color:var(--ink-soft)}
 /* guarantee row (mirrors approved cart pill) */
 /* the copy is one flex item, not a text node plus a <b>: as two items each was being
    squeezed into its own narrow column and broke mid-phrase at 390px */
-.grt{display:flex;align-items:center;gap:9px;background:var(--cream);font-size:13px;font-weight:600;padding:12px 16px;margin:16px 0 18px;border-radius:var(--r-card)}
-.grt-t{flex:1 1 0;min-width:0}
-.grt svg{width:1.15em;height:1.15em;flex:none;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.grt b{font-weight:600;color:var(--berry)}
+  .grt{display:flex;align-items:center;gap:9px;background:var(--cream);font-size:13px;font-weight:600;padding:12px 16px;margin:16px 0 18px;border-radius:var(--r-card)}
+  .grt-t{flex:1 1 0;min-width:0}
+  .grt svg{width:1.15em;height:1.15em;flex:none;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .grt b{font-weight:600;color:var(--berry)}
 /* swatches */
-.swlbl{font-size:13px;letter-spacing:.03em;text-transform:uppercase;font-weight:600;margin-bottom:10px}
+  .swlbl{font-size:13px;letter-spacing:.03em;text-transform:uppercase;font-weight:600;margin-bottom:10px}
 /* Compact claim list for a buy box whose product has no shades to pick: the same check
    rows the benefits block uses, tightened for the column they sit in. */
-.usplist{margin:0 0 18px}
-.usplist .bitem{margin-bottom:11px;align-items:flex-start}
-.usplist .bitem:last-child{margin-bottom:0}
-.usplist .bitem b{font-size:16px;font-weight:600;line-height:1.4;display:block}
-.swrow{display:flex;gap:12px;flex-wrap:wrap}
-.swb{width:46px;height:46px;border-radius:50%;border:1px solid rgba(0,0,0,.1);cursor:pointer;position:relative;transition:transform .15s ease}
-.swb:hover{transform:scale(1.08)}
-.swb:active{transform:scale(.95)}
+  .usplist{margin:0 0 18px}
+  .usplist .bitem{margin-bottom:11px;align-items:flex-start}
+  .usplist .bitem:last-child{margin-bottom:0}
+  .usplist .bitem b{font-size:16px;font-weight:600;line-height:1.4;display:block}
+  .swrow{display:flex;gap:12px;flex-wrap:wrap}
+  .swb{width:46px;height:46px;border-radius:50%;border:1px solid rgba(0,0,0,.1);cursor:pointer;position:relative;transition:transform .15s ease}
+  .swb:hover{transform:scale(1.08)}
+  .swb:active{transform:scale(.95)}
 /* selection ring fades and scales in rather than appearing on the next frame */
-.swb::after{content:'';position:absolute;inset:-5px;border:2px solid #9a9a9a;border-radius:50%;opacity:0;transform:scale(.82);transition:opacity .2s ease,transform .2s cubic-bezier(.4,0,.2,1);pointer-events:none}
-.swb.on::after{opacity:1;transform:none}
-.swdesc{font-size:14px;color:var(--ink-soft);margin:12px 0 6px}
-.swdesc b{color:var(--ink);font-weight:600}
+  .swb::after{content:'';position:absolute;inset:-5px;border:2px solid #9a9a9a;border-radius:50%;opacity:0;transform:scale(.82);transition:opacity .2s ease,transform .2s cubic-bezier(.4,0,.2,1);pointer-events:none}
+  .swb.on::after{opacity:1;transform:none}
+  .swdesc{font-size:14px;color:var(--ink-soft);margin:12px 0 6px}
+  .swdesc b{color:var(--ink);font-weight:600}
 /* quiz link: shade-palette strip sits under the text, like the live shadefinder block */
-.quizlink{display:inline-flex;flex-direction:column;align-items:stretch;gap:5px;font-size:14px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;margin-bottom:22px;transition:color .2s ease}
-.quizlink .qico{width:100%;height:4px;display:block}
-.quizlink:hover{color:var(--berry)}
+  .quizlink{display:inline-flex;flex-direction:column;align-items:stretch;gap:5px;font-size:14px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;margin-bottom:22px;transition:color .2s ease}
+  .quizlink .qico{width:100%;height:4px;display:block}
+  .quizlink:hover{color:var(--berry)}
 /* Bundle picker: selection is carried by fill + shadow instead of a grid of outlines. */
-.bundlbl{text-align:center;font-size:15px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;margin:4px 0 12px;display:flex;align-items:center;gap:14px}
-.bundlbl::before,.bundlbl::after{content:'';height:1px;background:var(--line);flex:1}
-.bundles{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
-.bun{position:relative;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--soft);border:2px solid transparent;border-radius:var(--r-card);padding:15px 16px;cursor:pointer;transition:background .2s ease,border-color .2s ease,box-shadow .2s ease}
-.bun:hover{background:#f0f0f1}
-.bun.on{background:#fff;border-color:var(--ink);box-shadow:0 4px 14px rgba(18,18,18,.10)}
-.rad{width:19px;height:19px;border-radius:50%;border:2px solid var(--taupe);flex:none;position:relative;transition:border-color .2s ease}
-.rad::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--ink);opacity:0;transform:scale(.4);transition:opacity .18s ease,transform .18s cubic-bezier(.4,0,.2,1)}
-.bun.on>.rad{border-color:var(--ink)}
-.bun.on>.rad::after{opacity:1;transform:none}
-.bun .bn{flex:1}
-.bun .bn b{font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px}
-.bun .bn small{display:block;font-size:15px;color:var(--ink-soft);margin-top:1px}
-.off{font-style:normal;background:var(--berry);color:#fff;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:var(--r-chip)}
-.bun .bp{text-align:right}
-.bun .bp b{font-size:18px;font-weight:600;display:block}
-.bun .bp s{font-size:15px;color:var(--berry)}
-.tag2{position:absolute;top:-11px;right:12px;background:var(--ink);color:var(--paper);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:var(--r-chip)}
-.tag2.gold{background:var(--berry)}
-.bunx{display:none;width:100%;padding-left:31px}
-.bun.on .bunx{display:block}
-.bnote{display:block;font-size:15px;color:var(--ink-soft);margin:2px 0 10px}
-.bsel{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:var(--r-chip);padding:9px 13px;font-size:15px;margin:0 8px 8px 0;background:#fff}
-.bsel .bsw{width:16px;height:16px;border-radius:50%;border:1px solid rgba(0,0,0,.08)}
-.bsel i{font-style:normal;font-size:11px;color:var(--ink-soft)}
+  .bundlbl{text-align:center;font-size:15px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;margin:4px 0 12px;display:flex;align-items:center;gap:14px}
+  .bundlbl::before,.bundlbl::after{content:'';height:1px;background:var(--line);flex:1}
+  .bundles{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+  .bun{position:relative;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--soft);border:2px solid transparent;border-radius:var(--r-card);padding:15px 16px;cursor:pointer;transition:background .2s ease,border-color .2s ease,box-shadow .2s ease}
+  .bun:hover{background:#f0f0f1}
+  .bun.on{background:#fff;border-color:var(--ink);box-shadow:0 4px 14px rgba(18,18,18,.10)}
+  .rad{width:19px;height:19px;border-radius:50%;border:2px solid var(--taupe);flex:none;position:relative;transition:border-color .2s ease}
+  .rad::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--ink);opacity:0;transform:scale(.4);transition:opacity .18s ease,transform .18s cubic-bezier(.4,0,.2,1)}
+  .bun.on>.rad{border-color:var(--ink)}
+  .bun.on>.rad::after{opacity:1;transform:none}
+  .bun .bn{flex:1}
+  .bun .bn b{font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .bun .bn small{display:block;font-size:15px;color:var(--ink-soft);margin-top:1px}
+  .off{font-style:normal;background:var(--berry);color:#fff;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:var(--r-chip)}
+  .bun .bp{text-align:right}
+  .bun .bp b{font-size:18px;font-weight:600;display:block}
+  .bun .bp s{font-size:15px;color:var(--berry)}
+  .tag2{position:absolute;top:-11px;right:12px;background:var(--ink);color:var(--paper);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:var(--r-chip)}
+  .tag2.gold{background:var(--berry)}
+  .bunx{display:none;width:100%;padding-left:31px}
+  .bun.on .bunx{display:block}
+  .bnote{display:block;font-size:15px;color:var(--ink-soft);margin:2px 0 10px}
+  .bsel{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:var(--r-chip);padding:9px 13px;font-size:15px;margin:0 8px 8px 0;background:#fff}
+  .bsel .bsw{width:16px;height:16px;border-radius:50%;border:1px solid rgba(0,0,0,.08)}
+  .bsel i{font-style:normal;font-size:11px;color:var(--ink-soft)}
 /* gift box (mirrors cart gift bar) */
 /* Gift block, variant C. Cream ribbon with the threshold underlined and set larger — it
    was being skimmed past before. Nothing here uses the buy button's burgundy, so the CTA
@@ -596,18 +604,18 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* ATC + subscription. The main CTA is deliberately the heaviest element in the buy box. */
 /* Add to Cart is black; burgundy stays for the secondary calls (Try Now, Find My Shade,
    Meet the #1 Foundation), so buying reads as the strongest action on the page. */
-.atcbig{width:100%;padding:13px 0;font-size:19px;line-height:1.3;letter-spacing:.06em;background:var(--ink);border-color:var(--ink);box-shadow:0 6px 20px rgba(18,18,18,.2)}
-.atcbig:hover{background:#333;border-color:#333}
+  .atcbig{width:100%;padding:13px 0;font-size:19px;line-height:1.3;letter-spacing:.06em;background:var(--ink);border-color:var(--ink);box-shadow:0 6px 20px rgba(18,18,18,.2)}
+  .atcbig:hover{background:#333;border-color:#333}
 /* stock nudge + geo shipping row (mirrors the live nudge/shipping-line blocks) */
-.stockrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:13px;font-size:13px;font-weight:600}
-.stockrow .ls{display:inline-flex;align-items:center;gap:9px;color:#dd1d1d;font-weight:700}
-.stockrow .ls.ok{color:#1aa34a}
-.stockrow .ls i{width:8px;height:8px;border-radius:50%;background:currentColor;position:relative;flex:none}
-.stockrow .ls i::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid currentColor;opacity:0;animation:stockpulse 2s ease-out infinite}
-.stockrow .shipto{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--ink-soft);min-width:0}
-.stockrow .shipto b{color:var(--ink);font-weight:600}
-.stockrow .flg{width:20px;height:14px;flex:none;display:block}
-@keyframes stockpulse{
+  .stockrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:13px;font-size:13px;font-weight:600}
+  .stockrow .ls{display:inline-flex;align-items:center;gap:9px;color:#dd1d1d;font-weight:700}
+  .stockrow .ls.ok{color:#1aa34a}
+  .stockrow .ls i{width:8px;height:8px;border-radius:50%;background:currentColor;position:relative;flex:none}
+  .stockrow .ls i::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid currentColor;opacity:0;animation:stockpulse 2s ease-out infinite}
+  .stockrow .shipto{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px;color:var(--ink-soft);min-width:0}
+  .stockrow .shipto b{color:var(--ink);font-weight:600}
+  .stockrow .flg{width:20px;height:14px;flex:none;display:block}
+  @keyframes stockpulse{
   0%{transform:scale(.6);opacity:.9}
   70%{transform:scale(1.4);opacity:0}
   100%{opacity:0}
@@ -740,8 +748,56 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .shcard figcaption{display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;margin-top:12px}
 .shname{display:flex;align-items:center;justify-content:center;gap:7px;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1.3}
 .shname i{width:14px;height:14px;border-radius:50%;flex:none;border:1px solid rgba(0,0,0,.08)}
-.shdesc{font-size:15px;color:var(--ink-soft);line-height:1.5}
+.shdesc{font-size:16px;color:var(--ink-soft);line-height:1.5}
 .shades .benef-cta{margin-top:46px;margin-bottom:0}
+
+/* ---------- blocks used by more than one product template ----------
+   Bundle tiers with their offer timer, review cards, the ingredients variant of
+   image-with-text, the filled section variant, the how-to-use tags and the price row.
+   These lived as identical copies in the blush and concealer page files until now:
+   any page that renders the same markup now gets the same styling for free. */
+
+/* ---------- price row (live buy box shows price + BESTSELLER badge) ---------- */
+.pricerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+.bundtimer{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;background:var(--berry-deep);color:#fff;font-size:16px;font-weight:700;text-align:center;padding:12px 14px;margin:0 0 12px;border-radius:var(--r-card)}
+.bundtimer .tclock{font-size:15px}
+.bundtimer b{font-variant-numeric:tabular-nums;font-weight:700}
+/* the shade pickers stack one per unit, so three units read as three separate choices */
+.bun .bsel{cursor:pointer}
+.bun .bsel:hover{border-color:var(--ink)}
+/* ---------- grey fills, matching the live sections ---------- */
+.section.fill,.steps.fill{background:#f3f3f3}
+.section.fill{padding-top:80px;padding-bottom:80px}
+.steps.fill{padding-top:80px;padding-bottom:80px}
+/* ---------- review cards ----------
+   Rebuilt from the theme's own eg-reviews card: quote mark and Trustpilot stars on one
+   row, then title, text and a small-caps author line. Values measured off the live
+   section, including its 14px radius and lifted shadow. */
+.rcards .rcard{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;background:var(--paper);border-radius:14px;box-shadow:0 8px 22px -10px rgba(18,18,18,.20);padding:24px 24px 26px;display:flex;flex-direction:column;min-width:0}
+.rtop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.rq{width:28px;height:24px;flex:none;color:rgba(18,18,18,.16)}
+.tpmini{width:107px;height:20px;flex:none;display:block}
+.rcards .rcard b{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:9px}
+.rcards .rcard p{font-size:16px;color:rgba(18,18,18,.82);line-height:1.55;flex:1;margin:0}
+.rcards .rcard cite{font-style:normal;font-size:13px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:rgba(18,18,18,.55);margin-top:22px}
+.rcards .rcard cite i{font-style:normal;margin:0 3px}
+/* arrows sit level with the cards, clear of the copy */
+.revsec .twrap .lookarrow{top:50%}
+.revsec .twrap .lookarrow.prev{left:-22px}
+.revsec .twrap .lookarrow.next{right:-22px}
+/* ---------- ingredients block ----------
+   Photo right, copy left (live layout), on the brand sand fill. */
+.iwt.ingr{background:#e3dbd2}
+.iwt.ingr .tx p b{display:block;margin-bottom:1px;line-height:1.35}
+.iwt.ingr .tx p{margin-bottom:0}
+.iwt.ingr .tx{gap:14px}
+.iwt-badge{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:-8px}
+/* ---------- how to use ----------
+   Square step videos, and enough room under the row for the CTA that follows it. */
+.steps .step video{aspect-ratio:1/1}
+.steps .benef-cta{margin-top:44px;margin-bottom:0}
+/* ---------- how to use: live step tags are burgundy with white caps ---------- */
+.steps .step .stag{background:var(--berry-deep);color:#fff;font-weight:700;letter-spacing:.03em;border:2px solid var(--berry-deep);border-radius:0}
 
 /* ---------- FAQ ---------- */
 /* Narrower column than the rest of the page: a question set reads better as a single
@@ -998,7 +1054,16 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .shsub{font-size:15px;margin-bottom:26px}
   .shades .eyebrow{font-size:13px}
   .shades .benef-cta{margin-top:32px}
-  .shdesc{font-size:16px}
+  .section.fill,.steps.fill{padding-top:40px;padding-bottom:40px}
+  .iwt.ingr{margin-top:40px}
+  .section{padding-top:40px}
+  .bundtimer{font-size:14px}
+  .rcards .rcard{flex:0 0 78vw;padding:18px 18px 16px}
+  .rcards .rcard b{font-size:16px}
+  .rcards .rcard p{font-size:15px}
+  .faq .acc-t{font-size:15px;padding:17px 0}
+  .faq .acc-c p{font-size:15px}
+  .iwt-badge{font-size:13px}
   .bslider{margin-top:40px}
   .bsrow{gap:8px}
   .bsrow img{flex-basis:84%;width:84%}

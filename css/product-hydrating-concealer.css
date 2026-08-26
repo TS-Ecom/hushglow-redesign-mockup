@@ -1,34 +1,9 @@
-/* HushGlow Design — Multi-Effect Blush Stick product page.
-   Only what is unique to this product lives here: the buy-box price row, the mix & match
-   bundle timer, the shade gallery, the review cards, the consumer-study block and the FAQ.
-   Everything else (buy box, gallery, accordions, swatches, bundles, upsells, video row,
-   ticker, steps, banner slider, recommendations, sticky ATC) comes from shared.css. */
-
-/* ---------- price row (live buy box shows price + BESTSELLER badge) ---------- */
-.pricerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}
-
-/* ---------- mix & match bundles ----------
-   The offer timer sits above the tiers, as the app renders it on the live page. */
-.bundtimer{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;background:var(--berry-deep);color:#fff;font-size:16px;font-weight:700;text-align:center;padding:12px 14px;margin:0 0 12px;border-radius:var(--r-card)}
-.bundtimer .tclock{font-size:15px}
-.bundtimer b{font-variant-numeric:tabular-nums;font-weight:700}
-/* the shade pickers stack one per unit, so three units read as three separate choices */
-.bun .bsel{cursor:pointer}
-.bun .bsel:hover{border-color:var(--ink)}
-
-/* single-pane cross-sell: the live block has one heading, not switchable tabs */
-.uptabs.single b{cursor:default;color:var(--ink);border-bottom-color:transparent}
-
-/* ---------- grey fills, matching the live sections ---------- */
-.section.fill,.steps.fill{background:#f3f3f3}
-.section.fill{padding-top:80px;padding-bottom:80px}
-.steps.fill{padding-top:80px;padding-bottom:80px}
-
-/* ---------- shade gallery ---------- */
-/* ---- Shade gallery (EIGHT SHADES) ---- */
-.shgal .eyebrow{text-align:center;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--berry);margin-bottom:10px}
+/* HushGlow Design — Hydrating Concealer Stick product page.
+   Only what is unique to this product lives here: the EIGHT SHADES gallery, the
+   "Why Hush Glow?" comparison, the consumer-study numbers and the upsell panes.
+   Everything else (buy box, gallery, accordions, swatches, bundles, upsell tabs,
+   video row, ticker, steps, reviews, FAQ, sticky ATC) comes from shared.css. */
 .shgal .sec-h{text-transform:uppercase;font-weight:700;letter-spacing:.01em;margin-bottom:14px}
-.shsub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:min(62ch,100%);margin:0 auto 34px}
 .shgal__layout{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:26px;align-items:start;max-width:1320px;margin:0 auto}
 .shgal__main{min-width:0}
 .shgal__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
@@ -97,86 +72,7 @@
   .shgal__backdrop{display:block;position:fixed;inset:0;z-index:59;background:rgba(18,18,18,.5);
     opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.4,0,.2,1)}
   .shgal__backdrop.is-open{opacity:1;pointer-events:auto}
-  .shsub{margin-bottom:26px}
   .shgal__photo{aspect-ratio:1/1}
-}
-
-/* ---------- review cards ----------
-   Rebuilt from the theme's own eg-reviews card: quote mark and Trustpilot stars on one
-   row, then title, text and a small-caps author line. Values measured off the live
-   section, including its 14px radius and lifted shadow. */
-.rcards .rcard{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;background:var(--paper);border-radius:14px;box-shadow:0 8px 22px -10px rgba(18,18,18,.20);padding:24px 24px 26px;display:flex;flex-direction:column;min-width:0}
-.rtop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
-.rq{width:28px;height:24px;flex:none;color:rgba(18,18,18,.16)}
-.tpmini{width:107px;height:20px;flex:none;display:block}
-.rcards .rcard b{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:9px}
-.rcards .rcard p{font-size:15px;color:rgba(18,18,18,.82);line-height:1.55;flex:1;margin:0}
-.rcards .rcard cite{font-style:normal;font-size:13px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:rgba(18,18,18,.55);margin-top:22px}
-.rcards .rcard cite i{font-style:normal;margin:0 3px}
-/* arrows sit level with the cards, clear of the copy */
-.revsec .twrap .lookarrow{top:50%}
-.revsec .twrap .lookarrow.prev{left:-22px}
-.revsec .twrap .lookarrow.next{right:-22px}
-
-/* ---------- ingredients block ----------
-   Photo right, copy left (live layout), on the brand sand fill. */
-.iwt.ingr{background:#e3dbd2}
-.iwt.ingr .tx p b{display:block;margin-bottom:1px;line-height:1.35}
-.iwt.ingr .tx p{margin-bottom:0}
-.iwt.ingr .tx{gap:14px}
-.iwt-badge{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:-8px}
-
-/* ---------- consumer study results ---------- */
-
-/* the number is the element that has to land first, so it carries the weight */
-/* Single taupe arc drawn straight on the section fill, exactly as the live page does
-   it: no track behind it, so the missing share reads as an open gap. Thick enough to
-   register at a glance, and quieter than the burgundy CTA below. */
-
-/* ---------- how to use ----------
-   Four steps on this product, not three, so the row keeps them on one line. */
-.steps .step video{aspect-ratio:1/1}
-.steps .benef-cta{margin-top:44px;margin-bottom:0}
-
-/* ---------- how to use: live step tags are burgundy with white caps ---------- */
-.steps .step .stag{background:var(--berry-deep);color:#fff;font-weight:700;letter-spacing:.03em;border:2px solid var(--berry-deep);border-radius:0}
-
-/* ---------- faq ---------- */
-
-
-/* ---------- mobile ---------- */
-@media screen and (max-width:749px){
-  /* tight vertical rhythm on a phone: the grey sections were still on desktop padding
-     and the blocks between them were 56-64px apart */
-  .section.fill,.steps.fill{padding-top:40px;padding-bottom:40px}
-  .iwt.ingr{margin-top:40px}
-    .section{padding-top:40px}
-
-  .bundtimer{font-size:14px}
-
-  /* six portraits do not fit a phone row: swipe with the next card peeking in */
-  .shgrid{display:flex;grid-template-columns:none;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
-  .shgrid::-webkit-scrollbar{display:none}
-  /* two shades in view with the third peeking, so it reads as a row you can swipe */
-  .shcard{flex:0 0 42vw;scroll-snap-align:start}
-  .shsub{font-size:15px;margin-bottom:26px}
-  .shades .eyebrow{font-size:13px}
-  .shades .benef-cta{margin-top:32px}
-
-  .rcards .rcard{flex:0 0 78vw;padding:18px 18px 16px}
-  .rcards .rcard b{font-size:16px}
-  .rcards .rcard p{font-size:15px}
-
-        /* the grid carries the page padding here, so the photo lines up with the rows below it */
-            
-  .faq .acc-t{font-size:15px;padding:17px 0}
-  .faq .acc-c p{font-size:15px}
-  .iwt-badge{font-size:13px}
-}
-
-/* type floor: reading copy stays at 16px on desktop */
-@media screen and (min-width:750px){
-  .shdesc,.rcards .rcard p,.faq .acc-c p{font-size:16px}
 }
 
 /* ---- Why Hush Glow table ---- */
@@ -184,8 +80,6 @@
 .cmp__y span,.cmp__n span{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:13px;font-weight:700}
 .cmp__y span{background:#53af01;color:#fff}
 .cmp__n span{background:#dbdbdb;color:var(--ink)}
-@media screen and (max-width:749px){
-    }
 
 /* ---- Feel The Difference ---- */
 .iwt.feel .sec-h{text-align:left;margin-bottom:16px}
@@ -193,20 +87,11 @@
 .iwauth{font-size:15px;font-weight:600;color:var(--ink-soft);margin:0 0 22px}
 
 /* ---- Upsell tabs ---- */
-.uptabs{display:flex;gap:26px;border-bottom:1px solid var(--line);margin-bottom:14px}
-.uptabs b{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);padding:0 0 10px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
-.uptabs b.on{color:var(--ink);border-bottom-color:var(--ink)}
 .uppane{display:none}
 .uppane.on{display:block}
-.uppr{display:flex;align-items:center;gap:8px;margin-top:4px}
 .upnow{font-weight:700}
 .upwas{color:var(--berry);text-decoration:line-through;font-size:14px}
 .upsave{background:var(--cream);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:var(--r-chip)}
-
-/* ---- Price row: struck compare-at first, like the live buy box ---- */
-.pricerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-
-
 /* ---- Real results: percentage column wide enough for the numbers ---- */
 
 /* ---- Why Hush Glow: copy left, table right, brand column as a standing band ---- */

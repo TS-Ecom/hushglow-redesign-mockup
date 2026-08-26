@@ -7,14 +7,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="../js/viewport-lock.js?v=126"></script>
-<link rel="stylesheet" href="../css/shared.css?v=126">
-<link rel="stylesheet" href="../css/product-hydrating-concealer.css?v=126">
+<script src="../js/viewport-lock.js?v=132"></script>
+<link rel="stylesheet" href="../css/shared.css?v=132">
+<link rel="stylesheet" href="../css/product-hydrating-concealer.css?v=132">
 </head>
 <body>
 
 <!-- announcement -->
-<div class="announce" id="announce">Summer Sale: up to 45% off<button class="x" aria-label="Close" onclick="document.getElementById('announce').style.display='none'">✕</button></div>
+<div class="announce">Summer Sale: up to 45% off<button class="x" aria-label="Close" onclick="document.getElementById('announce').style.display='none'">✕</button></div>
 
 <!-- header -->
 <div class="headwrap">
@@ -76,11 +76,11 @@
 <section class="pdp">
   <div class="gal">
     <div class="gmain">
-      <button class="galarrow prev" id="galPrev" aria-label="Previous image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <img id="galMain" src="https://hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=1200" alt="Hydrating Concealer Stick">
-      <button class="galarrow next" id="galNext" aria-label="Next image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button class="galarrow prev" aria-label="Previous image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <img src="https://hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=1200" alt="Hydrating Concealer Stick">
+      <button class="galarrow next" aria-label="Next image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
-    <div class="thumbs" id="galThumbs">
+    <div class="thumbs">
       <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=200" data-full="https://hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=1200" class="on" alt="Hydrating Concealer Stick view 1">
       <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/Soft_Porcelain.webp?v=1786025680&width=200" data-full="https://hushglow.com/cdn/shop/files/Soft_Porcelain.webp?v=1786025680&width=1200" alt="Hydrating Concealer Stick view 1">
       <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=200" data-full="https://hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=1200" alt="Hydrating Concealer Stick view 2">
@@ -133,7 +133,7 @@
     <div class="grt"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.7-6L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.7 6L3 16"/><path d="M3 21v-5h5"/></svg><span class="grt-t">Wrong shade? <b>We'll replace it free.</b></span></div>
 
     <div class="swlbl">Choose Your Color</div>
-    <div class="swrow" id="swRow">
+    <div class="swrow">
       <button class="swb on" data-shade="01 Soft Porcelain" data-desc="is the fairest shade with neutral undertones" data-img="https://hushglow.com/cdn/shop/files/HUSH1183_1.webp?v=1783879856&width=1200" style="background:#eabd94" aria-label="01 Soft Porcelain"></button>
       <button class="swb" data-shade="02 Light Apricot" data-desc="is light with warm apricot undertones" data-img="https://hushglow.com/cdn/shop/files/HUSH0201_1.webp?v=1783879621&width=1200" style="background:#d9ae8e" aria-label="02 Light Apricot"></button>
       <button class="swb" data-shade="03 Natural Nude" data-desc="is light to medium with neutral undertones" data-img="https://hushglow.com/cdn/shop/files/HUSH1377_1.webp?v=1783879320&width=1200" style="background:#d8a47c" aria-label="03 Natural Nude"></button>
@@ -150,8 +150,8 @@
          app, and the app stays: what is drawn here is the arrangement (offer timer, tiers,
          one shade picker per unit) so the flow can be reviewed, not a design to approve. -->
     <div class="bundlbl">Mix &amp; Match Your Shades</div>
-    <p class="bundtimer">Hurry! Offer expires in <b id="bundleTimer">07:13:41</b> <span class="tclock">⏰</span></p>
-    <div class="bundles" id="bundles">
+    <p class="bundtimer">Hurry! Offer expires in <b data-countdown="hms">07:13:41</b> <span class="tclock">⏰</span></p>
+    <div class="bundles">
       <label class="bun"><span class="rad"></span><span class="bn"><b>1 Piece</b></span><span class="bp"><b>$37.99</b></span></label>
       <label class="bun on"><span class="tag2">Most Popular</span><span class="rad"></span>
         <span class="bn"><b>2 Pieces <i class="off">Save 32%</i></b><small>$33.99/each</small></span><span class="bp"><b>$67.99</b><s>$99.98</s></span>
@@ -185,7 +185,7 @@
       </div>
     </div>
 
-    <a class="btn btn-primary atcbig" id="atcBtn">Add to Cart</a>
+    <a class="btn btn-primary atcbig">Add to Cart</a>
 
     <div class="stockrow">
       <span class="ls"><i></i>Limited Stock!</span>
@@ -198,8 +198,8 @@
 
     <!-- cross-sell: one pane, the live block has no tabs on this product -->
     <div class="upsells">
-      <div class="uptabs"><b class="on" data-uptab="0">Often bought with</b><b data-uptab="1">Save with bundles</b></div>
-      <div class="uppane on" data-uppane="0">
+      <div class="uptabs"><b class="on" data-tab="0">Often bought with</b><b data-tab="1">Save with bundles</b></div>
+      <div class="uppane on" data-pane="0">
           <div class="upcard">
             <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?width=300" alt="Foundation Cushion">
             <span class="upmid"><b>Foundation Cushion</b><small>Smooths pores and fine lines before you conceal.</small><span class="uppr"><b>$39.99</b><s>$54.99</s><i class="usave">Save 27%</i></span></span>
@@ -216,7 +216,7 @@
             <button class="upbtn" type="button"><span class="sm">Add</span><span class="lg">Add to Cart</span></button>
           </div>
       </div>
-      <div class="uppane" data-uppane="1">
+      <div class="uppane" data-pane="1">
           <div class="upcard">
             <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/1_1296_1296__1.webp?width=300" alt="Glow Travel Kit">
             <span class="upmid"><b>Glow Travel Kit</b><small>The full routine in travel size.</small><span class="uppr"><b>$79.99</b><s>$222.99</s><i class="usave">Save 64%</i></span></span>
@@ -249,8 +249,8 @@
 
 <div class="pstrip deep" data-items="NEW Dual-Ended Formula|Made For Mature Skin|Built-In Blending Brush">
   <div class="ticker">
-    <div class="half" id="psHalf1"></div>
-    <div class="half" id="psHalf2"></div>
+    <div class="half"></div>
+    <div class="half"></div>
   </div>
 </div>
 
@@ -259,14 +259,14 @@
     <h2 class="sec-h statement">Our community can't get enough of it!</h2>
     <p class="tpline">See our <a href="#">1,280 reviews</a> on <svg class="tpstar" viewBox="0 0 15 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7.4 10.68l3.21-.81 1.34 4.13-4.55-3.32zM14.79 5.33H9.14L7.4 0 5.66 5.33H0l4.58 3.3-1.74 5.33 4.58-3.3 2.82-2.03 4.55-3.3z" fill="#00B67A"/></svg><b class="tpword">Trustpilot</b></p>
     <div class="twrap">
-      <button class="lookarrow prev" id="tPrev" aria-label="Previous" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="trow rcards" id="tRow">
+      <button class="lookarrow prev" aria-label="Previous" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="trow rcards">
         <div class="rcard"><div class="rtop"><svg class="rq" viewBox="0 0 21 18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 0C4.05 0 0 4.05 0 9V18H9V9H3C3 5.67 5.67 3 9 3V0ZM20.4 0C15.45 0 11.4 4.05 11.4 9V18H20.4V9H14.4C14.4 5.67 17.07 3 20.4 3V0Z" fill="currentColor"/></svg><svg class="tpmini" viewBox="0 0 49 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="5 out of 5 stars"><path fill="#00B67A" d="M9.13482 0H0V9.11034H9.13482V0Z"/><path fill="#00B67A" d="M18.936 0H9.80115V9.11034H18.936V0Z"/><path fill="#00B67A" d="M28.8318 0H19.697V9.11034H28.8318V0Z"/><path fill="#00B67A" d="M38.633 0H29.498V9.11034H38.633V0Z"/><path fill="#00B67A" d="M48.5289 0H39.3938V9.11034H48.5289V0Z"/><path fill="white" d="M4.472 6.07346L5.89934 5.69386L6.47026 7.49697L4.472 6.07346ZM7.70726 3.79589H5.23325L4.472 1.51831L3.71079 3.79589H1.33191L3.33016 5.2194L2.56891 7.49697L4.56717 6.07346L5.80417 5.2194L7.70726 3.79589Z"/><path fill="white" d="M14.3688 6.07346L15.7961 5.69386L16.367 7.49697L14.3688 6.07346ZM17.5088 3.79589H15.0348L14.2736 1.51831L13.5123 3.79589H11.0383L13.0366 5.2194L12.2753 7.49697L14.2736 6.07346L15.5106 5.2194L17.5088 3.79589Z"/><path fill="white" d="M24.2645 6.07346L25.6918 5.69386L26.2627 7.49697L24.2645 6.07346ZM27.4046 3.79589H24.9306L24.1693 1.51831L23.4081 3.79589H20.9341L22.9323 5.2194L22.2663 7.49697L24.2645 6.07346L25.5015 5.2194L27.4046 3.79589Z"/><path fill="white" d="M34.0653 6.07346L35.4924 5.69386L36.0633 7.49697L34.0653 6.07346ZM37.3002 3.79589H34.8264L34.0653 1.51831L33.3038 3.79589H30.83L32.828 5.2194L32.0669 7.49697L34.0653 6.07346L35.3022 5.2194L37.3002 3.79589Z"/><path fill="white" d="M43.9612 6.07346L45.3883 5.69386L45.9592 7.49697L43.9612 6.07346ZM47.101 3.79589H44.6272L43.8661 1.51831L43.1997 3.79589H40.7258L42.7242 5.2194L41.9628 7.49697L43.9612 6.07346L45.1981 5.2194L47.101 3.79589Z"/></svg></div><b>My dark circles are actually gone</b><p>I've tried every concealer out there and nothing touched my dark circles until this one. One swipe and they're just... gone. My husband asked if I'd been sleeping more.</p><cite>Linda K.</cite></div>
         <div class="rcard"><div class="rtop"><svg class="rq" viewBox="0 0 21 18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 0C4.05 0 0 4.05 0 9V18H9V9H3C3 5.67 5.67 3 9 3V0ZM20.4 0C15.45 0 11.4 4.05 11.4 9V18H20.4V9H14.4C14.4 5.67 17.07 3 20.4 3V0Z" fill="currentColor"/></svg><svg class="tpmini" viewBox="0 0 49 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="5 out of 5 stars"><path fill="#00B67A" d="M9.13482 0H0V9.11034H9.13482V0Z"/><path fill="#00B67A" d="M18.936 0H9.80115V9.11034H18.936V0Z"/><path fill="#00B67A" d="M28.8318 0H19.697V9.11034H28.8318V0Z"/><path fill="#00B67A" d="M38.633 0H29.498V9.11034H38.633V0Z"/><path fill="#00B67A" d="M48.5289 0H39.3938V9.11034H48.5289V0Z"/><path fill="white" d="M4.472 6.07346L5.89934 5.69386L6.47026 7.49697L4.472 6.07346ZM7.70726 3.79589H5.23325L4.472 1.51831L3.71079 3.79589H1.33191L3.33016 5.2194L2.56891 7.49697L4.56717 6.07346L5.80417 5.2194L7.70726 3.79589Z"/><path fill="white" d="M14.3688 6.07346L15.7961 5.69386L16.367 7.49697L14.3688 6.07346ZM17.5088 3.79589H15.0348L14.2736 1.51831L13.5123 3.79589H11.0383L13.0366 5.2194L12.2753 7.49697L14.2736 6.07346L15.5106 5.2194L17.5088 3.79589Z"/><path fill="white" d="M24.2645 6.07346L25.6918 5.69386L26.2627 7.49697L24.2645 6.07346ZM27.4046 3.79589H24.9306L24.1693 1.51831L23.4081 3.79589H20.9341L22.9323 5.2194L22.2663 7.49697L24.2645 6.07346L25.5015 5.2194L27.4046 3.79589Z"/><path fill="white" d="M34.0653 6.07346L35.4924 5.69386L36.0633 7.49697L34.0653 6.07346ZM37.3002 3.79589H34.8264L34.0653 1.51831L33.3038 3.79589H30.83L32.828 5.2194L32.0669 7.49697L34.0653 6.07346L35.3022 5.2194L37.3002 3.79589Z"/><path fill="white" d="M43.9612 6.07346L45.3883 5.69386L45.9592 7.49697L43.9612 6.07346ZM47.101 3.79589H44.6272L43.8661 1.51831L43.1997 3.79589H40.7258L42.7242 5.2194L41.9628 7.49697L43.9612 6.07346L45.1981 5.2194L47.101 3.79589Z"/></svg></div><b>The built-in brush is genius</b><p>I never have a clean brush around when I need one. This has it built right in, so I just swipe, blend, and I'm out the door in 10 seconds flat.</p><cite>Nancy P.</cite></div>
         <div class="rcard"><div class="rtop"><svg class="rq" viewBox="0 0 21 18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 0C4.05 0 0 4.05 0 9V18H9V9H3C3 5.67 5.67 3 9 3V0ZM20.4 0C15.45 0 11.4 4.05 11.4 9V18H20.4V9H14.4C14.4 5.67 17.07 3 20.4 3V0Z" fill="currentColor"/></svg><svg class="tpmini" viewBox="0 0 49 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="5 out of 5 stars"><path fill="#00B67A" d="M9.13482 0H0V9.11034H9.13482V0Z"/><path fill="#00B67A" d="M18.936 0H9.80115V9.11034H18.936V0Z"/><path fill="#00B67A" d="M28.8318 0H19.697V9.11034H28.8318V0Z"/><path fill="#00B67A" d="M38.633 0H29.498V9.11034H38.633V0Z"/><path fill="#00B67A" d="M48.5289 0H39.3938V9.11034H48.5289V0Z"/><path fill="white" d="M4.472 6.07346L5.89934 5.69386L6.47026 7.49697L4.472 6.07346ZM7.70726 3.79589H5.23325L4.472 1.51831L3.71079 3.79589H1.33191L3.33016 5.2194L2.56891 7.49697L4.56717 6.07346L5.80417 5.2194L7.70726 3.79589Z"/><path fill="white" d="M14.3688 6.07346L15.7961 5.69386L16.367 7.49697L14.3688 6.07346ZM17.5088 3.79589H15.0348L14.2736 1.51831L13.5123 3.79589H11.0383L13.0366 5.2194L12.2753 7.49697L14.2736 6.07346L15.5106 5.2194L17.5088 3.79589Z"/><path fill="white" d="M24.2645 6.07346L25.6918 5.69386L26.2627 7.49697L24.2645 6.07346ZM27.4046 3.79589H24.9306L24.1693 1.51831L23.4081 3.79589H20.9341L22.9323 5.2194L22.2663 7.49697L24.2645 6.07346L25.5015 5.2194L27.4046 3.79589Z"/><path fill="white" d="M34.0653 6.07346L35.4924 5.69386L36.0633 7.49697L34.0653 6.07346ZM37.3002 3.79589H34.8264L34.0653 1.51831L33.3038 3.79589H30.83L32.828 5.2194L32.0669 7.49697L34.0653 6.07346L35.3022 5.2194L37.3002 3.79589Z"/><path fill="white" d="M43.9612 6.07346L45.3883 5.69386L45.9592 7.49697L43.9612 6.07346ZM47.101 3.79589H44.6272L43.8661 1.51831L43.1997 3.79589H40.7258L42.7242 5.2194L41.9628 7.49697L43.9612 6.07346L45.1981 5.2194L47.101 3.79589Z"/></svg></div><b>Finally, something gentle enough for my skin</b><p>My skin is so sensitive and dry that most makeup just sits on top and looks cakey. This one actually feels hydrating, and it blends like skincare, not makeup.</p><cite>Carol H.</cite></div>
         <div class="rcard"><div class="rtop"><svg class="rq" viewBox="0 0 21 18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 0C4.05 0 0 4.05 0 9V18H9V9H3C3 5.67 5.67 3 9 3V0ZM20.4 0C15.45 0 11.4 4.05 11.4 9V18H20.4V9H14.4C14.4 5.67 17.07 3 20.4 3V0Z" fill="currentColor"/></svg><svg class="tpmini" viewBox="0 0 49 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="5 out of 5 stars"><path fill="#00B67A" d="M9.13482 0H0V9.11034H9.13482V0Z"/><path fill="#00B67A" d="M18.936 0H9.80115V9.11034H18.936V0Z"/><path fill="#00B67A" d="M28.8318 0H19.697V9.11034H28.8318V0Z"/><path fill="#00B67A" d="M38.633 0H29.498V9.11034H38.633V0Z"/><path fill="#00B67A" d="M48.5289 0H39.3938V9.11034H48.5289V0Z"/><path fill="white" d="M4.472 6.07346L5.89934 5.69386L6.47026 7.49697L4.472 6.07346ZM7.70726 3.79589H5.23325L4.472 1.51831L3.71079 3.79589H1.33191L3.33016 5.2194L2.56891 7.49697L4.56717 6.07346L5.80417 5.2194L7.70726 3.79589Z"/><path fill="white" d="M14.3688 6.07346L15.7961 5.69386L16.367 7.49697L14.3688 6.07346ZM17.5088 3.79589H15.0348L14.2736 1.51831L13.5123 3.79589H11.0383L13.0366 5.2194L12.2753 7.49697L14.2736 6.07346L15.5106 5.2194L17.5088 3.79589Z"/><path fill="white" d="M24.2645 6.07346L25.6918 5.69386L26.2627 7.49697L24.2645 6.07346ZM27.4046 3.79589H24.9306L24.1693 1.51831L23.4081 3.79589H20.9341L22.9323 5.2194L22.2663 7.49697L24.2645 6.07346L25.5015 5.2194L27.4046 3.79589Z"/><path fill="white" d="M34.0653 6.07346L35.4924 5.69386L36.0633 7.49697L34.0653 6.07346ZM37.3002 3.79589H34.8264L34.0653 1.51831L33.3038 3.79589H30.83L32.828 5.2194L32.0669 7.49697L34.0653 6.07346L35.3022 5.2194L37.3002 3.79589Z"/><path fill="white" d="M43.9612 6.07346L45.3883 5.69386L45.9592 7.49697L43.9612 6.07346ZM47.101 3.79589H44.6272L43.8661 1.51831L43.1997 3.79589H40.7258L42.7242 5.2194L41.9628 7.49697L43.9612 6.07346L45.1981 5.2194L47.101 3.79589Z"/></svg></div><b>A real-life filter</b><p>I honestly didn't think makeup could do this. It smooths my dry, uneven skin and doesn't settle into lines. I even got a compliment from my husband.</p><cite>Sandra W.</cite></div>
       </div>
-      <button class="lookarrow next" id="tNext" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button class="lookarrow next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
   </div>
 </section>
@@ -289,12 +289,12 @@
 <section class="cmp">
   <div class="inner">
     <div class="cmpwrap">
-      <div class="cmpbox" id="cmpBox">
+      <div class="cmpbox">
         <img loading="lazy" decoding="async" class="after" src="https://hushglow.com/cdn/shop/files/2_1296_1296_2_2.webp?width=1200" alt="After">
-        <div class="beforewrap" id="beforeWrap"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/2_1296_1296_3_e163c43d-8097-4967-bbab-084c9b958279.webp?width=1200" alt="Before"></div>
-        <div class="cmphandle" id="cmpHandle"><span>↔</span></div>
+        <div class="beforewrap"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/2_1296_1296_3_e163c43d-8097-4967-bbab-084c9b958279.webp?width=1200" alt="Before"></div>
+        <div class="cmphandle"><span>↔</span></div>
         <b class="cl bl">Before</b><b class="cl al">After</b>
-        <input type="range" id="cmpRange" min="0" max="100" value="50" aria-label="Compare before and after">
+        <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
       </div>
       <div class="cmptx">
         <h2>Espresso For Your Under-Eyes</h2>
@@ -512,9 +512,9 @@
 </section>
 
 <!-- sticky add to cart -->
-<div class="satc" id="satc">
+<div class="satc">
   <div class="smid"><b>Hydrating Concealer Stick</b><span class="sprice"><b class="pn">$37.99</b><s>$49.99</s><i class="usave">Save 24%</i></span></div>
-  <a class="btn btn-primary" id="satcBtn">Add to Cart</a>
+  <a class="btn btn-primary">Add to Cart</a>
 </div>
 
 <!-- footer -->
@@ -568,7 +568,7 @@
     </div>
   </div>
   <div class="paybar">
-    <div class="pay" id="payRow"></div>
+    <div class="pay" data-payicons="footer"></div>
     <!-- desktop-only Trustpilot summary (Meroda reference) -->
     <div class="tp-foot">
       <b>Excellent</b>
@@ -606,7 +606,7 @@
 </footer>
 
 <!-- mobile fullscreen menu -->
-<div class="mobmenu" id="mobmenu" aria-label="Menu">
+<div class="mobmenu" aria-label="Menu">
   <nav class="mlinks">
     <a href="#">Shop All</a>
     <a href="#">Face Makeup</a>
@@ -631,32 +631,43 @@
 </div>
 
 <!-- cart drawer -->
-<div class="cart-ovl" id="cartOvl" onclick="cartToggle(false)"></div>
-<aside class="cartdrawer" id="cartDrawer" aria-label="Cart">
+<div class="cart-ovl" onclick="cartToggle(false)"></div>
+<aside class="cartdrawer" aria-label="Cart">
   <div class="d-body">
     <div class="gifttop">
       <button class="x" aria-label="Close cart" onclick="cartToggle(false)">✕</button>
-      <p class="gmsg">Spend another <b>$47.01</b> for <b>Cosmetic Bag</b></p>
+      <p class="gmsg">Spend another <b>$40.01</b> for <b>Cosmetic Bag</b></p>
       <div class="gift1">
         <div class="gph"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=200" alt="Cosmetic Bag"></div>
-        <div class="g1mid"><b>Cosmetic Bag</b><span class="shl">Unlock at $80</span><div class="g1bar"><div style="width:41%"></div></div></div>
+        <div class="g1mid"><b>Cosmetic Bag</b><span class="shl">Unlock at $80</span><div class="g1bar"><div style="width:50%"></div></div></div>
       </div>
     </div>
     <div class="item">
-      <div class="ph"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/1_1296_1296_Vintage_Red.webp?width=300" alt=""></div>
+      <div class="ph"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/1_1296_1296___Ivory_2.webp?width=300" alt=""></div>
       <div class="mid">
-        <p class="name">Multi-Effect Blush Stick</p>
-        <div class="shade"><span class="sw" style="background:#d82d59"></span>01 Vintage Red</div>
+        <p class="name">Hush Foundation Cushion</p>
+        <div class="shade"><span class="sw" style="background:#eaded0"></span>Ivory</div>
         <span class="qty"><span>−</span><span class="n">1</span><span>+</span></span><span class="rm">Remove</span>
       </div>
-      <div class="right"><div class="price">$32.99</div></div>
+      <div class="right"><div class="price">$39.99</div><div class="was">$70.99</div></div>
     </div>
     <div class="strip">100% Shade Match Guarantee</div>
-    <div class="hl">
+    <!-- Two cross-sells, one shown: the drawer must never recommend what is already in
+         the bag, so shared.js hides whichever one matches the current product. -->
+    <div class="hl" data-hl="Multi-Effect Blush Stick">
+      <div class="ph"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?width=300" alt=""></div>
+      <div class="mid">
+        <p class="hd">Pairs well with</p>
+        <span class="nm">Multi-Effect Blush Stick<span class="shl">the colour on top of your base</span></span>
+        <span class="pr"><b>$32.99</b><s>$45.99</s></span>
+        <a class="hlbtn">Add to Bag</a>
+      </div>
+    </div>
+    <div class="hl" data-hl="Foundation Cushion" hidden>
       <div class="ph"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/1_1296_1296___Ivory_2.webp?width=300" alt=""></div>
       <div class="mid">
         <p class="hd">Pairs well with</p>
-        <span class="nm">Foundation Cushion<span class="shl">the base under your blush</span></span>
+        <span class="nm">Foundation Cushion<span class="shl">the base under your colour</span></span>
         <span class="pr"><b>$39.99</b><s>$70.99</s></span>
         <a class="hlbtn">Add to Bag</a>
       </div>
@@ -686,15 +697,16 @@
     </div>
   </div>
   <div class="d-foot">
+    <div class="row tsave"><span class="l">You're saving</span><span class="r">$31.00</span></div>
     <div class="row ship"><span class="l">Shipping</span><span class="r">FREE SHIPPING</span></div>
-    <div class="row"><span class="l">Subtotal</span><span class="r">$32.99</span></div>
-    <a class="co"><svg class="lk" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>Secure Checkout · $32.99</a>
+    <div class="row"><span class="l">Subtotal</span><span class="r">$39.99</span></div>
+    <a class="co"><svg class="lk" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>Secure Checkout · $39.99</a>
     <div class="gpill"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.7-6L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.7 6L3 16"/><path d="M3 21v-5h5"/></svg><span class="grt-t">Wrong shade? <b>We'll replace it free.</b></span></div>
-    <div class="cpay" id="cartPayRow"></div>
+    <div class="cpay" data-payicons="cart"></div>
   </div>
 </aside>
 
-<script src="../js/shared.js?v=126"></script>
-<script src="../js/product-hydrating-concealer.js?v=126"></script>
+<script src="../js/shared.js?v=132"></script>
+<script src="../js/product-hydrating-concealer.js?v=132"></script>
 </body>
 </html>

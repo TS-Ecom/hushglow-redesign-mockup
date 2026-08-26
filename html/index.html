@@ -7,14 +7,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="../js/viewport-lock.js?v=126"></script>
-<link rel="stylesheet" href="../css/shared.css?v=126">
-<link rel="stylesheet" href="../css/index.css?v=126">
+<script src="../js/viewport-lock.js?v=132"></script>
+<link rel="stylesheet" href="../css/shared.css?v=132">
+<link rel="stylesheet" href="../css/index.css?v=132">
 </head>
 <body>
 
 <!-- announcement -->
-<div class="announce" id="announce">Summer Sale: up to 45% off<button class="x" aria-label="Close" onclick="document.getElementById('announce').style.display='none'">✕</button></div>
+<div class="announce">Summer Sale: up to 45% off<button class="x" aria-label="Close" onclick="document.getElementById('announce').style.display='none'">✕</button></div>
 
 <!-- header -->
 <div class="headwrap">
@@ -90,8 +90,8 @@
 <!-- press ticker (Shrine-style, restored on client request round 2) -->
 <div class="press" aria-label="Featured in">
   <div class="ticker">
-    <div class="half" id="pressHalf1"></div>
-    <div class="half" id="pressHalf2"></div>
+    <div class="half"></div>
+    <div class="half"></div>
   </div>
 </div>
 
@@ -210,8 +210,8 @@
 <section class="look">
   <h2 class="sec-h">Get the Look</h2>
   <div style="position:relative">
-    <button class="lookarrow prev" id="lookPrev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-    <div class="lookrow" id="lookRow">
+    <button class="lookarrow prev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="lookrow">
       <div class="l-card"><img src="https://hushglow.com/cdn/shop/files/HUSH1676.jpg?width=700" alt=""><div class="cap"><b>Gulya's Berry-Toned Glow</b><a>Get the look</a></div></div>
       <div class="l-card"><img src="https://hushglow.com/cdn/shop/files/HUSH1416.jpg?width=700" alt=""><div class="cap"><b>Nina's Sculpted &amp; Clean Look</b><a>Get the look</a></div></div>
       <div class="l-card"><img src="https://hushglow.com/cdn/shop/files/HUSH1217.jpg?width=700" alt=""><div class="cap"><b>Daria's Barely-There Beauty</b><a>Get the look</a></div></div>
@@ -219,7 +219,7 @@
       <div class="l-card"><img src="https://hushglow.com/cdn/shop/files/HUSH1094.jpg?width=700" alt=""><div class="cap"><b>Phoebe's Bold Draped Flush</b><a>Get the look</a></div></div>
       <div class="l-card"><img src="https://hushglow.com/cdn/shop/files/HUSH0468.jpg?width=700" alt=""><div class="cap"><b>Hush Glow Look</b><a>Get the look</a></div></div>
     </div>
-    <button class="lookarrow next" id="lookNext" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button class="lookarrow next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
 </section>
 
@@ -274,7 +274,7 @@
     </div>
   </div>
   <div class="paybar">
-    <div class="pay" id="payRow"></div>
+    <div class="pay" data-payicons="footer"></div>
     <!-- desktop-only Trustpilot summary (Meroda reference) -->
     <div class="tp-foot">
       <b>Excellent</b>
@@ -312,7 +312,7 @@
 </footer>
 
 <!-- mobile fullscreen menu -->
-<div class="mobmenu" id="mobmenu" aria-label="Menu">
+<div class="mobmenu" aria-label="Menu">
   <nav class="mlinks">
     <a href="#">Shop All</a>
     <a href="#">Face Makeup</a>
@@ -337,19 +337,19 @@
 </div>
 
 <!-- cart drawer (static visual prototype, approved Launch state: one gift, one item) -->
-<div class="cart-ovl" id="cartOvl" onclick="cartToggle(false)"></div>
-<aside class="cartdrawer" id="cartDrawer" aria-label="Cart">
+<div class="cart-ovl" onclick="cartToggle(false)"></div>
+<aside class="cartdrawer" aria-label="Cart">
   <div class="d-body">
     <div class="gifttop">
       <button class="x" aria-label="Close cart" onclick="cartToggle(false)">✕</button>
       <p class="gmsg">Spend another <b>$40.01</b> for <b>Cosmetic Bag</b></p>
       <div class="gift1">
-        <div class="gph"><img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=200" alt="Cosmetic Bag"></div>
+        <div class="gph"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/ChatGPT_Image_29_._2026_._12_15_06.png?width=200" alt="Cosmetic Bag"></div>
         <div class="g1mid"><b>Cosmetic Bag</b><span class="shl">Unlock at $80</span><div class="g1bar"><div style="width:50%"></div></div></div>
       </div>
     </div>
     <div class="item">
-      <div class="ph"><img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/1_1296_1296___Ivory_2.webp?width=300" alt=""></div>
+      <div class="ph"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/1_1296_1296___Ivory_2.webp?width=300" alt=""></div>
       <div class="mid">
         <p class="name">Hush Foundation Cushion</p>
         <div class="shade"><span class="sw" style="background:#eaded0"></span>Ivory</div>
@@ -358,12 +358,23 @@
       <div class="right"><div class="price">$39.99</div><div class="was">$70.99</div></div>
     </div>
     <div class="strip">100% Shade Match Guarantee</div>
-    <div class="hl">
-      <div class="ph"><img src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?width=300" alt=""></div>
+    <!-- Two cross-sells, one shown: the drawer must never recommend what is already in
+         the bag, so shared.js hides whichever one matches the current product. -->
+    <div class="hl" data-hl="Multi-Effect Blush Stick">
+      <div class="ph"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?width=300" alt=""></div>
       <div class="mid">
         <p class="hd">Pairs well with</p>
-        <span class="nm">Multi-Effect Blush Stick<span class="shl">matched to your shade Ivory</span></span>
+        <span class="nm">Multi-Effect Blush Stick<span class="shl">the colour on top of your base</span></span>
         <span class="pr"><b>$32.99</b><s>$45.99</s></span>
+        <a class="hlbtn">Add to Bag</a>
+      </div>
+    </div>
+    <div class="hl" data-hl="Foundation Cushion" hidden>
+      <div class="ph"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/1_1296_1296___Ivory_2.webp?width=300" alt=""></div>
+      <div class="mid">
+        <p class="hd">Pairs well with</p>
+        <span class="nm">Foundation Cushion<span class="shl">the base under your colour</span></span>
+        <span class="pr"><b>$39.99</b><s>$70.99</s></span>
         <a class="hlbtn">Add to Bag</a>
       </div>
     </div>
@@ -372,17 +383,17 @@
       <div class="cylwrap">
         <div class="cylrow">
           <div class="ccard">
-            <div class="ph"><img src="https://hushglow.com/cdn/shop/files/37.jpg?width=300" alt=""></div>
+            <div class="ph"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/37.jpg?width=300" alt=""></div>
             <p class="nm">Waterproof Setting Spray</p>
             <a class="hlbtn">Add · $21.99</a>
           </div>
           <div class="ccard">
-            <div class="ph"><img src="https://hushglow.com/cdn/shop/files/38.jpg?width=300" alt=""></div>
+            <div class="ph"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/38.jpg?width=300" alt=""></div>
             <p class="nm">Pore-Blurring Primer Stick</p>
             <a class="hlbtn">Add · $19.99</a>
           </div>
           <div class="ccard">
-            <div class="ph"><img src="https://hushglow.com/cdn/shop/files/1_1296_1296_SUNKISSED_TRIO_fee55656-5224-402c-a213-5e3c92a5f333.jpg?width=300" alt=""></div>
+            <div class="ph"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/1_1296_1296_SUNKISSED_TRIO_fee55656-5224-402c-a213-5e3c92a5f333.jpg?width=300" alt=""></div>
             <p class="nm">Sunkissed Trio</p>
             <a class="hlbtn">Add · $90.99</a>
           </div>
@@ -396,12 +407,12 @@
     <div class="row ship"><span class="l">Shipping</span><span class="r">FREE SHIPPING</span></div>
     <div class="row"><span class="l">Subtotal</span><span class="r">$39.99</span></div>
     <a class="co"><svg class="lk" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>Secure Checkout · $39.99</a>
-    <div class="gpill"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.7-6L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.7 6L3 16"/><path d="M3 21v-5h5"/></svg>Wrong shade? <b>We'll replace it free.</b></div>
-    <div class="cpay" id="cartPayRow"></div>
+    <div class="gpill"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.7-6L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.7 6L3 16"/><path d="M3 21v-5h5"/></svg><span class="grt-t">Wrong shade? <b>We'll replace it free.</b></span></div>
+    <div class="cpay" data-payicons="cart"></div>
   </div>
 </aside>
 
-<script src="../js/shared.js?v=126"></script>
-<script src="../js/index.js?v=126"></script>
+<script src="../js/shared.js?v=132"></script>
+<script src="../js/index.js?v=132"></script>
 </body>
 </html>

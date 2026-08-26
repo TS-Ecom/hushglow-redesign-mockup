@@ -7,14 +7,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="../js/viewport-lock.js?v=126"></script>
-<link rel="stylesheet" href="../css/shared.css?v=126">
-<link rel="stylesheet" href="../css/product-hush-foundation-cushion.css?v=126">
+<script src="../js/viewport-lock.js?v=132"></script>
+<link rel="stylesheet" href="../css/shared.css?v=132">
+<link rel="stylesheet" href="../css/product-hush-foundation-cushion.css?v=132">
 </head>
 <body>
 
 <!-- announcement -->
-<div class="announce" id="announce">Summer Sale: up to 45% off<button class="x" aria-label="Close" onclick="document.getElementById('announce').style.display='none'">✕</button></div>
+<div class="announce">Summer Sale: up to 45% off<button class="x" aria-label="Close" onclick="document.getElementById('announce').style.display='none'">✕</button></div>
 
 <!-- header -->
 <div class="headwrap">
@@ -68,20 +68,20 @@
      the trust bar is a template-level section, not part of the header group) -->
 <div class="salebar" aria-label="Sale countdown">
   <span class="sl">Summer Sale Ends In</span>
-  <span class="unit"><b id="cdH">09</b><small>Hrs</small></span><i>:</i>
-  <span class="unit"><b id="cdM">02</b><small>Mins</small></span><i>:</i>
-  <span class="unit"><b id="cdS">27</b><small>Secs</small></span>
+  <span class="unit"><b data-countdown="h">09</b><small>Hrs</small></span><i>:</i>
+  <span class="unit"><b data-countdown="m">02</b><small>Mins</small></span><i>:</i>
+  <span class="unit"><b data-countdown="s">27</b><small>Secs</small></span>
 </div>
 
 <!-- buy area -->
 <section class="pdp">
   <div class="gal">
     <div class="gmain">
-      <button class="galarrow prev" id="galPrev" aria-label="Previous image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <img id="galMain" src="https://hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?width=1200" alt="Foundation Cushion">
-      <button class="galarrow next" id="galNext" aria-label="Next image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button class="galarrow prev" aria-label="Previous image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <img src="https://hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?width=1200" alt="Foundation Cushion">
+      <button class="galarrow next" aria-label="Next image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
-    <div class="thumbs" id="galThumbs">
+    <div class="thumbs">
       <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?width=200" data-full="https://hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?width=1200" class="on" alt="">
       <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?width=200" data-full="https://hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?width=1200" alt="">
       <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/Numbers_don_t_li_1_1.webp?width=200" data-full="https://hushglow.com/cdn/shop/files/Numbers_don_t_li_1_1.webp?width=1200" alt="">
@@ -142,7 +142,7 @@
     <div class="grt"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.7-6L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.7 6L3 16"/><path d="M3 21v-5h5"/></svg><span class="grt-t">Wrong shade? <b>We'll replace it free.</b></span></div>
 
     <div class="swlbl">Choose Your Color</div>
-    <div class="swrow" id="swRow">
+    <div class="swrow">
       <button class="swb on" data-shade="Ivory" data-desc="is pale with neutral undertones" data-img="https://hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?width=1200" style="background:#eaded0" aria-label="Ivory"></button>
       <button class="swb" data-shade="Honey Almond" data-desc="is light with neutral/warm undertones" data-img="https://hushglow.com/cdn/shop/files/1_1296_1296___Almond_1.webp?width=1200" style="background:#e4cfb3" aria-label="Honey Almond"></button>
       <button class="swb" data-shade="Warm" data-desc="is light to medium with neutral warm undertones" data-img="https://hushglow.com/cdn/shop/files/1_1296_1296___Warm_1.webp?width=1200" style="background:#dabf9f" aria-label="Warm"></button>
@@ -181,7 +181,7 @@
       </div>
     </div>
 
-    <a class="btn btn-primary atcbig" id="atcBtn">Add to Cart</a>
+    <a class="btn btn-primary atcbig">Add to Cart</a>
 
     <!-- stock nudge + geo shipping (mirrors the live nudge/shipping-line blocks; country is geo-detected in the theme) -->
     <div class="stockrow">
@@ -199,11 +199,11 @@
       <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/ChatGPT_Image_20_._2025_._12_16_25_3.webp?v=4083020894&amp;width=200" alt="">
       <span class="puffmid"><b>Premium Travel Puff</b><small>The perfect tool for blending your Hush Foundation on the go.</small></span>
       <span class="puffpr"><b>$6.99</b><s>$13.99</s></span>
-      <button class="ptoggle on" id="puffToggle" role="switch" aria-checked="true" aria-label="Add Premium Travel Puff to the order"><span></span></button>
+      <button class="ptoggle on" role="switch" aria-checked="true" aria-label="Add Premium Travel Puff to the order"><span></span></button>
     </div>
 
     <div class="upsells">
-      <div class="uptabs" id="upTabs"><b class="on" data-tab="often">Often Bought With</b><b data-tab="bundles">Save with Bundles</b></div>
+      <div class="uptabs"><b class="on" data-tab="often">Often Bought With</b><b data-tab="bundles">Save with Bundles</b></div>
       <div class="uppane on" data-pane="often">
         <div class="upcard">
           <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/try_hush13_resized_1.webp?width=200" alt="">
@@ -246,12 +246,10 @@
 
     <div class="vidcar">
       <p class="vh">See How It Works on Different People</p>
-      <div class="vrow" id="vidRow">
-        <span class="vcell"><video muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/a1ff7e82a1d94469a7d60155a6489dc6.thumbnail.0000000000_720x.jpg" data-src="https://hushglow.com/cdn/shop/videos/c/vp/a1ff7e82a1d94469a7d60155a6489dc6/a1ff7e82a1d94469a7d60155a6489dc6.HD-1080p-4.8Mbps-57930856.mp4"></video><i class="vplay" aria-hidden="true"></i></span>
-        <span class="vcell"><video muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/2a95d2a0620b47a491136ac036c6f1b1.thumbnail.0000000000_720x.jpg" data-src="https://hushglow.com/cdn/shop/videos/c/vp/2a95d2a0620b47a491136ac036c6f1b1/2a95d2a0620b47a491136ac036c6f1b1.HD-1080p-4.8Mbps-57931299.mp4"></video><i class="vplay" aria-hidden="true"></i></span>
-        <span class="vcell"><video muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/de5382a303f64b468811038541276ffa.thumbnail.0000000000_720x.jpg" data-src="https://hushglow.com/cdn/shop/videos/c/vp/de5382a303f64b468811038541276ffa/de5382a303f64b468811038541276ffa.HD-1080p-2.5Mbps-84303106.mp4"></video><i class="vplay" aria-hidden="true"></i></span>
-        <span class="vcell"><video muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/004acc102bb04d8e879dc1ec9ba54f7d.thumbnail.0000000000_720x.jpg" data-src="https://hushglow.com/cdn/shop/videos/c/vp/004acc102bb04d8e879dc1ec9ba54f7d/004acc102bb04d8e879dc1ec9ba54f7d.HD-1080p-4.8Mbps-63879369.mp4"></video><i class="vplay" aria-hidden="true"></i></span>
-        <span class="vcell"><video muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/7844ba881b1640169c556d61c554685b.thumbnail.0000000000_720x.jpg" data-src="https://hushglow.com/cdn/shop/videos/c/vp/7844ba881b1640169c556d61c554685b/7844ba881b1640169c556d61c554685b.HD-1080p-4.8Mbps-57931411.mp4"></video><i class="vplay" aria-hidden="true"></i></span>
+      <div class="vrow">
+        <span class="vcell"><video muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/dc29b2aebad64578903350f311d68f53.thumbnail.0000000000.jpg?v=1768251837" data-src="https://hushglow.com/cdn/shop/videos/c/vp/dc29b2aebad64578903350f311d68f53/dc29b2aebad64578903350f311d68f53.HD-720p-4.5Mbps-66842861.mp4?v=0"></video><i class="vplay" aria-hidden="true"></i></span>
+        <span class="vcell"><video muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/761e9dc8c2634b4c91d1a743d6b25aac.thumbnail.0000000000.jpg?v=1768251371" data-src="https://hushglow.com/cdn/shop/videos/c/vp/761e9dc8c2634b4c91d1a743d6b25aac/761e9dc8c2634b4c91d1a743d6b25aac.HD-720p-4.5Mbps-66842575.mp4?v=0"></video><i class="vplay" aria-hidden="true"></i></span>
+        <span class="vcell"><video muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/c27f87694e7c4074a916148f39f491d6.thumbnail.0000000000.jpg?v=1768252588" data-src="https://hushglow.com/cdn/shop/videos/c/vp/c27f87694e7c4074a916148f39f491d6/c27f87694e7c4074a916148f39f491d6.HD-720p-4.5Mbps-66843467.mp4?v=0"></video><i class="vplay" aria-hidden="true"></i></span>
       </div>
     </div>
 
@@ -269,8 +267,8 @@
 <!-- trust ticker (marquee like the live strip) -->
 <div class="pstrip">
   <div class="ticker">
-    <div class="half" id="psHalf1"></div>
-    <div class="half" id="psHalf2"></div>
+    <div class="half"></div>
+    <div class="half"></div>
   </div>
 </div>
 
@@ -279,8 +277,8 @@
   <div class="inner">
     <h2 class="sec-h statement lovedh">Loved by <span class="oval">400.000+<svg viewBox="0 0 200 74" preserveAspectRatio="none"><ellipse cx="100" cy="37" rx="95" ry="32"/></svg></span></h2>
     <div class="twrap">
-      <button class="lookarrow prev" id="tPrev" aria-label="Previous" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="trow" id="tRow">
+      <button class="lookarrow prev" aria-label="Previous" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="trow">
         <div class="tcard">
           <div class="tph"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31.jpg?width=600" alt=""></div>
           <div class="tbody">
@@ -336,7 +334,7 @@
           </div>
         </div>
       </div>
-      <button class="lookarrow next" id="tNext" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button class="lookarrow next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
   </div>
 </section>
@@ -398,12 +396,12 @@
 <section class="cmp">
   <div class="inner">
     <div class="cmpwrap">
-      <div class="cmpbox" id="cmpBox">
+      <div class="cmpbox">
         <img loading="lazy" decoding="async" class="after" src="https://hushglow.com/cdn/shop/files/9_1.webp?width=1000" alt="After">
-        <div class="beforewrap" id="beforeWrap"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/10_1.webp?width=1000" alt="Before"></div>
-        <div class="cmphandle" id="cmpHandle"><span>↔</span></div>
+        <div class="beforewrap"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/10_1.webp?width=1000" alt="Before"></div>
+        <div class="cmphandle"><span>↔</span></div>
         <b class="cl bl">Before</b><b class="cl al">After</b>
-        <input type="range" id="cmpRange" min="0" max="100" value="50" aria-label="Compare before and after">
+        <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
       </div>
       <div class="cmptx">
         <h2>Results You Can Feel and See</h2>
@@ -418,8 +416,8 @@
 <!-- campaign banners slider -->
 <section class="bslider">
   <div style="position:relative">
-    <button class="lookarrow prev" id="bsPrev" aria-label="Previous" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-    <div class="bsrow" id="bsRow">
+    <button class="lookarrow prev" aria-label="Previous" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="bsrow">
       <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/IMG-5800.webp?width=1600" alt="">
       <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/skin_brow_banner_pc_1_2.webp?width=1600" alt="">
       <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/skin_banner_pc_2_2.webp?width=1600" alt="">
@@ -431,8 +429,9 @@
       <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/packaging_banner_pc_1.webp?width=1600" alt="">
       <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/swatch_banner_pc_2.webp?width=1600" alt="">
     </div>
-    <button class="lookarrow next" id="bsNext" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button class="lookarrow next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
+  <div class="bsdots"></div>
 </section>
 
 <!-- 3 steps -->
@@ -524,9 +523,9 @@
 </section>
 
 <!-- sticky add to cart -->
-<div class="satc" id="satc">
+<div class="satc">
   <div class="smid"><b>Foundation Cushion</b><span class="sprice"><b class="pn">$39.99</b><s>$54.99</s><i class="usave">Save 27%</i></span></div>
-  <a class="btn btn-primary" id="satcBtn">Add to Cart</a>
+  <a class="btn btn-primary">Add to Cart</a>
 </div>
 
 <!-- footer -->
@@ -580,7 +579,7 @@
     </div>
   </div>
   <div class="paybar">
-    <div class="pay" id="payRow"></div>
+    <div class="pay" data-payicons="footer"></div>
     <!-- desktop-only Trustpilot summary (Meroda reference) -->
     <div class="tp-foot">
       <b>Excellent</b>
@@ -618,7 +617,7 @@
 </footer>
 
 <!-- mobile fullscreen menu -->
-<div class="mobmenu" id="mobmenu" aria-label="Menu">
+<div class="mobmenu" aria-label="Menu">
   <nav class="mlinks">
     <a href="#">Shop All</a>
     <a href="#">Face Makeup</a>
@@ -643,8 +642,8 @@
 </div>
 
 <!-- cart drawer (static visual prototype, approved Launch state: one gift, one item) -->
-<div class="cart-ovl" id="cartOvl" onclick="cartToggle(false)"></div>
-<aside class="cartdrawer" id="cartDrawer" aria-label="Cart">
+<div class="cart-ovl" onclick="cartToggle(false)"></div>
+<aside class="cartdrawer" aria-label="Cart">
   <div class="d-body">
     <div class="gifttop">
       <button class="x" aria-label="Close cart" onclick="cartToggle(false)">✕</button>
@@ -664,12 +663,23 @@
       <div class="right"><div class="price">$39.99</div><div class="was">$70.99</div></div>
     </div>
     <div class="strip">100% Shade Match Guarantee</div>
-    <div class="hl">
+    <!-- Two cross-sells, one shown: the drawer must never recommend what is already in
+         the bag, so shared.js hides whichever one matches the current product. -->
+    <div class="hl" data-hl="Multi-Effect Blush Stick">
       <div class="ph"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?width=300" alt=""></div>
       <div class="mid">
         <p class="hd">Pairs well with</p>
-        <span class="nm">Multi-Effect Blush Stick<span class="shl">matched to your shade Ivory</span></span>
+        <span class="nm">Multi-Effect Blush Stick<span class="shl">the colour on top of your base</span></span>
         <span class="pr"><b>$32.99</b><s>$45.99</s></span>
+        <a class="hlbtn">Add to Bag</a>
+      </div>
+    </div>
+    <div class="hl" data-hl="Foundation Cushion" hidden>
+      <div class="ph"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0727/1897/5233/files/1_1296_1296___Ivory_2.webp?width=300" alt=""></div>
+      <div class="mid">
+        <p class="hd">Pairs well with</p>
+        <span class="nm">Foundation Cushion<span class="shl">the base under your colour</span></span>
+        <span class="pr"><b>$39.99</b><s>$70.99</s></span>
         <a class="hlbtn">Add to Bag</a>
       </div>
     </div>
@@ -703,11 +713,11 @@
     <div class="row"><span class="l">Subtotal</span><span class="r">$39.99</span></div>
     <a class="co"><svg class="lk" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>Secure Checkout · $39.99</a>
     <div class="gpill"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.7-6L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.7 6L3 16"/><path d="M3 21v-5h5"/></svg><span class="grt-t">Wrong shade? <b>We'll replace it free.</b></span></div>
-    <div class="cpay" id="cartPayRow"></div>
+    <div class="cpay" data-payicons="cart"></div>
   </div>
 </aside>
 
-<script src="../js/shared.js?v=126"></script>
-<script src="../js/product-hush-foundation-cushion.js?v=126"></script>
+<script src="../js/shared.js?v=132"></script>
+<script src="../js/product-hush-foundation-cushion.js?v=132"></script>
 </body>
 </html>

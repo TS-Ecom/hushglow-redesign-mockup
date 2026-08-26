@@ -105,7 +105,11 @@ function audit (win, width) {
   var doc = win.document;
   var rails = ['.thumbs', '.vrow', '.bsrow', '.trow', '.grid3', '.grid4', '.recrow', '.stepgrid',
                '.shgrid', '.cylrow', '.mm-mtiles', '.ticker', '.pstrip', '.rcards',
-               '.gmain', '.shgal__strip', '.cmptab__rows'];
+               '.gmain', '.shgal__strip', '.cmptab__rows',
+               /* home page: the press marquee and the looping Get-the-Look carousel are
+                  built to run wider than the screen, and the Instagram embed is a
+                  third-party widget that scrolls itself */
+               '.press', '.look', '.lookrow', '[class*="eapps-"]'];
   /* panels that live off-screen until opened would otherwise report as broken layout */
   var offstage = ['.cartdrawer', '.cart-ovl', '.mobmenu', '.mm-panel', '.satc',
                   '.shgal__detail', '.shgal__backdrop'];

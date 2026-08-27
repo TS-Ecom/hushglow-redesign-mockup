@@ -38,37 +38,49 @@
   <h1>Layout stress test</h1>
   <label>Page
     <select id="page">
-      <option value="product-hush-foundation-cushion.html">Foundation Cushion</option>
-      <option value="product-blush-stick.html">Multi-Effect Blush Stick</option>
-      <option value="product-hydrating-concealer.html">Hydrating Concealer Stick</option>
-      <option value="product-pore-blurring-primer-stick.html">Pore-Blurring Primer Stick</option>
-      <option value="product-waterproof-setting-spray.html">Waterproof Setting Spray</option>
-      <option value="product-glow-travel-kit.html">Glow Travel Kit</option>
-      <option value="product-perfect-base-bundle.html">Perfect Base Bundle</option>
-      <option value="product-all-day-glow-bundle.html">All Day Glow Bundle</option>
-      <option value="product-sunkissed-trio.html">Sunkissed Trio</option>
-      <option value="index.html">Home</option>
-      <option value="page-makeup-quizzes.html">Makeup Quizzes (hub)</option>
-      <option value="page-collection-all.html">Collection — Shop All</option>
-      <option value="page-collection-face-makeup.html">Collection — Face Makeup</option>
-      <option value="page-collection-bundles-sets.html">Collection — Bundles &amp; Sets</option>
-      <option value="page-about-us.html">About Us</option>
-      <option value="page-contact.html">Contact</option>
-      <option value="page-terms-of-service.html">Terms of Service</option>
-      <option value="page-privacy-policy.html">Privacy Policy</option>
-      <option value="page-shipping-policy.html">Shipping Policy</option>
-      <option value="page-refund-policy.html">Refund Policy</option>
-      <option value="page-subscription-policy.html">Subscription Policy</option>
-      <option value="page-gulya-s-berry-toned-glow.html">Look — Gulya</option>
-      <option value="page-nina-s-sculpted-clean-look.html">Look — Nina</option>
-      <option value="page-daria-s-barely-there-beauty.html">Look — Daria</option>
-      <option value="page-olga-s-soft-warmth-look.html">Look — Olga</option>
-      <option value="page-phoebe-s-bold-draped-flush.html">Look — Phoebe</option>
-      <option value="page-asteria-s-fresh-pop-look.html">Look — Asteria</option>
+      <option value="__all__">&#9654; All 27 pages</option>
+      <optgroup label="Home &amp; collections">
+        <option value="index.html">Home</option>
+        <option value="page-collection-all.html">Collection &mdash; Shop All</option>
+        <option value="page-collection-face-makeup.html">Collection &mdash; Face Makeup</option>
+        <option value="page-collection-bundles-sets.html">Collection &mdash; Bundles &amp; Sets</option>
+      </optgroup>
+      <optgroup label="Products">
+        <option value="product-hush-foundation-cushion.html">Foundation Cushion</option>
+        <option value="product-blush-stick.html">Multi-Effect Blush Stick</option>
+        <option value="product-hydrating-concealer.html">Hydrating Concealer Stick</option>
+        <option value="product-pore-blurring-primer-stick.html">Pore-Blurring Primer Stick</option>
+        <option value="product-waterproof-setting-spray.html">Waterproof Setting Spray</option>
+        <option value="product-glow-travel-kit.html">Glow Travel Kit</option>
+        <option value="product-perfect-base-bundle.html">Perfect Base Bundle</option>
+        <option value="product-all-day-glow-bundle.html">All Day Glow Bundle</option>
+        <option value="product-sunkissed-trio.html">Sunkissed Trio</option>
+      </optgroup>
+      <optgroup label="Get the look">
+        <option value="page-gulya-s-berry-toned-glow.html">Gulya &mdash; Berry-Toned Glow</option>
+        <option value="page-nina-s-sculpted-clean-look.html">Nina &mdash; Sculpted &amp; Clean</option>
+        <option value="page-daria-s-barely-there-beauty.html">Daria &mdash; Barely-There</option>
+        <option value="page-olga-s-soft-warmth-look.html">Olga &mdash; Soft Warmth</option>
+        <option value="page-phoebe-s-bold-draped-flush.html">Phoebe &mdash; Bold Draped Flush</option>
+        <option value="page-asteria-s-fresh-pop-look.html">Asteria &mdash; Fresh Pop</option>
+      </optgroup>
+      <optgroup label="Static pages">
+        <option value="page-makeup-quizzes.html">Makeup Quizzes (hub)</option>
+        <option value="page-about-us.html">About Us</option>
+        <option value="page-contact.html">Contact</option>
+      </optgroup>
+      <optgroup label="Policies">
+        <option value="page-terms-of-service.html">Terms of Service</option>
+        <option value="page-privacy-policy.html">Privacy Policy</option>
+        <option value="page-shipping-policy.html">Shipping Policy</option>
+        <option value="page-refund-policy.html">Refund Policy</option>
+        <option value="page-subscription-policy.html">Subscription Policy</option>
+      </optgroup>
     </select>
   </label>
   <label>Widths
     <select id="widths">
+      <option value="390,1440" selected>390 / 1440 (phone + desktop)</option>
       <option value="320,360,375,390,430">320 / 360 / 375 / 390 / 430</option>
       <option value="360,375,390">360 / 375 / 390</option>
       <option value="390">390 only (the width the pages are drawn at)</option>
@@ -81,7 +93,7 @@
   <label>Font scale
     <select id="scale">
       <option value="1">100%</option>
-      <option value="1.3" selected>130%</option>
+      <option value="1.3" selected>130% (typical for this audience)</option>
       <option value="1.75">175%</option>
       <option value="2">200%</option>
     </select>
@@ -199,6 +211,62 @@ function render (results) {
   out.appendChild(n);
 }
 
+/* Sweeps every page in the list at every width, off screen, and reports one line per
+   page. Meant for "is anything broken anywhere" rather than for looking at a page. */
+async function runAll (widths, k, bold) {
+  var pages = Array.prototype.slice.call(document.querySelectorAll('#page option'))
+    .map(function (o) { return { value: o.value, label: o.textContent.trim() }; })
+    .filter(function (o) { return o.value !== '__all__'; });
+  var out = document.getElementById('out');
+  var rows = [];
+  var total = 0;
+
+  for (var p = 0; p < pages.length; p++) {
+    out.innerHTML = '<h3>running… ' + (p + 1) + ' of ' + pages.length + ' &mdash; ' + pages[p].label + '</h3>';
+    var worst = [];
+    var n = 0;
+    var scroll = null;
+    for (var i = 0; i < widths.length; i++) {
+      var w = widths[i];
+      var f = document.createElement('iframe');
+      f.style.cssText = 'width:' + w + 'px;height:820px;border:0;position:fixed;top:0;left:0;opacity:.01;z-index:-1';
+      document.body.appendChild(f);
+      f.src = pages[p].value + '?sweep=' + w + '_' + k;
+      await new Promise(function (r) { f.onload = r; });
+      await new Promise(function (r) { setTimeout(r, 420); });
+      try {
+        f.contentDocument.querySelectorAll('video').forEach(function (v) { try { v.pause(); } catch (e) {} });
+        applyScale(f.contentDocument, k, bold);
+        await new Promise(function (r) { setTimeout(r, 180); });
+        var rep = audit(f.contentWindow, w);
+        n += rep.issues.length;
+        if (rep.hscroll) scroll = w + 'px: ' + rep.hscroll;
+        rep.issues.forEach(function (is) { worst.push(w + 'px ' + is.type + ' ' + is.sel + ' (' + is.detail + ')'); });
+      } catch (e) {
+        n += 1; worst.push(w + 'px error ' + e);
+      }
+      f.remove();
+    }
+    total += n;
+    rows.push({ label: pages[p].label, page: pages[p].value, n: n, scroll: scroll, worst: worst.slice(0, 4) });
+  }
+
+  var head = total === 0
+    ? '<h3><span class="ok">All ' + pages.length + ' pages clean</span> at ' + widths.join(' / ') + 'px, ' + Math.round(k * 100) + '% text' + (bold ? ', bold' : '') + '</h3>'
+    : '<h3><span class="bad">' + total + ' issues</span> across ' + pages.length + ' pages at ' + widths.join(' / ') + 'px, ' + Math.round(k * 100) + '% text' + (bold ? ', bold' : '') + '</h3>';
+  var t = '<table><tr><th>page</th><th>result</th><th>first findings</th></tr>' +
+    rows.map(function (r) {
+      var state = r.n
+        ? '<span class="bad">' + r.n + ' issue' + (r.n > 1 ? 's' : '') + '</span>'
+        : '<span class="ok">clean</span>';
+      if (r.scroll) state += ' <span class="bad">· h-scroll ' + r.scroll + '</span>';
+      return '<tr><td class="sel">' + r.label + '</td><td>' + state + '</td><td>' + (r.worst.join('<br>') || '&mdash;') + '</td></tr>';
+    }).join('') + '</table>';
+  out.innerHTML = head + t +
+    '<p class="note">Every page in the list, at every selected width. Scrollable rails and off-stage panels ' +
+    '(cart drawer, mobile menu, mega menu) are excluded, the same as in a single-page run.</p>';
+}
+
 document.getElementById('run').addEventListener('click', async function () {
   var page = document.getElementById('page').value;
   var widths = document.getElementById('widths').value.split(',').map(Number);
@@ -207,6 +275,8 @@ document.getElementById('run').addEventListener('click', async function () {
   var frames = document.getElementById('frames');
   frames.innerHTML = '';
   document.getElementById('out').innerHTML = '<h3>running…</h3>';
+
+  if (page === '__all__') { await runAll(widths, k, bold); return; }
 
   var results = [];
   for (var i = 0; i < widths.length; i++) {

@@ -825,6 +825,16 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .collbar select{font:inherit;font-size:15px;color:var(--ink);background:var(--paper);
   border:1px solid var(--line);border-radius:var(--r-btn);padding:9px 12px;cursor:pointer}
 .collgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;max-width:1320px;margin:0 auto}
+/* Whether the discount chip fits is a question about the card, not the window: the same
+   206px card happens at 1024 in the four-up grid and at 390 in the two-up one. Measured on
+   this card — the two prices alone need 117px and always fit; adding the chip needs 190px,
+   and getting under that would mean prices below 15px, the one number here that must not
+   shrink. So the chip shows only once the card is wide enough to hold it on one line, and
+   below that the struck-through price carries the discount on its own. */
+.collgrid .p-card{container-type:inline-size}
+@container (max-width: 219px){
+  .collgrid .p-card .pr .save{display:none}
+}
 
 /* ---------- promo tile ----------
    Sits in the grid as one more cell and stretches to whatever height the row of cards
@@ -1238,13 +1248,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .collgrid .stars{font-size:12px;letter-spacing:2px;margin:4px 0}
   .collgrid .stars span{font-size:12px;margin-left:4px}
   .collgrid .pr{gap:6px;font-size:15px;row-gap:6px}
-  /* the two prices plus the chip need 187px and the card has 170, and the price is the
-     one number on this card that must not shrink — so the chip drops to its own centred
-     line at every width instead of wrapping onto one only sometimes. The zero-height
-     pseudo forces the break; giving the chip flex-basis:100% instead would stretch it into
-     a full-width bar. */
-  .collgrid .pr::before{content:'';flex-basis:100%;height:0;order:1}
-  .collgrid .pr .save{order:2;font-size:10px;padding:3px 7px;letter-spacing:.04em}
+
   .collgrid .atc{height:42px;font-size:13px;margin-top:10px}
   .promotile{min-height:0}
   .promotile .in{left:14px;right:14px;bottom:14px;gap:6px}

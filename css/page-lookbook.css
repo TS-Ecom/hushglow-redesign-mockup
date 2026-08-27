@@ -1,0 +1,7 @@
+/* HushGlow Design — "get the look" pages.
+
+   Deliberately empty. Six pages share one template and none of them has a style of its
+   own, so the whole block lives in shared.css under "lookbook". This file exists only so
+   the include list is identical on every page; if a look ever needs something specific,
+   it goes in shared as a modifier, not here — a rule in this file would silently apply
+   to all six. */

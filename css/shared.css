@@ -754,6 +754,28 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .shdesc{font-size:16px;color:var(--ink-soft);line-height:1.5}
 .shades .benef-cta{margin-top:46px;margin-bottom:0}
 
+/* ---------- lookbook ("get the look") ----------
+   One template, six pages: only the photo, the title and the four step sentences change,
+   so the whole block lives here and the pages carry nothing but content. Full-height
+   split, photo on one side, the routine centred on the other, and the product names are
+   inline links rather than buttons — that is how the live section is built. */
+.lookbook{display:flex;min-height:100dvh}
+.lookbook__media{width:50%;align-self:stretch;position:relative;overflow:hidden;background:var(--cream)}
+/* absolute so the photo fills whatever height the copy column ends up needing */
+.lookbook__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.lookbook__content{width:50%;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;gap:40px;padding:64px clamp(24px,5vw,80px)}
+.lookbook__title{font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;line-height:1.3}
+.lookbook__steps{display:flex;flex-direction:column;gap:28px;max-width:520px;width:100%}
+.lookbook__step{text-align:center;min-width:0}
+.lookbook__step-label{font-size:13px;letter-spacing:.12em;color:var(--ink-soft);margin-bottom:6px}
+.lookbook__step-text{font-size:16px;line-height:1.6;color:var(--ink);overflow-wrap:anywhere}
+/* the product name is the only thing to press on the page, so it is weighted and
+   underlined rather than left as body copy in a different colour */
+.lookbook__step-text a{color:inherit;font-weight:600;text-decoration:underline;
+  text-underline-offset:.2em;text-decoration-thickness:1px;transition:color .15s ease}
+.lookbook__step-text a:hover{color:var(--berry-deep)}
+
 /* ---------- press marquee ----------
    Two identical halves scrolling past each other, so the loop has no seam. Moved out of
    the home page file when the quiz hub page needed the same strip. */
@@ -1069,6 +1091,13 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .iwt.ingr{margin-top:40px}
   .section{padding-top:40px}
   .bundtimer{font-size:14px}
+  /* the live section stacks and flips the copy flush left on a phone */
+  .lookbook{flex-direction:column;min-height:0}
+  .lookbook__media{width:100%;aspect-ratio:3/4;align-self:auto}
+  .lookbook__content{width:100%;align-items:flex-start;text-align:left;gap:26px;
+    padding:32px var(--pagepad) 44px}
+  .lookbook__step{text-align:left}
+  .lookbook__title{font-size:21px}
   .press{padding:22px 0}
   .press .half{gap:54px;padding-right:54px;animation-duration:24s}
   .press img{height:20px}

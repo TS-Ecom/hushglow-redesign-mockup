@@ -1,30 +1,29 @@
 /* HushGlow Design — advertorials.
 
-   Two behaviours only: the countdown in the announcement bar, and lazy video that plays
-   when it reaches the screen. Everything else on these pages is static. */
+   Both behaviours are ports of what the live sections do, not new code: the countdown in
+   adv-header.liquid counts to the end of the store day, and adv-main renders its videos
+   with autoplay/loop/muted. Here they load on approach instead, because these pages are
+   paid mobile traffic and four autoplaying clips is data the visitor did not ask for. */
 
 (function () {
-  /* Counts down to the end of the day and restarts, so the prototype never sits on
-     00:00:00. The live bar does the same. */
-  var h = document.querySelector('[data-adv-h]');
-  if (h) {
-    var m = document.querySelector('[data-adv-m]');
-    var s = document.querySelector('[data-adv-s]');
-    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+  var timer = document.querySelector('[data-adv-timer]');
+  if (timer) {
+    var h = timer.querySelector('[data-adv-hours]');
+    var m = timer.querySelector('[data-adv-minutes]');
+    var s = timer.querySelector('[data-adv-seconds]');
+    var pad = function (v) { return v < 10 ? '0' + v : String(v); };
     var tick = function () {
-      var end = new Date();
-      end.setHours(23, 59, 59, 999);
-      var d = Math.max(0, end - new Date());
-      h.textContent = pad(Math.floor(d / 3600000));
-      m.textContent = pad(Math.floor(d / 60000) % 60);
-      s.textContent = pad(Math.floor(d / 1000) % 60);
+      var now = new Date();
+      var end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+      var left = Math.max(0, Math.floor((end - now) / 1000));
+      h.textContent = pad(Math.floor(left / 3600));
+      m.textContent = pad(Math.floor((left % 3600) / 60));
+      s.textContent = pad(left % 60);
     };
     tick();
     setInterval(tick, 1000);
   }
 
-  /* The clips are the proof on these pages, so they load and play on arrival — but only
-     the one on screen, because the visitor is on a phone and paying for the data. */
   var vids = document.querySelectorAll('video[data-src]');
   if (!vids.length) return;
   if (!('IntersectionObserver' in window) ||

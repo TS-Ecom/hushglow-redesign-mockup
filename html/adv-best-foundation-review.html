@@ -1,139 +1,766 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>I Tried 7 Foundations. Only 1 Made My Mature Skin Look Younger.</title>
+<title>I tried 7 different foundations. Only 1 made me look younger. - Carolyn</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/adv.css?v=2">
 
-<!-- Advertorial, rebuilt 1:1 from page.adv-presell.json on the live theme.
-     Deliberately self-contained: these pages carry no site header, no footer and no cart
-     drawer, so they must not pull the storefront stylesheet either — they are paid-traffic
-     landers and every kilobyte is paid for. -->
+<!-- Rebuilt 1:1 from page.adv-presell.json. The CSS below is lifted verbatim out of the
+     adv-header / adv-main / adv-sticky sections on origin/live with their Liquid resolved
+     against this template's settings, and the markup mirrors those sections tag for tag.
+     Nothing here is eyeballed. Regenerate with tools/build-advertorial.py. -->
+<style>
+*{margin:0;padding:0}
+body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:#fff;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{text-decoration:none}
 
-<div class="advann" style="background:#750b10;color:#ffffff">
-  <span>Up to 60% off + FREE gifts</span>
-  <span class="advann__t" style="background:#b8302f;color:#ffffff">
-    <b data-adv-h>09</b>:<b data-adv-m>57</b>:<b data-adv-s>43</b>
-  </span>
+/* ---------- adv-header.liquid ---------- */
+.advSection {
+    display: contents;
+  }
+
+  .AdvHeader {
+    --adv-ann-bg: #750b10;
+    --adv-ann-color: #ffffff;
+    --adv-timer-bg: #b8302f;
+    --adv-timer-color: #ffffff;
+    --adv-header-bg: #f5eee4;
+    display: contents;
+  }
+
+  .AdvHeader *,
+  .AdvHeader *::before,
+  .AdvHeader *::after {
+    box-sizing: border-box;
+  }
+
+  .adv-announcement,
+  .adv-announcement *,
+  .adv-header,
+  .adv-header * {
+    letter-spacing: normal;
+  }
+
+  .adv-announcement {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background-color: var(--adv-ann-bg);
+    color: var(--adv-ann-color);
+  }
+
+  .adv-announcement__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 11px 16px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .adv-announcement__label {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  .adv-timer {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--adv-timer-bg);
+    color: var(--adv-timer-color);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-family: 'Courier New', ui-monospace, monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 14px;
+  }
+
+  .adv-timer__sep {
+    opacity: 0.7;
+  }
+
+  .adv-header {
+    background-color: var(--adv-header-bg);
+  }
+
+  .adv-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 16px;
+  }
+
+  .adv-header__logo {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .adv-announcement__label {
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    .adv-timer {
+      font-size: 15px;
+      line-height: 15px;
+    }
+
+    .adv-header__inner {
+      padding: 4px 16px;
+    }
+
+    .adv-header__logo {
+      max-width: 176px;
+    }
+  }
+
+/* ---------- adv-main.liquid ---------- */
+.AdvMain {
+    --adv-accent: #b8302f;
+    --adv-badge-bg: #fde047;
+    --adv-badge-color: #713f12;
+  }
+
+  .AdvMain *,
+  .AdvMain *::before,
+  .AdvMain *::after {
+    box-sizing: border-box;
+  }
+
+  .adv-main,
+  .adv-main * {
+    letter-spacing: normal;
+  }
+
+  .adv-main {
+    max-width: 888px;
+    margin: 0 auto;
+    padding: 30px 16px 40px;
+    color: #121212;
+  }
+
+  .adv-main__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .adv-main__badge {
+    display: inline-block;
+    background-color: var(--adv-badge-bg);
+    color: var(--adv-badge-color);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 13px;
+    padding: 8px 14px;
+    border-radius: 30px;
+  }
+
+  .adv-main__time {
+    font-size: 14px;
+    line-height: 20px;
+    color: #8b8b8b;
+  }
+
+  .adv-main__title {
+    font-size: 32px;
+    line-height: 37px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin: 0 0 20px;
+  }
+
+  .adv-main__title strong {
+    color: var(--adv-accent);
+    font-weight: inherit;
+  }
+
+  .adv-main__description {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .adv-main__description > p {
+    margin: 0 0 16px;
+  }
+
+  .adv-main__description > p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Author card */
+  .adv-author {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 12px 16px;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+  }
+
+  .adv-author__avatar {
+    position: relative;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+  }
+
+  .adv-author__avatar img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .adv-author__title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19px;
+  }
+
+  .adv-author__subtitle {
+    font-size: 13px;
+    color: #8b8b8b;
+    line-height: 18px;
+  }
+
+  .adv-author__verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+    color: #1a7f37;
+  }
+
+  .adv-author__verified svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .adv-stars {
+    display: inline-flex;
+    gap: 1px;
+    color: #f5b32b;
+    font-size: 15px;
+    line-height: 15px;
+    letter-spacing: 1px;
+  }
+
+  /* Image with text block */
+  .adv-media-text {
+    display: grid;
+    gap: 16px;
+  }
+
+  .adv-media-text__media img,
+  .adv-media-text__media video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .adv-media-text__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28px;
+    margin: 0;
+  }
+
+  .adv-media-text__title--desktop {
+    display: none;
+  }
+
+  .adv-media-text__content {
+    font-size: 16px;
+    line-height: 29px;
+  }
+
+  .adv-media-text__content > p {
+    margin: 0 0 14px;
+  }
+
+  .adv-media-text__content > p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Offer block */
+  .adv-offer {
+    display: grid;
+    gap: 24px;
+    padding: 24px;
+    border-radius: 10px;
+  }
+
+  .adv-offer__image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  .adv-offer__text {
+    text-align: center;
+  }
+
+  .adv-offer__title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 31px;
+    margin: 0;
+  }
+
+  .adv-offer__subtitle {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 25px;
+    color: var(--adv-accent);
+    margin: 6px 0 0;
+  }
+
+  .adv-offer__description {
+    font-size: 15px;
+    line-height: 24px;
+    margin-top: 14px;
+  }
+
+  .adv-offer__description > p {
+    margin: 0 0 12px;
+  }
+
+  .adv-offer__description > p:last-child {
+    margin-bottom: 0;
+  }
+
+  .adv-offer__button {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px 30px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    transition: opacity 0.2s ease;
+  }
+
+  .adv-offer__button:hover {
+    opacity: 0.85;
+  }
+
+  .adv-offer__note {
+    font-size: 13px;
+    line-height: 18px;
+    color: #6f6f6f;
+    margin: 14px 0 0;
+  }
+
+  /* Review block */
+  .adv-review {
+    background-color: #f7f7f7;
+    border-radius: 6px;
+    padding: 14px 16px;
+    border: 1px solid #EEEEEE;
+  }
+
+  .adv-review__content {
+    font-size: 13px;
+    line-height: 20px;
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  .adv-review__content > p {
+    margin: 0 0 10px;
+  }
+
+  .adv-review__content > p:last-child {
+    margin-bottom: 0;
+  }
+
+  .adv-review__footer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .adv-review__verified {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 14px;
+    color: #1a7f37;
+    background-color: #e7f5ea;
+    border-radius: 4px;
+    padding: 3px 7px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .adv-main {
+      padding: 24px 20px 60px;
+    }
+
+    .adv-main__title {
+      font-size: 44px;
+      line-height: 51px;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .adv-main__description {
+      font-size: 17px;
+      line-height: 29px;
+    }
+
+    .adv-media-text {
+      grid-template-columns: 47.5fr 52.5fr;
+      gap: 40px;
+    }
+
+    .adv-media-text--right {
+      grid-template-columns: 52.5fr 47.5fr;
+    }
+
+    .adv-media-text--right .adv-media-text__media {
+      order: 2;
+    }
+
+    .adv-media-text__title {
+      font-size: 26px;
+      line-height: 33px;
+      margin-bottom: 16px;
+    }
+
+    .adv-media-text__title--mobile {
+      display: none;
+    }
+
+    .adv-media-text__title--desktop {
+      display: block;
+    }
+
+    .adv-offer {
+      grid-template-columns: 40% 60%;
+      gap: 24px;
+      align-items: center;
+      padding: 32px;
+    }
+
+    .adv-offer__text {
+      text-align: left;
+    }
+
+    .adv-offer__title {
+      font-size: 30px;
+      line-height: 110%;
+    }
+
+    .adv-offer__button {
+      display: inline-block;
+      width: auto;
+    }
+  }
+
+/* ---------- adv-sticky.liquid ---------- */
+.adv-sticky,
+  .adv-sticky *,
+  .adv-sticky *::before,
+  .adv-sticky *::after {
+    box-sizing: border-box;
+  }
+
+  .adv-sticky,
+  .adv-sticky * {
+    letter-spacing: normal;
+  }
+
+  .adv-sticky {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    background-color: #ffffff;
+  }
+
+  .adv-sticky__button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background-color: #000000;
+    color: #ffffff;
+    transition: opacity 0.2s ease;
+  }
+
+  .adv-sticky__button:hover {
+    opacity: 0.9;
+  }
+
+  .adv-sticky__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 16px;
+  }
+
+  .adv-sticky__bottom-image {
+    display: block;
+    width: auto;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .adv-sticky__bottom-label {
+    font-size: 14px;
+    line-height: 20px;
+    color: #121212;
+  }
+
+  body {
+    padding-bottom: 100px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .adv-sticky__button {
+      padding: 16px 20px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+/* per-block spacing, emitted by adv-main.liquid for each block */
+#AdvBlock-1{margin-top:40px}
+@media screen and (min-width:750px){#AdvBlock-1{margin-top:40px}}
+#AdvBlock-2{margin-top:40px}
+@media screen and (min-width:750px){#AdvBlock-2{margin-top:72px}}
+#AdvBlock-3{margin-top:40px}
+@media screen and (min-width:750px){#AdvBlock-3{margin-top:80px}}
+#AdvBlock-4{margin-top:40px}
+@media screen and (min-width:750px){#AdvBlock-4{margin-top:72px}}
+#AdvBlock-5{margin-top:40px}
+@media screen and (min-width:750px){#AdvBlock-5{margin-top:80px}}
+#AdvBlock-6{margin-top:40px}
+@media screen and (min-width:750px){#AdvBlock-6{margin-top:80px}}
+#AdvBlock-7{margin-top:40px}
+@media screen and (min-width:750px){#AdvBlock-7{margin-top:80px}}
+#AdvBlock-8{margin-top:40px}
+@media screen and (min-width:750px){#AdvBlock-8{margin-top:76px}}
+#AdvBlock-9{margin-top:40px}
+@media screen and (min-width:750px){#AdvBlock-9{margin-top:80px}}
+#AdvBlock-10{margin-top:40px}
+@media screen and (min-width:750px){#AdvBlock-10{margin-top:72px}}
+#AdvBlock-11{margin-top:32px}
+@media screen and (min-width:750px){#AdvBlock-11{margin-top:32px}}
+#AdvBlock-12{margin-top:0px}
+@media screen and (min-width:750px){#AdvBlock-12{margin-top:0px}}
+#AdvBlock-13{margin-top:0px}
+@media screen and (min-width:750px){#AdvBlock-13{margin-top:0px}}
+</style>
+
+<div class="AdvHeader">
+  <div class="adv-announcement">
+    <div class="adv-announcement__inner">
+      <span class="adv-announcement__label">Up to 60% off + FREE gifts</span>
+  <div class="adv-timer" data-adv-timer>
+    <span data-adv-hours>00</span><span class="adv-timer__sep">:</span><span data-adv-minutes>00</span><span class="adv-timer__sep">:</span><span data-adv-seconds>00</span>
+  </div>
+    </div>
+  </div>
+  <div class="adv-header">
+    <div class="adv-header__inner">
+      <img class="adv-header__logo" src="https://hushglow.com/cdn/shop/files/adv-presell-logo_2_1.png?width=900" alt="Beauty Times">
+    </div>
+  </div>
 </div>
 
-<header class="advhead" style="background:#f5eee4">
-  <img src="https://hushglow.com/cdn/shop/files/adv-presell-logo_2_1.png?width=440" alt="Beauty Times" style="width:220px">
-</header>
-
-<main class="advmain">
-  <p class="advmeta">
-    <span class="advbadge" style="background:#fde047;color:#713f12">Most read 2025</span>
-    <span class="advread">4 min read</span>
-  </p>
-  <h1 class="advtitle" style="--accent:#b8302f">I Tried 7 Foundations. <em><strong>Only 1 Made My Mature Skin Look Younger.</strong></em></h1>
-  <div class="advdesc"><p>Let me save you the time and money I wasted. Over 3 years I tried <strong>$150 foundations, $200 creams, expensive facials, "anti-aging" formulas</strong>, even a viral face oil with thousands of reviews. Nothing worked — <strong>until this</strong>.</p><p><strong>Six disappointments. One clear winner. Here's what made it different:</strong></p></div>
-
-  <div class="advauthor">
-    <img src="https://hushglow.com/cdn/shop/files/Screenshot_2026-01-06_at_23.25.10.png?width=120" alt="">
-    <span class="advauthor__n"><b>​Carolyn Foster</b><i>Dermatologist</i></span>
-    <span class="advauthor__v">Verified</span>
-    <span class="advauthor__s">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+<div class="AdvMain">
+  <div class="adv-main">
+    <div class="adv-main__meta">
+      <span class="adv-main__badge">Most read 2025</span>
+      <span class="adv-main__time">4 min read</span>
+    </div>
+    <h1 class="adv-main__title">I Tried 7 Foundations. <strong>Only 1 Made My Mature Skin Look Younger.</strong></h1>
+    <div class="adv-main__description"><p>Let me save you the time and money I wasted. Over 3 years I tried <strong>$150 foundations, $200 creams, expensive facials, "anti-aging" formulas</strong>, even a viral face oil with thousands of reviews. Nothing worked — <strong>until this</strong>.</p><p><strong>Six disappointments. One clear winner. Here's what made it different:</strong></p></div>
+  <div class="adv-author">
+    <div class="adv-author__avatar"><img src="https://hushglow.com/cdn/shop/files/Screenshot_2026-01-06_at_23.25.10.png?width=160" alt="​Carolyn Foster"></div>
+    <div>
+      <div class="adv-author__title">​Carolyn Foster</div>
+      <div class="adv-author__subtitle">Dermatologist</div>
+    </div>
+    <span class="adv-author__verified"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="10" fill="#1d9bf0"/><path d="M5.8 10.2l2.6 2.6 5.4-5.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Verified</span>
+    <span class="adv-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
   </div>
 
-      <div class="advb advb--left">
-        <div class="advb__ph"><img class="advb__media" loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/photo_2026-07-14_09.39.53_1.jpg?width=900" alt=""></div>
-        <div class="advb__tx">
-          <h2>1. It Looked Like My Skin—Only Smoother</h2>
-          <p>The first thing I noticed was what wasn't there. <strong>No mask effect. No settling into lines. No cakey finish.</strong></p><p>It melted into my skin — <strong>like a real-life filter, not makeup.</strong></p><p></p>
-        </div>
+  <div id="AdvBlock-1">
+    <div class="adv-media-text adv-media-text--left">
+      <h2 class="adv-media-text__title adv-media-text__title--mobile">1. It Looked Like My Skin—Only Smoother</h2>
+      <div class="adv-media-text__media"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/photo_2026-07-14_09.39.53_1.jpg?width=1100" alt="1. It Looked Like My Skin—Only Smoother"></div>
+      <div class="adv-media-text__text">
+        <h2 class="adv-media-text__title adv-media-text__title--desktop">1. It Looked Like My Skin—Only Smoother</h2>
+        <div class="adv-media-text__content"><p>The first thing I noticed was what wasn't there. <strong>No mask effect. No settling into lines. No cakey finish.</strong></p><p>It melted into my skin — <strong>like a real-life filter, not makeup.</strong></p><p></p></div>
       </div>
-      <div class="advoffer" style="background:#f5eee4">
-        <div class="advoffer__ph"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/ChatGPT_Image_10_._2026_._15_43_40.webp?width=900" alt=""></div>
-        <div class="advoffer__tx">
-          <p class="advoffer__t">UP TO 64% OFF</p>
-          <p class="advoffer__s">+ FREE Gift & Shipping</p>
-          <p>I was skeptical too. But with <strong>free shipping</strong> and <strong>30-Day Shade Match Guarantee</strong>, the only thing you have to lose is the makeup that’s making you look older.</p>
-          <a class="advoffer__btn" href="product-hush-foundation-cushion.html"
-             style="background:#750b10;color:#ffffff">TRY NOW →</a>
-          <p class="advoffer__note">Try it today with a 30-Day Money Back Guarantee!</p>
-        </div>
+    </div>
+  </div>
+  <div id="AdvBlock-2">
+    <div class="adv-offer" style="background-color: #f5eee4;">
+      <div class="adv-offer__image"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/ChatGPT_Image_10_._2026_._15_43_40.webp?width=900" alt="UP TO 64% OFF"></div>
+      <div class="adv-offer__text">
+        <h2 class="adv-offer__title">UP TO 64% OFF</h2>
+        <p class="adv-offer__subtitle">+ FREE Gift & Shipping</p>
+        <div class="adv-offer__description"><p>I was skeptical too. But with <strong>free shipping</strong> and <strong>30-Day Shade Match Guarantee</strong>, the only thing you have to lose is the makeup that’s making you look older.</p></div>
+        <a href="product-hush-foundation-cushion.html" class="adv-offer__button" style="background-color: #750b10; color: #ffffff;">TRY NOW →</a>
+        <p class="adv-offer__note">Try it today with a 30-Day Money Back Guarantee!</p>
       </div>
-      <div class="advb advb--right">
-        <div class="advb__ph"><video class="advb__media" muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/8e11541ff3e74515a39c210438a4680b.thumbnail.0000000000_1100x.jpg?width=900" data-src="https://hushglow.com/cdn/shop/videos/c/vp/8e11541ff3e74515a39c210438a4680b/8e11541ff3e74515a39c210438a4680b.SD-480p-0.9Mbps-88706989.mp4"></video></div>
-        <div class="advb__tx">
-          <h2>2. It Blurred My Dark Spots, Redness & Dark Circles</h2>
-          <p>I didn't need thick layers to cover what I wanted covered. It <strong>blurred dark spots, redness, and tired-looking areas</strong> — while my real skin still showed through.</p><p><strong>No mask. No heaviness. Just even, natural-looking skin.</strong></p>
-        </div>
+    </div>
+  </div>
+  <div id="AdvBlock-3">
+    <div class="adv-media-text adv-media-text--right">
+      <h2 class="adv-media-text__title adv-media-text__title--mobile">2. It Blurred My Dark Spots, Redness & Dark Circles</h2>
+      <div class="adv-media-text__media"><video muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/8e11541ff3e74515a39c210438a4680b.thumbnail.0000000000_1100x.jpg?width=1100" data-src="https://hushglow.com/cdn/shop/videos/c/vp/8e11541ff3e74515a39c210438a4680b/8e11541ff3e74515a39c210438a4680b.SD-480p-0.9Mbps-88706989.mp4"></video></div>
+      <div class="adv-media-text__text">
+        <h2 class="adv-media-text__title adv-media-text__title--desktop">2. It Blurred My Dark Spots, Redness & Dark Circles</h2>
+        <div class="adv-media-text__content"><p>I didn't need thick layers to cover what I wanted covered. It <strong>blurred dark spots, redness, and tired-looking areas</strong> — while my real skin still showed through.</p><p><strong>No mask. No heaviness. Just even, natural-looking skin.</strong></p></div>
       </div>
-      <div class="advb advb--left">
-        <div class="advb__ph"><video class="advb__media" muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/b8a1e2727a5b482192e7f0581fad7247.thumbnail.0000000000_1100x.jpg?width=900" data-src="https://hushglow.com/cdn/shop/videos/c/vp/b8a1e2727a5b482192e7f0581fad7247/b8a1e2727a5b482192e7f0581fad7247.SD-480p-0.9Mbps-88706360.mp4"></video></div>
-        <div class="advb__tx">
-          <h2>3. I Looked Younger in Minutes—Without Cakiness</h2>
-          <p>Something about the finish softened everything. <strong>Fine lines looked less visible</strong>, my skin looked fresher — almost instantly.</p><p><strong>Not heavily made up. Just smoother, brighter, younger.</strong></p>
-        </div>
+    </div>
+  </div>
+  <div id="AdvBlock-4">
+    <div class="adv-media-text adv-media-text--left">
+      <h2 class="adv-media-text__title adv-media-text__title--mobile">3. I Looked Younger in Minutes—Without Cakiness</h2>
+      <div class="adv-media-text__media"><video muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/b8a1e2727a5b482192e7f0581fad7247.thumbnail.0000000000_1100x.jpg?width=1100" data-src="https://hushglow.com/cdn/shop/videos/c/vp/b8a1e2727a5b482192e7f0581fad7247/b8a1e2727a5b482192e7f0581fad7247.SD-480p-0.9Mbps-88706360.mp4"></video></div>
+      <div class="adv-media-text__text">
+        <h2 class="adv-media-text__title adv-media-text__title--desktop">3. I Looked Younger in Minutes—Without Cakiness</h2>
+        <div class="adv-media-text__content"><p>Something about the finish softened everything. <strong>Fine lines looked less visible</strong>, my skin looked fresher — almost instantly.</p><p><strong>Not heavily made up. Just smoother, brighter, younger.</strong></p></div>
       </div>
-      <div class="advb advb--right">
-        <div class="advb__ph"><video class="advb__media" muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/a26d9ac5135a4d2eb313da1962d644a5.thumbnail.0000000000_1100x.jpg?width=900" data-src="https://hushglow.com/cdn/shop/videos/c/vp/a26d9ac5135a4d2eb313da1962d644a5/a26d9ac5135a4d2eb313da1962d644a5.SD-480p-0.9Mbps-88706234.mp4"></video></div>
-        <div class="advb__tx">
-          <h2>4. It Felt Light & Comfortable All Day</h2>
-          <p>Most foundations feel tight and dry by midday. This one stayed <strong>light and comfortable</strong> from morning to night — no clinging, no sinking into lines.</p><p><strong>I honestly forgot I was wearing it.</strong></p>
-        </div>
+    </div>
+  </div>
+  <div id="AdvBlock-5">
+    <div class="adv-media-text adv-media-text--right">
+      <h2 class="adv-media-text__title adv-media-text__title--mobile">4. It Felt Light & Comfortable All Day</h2>
+      <div class="adv-media-text__media"><video muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/a26d9ac5135a4d2eb313da1962d644a5.thumbnail.0000000000_1100x.jpg?width=1100" data-src="https://hushglow.com/cdn/shop/videos/c/vp/a26d9ac5135a4d2eb313da1962d644a5/a26d9ac5135a4d2eb313da1962d644a5.SD-480p-0.9Mbps-88706234.mp4"></video></div>
+      <div class="adv-media-text__text">
+        <h2 class="adv-media-text__title adv-media-text__title--desktop">4. It Felt Light & Comfortable All Day</h2>
+        <div class="adv-media-text__content"><p>Most foundations feel tight and dry by midday. This one stayed <strong>light and comfortable</strong> from morning to night — no clinging, no sinking into lines.</p><p><strong>I honestly forgot I was wearing it.</strong></p></div>
       </div>
-      <div class="advb advb--left">
-        <div class="advb__ph"><img class="advb__media" loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/ChatGPT_Image_13_._2026_._09_31_03.webp?width=900" alt=""></div>
-        <div class="advb__tx">
-          <h2>5. SPF 30 Protection Without the Heavy, Greasy Feel</h2>
-          <p><strong>Mineral SPF 30 built right in</strong> — double what most foundations offer. No extra layer, no shine, no stickiness.</p><p><strong>Fewer steps. More protection. One easier routine.</strong></p>
-        </div>
+    </div>
+  </div>
+  <div id="AdvBlock-6">
+    <div class="adv-media-text adv-media-text--left">
+      <h2 class="adv-media-text__title adv-media-text__title--mobile">5. SPF 30 Protection Without the Heavy, Greasy Feel</h2>
+      <div class="adv-media-text__media"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/ChatGPT_Image_13_._2026_._09_31_03.webp?width=1100" alt="5. SPF 30 Protection Without the Heavy, Greasy Feel"></div>
+      <div class="adv-media-text__text">
+        <h2 class="adv-media-text__title adv-media-text__title--desktop">5. SPF 30 Protection Without the Heavy, Greasy Feel</h2>
+        <div class="adv-media-text__content"><p><strong>Mineral SPF 30 built right in</strong> — double what most foundations offer. No extra layer, no shine, no stickiness.</p><p><strong>Fewer steps. More protection. One easier routine.</strong></p></div>
       </div>
-      <div class="advb advb--right">
-        <div class="advb__ph"><img class="advb__media" loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/ChatGPT_Image_10_._2026_._23_19_44.webp?width=900" alt=""></div>
-        <div class="advb__tx">
-          <h2>6. The Secret Is Hyaluronic Acid & Peptides</h2>
-          <p>The secret: <strong>Hyaluronic Acid</strong> and <strong>Peptides</strong>, hydrating and smoothing while the cushion gives natural coverage.</p><p><strong>Skincare and makeup in one compact. Nothing heavy. Nothing complicated.</strong></p>
-        </div>
+    </div>
+  </div>
+  <div id="AdvBlock-7">
+    <div class="adv-media-text adv-media-text--right">
+      <h2 class="adv-media-text__title adv-media-text__title--mobile">6. The Secret Is Hyaluronic Acid & Peptides</h2>
+      <div class="adv-media-text__media"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/ChatGPT_Image_10_._2026_._23_19_44.webp?width=1100" alt="6. The Secret Is Hyaluronic Acid &amp; Peptides"></div>
+      <div class="adv-media-text__text">
+        <h2 class="adv-media-text__title adv-media-text__title--desktop">6. The Secret Is Hyaluronic Acid & Peptides</h2>
+        <div class="adv-media-text__content"><p>The secret: <strong>Hyaluronic Acid</strong> and <strong>Peptides</strong>, hydrating and smoothing while the cushion gives natural coverage.</p><p><strong>Skincare and makeup in one compact. Nothing heavy. Nothing complicated.</strong></p></div>
       </div>
-      <div class="advb advb--left">
-        <div class="advb__ph"><video class="advb__media" muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/934e59c59f324126a8b2abbd8dad976b.thumbnail.0000000000_1100x.jpg?width=900" data-src="https://hushglow.com/cdn/shop/videos/c/vp/934e59c59f324126a8b2abbd8dad976b/934e59c59f324126a8b2abbd8dad976b.SD-480p-0.9Mbps-88812799.mp4"></video></div>
-        <div class="advb__tx">
-          <h2>7. I Threw Away All My Other Makeup</h2>
-          <p>After two weeks, I looked in my makeup drawer and realized I hadn't touched my old foundation, concealer, or setting powder once. So I did something I never thought I'd do — <strong>I threw it all away.</strong></p><p><strong>One compact replaced everything I used to layer on just to get through the day.</strong></p>
-        </div>
+    </div>
+  </div>
+  <div id="AdvBlock-8">
+    <div class="adv-media-text adv-media-text--left">
+      <h2 class="adv-media-text__title adv-media-text__title--mobile">7. I Threw Away All My Other Makeup</h2>
+      <div class="adv-media-text__media"><video muted loop playsinline preload="none" poster="https://hushglow.com/cdn/shop/files/preview_images/934e59c59f324126a8b2abbd8dad976b.thumbnail.0000000000_1100x.jpg?width=1100" data-src="https://hushglow.com/cdn/shop/videos/c/vp/934e59c59f324126a8b2abbd8dad976b/934e59c59f324126a8b2abbd8dad976b.SD-480p-0.9Mbps-88812799.mp4"></video></div>
+      <div class="adv-media-text__text">
+        <h2 class="adv-media-text__title adv-media-text__title--desktop">7. I Threw Away All My Other Makeup</h2>
+        <div class="adv-media-text__content"><p>After two weeks, I looked in my makeup drawer and realized I hadn't touched my old foundation, concealer, or setting powder once. So I did something I never thought I'd do — <strong>I threw it all away.</strong></p><p><strong>One compact replaced everything I used to layer on just to get through the day.</strong></p></div>
       </div>
-      <div class="advb advb--right">
-        <div class="advb__ph"><img class="advb__media" loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/IMG_2872_1.jpg?width=900" alt=""></div>
-        <div class="advb__tx">
-          <h2>8. I Had 30 Days to Try My Shade</h2>
-          <p>Choosing foundation online used to make me nervous. With the <strong>30-Day Shade Match Guarantee</strong>, I knew they'd replace my shade free if it wasn't right.</p><p><strong>No stress. No returns hassle. Just my perfect match.</strong></p>
-        </div>
+    </div>
+  </div>
+  <div id="AdvBlock-9">
+    <div class="adv-media-text adv-media-text--right">
+      <h2 class="adv-media-text__title adv-media-text__title--mobile">8. I Had 30 Days to Try My Shade</h2>
+      <div class="adv-media-text__media"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/IMG_2872_1.jpg?width=1100" alt="8. I Had 30 Days to Try My Shade"></div>
+      <div class="adv-media-text__text">
+        <h2 class="adv-media-text__title adv-media-text__title--desktop">8. I Had 30 Days to Try My Shade</h2>
+        <div class="adv-media-text__content"><p>Choosing foundation online used to make me nervous. With the <strong>30-Day Shade Match Guarantee</strong>, I knew they'd replace my shade free if it wasn't right.</p><p><strong>No stress. No returns hassle. Just my perfect match.</strong></p></div>
       </div>
-      <div class="advoffer" style="background:#f5eee4">
-        <div class="advoffer__ph"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/ChatGPT_Image_10_._2026_._15_43_40.webp?width=900" alt=""></div>
-        <div class="advoffer__tx">
-          <p class="advoffer__t">UP TO 64% OFF</p>
-          <p class="advoffer__s">+ FREE Gift & Shipping</p>
-          <p>I was skeptical too. But with <strong>free shipping</strong> and <strong>30-Day Shade Match Guarantee</strong>, the only thing you have to lose is the makeup that’s making you look older.</p>
-          <a class="advoffer__btn" href="product-hush-foundation-cushion.html"
-             style="background:#750b10;color:#ffffff">CLAIM MY PERFECT MATCH →</a>
-          <p class="advoffer__note">Try it today with a 30-Day Money Back Guarantee!</p>
-        </div>
+    </div>
+  </div>
+  <div id="AdvBlock-10">
+    <div class="adv-offer" style="background-color: #f5eee4;">
+      <div class="adv-offer__image"><img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/ChatGPT_Image_10_._2026_._15_43_40.webp?width=900" alt="UP TO 64% OFF"></div>
+      <div class="adv-offer__text">
+        <h2 class="adv-offer__title">UP TO 64% OFF</h2>
+        <p class="adv-offer__subtitle">+ FREE Gift & Shipping</p>
+        <div class="adv-offer__description"><p>I was skeptical too. But with <strong>free shipping</strong> and <strong>30-Day Shade Match Guarantee</strong>, the only thing you have to lose is the makeup that’s making you look older.</p></div>
+        <a href="product-hush-foundation-cushion.html" class="adv-offer__button" style="background-color: #750b10; color: #ffffff;">CLAIM MY PERFECT MATCH →</a>
+        <p class="adv-offer__note">Try it today with a 30-Day Money Back Guarantee!</p>
       </div>
-      <div class="advrev">
-        <p>“I ordered the wrong shade, but Hush Glow sent me a darker one—and it was perfect. I’m 63, and it’s the best match I’ve found.”</p>
-        <p class="advrev__by"><b>Mary</b><span class="advrev__v">Verified</span></p>
-      </div>
-      <div class="advrev">
-        <p><em>“It doesn’t settle into my lines like other foundations. My skin looks smooth and natural—not covered in makeup.”</em></p>
-        <p class="advrev__by"><b>Debbie</b><span class="advrev__v">Verified</span></p>
-      </div>
-      <div class="advrev">
-        <p><em>“It covers my age spots without feeling heavy. It’s so lightweight, I forget I’m even wearing foundation.”</em></p>
-        <p class="advrev__by"><b>Betsy</b><span class="advrev__v">Verified</span></p>
-      </div>
-</main>
-
-<div class="advsticky" style="background:#ffffff">
-  <a class="advsticky__btn" href="product-hush-foundation-cushion.html"
-     style="background:#000000;color:#ffffff">YES, GET UP TO 64% OFF →</a>
-  <p class="advsticky__p" style="color:#121212">
-    <img src="https://hushglow.com/cdn/shop/files/women_1.png?width=120" alt="">Loved by Susan ❤️ and 600.000+ others</p>
+    </div>
+  </div>
+  <div id="AdvBlock-11">
+    <div class="adv-review">
+      <span class="adv-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <div class="adv-review__content"><p>“I ordered the wrong shade, but Hush Glow sent me a darker one—and it was perfect. I’m 63, and it’s the best match I’ve found.”</p></div>
+      <div class="adv-review__footer"><span>&mdash; Mary</span><span class="adv-review__verified">Verified</span></div>
+    </div>
+  </div>
+  <div id="AdvBlock-12">
+    <div class="adv-review">
+      <span class="adv-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <div class="adv-review__content"><p><em>“It doesn’t settle into my lines like other foundations. My skin looks smooth and natural—not covered in makeup.”</em></p></div>
+      <div class="adv-review__footer"><span>&mdash; Debbie</span><span class="adv-review__verified">Verified</span></div>
+    </div>
+  </div>
+  <div id="AdvBlock-13">
+    <div class="adv-review">
+      <span class="adv-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <div class="adv-review__content"><p><em>“It covers my age spots without feeling heavy. It’s so lightweight, I forget I’m even wearing foundation.”</em></p></div>
+      <div class="adv-review__footer"><span>&mdash; Betsy</span><span class="adv-review__verified">Verified</span></div>
+    </div>
+  </div>
+  </div>
 </div>
 
-<script src="../js/adv.js?v=1"></script>
+<div class="AdvSticky">
+  <div class="adv-sticky">
+    <a href="product-hush-foundation-cushion.html" class="adv-sticky__button"
+       style="background-color: #000000; color: #ffffff;">YES, GET UP TO 64% OFF →</a>
+    <div class="adv-sticky__bottom">
+      <img src="https://hushglow.com/cdn/shop/files/women_1.png?width=120" alt="">
+      <span style="color: #121212">Loved by Susan ❤️ and 600.000+ others</span>
+    </div>
+  </div>
+</div>
+
+<script src="../js/adv.js?v=3"></script>

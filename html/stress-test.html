@@ -127,7 +127,9 @@ function audit (win, width) {
                   built to run wider than the screen, and the Instagram embed is a
                   third-party widget that scrolls itself */
                '.press', '.look', '.lookrow', '[class*="eapps-"]',
-               '.recrow', '.statrow'];
+               '.recrow', '.statrow',
+               /* the collection switcher is swiped on a phone, like every other rail */
+               '.collswitch'];
   /* panels that live off-screen until opened would otherwise report as broken layout */
   var offstage = ['.cartdrawer', '.cart-ovl', '.mobmenu', '.mm-panel', '.satc',
                   '.shgal__detail', '.shgal__backdrop'];

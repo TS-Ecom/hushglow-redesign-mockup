@@ -555,7 +555,9 @@ function cartToggle (open) {
   document.querySelectorAll('[data-collection-sort]').forEach(function (sel) {
     var grid = sel.closest('.inner').querySelector('.collgrid');
     if (!grid) return;
-    var featured = Array.prototype.slice.call(grid.children);
+    /* the promo tile is not a product and must not be sorted with them: it keeps its
+       cell and only the cards move around it */
+    var featured = Array.prototype.slice.call(grid.querySelectorAll('.p-card'));
     sel.addEventListener('change', function () {
       var order = featured.slice();
       if (sel.value === 'price-asc') order.sort(function (a, b) { return a.dataset.price - b.dataset.price; });

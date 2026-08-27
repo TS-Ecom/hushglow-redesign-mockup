@@ -790,13 +790,51 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
    One template for Shop All, Face Makeup and Bundles & Sets: the page header, a line
    saying how many products there are with a working sort, then the same product cards
    the rest of the site uses. */
+/* the picture that opens a collection. In the theme it comes from the collection's own
+   image, and the section hides itself when there is none — no collection on the store has
+   one set today, which is exactly why it has to be optional. */
+.collbanner{background:var(--cream);overflow:hidden}
+.collbanner img{width:100%;display:block;object-fit:cover;object-position:center 32%;
+  aspect-ratio:21/9;max-height:420px}
+.collbanner + .pagehead{padding-top:26px}
+
+/* switching between collections without going back to the menu */
+.collswitch{display:flex;gap:8px;flex-wrap:wrap;min-width:0}
+.collswitch a{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--r-btn);padding:11px 18px;white-space:nowrap;
+  transition:background .2s ease,color .2s ease,border-color .2s ease}
+.collswitch a:hover{border-color:var(--ink)}
+.collswitch a.on{background:var(--ink);border-color:var(--ink);color:var(--paper);cursor:default}
+
 .collbar{display:flex;align-items:center;justify-content:space-between;gap:16px;
   max-width:1320px;margin:0 auto 26px;padding-top:6px;flex-wrap:wrap}
+.collbar .right{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .collbar .count{font-size:15px;color:var(--ink-soft)}
 .collbar label{display:flex;align-items:center;gap:9px;font-size:15px;color:var(--ink-soft)}
 .collbar select{font:inherit;font-size:15px;color:var(--ink);background:var(--paper);
   border:1px solid var(--line);border-radius:var(--r-btn);padding:9px 12px;cursor:pointer}
 .collgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;max-width:1320px;margin:0 auto}
+
+/* ---------- promo tile ----------
+   Sits in the grid as one more cell and stretches to whatever height the row of cards
+   ends up at, so the row never breaks. The whole tile is the link. */
+.promotile{position:relative;display:block;overflow:hidden;border-radius:var(--r-card);
+  min-height:340px;height:100%;color:var(--paper);text-decoration:none;background:var(--cream)}
+.promotile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .5s ease}
+.promotile:hover img{transform:scale(1.045)}
+.promotile::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(23,14,12,.62) 0%,rgba(23,14,12,0) 52%)}
+.promotile .in{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;
+  display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.promotile b{font-size:20px;font-weight:700;line-height:1.25;letter-spacing:.01em}
+.promotile p{font-size:15px;line-height:1.45;margin:0;color:rgba(255,255,255,.92)}
+.promotile i{font-style:normal;font-size:12px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink);background:var(--paper);
+  border-radius:var(--r-btn);padding:11px 20px;margin-top:4px;
+  transition:background .2s ease,color .2s ease}
+.promotile:hover i{background:var(--ink);color:var(--paper)}
 
 /* ---------- static page header ----------
    Eyebrow, title and an optional lede, centred. Used by the contact page and by every
@@ -1167,7 +1205,25 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .newsletter h2{font-size:24px}
   .newsletter p{font-size:15px;margin-bottom:20px}
   .photobanner{margin-top:64px}
-  .collbar{margin-bottom:18px;gap:10px}
+  .collbanner img{aspect-ratio:4/3;max-height:none}
+  .collbanner + .pagehead{padding-top:20px}
+  /* three pills do not fit a phone row: swipe them */
+  .collswitch{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
+    margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);width:100%}
+  .collswitch::-webkit-scrollbar{display:none}
+  .collswitch a{font-size:12px;padding:10px 15px}
+  /* count and sort share one row on a phone: the select gives up its slack so the
+     product count is not left orphaned on a line of its own */
+  .collbar .right{width:100%;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+  .collbar .count{flex:none}
+  .collbar label{min-width:0;font-size:14px}
+  .collbar select{min-width:0;font-size:14px;padding:8px 8px;max-width:100%}
+  .promotile{min-height:0}
+  .promotile .in{left:14px;right:14px;bottom:14px;gap:6px}
+  .promotile b{font-size:17px}
+  .promotile p{font-size:14px}
+  .promotile i{font-size:11px;padding:9px 15px}
+  .collbar{margin-bottom:18px;gap:12px}
   .collgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
   .iwt.box{gap:22px;margin-top:40px}
   .iwt.box .tx{padding:0}

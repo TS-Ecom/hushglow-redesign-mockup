@@ -7,9 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="../js/viewport-lock.js?v=147"></script>
-<link rel="stylesheet" href="../css/shared.css?v=147">
-<link rel="stylesheet" href="../css/page-collection.css?v=147">
+<script src="../js/viewport-lock.js?v=152"></script>
+<link rel="stylesheet" href="../css/shared.css?v=152">
+<link rel="stylesheet" href="../css/page-collection.css?v=152">
 </head>
 <body>
 
@@ -70,6 +70,13 @@
      many products there are with a working sort, then the same cards the rest of the site
      uses. The live page also carries Availability and Price filters; with four to nine
      products they have nothing to do, and a control that does nothing reads as a bug. -->
+<!-- Collection banner. In the theme this comes from the collection's own image and
+     the section hides itself when there is none — no collection on the store has one
+     set today, so these are stand-ins for whatever gets uploaded. -->
+<div class="collbanner">
+  <img src="https://hushglow.com/cdn/shop/files/51.jpg?width=2200" alt="Face Makeup">
+</div>
+
 <section class="pagehead">
   <div class="inner"><h1>Face Makeup</h1></div>
 </section>
@@ -77,17 +84,34 @@
 <section class="section">
   <div class="inner">
     <div class="collbar">
-      <span class="count">5 products</span>
-      <label>Sort by
-        <select data-collection-sort>
-          <option value="featured">Featured</option>
-          <option value="price-asc">Price, low to high</option>
-          <option value="price-desc">Price, high to low</option>
-          <option value="name">Alphabetically, A&ndash;Z</option>
-        </select>
-      </label>
+      <nav class="collswitch" aria-label="Collections">
+        <a href="page-collection-all.html">Shop All</a>
+        <a href="page-collection-face-makeup.html" class="on">Face Makeup</a>
+        <a href="page-collection-bundles-sets.html">Bundles &amp; Sets</a>
+      </nav>
+      <div class="right">
+        <span class="count">5 products</span>
+        <label>Sort by
+          <select data-collection-sort>
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price, low to high</option>
+            <option value="price-desc">Price, high to low</option>
+            <option value="name">Alphabetically, A&ndash;Z</option>
+          </select>
+        </label>
+      </div>
     </div>
     <div class="collgrid">
+      <!-- Promo tile. One more cell in the grid, stretched to the row height, with the
+           whole tile as the link — the arrangement the live collections use. -->
+      <a class="promotile" href="product-blush-stick.html">
+        <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/HUSH0579.jpg?width=800" alt="">
+        <span class="in">
+          <b>Your Summer Glow</b>
+          <p>Relaxed, glowing, and no flight needed.</p>
+          <i>Shop now</i>
+        </span>
+      </a>
       <a class="p-card" href="product-hydrating-concealer.html" data-price="37.99" data-name="Hydrating Concealer Stick">
         <div class="ph"><img loading="lazy" decoding="async" class="main" src="https://hushglow.com/cdn/shop/files/Soft_Porcelain.webp?v=1786025680&width=800" alt="Hydrating Concealer Stick"></div>
         <div class="nm">Hydrating Concealer Stick</div>
@@ -316,5 +340,5 @@
   </div>
 </aside>
 
-<script src="../js/shared.js?v=147"></script>
-<script src="../js/page-collection.js?v=147"></script>
+<script src="../js/shared.js?v=152"></script>
+<script src="../js/page-collection.js?v=152"></script>

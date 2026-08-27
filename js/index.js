@@ -18,23 +18,6 @@
     if (mq.addEventListener) { mq.addEventListener('change', apply); } else { mq.addListener(apply); }
   }
 
-  /* press marquee: two identical halves for a seamless loop */
-  var logos = [
-    ['https://hushglow.com/cdn/shop/files/Mask_group.png?width=300', 'Glamour'],
-    ['https://hushglow.com/cdn/shop/files/2560px-Grazia-Logo_1.png?width=300', 'Grazia'],
-    ['https://hushglow.com/cdn/shop/files/Elle_logo_1.png?width=300', 'Elle']
-  ];
-  document.querySelectorAll('.press .ticker .half').forEach(function (half) {
-    half.innerHTML = '';
-    for (var r = 0; r < 3; r++) {
-      logos.forEach(function (l) {
-        var img = document.createElement('img');
-        img.src = l[0]; img.alt = l[1];
-        half.appendChild(img);
-      });
-    }
-  });
-
   /* get the look slider: infinite loop via one cloned set on each side.
      After scrolling settles, the position is silently normalized back into
      the middle set (sets are identical, so the jump is invisible). */

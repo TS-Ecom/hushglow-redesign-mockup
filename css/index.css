@@ -11,18 +11,9 @@
 .hero .lede{font-size:17px;color:#4a413a;max-width:40ch;line-height:1.55}
 .hero .ctas{display:flex;gap:14px;margin-top:4px;flex-wrap:wrap}
 
-
-/* ---------- press ticker (Shrine-style: big black logos, no label) ---------- */
-.press{padding:34px 0;overflow:hidden}
-.press .ticker{display:flex;width:max-content}
-.press .half{display:flex;align-items:center;gap:96px;padding-right:96px;animation:tickmove 30s linear infinite}
-.press img{height:30px;width:auto;filter:grayscale(1)}
-
-
 /* ---------- photo banners ---------- */
 .photobanner{margin-top:96px}
 .photobanner img{width:100%;height:auto;display:block}
-
 
 /* ---------- get the look ---------- */
 /* full-bleed edge-to-edge strip, 4 cards per viewport (Jones Road reference) */
@@ -38,12 +29,9 @@
 .l-card .cap a{background:var(--paper);color:var(--ink);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:12px 20px;border-radius:var(--r-btn);transition:background .2s ease,color .2s ease}
 .l-card .cap a:hover{background:var(--ink);color:var(--paper)}
 
-
 /* ---------- instagram ---------- */
 .instagram-center{display:flex;justify-content:center;width:100%}
 .instagram-center>div{width:100%;max-width:1240px;margin:0 auto}
-
-
 
 /* ---------- mobile ---------- */
 @media screen and (max-width:749px){
@@ -55,9 +43,6 @@
   .hero .lede{font-size:15px}
   .hero .ctas{flex-direction:column;width:100%;gap:10px}
   .hero .btn{width:100%;padding:16px 0}
-  .press{padding:22px 0}
-  .press .half{gap:54px;padding-right:54px;animation-duration:24s}
-  .press img{height:20px}
   .photobanner{margin-top:64px}
   .look{margin-top:64px}
   .l-card{flex:0 0 calc(100% - 40px)}
@@ -67,7 +52,6 @@
 }
 
 @media (prefers-reduced-motion: reduce){
-  .press .half{animation:none}
   video{display:none}
 }
 

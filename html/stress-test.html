@@ -48,6 +48,7 @@
       <option value="product-all-day-glow-bundle.html">All Day Glow Bundle</option>
       <option value="product-sunkissed-trio.html">Sunkissed Trio</option>
       <option value="index.html">Home</option>
+      <option value="page-makeup-quizzes.html">Makeup Quizzes (hub)</option>
     </select>
   </label>
   <label>Widths
@@ -109,7 +110,8 @@ function audit (win, width) {
                /* home page: the press marquee and the looping Get-the-Look carousel are
                   built to run wider than the screen, and the Instagram embed is a
                   third-party widget that scrolls itself */
-               '.press', '.look', '.lookrow', '[class*="eapps-"]'];
+               '.press', '.look', '.lookrow', '[class*="eapps-"]',
+               '.recrow', '.statrow'];
   /* panels that live off-screen until opened would otherwise report as broken layout */
   var offstage = ['.cartdrawer', '.cart-ovl', '.mobmenu', '.mm-panel', '.satc',
                   '.shgal__detail', '.shgal__backdrop'];

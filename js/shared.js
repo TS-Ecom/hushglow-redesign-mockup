@@ -438,6 +438,24 @@ function cartToggle (open) {
   };
   /* A page can carry its own line on the strip: the concealer runs three text-only
      claims, the other products run the brand's three icon claims. */
+  /* Press marquee: two identical halves scrolling past each other, so the loop has no
+     seam. Moved out of the home page file when the quiz hub page needed the same strip. */
+  var PRESS = [
+    ['https://hushglow.com/cdn/shop/files/Mask_group.png?width=300', 'Glamour'],
+    ['https://hushglow.com/cdn/shop/files/2560px-Grazia-Logo_1.png?width=300', 'Grazia'],
+    ['https://hushglow.com/cdn/shop/files/Elle_logo_1.png?width=300', 'Elle']
+  ];
+  document.querySelectorAll('.press .ticker .half').forEach(function (half) {
+    half.innerHTML = '';
+    for (var r = 0; r < 3; r++) {
+      PRESS.forEach(function (l) {
+        var img = document.createElement('img');
+        img.src = l[0]; img.alt = l[1];
+        half.appendChild(img);
+      });
+    }
+  });
+
   var PS_DEFAULT = [
     [psIcons.leaf, 'Cruelty Free'],
     [psIcons.brush, 'Used by Makeup Artists'],
@@ -460,14 +478,18 @@ function cartToggle (open) {
     });
   });
 
-  /* banner slider: square cards, paged one card per step, dots + edge-disabled arrows */
-  document.querySelectorAll('.bslider').forEach(function (slider) {
-    var bs = slider.querySelector('.bsrow');
+  /* Paged rails: one step per card, dots and edge-disabled arrows. Marked with
+     data-slider on the wrapper and data-slider-row on the track, so the same code drives
+     the campaign banner slider and the product rail on the quiz page. Add
+     data-slider-auto to the wrapper for the banners' 4s auto-advance; a rail of products
+     someone is reading should not move on its own, so it is opt-in. */
+  document.querySelectorAll('[data-slider]').forEach(function (slider) {
+    var bs = slider.querySelector('[data-slider-row]');
     var bp = slider.querySelector('.lookarrow.prev');
     var bn = slider.querySelector('.lookarrow.next');
     var bd = slider.querySelector('.bsdots');
     if (!bs || !bp || !bn) return;
-    var slides = Array.prototype.slice.call(bs.querySelectorAll('img'));
+    var slides = Array.prototype.slice.call(bs.children);
     var dots = [];
     var stepB = function () {
       var gap = parseFloat(getComputedStyle(bs).gap) || 0;
@@ -501,7 +523,7 @@ function cartToggle (open) {
     /* auto-advance every 4s, loops back at the end; pauses on hover, on touch and while
        the slider is off screen */
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduce) {
+    if (!reduce && slider.hasAttribute('data-slider-auto')) {
       var timer = null;
       var paused = false;
       var visible = true;

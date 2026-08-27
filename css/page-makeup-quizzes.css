@@ -1,0 +1,68 @@
+/* HushGlow Design — Makeup Quizzes hub page.
+
+   Almost everything here is a block from shared.css filled with this page's content.
+   Only two things are specific to it: the page-hero size of image-with-text, and the
+   row of quiz numbers. */
+
+/* ---------- hero ----------
+   Same block as every other image-with-text, one size up: it opens a page rather than
+   sitting inside one, so the heading carries the weight a hero needs. */
+.iwt.qhero{background:#f3f3f3;margin-top:0}
+.iwt.qhero .ph{height:695px}
+.iwt.qhero .tx{gap:22px}
+.iwt.qhero .tx h2{font-size:42px;line-height:1.14;letter-spacing:-.015em}
+.iwt.qhero .tx p{font-size:17px;max-width:44ch}
+
+/* ---------- the two quiz blocks ----------
+   Contained rather than full-bleed, and the copy centred in its half. Both come from the
+   live page: run edge to edge and the two short lines sit marooned in a field of grey,
+   which is the opposite of what a block whose only job is one button should look like.
+   The photo is square, as the live one is. */
+.iwt.mid{max-width:1300px;margin:64px auto 0;padding:0 var(--pagepad);gap:48px;
+  background:transparent;grid-template-columns:1fr 1fr;align-items:center}
+.iwt.mid .ph{height:auto;aspect-ratio:1/1}
+.iwt.mid .tx{align-items:center;text-align:center;padding:0 30px}
+.iwt.mid .tx p{max-width:34ch}
+
+/* ---------- quiz numbers ---------- */
+.statrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;max-width:1000px;margin:0 auto}
+.stat{background:#f3f3f3;padding:24px 18px;text-align:center;display:flex;flex-direction:column;gap:6px;min-width:0}
+.stat b{font-size:36px;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+.stat span{font-size:16px;color:var(--ink-soft);line-height:1.4;overflow-wrap:anywhere}
+
+/* ---------- product row ----------
+   Five products rather than the three the product pages show, so the row becomes a paged
+   rail: three in view, arrows and dots to reach the rest. That is what the live block
+   does. The cards, the banner tile and the arrows are all the shared ones. */
+.recwrap{position:relative;min-width:0}
+.recgrid.rail .recrow{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;
+  scrollbar-width:none;padding-bottom:2px}
+.recgrid.rail .recrow::-webkit-scrollbar{display:none}
+.recgrid.rail .recrow .p-card{flex:0 0 calc((100% - 52px)/3);scroll-snap-align:start;min-width:0}
+.recgrid.rail .lookarrow{top:32%}
+.recgrid.rail .lookarrow.prev{left:-20px}
+.recgrid.rail .lookarrow.next{right:-20px}
+.recgrid.rail .bsdots{margin-top:22px}
+
+@media screen and (max-width:749px){
+  .iwt.qhero .ph{height:auto;aspect-ratio:1/1}
+  /* stack like every other image-with-text: the base rule drops to one column and this
+     variant has to follow it, or the copy ends up in a 150px gutter */
+  .iwt.mid{grid-template-columns:1fr;gap:22px;margin-top:40px}
+  .iwt.mid .tx{padding:0}
+  .iwt.qhero .tx h2{font-size:29px}
+  .iwt.qhero .tx p{font-size:16px}
+
+  /* four short numbers read better as a block of two than as a swipe row */
+  .statrow{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .stat{padding:18px 12px}
+  .stat b{font-size:29px}
+  .stat span{font-size:15px}
+
+  .recgrid.rail .recrow{gap:14px;margin:0 calc(-1 * var(--pagepad));padding:2px var(--pagepad) 6px;
+    scroll-padding-inline:var(--pagepad)}
+  .recgrid.rail .recrow .p-card{flex:0 0 62vw}
+  /* on a phone the row is swiped, so the arrows would only be in the way */
+  .recgrid.rail .lookarrow{display:none}
+  .recgrid.rail .bsdots{margin-top:14px}
+}

@@ -383,6 +383,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 
 @media (prefers-reduced-motion: reduce){
   .trust span{animation:none;position:static;opacity:1}
+  .press .half{animation:none}
 }
 
 /* 14px minimum type floor — desktop only (mobile keeps its tuned sizes) */
@@ -751,6 +752,14 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .shdesc{font-size:16px;color:var(--ink-soft);line-height:1.5}
 .shades .benef-cta{margin-top:46px;margin-bottom:0}
 
+/* ---------- press marquee ----------
+   Two identical halves scrolling past each other, so the loop has no seam. Moved out of
+   the home page file when the quiz hub page needed the same strip. */
+.press{padding:34px 0;overflow:hidden}
+.press .ticker{display:flex;width:max-content}
+.press .half{display:flex;align-items:center;gap:96px;padding-right:96px;animation:tickmove 30s linear infinite}
+.press img{height:30px;width:auto;filter:grayscale(1)}
+
 /* ---------- blocks used by more than one product template ----------
    Bundle tiers with their offer timer, review cards, the ingredients variant of
    image-with-text, the filled section variant, the how-to-use tags and the price row.
@@ -1058,6 +1067,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .iwt.ingr{margin-top:40px}
   .section{padding-top:40px}
   .bundtimer{font-size:14px}
+  .press{padding:22px 0}
+  .press .half{gap:54px;padding-right:54px;animation-duration:24s}
+  .press img{height:20px}
   .rcards .rcard{flex:0 0 78vw;padding:18px 18px 16px}
   .rcards .rcard b{font-size:16px}
   .rcards .rcard p{font-size:15px}

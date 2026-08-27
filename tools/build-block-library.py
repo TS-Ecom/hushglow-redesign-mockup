@@ -62,8 +62,10 @@ def by_class(page, prefix):
 BLOCKS = [
     ('Image with text — plain', 61, 'the numbered reason block; 61 of the 112 instances',
      lambda: by_section('7-reasons', 'image_with_text_XP4j3r')),
-    ('Image with text — with CTA', 51, 'same block with every optional part switched on: button, rating stars, icon bullets, trust badge, Trustpilot',
+    ('Image with text — with CTA', 32, 'button, icon bullets, trust badge and Trustpilot rating. No single instance on the store carries every optional part, so the two richest are both shown',
      lambda: by_section('5-reasons-gift', 'image_with_text_p9VfzT')),
+    ('Image with text — with CTA and star rating', 19, 'the other CTA arrangement: a star rating instead of the Trustpilot bar. Two parts appear nowhere else and are not shown here — a caption above the heading (1 use) and a second inline image (1 use)',
+     lambda: by_section('aging-skin', 'image_with_text_XP4j3r')),
     ('Rich text', 43, 'one block, optional caption / heading / text / button / Trustpilot',
      lambda: by_section('7-reasons', 'rich_text_njRdYN')),
     ('Multicolumn', 6, 'runs at 3, 4 and 6 columns',
@@ -84,6 +86,16 @@ BLOCKS = [
      lambda: by_section('7-reasons-kit', 'comparison_slider_Yh6UyV')),
     ('Section divider', 5, '',
      lambda: by_section('7-reasons', 'section_divider_Qjaa6c')),
+    ('Sticky button', 14, 'the bar that follows the reader down the page; on 14 of the 16 templates',
+     lambda: by_section('7-reasons', 'eg_sticky_button_iE6DbT')),
+    ('Countdown timer (app)', 5, 'Essential Countdown Timer, a third-party app block. It draws itself from the app\u2019s own script, so there is nothing here to design or to port \u2014 it is listed because it is on five of the pages and the rebuild has to keep a slot for it',
+     lambda: by_section('7-reasons-ms', 'apps_km6whN')),
+    ('Advertorial header', 1, 'the family B masthead, reused on one family A page (mouth-wrinkles)',
+     lambda: by_section('mouth-wrinkles', 'adv_header_EKAmKb')),
+    ('Featured collection', 1, 'a Bestsellers product row, on the concealer announcement page',
+     lambda: by_section('concealer-stick-announcement', 'bestsellers')),
+    ('Custom liquid — Klaviyo form', 1, 'two Klaviyo form embeds on the concealer announcement page; an app embed rather than a design',
+     lambda: by_section('concealer-stick-announcement', 'klaviyo_form')),
     ('AI — Statistics', 8, '',
      lambda: by_class('top-5-foundations', 'ai-stats-section')),
     ('AI — Reviews slider', 7, '',
@@ -103,6 +115,39 @@ def theme_css():
     head = open(SRC + '../headcss.txt', encoding='utf-8').read()
     return ('\n'.join('<link rel="stylesheet" href="%s">' % l for l in links)
             + '\n<style>\n' + head + '\n</style>')
+
+# section types that are live across the family A pages, with how often. Kept here so the
+# builder can refuse to produce a library that does not cover all of them.
+CENSUS = {
+    'image-with-text': 112, 'rich-text': 43, '_blocks': 26, 'eg-sticky-button': 14,
+    'multicolumn': 6, 'section-divider': 5, 'testimonials': 5, 'apps': 5,
+    'comparison-table': 5, 'logo-list': 4, 'icon-bar': 4, 'collapsible-content': 2,
+    'custom-columns': 2, 'comparison-slider': 1, 'adv-header': 1, 'custom-liquid': 1,
+    'featured-collection': 1,
+}
+COVERED = {
+    'image-with-text': ['Image with text — plain', 'Image with text — with CTA',
+                        'Image with text — with CTA and star rating'],
+    'rich-text': ['Rich text'], 'multicolumn': ['Multicolumn'], 'testimonials': ['Testimonials'],
+    'comparison-table': ['Comparison table'], 'icon-bar': ['Icon bar'], 'logo-list': ['Logo list'],
+    'collapsible-content': ['Collapsible content'], 'custom-columns': ['Custom columns'],
+    'comparison-slider': ['Comparison slider'], 'section-divider': ['Section divider'],
+    'eg-sticky-button': ['Sticky button'], 'apps': ['Countdown timer (app)'],
+    'adv-header': ['Advertorial header'], 'featured-collection': ['Featured collection'],
+    'custom-liquid': ['Custom liquid — Klaviyo form'],
+    '_blocks': ['AI — Statistics', 'AI — Reviews slider', 'AI — Editorial image with text',
+                'AI — How it works', 'AI — Image with text carousel'],
+}
+
+def check_coverage(names):
+    uncovered = [t for t in CENSUS if t not in COVERED]
+    if uncovered:
+        raise SystemExit('section types with no block in the library: %s' % uncovered)
+    for typ, blocks in COVERED.items():
+        for b in blocks:
+            if b not in names:
+                raise SystemExit('COVERED lists "%s" for %s but no such block is built' % (b, typ))
+    return len(CENSUS)
 
 def main():
     parts, missing = [], []
@@ -126,9 +171,11 @@ def main():
             '</section>' % (i, html.escape(name), uses,
                             ('<span class="lib__note">%s</span>' % html.escape(note)) if note else '',
                             frag))
+    n = check_coverage([b[0] for b in BLOCKS])
     doc = HEAD.replace('__THEME_CSS__', theme_css()) + '\n'.join(parts) + FOOT
     open('html/adv-block-library.html', 'w', encoding='utf-8').write(doc)
-    print('blocks:', len(BLOCKS), '| missing:', missing or 'none', '| bytes:', len(doc))
+    print('blocks:', len(BLOCKS), '| section types covered:', n,
+          '| failed to capture:', missing or 'none', '| bytes:', len(doc))
 
 HEAD = '''<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -154,7 +201,14 @@ __THEME_CSS__
   .lib__name{font-size:15px;font-weight:600}
   .lib__uses{font-size:13px;color:#6f6f7a}
   .lib__note{font-size:13px;color:#8a8a95;flex:1 1 100%}
-  .lib__block{background:#fff}
+  .lib__block{background:#fff;position:relative}
+  /* the sticky bar and the announcement bar are fixed or sticky on a real page, which
+     would take them out of flow here and leave an empty slot; inside the library they
+     sit in place so they can actually be looked at */
+  .lib__block [class*="sticky"],
+  .lib__block .adv-announcement{position:static !important}
+  .lib__empty{padding:18px 24px;font-size:13px;color:#8a8a95;background:#fafafa;
+    border-top:1px dashed #d3d3da}
 </style>
 
 <div class="lib__top">

@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://hushglow.com/cdn/shop/t/15/assets/base.css?v=161463055248729449421781601725">
+<link rel="stylesheet" href="https://hushglow.com/cdn/shop/t/15/assets/base.css?v=158463055248729449421781601725">
 <link rel="stylesheet" href="https://hushglow.com/cdn/shop/t/15/assets/custom-style.css?v=119458876550701903761775739303">
 <style>
 
@@ -445,7 +445,14 @@
   .lib__name{font-size:15px;font-weight:600}
   .lib__uses{font-size:13px;color:#6f6f7a}
   .lib__note{font-size:13px;color:#8a8a95;flex:1 1 100%}
-  .lib__block{background:#fff}
+  .lib__block{background:#fff;position:relative}
+  /* the sticky bar and the announcement bar are fixed or sticky on a real page, which
+     would take them out of flow here and leave an empty slot; inside the library they
+     sit in place so they can actually be looked at */
+  .lib__block [class*="sticky"],
+  .lib__block .adv-announcement{position:static !important}
+  .lib__empty{padding:18px 24px;font-size:13px;color:#8a8a95;background:#fafafa;
+    border-top:1px dashed #d3d3da}
 </style>
 
 <div class="lib__top">
@@ -701,8 +708,8 @@
   <div class="lib__label">
     <span class="lib__n">02</span>
     <span class="lib__name">Image with text — with CTA</span>
-    <span class="lib__uses">51&times; across the advertorials</span>
-    <span class="lib__note">same block with every optional part switched on: button, rating stars, icon bullets, trust badge, Trustpilot</span>
+    <span class="lib__uses">32&times; across the advertorials</span>
+    <span class="lib__note">button, icon bullets, trust badge and Trustpilot rating. No single instance on the store carries every optional part, so the two richest are both shown</span>
   </div>
   <div class="lib__block">
 <div id="shopify-section-template--21807796977921__image_with_text_p9VfzT" class="shopify-section section"><style data-shopify>.section-template--21807796977921__image_with_text_p9VfzT-padding {
@@ -978,6 +985,345 @@
 <section class="lib__item">
   <div class="lib__label">
     <span class="lib__n">03</span>
+    <span class="lib__name">Image with text — with CTA and star rating</span>
+    <span class="lib__uses">19&times; across the advertorials</span>
+    <span class="lib__note">the other CTA arrangement: a star rating instead of the Trustpilot bar. Two parts appear nowhere else and are not shown here — a caption above the heading (1 use) and a second inline image (1 use)</span>
+  </div>
+  <div class="lib__block">
+<div id="shopify-section-template--22707864011009__image_with_text_XP4j3r" class="shopify-section section"><style data-shopify>.section-template--22707864011009__image_with_text_XP4j3r-padding {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-template--22707864011009__image_with_text_XP4j3r-padding {
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+
+    #image-with-text-template--22707864011009__image_with_text_XP4j3r .image-with-text__media-item {
+      width: 50%;
+    }
+    #image-with-text-template--22707864011009__image_with_text_XP4j3r .image-with-text__text-item {
+      width: 50%;
+    }
+  }
+
+  .color-scheme-template--22707864011009__image_with_text_XP4j3r.color-custom {
+    --color-background: 245, 238, 228;
+    --gradient-background: #f5eee4;
+    --color-foreground: 18, 18, 18;
+    --color-button: 117, 11, 16;
+    --color-button-text: 255, 255, 255;
+    --color-base-outline-button-labels: 0, 0, 0;
+  }
+
+  .section-color-scheme-template--22707864011009__image_with_text_XP4j3r.color-custom {
+    --color-background: 245, 238, 228;
+    --gradient-background: #f5eee4;
+  }
+
+  #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar--inline {
+    background-color: var(--tp-bar-bg);
+    color: var(--tp-bar-text);
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    margin-top: var(--tp-bar-mt);
+    margin-bottom: var(--tp-bar-mb);
+    width: 100%;
+  }
+  #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar__inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+  }
+  #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar__inner--left { justify-content: flex-start; }
+  #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar__inner--center { justify-content: center; }
+  #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar__inner--right { justify-content: flex-end; }
+  #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar__label {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--tp-bar-text);
+  }
+  #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar__stars {
+    display: inline-flex;
+    align-items: center;
+  }
+  #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar__stars svg {
+    height: 20px;
+    width: auto;
+  }
+  #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar__summary {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--tp-bar-text);
+  }
+  #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar__link {
+    color: var(--tp-bar-link, var(--tp-bar-text));
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  #image-with-text-template--22707864011009__image_with_text_XP4j3r a.trustpilot-bar__link:hover {
+    text-decoration: none;
+  }
+  @media screen and (max-width: 749px) {
+    #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar__label { font-size: 14px; }
+    #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar__stars svg { height: 16px; }
+    #image-with-text-template--22707864011009__image_with_text_XP4j3r .trustpilot-bar__summary { font-size: 14px; }
+  }
+
+  .hg-trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--hg-tb-color, #4a4a4a);
+    font-size: var(--hg-tb-size, 1.3rem);
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: var(--hg-tb-mt, 0.8rem);
+    margin-bottom: var(--hg-tb-mb, 0.8rem);
+    width: 100%;
+  }
+  .hg-trust-badge__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--hg-tb-icon, var(--hg-tb-color, #4a4a4a));
+    flex-shrink: 0;
+  }
+  .hg-trust-badge__icon svg {
+    width: var(--hg-tb-icon-size, 18px);
+    height: var(--hg-tb-icon-size, 18px);
+  }
+  .hg-trust-badge__text {
+    letter-spacing: 0.01em;
+  }
+
+  /* Mobile alignment (default) */
+  @media screen and (max-width: 749px) {
+    .hg-trust-badge {
+      font-size: calc(var(--hg-tb-size, 1.3rem) - 0.1rem);
+    }
+    .hg-trust-badge--mobile-left { justify-content: flex-start; text-align: left; }
+    .hg-trust-badge--mobile-center { justify-content: center; text-align: center; }
+    .hg-trust-badge--mobile-right { justify-content: flex-end; text-align: right; }
+  }
+
+  /* Desktop alignment */
+  @media screen and (min-width: 750px) {
+    .hg-trust-badge--desktop-left { justify-content: flex-start; text-align: left; }
+    .hg-trust-badge--desktop-center { justify-content: center; text-align: center; }
+    .hg-trust-badge--desktop-right { justify-content: flex-end; text-align: right; }
+  }
+
+  /* Button wrapper alignment */
+  .hg-button-wrap {
+    display: flex;
+    width: 100%;
+  }
+  @media screen and (max-width: 749px) {
+    .hg-button-wrap--mobile-left { justify-content: flex-start; }
+    .hg-button-wrap--mobile-center { justify-content: center; }
+    .hg-button-wrap--mobile-right { justify-content: flex-end; }
+  }
+  @media screen and (min-width: 750px) {
+    .hg-button-wrap--desktop-left { justify-content: flex-start; }
+    .hg-button-wrap--desktop-center { justify-content: center; }
+    .hg-button-wrap--desktop-right { justify-content: flex-end; }
+  }
+
+  /* Icon + text benefits row (repeatable icon_text block) */
+  .iwt-benefits-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--iwt-row-gap, 1.2rem) var(--iwt-col-gap, 3.2rem);
+    width: 100%;
+    margin-top: var(--iwt-mt, 2.4rem);
+    margin-bottom: var(--iwt-mb, 0.8rem);
+  }
+  .iwt-benefits-row--left { justify-content: flex-start; }
+  .iwt-benefits-row--center { justify-content: center; }
+  .iwt-benefits-row--right { justify-content: flex-end; }
+  .iwt-benefits-row--space-between { justify-content: space-between; }
+
+  .iwt-benefit {
+    display: flex;
+    align-items: center;
+    gap: var(--iwt-gap, 1rem);
+    flex: 0 1 auto;
+  }
+  .iwt-benefit__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--iwt-icon-color, currentColor);
+    line-height: 1;
+  }
+  .iwt-benefit__icon .material-icon {
+    font-size: var(--iwt-icon-size, 22px);
+    line-height: 1;
+  }
+  .iwt-benefit__icon--image img {
+    display: block;
+    width: var(--iwt-icon-size, 22px);
+    height: var(--iwt-icon-size, 22px);
+    object-fit: contain;
+  }
+  .iwt-benefit__text {
+    color: var(--iwt-text-color, inherit);
+    font-size: var(--iwt-text-size-desktop, 1.6rem);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  @media screen and (max-width: 749px) {
+    .iwt-benefit__text {
+      font-size: var(--iwt-text-size-mobile, 1.4rem);
+    }
+    .iwt-benefits-row--mobile-grid .iwt-benefit {
+      flex: 1 1 calc(50% - (var(--iwt-col-gap, 3.2rem) / 2));
+    }
+    .iwt-benefits-row--mobile-stack .iwt-benefit {
+      flex: 1 1 100%;
+    }
+  }</style><div id="image-with-text-template--22707864011009__image_with_text_XP4j3r" class="section-color-scheme-template--22707864011009__image_with_text_XP4j3r color-custom gradient content-for-grouping animate-section animate--hidden always-display">
+  
+  <div class="image-with-text image-with-text--no-overlap image-with-text--mobile-normal page-width isolate collapse-corners same-colors collapse-padding section-template--22707864011009__image_with_text_XP4j3r-padding">
+    <div class="image-with-text__grid grid grid--gapless grid--1-col animate-item">
+      <div class="image-with-text__media-item image-with-text__media-item--middle grid__item">
+        <div
+          class="image-with-text__media image-with-text__media--adapt gradient color-scheme-template--22707864011009__image_with_text_XP4j3r color-custom global-media-settings media"
+          
+            style="padding-bottom: 100.0%;"
+          
+        ><img src="//hushglow.com/cdn/shop/files/1_1296_1296___Almond_1.webp?v=1783951463&amp;width=1500" alt="" srcset="//hushglow.com/cdn/shop/files/1_1296_1296___Almond_1.webp?v=1783951463&amp;width=165 165w, //hushglow.com/cdn/shop/files/1_1296_1296___Almond_1.webp?v=1783951463&amp;width=360 360w, //hushglow.com/cdn/shop/files/1_1296_1296___Almond_1.webp?v=1783951463&amp;width=535 535w, //hushglow.com/cdn/shop/files/1_1296_1296___Almond_1.webp?v=1783951463&amp;width=750 750w, //hushglow.com/cdn/shop/files/1_1296_1296___Almond_1.webp?v=1783951463&amp;width=1070 1070w, //hushglow.com/cdn/shop/files/1_1296_1296___Almond_1.webp?v=1783951463&amp;width=1500 1500w" width="1500" height="1500" loading="lazy" sizes="(min-width: 1400px) 650px,
+              (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)">
+</div>
+      </div>
+      <div class="image-with-text__text-item grid__item">
+        <div
+          id="ImageWithText--template--22707864011009__image_with_text_XP4j3r"
+          class="image-with-text__content image-with-text__content--middle image-with-text__content--desktop-left image-with-text__content--mobile-left image-with-text__content--adapt gradient color-custom color-scheme-template--22707864011009__image_with_text_XP4j3r content-container"
+        >
+
+
+
+<div
+  class="product__text-container product__text-container-text_with_icon_4Ymbxp product__text-container--left product__text-container--mobile-left product__text-container--vertical product__text-container--100%"
+  style="--item-count:1;--mobile-text-size: 1.4rem;--desktop-text-size: 1.5rem;--icon-scale:1.2;--column-gap:0.0em;--row-gap:0.0em;--padding:0.14285714285714285em;--bg-color:#f3f3f3;--corner-radius:0.0em;--border-size:0px;--border-color:#b7b7b7;"
+  
+
+>
+  
+    <p
+      class="product__text product__text-left product__text-mobile-left"
+      style="--text-color:#787878;--icon-color:#121212;"
+    >
+      
+      <span>Our top-pick for 2026</span>
+    </p>
+  
+  
+  
+</div>
+
+<h2 class="image-with-text__heading h1 title-with-highlight" style='--hightlight-color:#6d388b' >
+                  🏆 #1: Hush Glow Cushion Foundation
+                </h2>
+              
+                <div class="rating-stars" style='--rating:4.9;--visible-stars:5;--star-color:#ffcc00;--bg-star-color:#ececec;--font-size:1.3rem;--alignment:;' >
+  
+    <div class='rating-stars-and-text font-size--desktop-auto flex-center'>
+      <div class='rating-stars__container rating-stars__container--underlay'>
+        
+          
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+              <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+            </svg>
+          
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+              <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+            </svg>
+          
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+              <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+            </svg>
+          
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+              <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+            </svg>
+          
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+              <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+            </svg>
+          
+        
+        <div class='rating-stars__container rating-stars__container--overlay'>
+          
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+              <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+            </svg>
+          
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+              <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+            </svg>
+          
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+              <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+            </svg>
+          
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+              <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+            </svg>
+          
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+              <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+            </svg>
+          
+        </div>
+      </div>
+      <span class="rating-stars__label">&nbsp;<span style="text-decoration:underline">(4.7 / 5)</span></span>
+    </div>
+  
+</div>
+              <div class="image-with-text__text rte body" >
+                  <p><strong>Key ingredients:</strong> Hyaluronic Acid, Peptide Complex, Mineral SPF 30</p><p>Hush Glow's Cushion Foundation showcases what a truly <strong>innovative formula</strong> can do for women 55+. It adjusts to your skin tone for a natural finish without that dreaded mask effect. Even with dark spots, fine lines, or sensitive skin, coverage looks beautifully even.</p><p>What makes it exceptional: it <strong>won't settle into wrinkles</strong>, stays comfortable from morning to evening, and hydrates while protecting skin with <strong>SPF 30</strong>. The formula is vegan, fragrance-conscious, and gentle enough for rosacea-prone skin. In short: a reliable, skin-first foundation that actually works.</p><p><strong>Natural Finish & Comfort</strong> 9.7<br/><strong>Skin Benefits</strong> 9.6<br/><strong>Longevity & Quality</strong> 9.5<br/><strong>Customer Satisfaction</strong> 9.7<br/><strong>Price & Value</strong> 9.4</p><p><strong>⚠️ Limited Time Only:</strong> Hush Glow is currently offering <strong>up to 64% off.</strong></p><p>If you've been considering a foundation that actually works with mature skin, now is the time to act.</p>
+                </div><div
+                    class="hg-button-wrap hg-button-wrap--mobile-center hg-button-wrap--desktop-center"
+                    
+                  >
+                    <a
+                      
+                        href="/products/hush-foundation-cushion"
+                      
+                      class="button button--primary"
+                    >
+                      CHECK AVAILABILITY →
+                    </a>
+                  </div><div
+                  class="hg-trust-badge hg-trust-badge--mobile-center hg-trust-badge--desktop-left"
+                  style="--hg-tb-color: #4a4a4a;--hg-tb-icon: #4a4a4a;--hg-tb-size: 1.3rem;--hg-tb-icon-size: 16px;--hg-tb-mt: 0.8rem;--hg-tb-mb: 0.0rem;"
+                  
+                >
+                  <span class="hg-trust-badge__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="hg-trust-badge__text">30-Day Shade Match Guarantee</span>
+                </div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style> #shopify-section-template--22707864011009__image_with_text_XP4j3r p {line-height: 1.5;} </style></div>
+  </div>
+</section>
+<section class="lib__item">
+  <div class="lib__label">
+    <span class="lib__n">04</span>
     <span class="lib__name">Rich text</span>
     <span class="lib__uses">43&times; across the advertorials</span>
     <span class="lib__note">one block, optional caption / heading / text / button / Trustpilot</span>
@@ -1064,7 +1410,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">04</span>
+    <span class="lib__n">05</span>
     <span class="lib__name">Multicolumn</span>
     <span class="lib__uses">6&times; across the advertorials</span>
     <span class="lib__note">runs at 3, 4 and 6 columns</span>
@@ -1218,7 +1564,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">05</span>
+    <span class="lib__n">06</span>
     <span class="lib__name">Testimonials</span>
     <span class="lib__uses">5&times; across the advertorials</span>
     <span class="lib__note">runs at 3 and 4 columns</span>
@@ -1582,7 +1928,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">06</span>
+    <span class="lib__n">07</span>
     <span class="lib__name">Comparison table</span>
     <span class="lib__uses">5&times; across the advertorials</span>
     <span class="lib__note">the only comparison table that is live; the AI one is switched off everywhere</span>
@@ -1753,7 +2099,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">07</span>
+    <span class="lib__n">08</span>
     <span class="lib__name">Icon bar</span>
     <span class="lib__uses">4&times; across the advertorials</span>
     <span class="lib__note">runs at 4 and 5 columns</span>
@@ -1883,7 +2229,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">08</span>
+    <span class="lib__n">09</span>
     <span class="lib__name">Logo list</span>
     <span class="lib__uses">4&times; across the advertorials</span>
     <span class="lib__note">press logos</span>
@@ -2023,7 +2369,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">09</span>
+    <span class="lib__n">10</span>
     <span class="lib__name">Collapsible content</span>
     <span class="lib__uses">2&times; across the advertorials</span>
     <span class="lib__note">FAQ accordion</span>
@@ -2233,7 +2579,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">10</span>
+    <span class="lib__n">11</span>
     <span class="lib__name">Custom columns</span>
     <span class="lib__uses">2&times; across the advertorials</span>
     <span class="lib__note">heading plus five icon-and-text rows</span>
@@ -2565,7 +2911,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">11</span>
+    <span class="lib__n">12</span>
     <span class="lib__name">Comparison slider</span>
     <span class="lib__uses">1&times; across the advertorials</span>
     <span class="lib__note">the one instance on the store has no images set, so it renders as an empty padded box with a button — there is no design here to approve, only a decision on whether the block is wanted at all</span>
@@ -2630,7 +2976,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">12</span>
+    <span class="lib__n">13</span>
     <span class="lib__name">Section divider</span>
     <span class="lib__uses">5&times; across the advertorials</span>
     
@@ -2711,7 +3057,918 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">13</span>
+    <span class="lib__n">14</span>
+    <span class="lib__name">Sticky button</span>
+    <span class="lib__uses">14&times; across the advertorials</span>
+    <span class="lib__note">the bar that follows the reader down the page; on 14 of the 16 templates</span>
+  </div>
+  <div class="lib__block">
+<div id="shopify-section-template--21807796748545__eg_sticky_button_iE6DbT" class="shopify-section"><style data-shopify>.eg-sticky-button-template--21807796748545__eg_sticky_button_iE6DbT {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background-color: #1a1a1a;
+    border-radius: 10px 10px 0 0;
+    padding: 12px 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .eg-sticky-button-template--21807796748545__eg_sticky_button_iE6DbT {
+      padding: 16px 0;
+    }
+  }
+
+  .eg-sticky-button-template--21807796748545__eg_sticky_button_iE6DbT .eg-sticky-btn {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    color: #121212;
+    background-color: #c1b2a0;
+    border-radius: 16px;
+    padding: 1.5rem 3rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .eg-sticky-button-template--21807796748545__eg_sticky_button_iE6DbT .eg-sticky-btn:hover {
+    opacity: 0.85;
+  }
+  /* Hide chat widget on pages with sticky button */
+#shopify-chat,
+.shopify-chat-iframe-container,
+iframe#shopify-chat,
+iframe[name="JivoSiteIframeName"],
+jdiv[class*="globalClass"],
+iframe#tidio-chat-iframe,
+#tidio-chat,
+iframe[title*="chat" i],
+iframe[id*="chat" i]:not([id*="theme"]):not([id*="cart"]),
+iframe[id*="messenger" i],
+.gorgias-chat-container,
+#gorgias-chat-container,
+iframe#gorgias-chat-bubble,
+.crisp-client,
+#fc_frame,
+#intercom-container,
+.intercom-lightweight-app,
+.intercom-launcher-frame,
+iframe.fb_customer_chat_bubble_animated_no_badge,
+.fb_dialog,
+.fb-customerchat,
+iframe[src*="livechatinc"],
+#live-chat-widget,
+iframe[src*="zopim"],
+iframe[src*="zendesk"],
+iframe[src*="tawk.to"],
+iframe[title*="messenger" i] {
+  display: none !important;
+}</style><div class="eg-sticky-button-template--21807796748545__eg_sticky_button_iE6DbT">
+  <div class="page-width">
+    <a href="https://hushglow.com/products/hush-foundation-cushion?cta=sticky" class="eg-sticky-btn">YES, GET UP TO 64% OFF →</a>
+  </div>
+</div>
+
+
+</div>
+  </div>
+</section>
+<section class="lib__item">
+  <div class="lib__label">
+    <span class="lib__n">15</span>
+    <span class="lib__name">Countdown timer (app)</span>
+    <span class="lib__uses">5&times; across the advertorials</span>
+    <span class="lib__note">Essential Countdown Timer, a third-party app block. It draws itself from the app’s own script, so there is nothing here to design or to port — it is listed because it is on five of the pages and the rebuild has to keep a slot for it</span>
+  </div>
+  <div class="lib__block">
+<section id="shopify-section-template--21807796224257__apps_km6whN" class="shopify-section section"><div class="">
+  
+<div id="shopify-block-AU0EvSTlZUnJWa3NLV__essential_countdown_timer_app_block_4wkGJi" class="shopify-block shopify-app-block"><div class="countdown-timer-block" countdown-timer-id="cmcat2onh00g2cs05uj26mlhn"></div>
+
+
+</div>
+</div>
+
+
+</section>
+  </div>
+</section>
+<section class="lib__item">
+  <div class="lib__label">
+    <span class="lib__n">16</span>
+    <span class="lib__name">Advertorial header</span>
+    <span class="lib__uses">1&times; across the advertorials</span>
+    <span class="lib__note">the family B masthead, reused on one family A page (mouth-wrinkles)</span>
+  </div>
+  <div class="lib__block">
+<div id="shopify-section-template--21807795896577__adv_header_EKAmKb" class="shopify-section"><style data-shopify>#shopify-section-template--21807795896577__adv_header_EKAmKb {
+    display: contents;
+  }
+
+  #AdvHeader-template--21807795896577__adv_header_EKAmKb {
+    --adv-ann-bg: #750b10;
+    --adv-ann-color: #ffffff;
+    --adv-timer-bg: #b8302f;
+    --adv-timer-color: #ffffff;
+    --adv-header-bg: #f5eee4;
+    display: contents;
+  }
+
+  #AdvHeader-template--21807795896577__adv_header_EKAmKb *,
+  #AdvHeader-template--21807795896577__adv_header_EKAmKb *::before,
+  #AdvHeader-template--21807795896577__adv_header_EKAmKb *::after {
+    box-sizing: border-box;
+  }
+
+  .adv-announcement,
+  .adv-announcement *,
+  .adv-header,
+  .adv-header * {
+    letter-spacing: normal;
+  }
+
+  .adv-announcement {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background-color: var(--adv-ann-bg);
+    color: var(--adv-ann-color);
+  }
+
+  .adv-announcement__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 11px 16px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .adv-announcement__label {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  .adv-timer {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--adv-timer-bg);
+    color: var(--adv-timer-color);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-family: 'Courier New', ui-monospace, monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 14px;
+  }
+
+  .adv-timer__sep {
+    opacity: 0.7;
+  }
+
+  .adv-header {
+    background-color: var(--adv-header-bg);
+  }
+
+  .adv-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 16px;
+  }
+
+  .adv-header__logo {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .adv-announcement__label {
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    .adv-timer {
+      font-size: 15px;
+      line-height: 15px;
+    }
+
+    .adv-header__inner {
+      padding: 4px 16px;
+    }
+
+    .adv-header__logo {
+      max-width: 176.0px;
+    }
+  }</style><div id="AdvHeader-template--21807795896577__adv_header_EKAmKb"><div class="adv-header">
+      <div class="adv-header__inner">
+        <img src="//hushglow.com/cdn/shop/files/adv-presell-logo_2_1.png?v=1783691648&amp;width=900" alt="HUSH GLOW" srcset="//hushglow.com/cdn/shop/files/adv-presell-logo_2_1.png?v=1783691648&amp;width=225 225w, //hushglow.com/cdn/shop/files/adv-presell-logo_2_1.png?v=1783691648&amp;width=338 338w, //hushglow.com/cdn/shop/files/adv-presell-logo_2_1.png?v=1783691648&amp;width=450 450w, //hushglow.com/cdn/shop/files/adv-presell-logo_2_1.png?v=1783691648&amp;width=675 675w, //hushglow.com/cdn/shop/files/adv-presell-logo_2_1.png?v=1783691648&amp;width=900 900w" width="900" height="274" loading="eager" class="adv-header__logo">
+      </div>
+    </div></div>
+</div>
+  </div>
+</section>
+<section class="lib__item">
+  <div class="lib__label">
+    <span class="lib__n">17</span>
+    <span class="lib__name">Featured collection</span>
+    <span class="lib__uses">1&times; across the advertorials</span>
+    <span class="lib__note">a Bestsellers product row, on the concealer announcement page</span>
+  </div>
+  <div class="lib__block">
+<section id="shopify-section-template--22690639282433__bestsellers" class="shopify-section section"><link rel="stylesheet" href="//hushglow.com/cdn/shop/t/15/assets/template-collection.css?v=131127499998367489021775739304" media="print" onload="this.media='all'"><noscript><link href="//hushglow.com/cdn/shop/t/15/assets/template-collection.css?v=131127499998367489021775739304" rel="stylesheet" type="text/css" media="all" /></noscript><style data-shopify>.section-template--22690639282433__bestsellers-padding {
+    padding-top: 18px;
+    padding-bottom: 6px;
+  }
+
+  .collection-template--22690639282433__bestsellers .color-swatches-container {
+    --swatch-size: 2.4rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-template--22690639282433__bestsellers-padding {
+      padding-top: 24px;
+      padding-bottom: 8px;
+    }
+    .collection-template--22690639282433__bestsellers .color-swatches-container {
+      --swatch-size: 3.6rem;
+    }
+  }
+
+  .color-scheme-template--22690639282433__bestsellers.color-custom {
+    --color-background: 255, 255, 255;
+    --gradient-background: #ffffff;
+    
+    --color-foreground: 46, 42, 57;
+    --color-button: 221, 29, 29;
+    --color-button-text: 255, 255, 255;
+  }
+  
+</style><div class="color-scheme-template--22690639282433__bestsellers color-background-2 isolate gradient content-for-grouping animate-section animate--hidden always-display">
+  
+  <div class="collection collection-template--22690639282433__bestsellers section-template--22690639282433__bestsellers-padding">
+    <div class="collection__title animate-item animate-item--child index-0 title-wrapper title-wrapper--no-top-margin page-width"><h2 class="title h2 title-with-highlight" style='--hightlight-color:#6d388b'>
+          Bestsellers
+        </h2></div>
+
+    <div class='page-width desktop-full-page mobile-full-page'>
+      <div
+        class="product-grid contains-card contains-card--product contains-card--standard grid--stretch"
+        style="--columns-desktop: 4;--columns-mobile: 2;--gap-desktop:36px;--gap-mobile:1.5rem;--right-padding-desktop:0px;--left-padding-desktop:0px;--side-padding-mobile:24px;"
+      >
+        
+          <splide-component
+            data-type="slide"
+            data-autoplay="false"
+            data-autoplay-speed="5"
+            data-arrows-color="inverse"
+            data-dots-color="inverse"
+            data-slides-desktop="4"
+            data-per-move-desktop="1"
+            data-gap-desktop="36"
+            data-side-padding-desktop="0"
+            data-padding-calc-desktop="true"
+            data-slides-mobile="2"
+            data-gap-mobile="15"
+            
+              data-side-padding-mobile="24"
+            
+            
+              data-destroy-desktop="true"
+            
+          >
+        
+        <div
+          class="splide splide--desktop-dots-under splide--mobile-dots-hidden splide--desktop-arrows-sides splide--desktop-arrows-outside splide--mobile-arrows-sides splide--transparent-arrows splide--destroy-desktop splide--precalc-width-mobile splide--precalc-padding-mobile"
+          
+          
+        >
+          <div class="splide__track">
+            <ul class="splide__list">
+                  <li class="splide__slide">
+                    <div
+                      class="splide__slide__container splide__slide__container--card slider__slide collection-list__item collection-list__item--no-media animate-item animate-item--child"
+                      style="--index:1;"
+                      data-mobile-columns="2"
+                    >
+                      
+<div class="card-wrapper product-card-wrapper underline-links-hover">
+    <div
+      class="
+        card
+        card--standard
+         card--media
+        
+        
+        
+        
+         card--badge-sided
+        
+        
+      "
+      style="--ratio-percent: 100.0%;"
+    >
+      <div
+        class="card__inner color-background-1 gradient ratio"
+        style="--ratio-percent: 100.0%;"
+      ><div class="card__media">
+            <div class="media media--transparent media--hover-effect">
+              
+              <img
+                srcset="//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=165 165w,//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=360 360w,//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=533 533w,//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=720 720w,//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=940 940w,//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=1066 1066w,//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683 1296w
+                "
+                src="//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=533"
+                sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                alt="Hydrating Concealer Stick"
+                class="motion-reduce"
+                
+                  loading="lazy"
+                
+                width="1296"
+                height="1296"
+                id='quick-add-template--22690639282433__bestsellers9241654984961-image'
+              >
+              
+<img
+                  srcset="//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=165 165w,//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=360 360w,//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=533 533w,//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=720 720w,//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=940 940w,//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=1066 1066w,//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461 1296w
+                  "
+                  src="//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=533"
+                  sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                  alt=""
+                  class="motion-reduce"
+                  loading="lazy"
+                  width="1296"
+                  height="1296"
+                ></div>
+          </div><div class="card__content">
+          <div class="card__information">
+            <h3
+              class="card__heading"
+              
+            >
+              <a
+                href="/products/hydrating-concealer"
+                id="StandardCardNoMediaLink-template--22690639282433__bestsellers-9241654984961"
+                class="full-unstyled-link"
+                aria-labelledby="StandardCardNoMediaLink-template--22690639282433__bestsellers-9241654984961 NoMediaStandardBadge-template--22690639282433__bestsellers-9241654984961"
+              >
+                Hydrating Concealer Stick
+              </a>
+            </h3>
+          </div>
+          <div class="card__badge bottom left"></div>
+        </div>
+      </div>
+      <div class="card__content">
+        <div class="card__information">
+          <h3
+            class="card__heading h5"
+            
+              id="title-template--22690639282433__bestsellers-9241654984961"
+            
+          >
+            <a
+              href="/products/hydrating-concealer"
+              id="CardLink-template--22690639282433__bestsellers-9241654984961"
+              class="full-unstyled-link"
+              aria-labelledby="CardLink-template--22690639282433__bestsellers-9241654984961 Badge-template--22690639282433__bestsellers-9241654984961"
+            >
+              Hydrating Concealer Stick
+            </a>
+          </h3>
+          <div class="card-information"><span class="caption-large light"></span>
+<div
+  class="
+    price  price--on-sale "
+>
+  <div class="price__container"><div class="price__regular">
+      <span class="visually-hidden visually-hidden--inline">Regular price</span>
+      <span class="price-item price-item--regular">
+        $37.99
+      </span>
+    </div>
+    <div class="price__sale ">
+      <span class="visually-hidden visually-hidden--inline compare-price-label">Regular price</span>
+      <span class="price-item price-item--sale price-item--last">
+        $37.99
+      </span>
+        <span class="visually-hidden visually-hidden--inline regular-price-label">Sale price</span>
+        <span class="price__compare-price">
+          <s class="price-item price-item--regular">
+            $49.99
+          </s>
+        </span></div>
+    <small class="unit-price caption hidden">
+      <span class="visually-hidden">Unit price</span>
+      <span class="price-item price-item--last">
+        <span></span>
+        <span aria-hidden="true">/</span>
+        <span class="visually-hidden">&nbsp;per&nbsp;</span>
+        <span>
+        </span>
+      </span>
+    </small>
+  </div></div>
+
+          </div>
+        </div>
+        
+<div class="card__badge bottom left"><span
+              id="Badge-template--22690639282433__bestsellers-9241654984961"
+              class="badge badge--bottom-left color-accent-2"
+            >
+              24%
+            </span></div>
+      </div>
+    </div>
+  </div>
+                    </div>
+                  </li>
+                
+
+                  <li class="splide__slide">
+                    <div
+                      class="splide__slide__container splide__slide__container--card slider__slide collection-list__item collection-list__item--no-media animate-item animate-item--child"
+                      style="--index:2;"
+                      data-mobile-columns="2"
+                    >
+                      
+<div class="card-wrapper product-card-wrapper underline-links-hover">
+    <div
+      class="
+        card
+        card--standard
+         card--media
+        
+        
+        
+        
+         card--badge-sided
+        
+        
+      "
+      style="--ratio-percent: 100.0%;"
+    >
+      <div
+        class="card__inner color-background-1 gradient ratio"
+        style="--ratio-percent: 100.0%;"
+      ><div class="card__media">
+            <div class="media media--transparent media--hover-effect">
+              
+              <img
+                srcset="//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=165 165w,//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=360 360w,//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=533 533w,//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=720 720w,//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=940 940w,//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=1066 1066w,//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768 1296w
+                "
+                src="//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=533"
+                sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                alt="Foundation Cushion"
+                class="motion-reduce"
+                
+                  loading="lazy"
+                
+                width="1296"
+                height="1296"
+                id='quick-add-template--22690639282433__bestsellers8822732947713-image'
+              >
+              
+<img
+                  srcset="//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=165 165w,//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=360 360w,//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=533 533w,//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=720 720w,//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=940 940w,//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=1066 1066w,//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976 1080w
+                  "
+                  src="//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=533"
+                  sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                  alt=""
+                  class="motion-reduce"
+                  loading="lazy"
+                  width="1080"
+                  height="1080"
+                ></div>
+          </div><div class="card__content">
+          <div class="card__information">
+            <h3
+              class="card__heading"
+              
+            >
+              <a
+                href="/products/hush-foundation-cushion"
+                id="StandardCardNoMediaLink-template--22690639282433__bestsellers-8822732947713"
+                class="full-unstyled-link"
+                aria-labelledby="StandardCardNoMediaLink-template--22690639282433__bestsellers-8822732947713 NoMediaStandardBadge-template--22690639282433__bestsellers-8822732947713"
+              >
+                Foundation Cushion
+              </a>
+            </h3>
+          </div>
+          <div class="card__badge bottom left"></div>
+        </div>
+      </div>
+      <div class="card__content">
+        <div class="card__information">
+          <h3
+            class="card__heading h5"
+            
+              id="title-template--22690639282433__bestsellers-8822732947713"
+            
+          >
+            <a
+              href="/products/hush-foundation-cushion"
+              id="CardLink-template--22690639282433__bestsellers-8822732947713"
+              class="full-unstyled-link"
+              aria-labelledby="CardLink-template--22690639282433__bestsellers-8822732947713 Badge-template--22690639282433__bestsellers-8822732947713"
+            >
+              Foundation Cushion
+            </a>
+          </h3>
+          <div class="card-information"><span class="caption-large light"></span>
+<div
+  class="
+    price  price--on-sale "
+>
+  <div class="price__container"><div class="price__regular">
+      <span class="visually-hidden visually-hidden--inline">Regular price</span>
+      <span class="price-item price-item--regular">
+        $39.99
+      </span>
+    </div>
+    <div class="price__sale ">
+      <span class="visually-hidden visually-hidden--inline compare-price-label">Regular price</span>
+      <span class="price-item price-item--sale price-item--last">
+        $39.99
+      </span>
+        <span class="visually-hidden visually-hidden--inline regular-price-label">Sale price</span>
+        <span class="price__compare-price">
+          <s class="price-item price-item--regular">
+            $54.99
+          </s>
+        </span></div>
+    <small class="unit-price caption hidden">
+      <span class="visually-hidden">Unit price</span>
+      <span class="price-item price-item--last">
+        <span></span>
+        <span aria-hidden="true">/</span>
+        <span class="visually-hidden">&nbsp;per&nbsp;</span>
+        <span>
+        </span>
+      </span>
+    </small>
+  </div></div>
+
+          </div>
+        </div>
+        
+<div class="card__badge bottom left"><span
+              id="Badge-template--22690639282433__bestsellers-8822732947713"
+              class="badge badge--bottom-left color-accent-2"
+            >
+              27%
+            </span></div>
+      </div>
+    </div>
+  </div>
+                    </div>
+                  </li>
+                
+
+                  <li class="splide__slide">
+                    <div
+                      class="splide__slide__container splide__slide__container--card slider__slide collection-list__item collection-list__item--no-media animate-item animate-item--child"
+                      style="--index:3;"
+                      data-mobile-columns="2"
+                    >
+                      
+<div class="card-wrapper product-card-wrapper underline-links-hover">
+    <div
+      class="
+        card
+        card--standard
+         card--media
+        
+        
+        
+        
+         card--badge-sided
+        
+        
+      "
+      style="--ratio-percent: 100.0%;"
+    >
+      <div
+        class="card__inner color-background-1 gradient ratio"
+        style="--ratio-percent: 100.0%;"
+      ><div class="card__media">
+            <div class="media media--transparent media--hover-effect">
+              
+              <img
+                srcset="//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=165 165w,//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=360 360w,//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=533 533w,//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=720 720w,//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=940 940w,//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=1066 1066w,//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817 1296w
+                "
+                src="//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=533"
+                sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                alt="Multi-Effect Blush Stick"
+                class="motion-reduce"
+                
+                  loading="lazy"
+                
+                width="1296"
+                height="1296"
+                id='quick-add-template--22690639282433__bestsellers9157281612033-image'
+              >
+              
+<img
+                  srcset="//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=165 165w,//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=360 360w,//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=533 533w,//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=720 720w,//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=940 940w,//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=1066 1066w,//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836 1080w
+                  "
+                  src="//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=533"
+                  sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                  alt=""
+                  class="motion-reduce"
+                  loading="lazy"
+                  width="1080"
+                  height="1080"
+                ></div>
+          </div><div class="card__content">
+          <div class="card__information">
+            <h3
+              class="card__heading"
+              
+            >
+              <a
+                href="/products/blush-stick"
+                id="StandardCardNoMediaLink-template--22690639282433__bestsellers-9157281612033"
+                class="full-unstyled-link"
+                aria-labelledby="StandardCardNoMediaLink-template--22690639282433__bestsellers-9157281612033 NoMediaStandardBadge-template--22690639282433__bestsellers-9157281612033"
+              >
+                Multi-Effect Blush Stick
+              </a>
+            </h3>
+          </div>
+          <div class="card__badge bottom left"></div>
+        </div>
+      </div>
+      <div class="card__content">
+        <div class="card__information">
+          <h3
+            class="card__heading h5"
+            
+              id="title-template--22690639282433__bestsellers-9157281612033"
+            
+          >
+            <a
+              href="/products/blush-stick"
+              id="CardLink-template--22690639282433__bestsellers-9157281612033"
+              class="full-unstyled-link"
+              aria-labelledby="CardLink-template--22690639282433__bestsellers-9157281612033 Badge-template--22690639282433__bestsellers-9157281612033"
+            >
+              Multi-Effect Blush Stick
+            </a>
+          </h3>
+          <div class="card-information"><span class="caption-large light"></span>
+<div
+  class="
+    price "
+>
+  <div class="price__container"><div class="price__regular">
+      <span class="visually-hidden visually-hidden--inline">Regular price</span>
+      <span class="price-item price-item--regular">
+        $32.99
+      </span>
+    </div>
+    <div class="price__sale ">
+      <span class="visually-hidden visually-hidden--inline compare-price-label">Regular price</span>
+      <span class="price-item price-item--sale price-item--last">
+        $32.99
+      </span>
+        <span class="visually-hidden visually-hidden--inline regular-price-label">Sale price</span>
+        <span class="price__compare-price">
+          <s class="price-item price-item--regular">
+            
+          </s>
+        </span></div>
+    <small class="unit-price caption hidden">
+      <span class="visually-hidden">Unit price</span>
+      <span class="price-item price-item--last">
+        <span></span>
+        <span aria-hidden="true">/</span>
+        <span class="visually-hidden">&nbsp;per&nbsp;</span>
+        <span>
+        </span>
+      </span>
+    </small>
+  </div></div>
+
+          </div>
+        </div>
+        
+<div class="card__badge bottom left"></div>
+      </div>
+    </div>
+  </div>
+                    </div>
+                  </li>
+                
+
+                  <li class="splide__slide">
+                    <div
+                      class="splide__slide__container splide__slide__container--card slider__slide collection-list__item collection-list__item--no-media animate-item animate-item--child"
+                      style="--index:4;"
+                      data-mobile-columns="2"
+                    >
+                      
+<div class="card-wrapper product-card-wrapper underline-links-hover">
+    <div
+      class="
+        card
+        card--standard
+         card--media
+        
+        
+        
+        
+         card--badge-sided
+        
+        
+      "
+      style="--ratio-percent: 100.0%;"
+    >
+      <div
+        class="card__inner color-background-1 gradient ratio"
+        style="--ratio-percent: 100.0%;"
+      ><div class="card__media">
+            <div class="media media--transparent media--hover-effect">
+              
+              <img
+                srcset="//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=165 165w,//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=360 360w,//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=533 533w,//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=720 720w,//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=940 940w,//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=1066 1066w,//hushglow.com/cdn/shop/files/38.jpg?v=1777287206 1500w
+                "
+                src="//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=533"
+                sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                alt="Pore-Blurring Primer Stick"
+                class="motion-reduce"
+                
+                  loading="lazy"
+                
+                width="1500"
+                height="1500"
+                id='quick-add-template--22690639282433__bestsellers8856108499201-image'
+              >
+              
+<img
+                  srcset="//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=165 165w,//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=360 360w,//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=533 533w,//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=720 720w,//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=940 940w,//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=1066 1066w,//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389 3129w
+                  "
+                  src="//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=533"
+                  sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                  alt=""
+                  class="motion-reduce"
+                  loading="lazy"
+                  width="3129"
+                  height="3129"
+                ></div>
+          </div><div class="card__content">
+          <div class="card__information">
+            <h3
+              class="card__heading"
+              
+            >
+              <a
+                href="/products/pore-blurring-primer-stick"
+                id="StandardCardNoMediaLink-template--22690639282433__bestsellers-8856108499201"
+                class="full-unstyled-link"
+                aria-labelledby="StandardCardNoMediaLink-template--22690639282433__bestsellers-8856108499201 NoMediaStandardBadge-template--22690639282433__bestsellers-8856108499201"
+              >
+                Pore-Blurring Primer Stick
+              </a>
+            </h3>
+          </div>
+          <div class="card__badge bottom left"></div>
+        </div>
+      </div>
+      <div class="card__content">
+        <div class="card__information">
+          <h3
+            class="card__heading h5"
+            
+              id="title-template--22690639282433__bestsellers-8856108499201"
+            
+          >
+            <a
+              href="/products/pore-blurring-primer-stick"
+              id="CardLink-template--22690639282433__bestsellers-8856108499201"
+              class="full-unstyled-link"
+              aria-labelledby="CardLink-template--22690639282433__bestsellers-8856108499201 Badge-template--22690639282433__bestsellers-8856108499201"
+            >
+              Pore-Blurring Primer Stick
+            </a>
+          </h3>
+          <div class="card-information"><span class="caption-large light"></span>
+<div
+  class="
+    price  price--on-sale "
+>
+  <div class="price__container"><div class="price__regular">
+      <span class="visually-hidden visually-hidden--inline">Regular price</span>
+      <span class="price-item price-item--regular">
+        $19.99
+      </span>
+    </div>
+    <div class="price__sale ">
+      <span class="visually-hidden visually-hidden--inline compare-price-label">Regular price</span>
+      <span class="price-item price-item--sale price-item--last">
+        $19.99
+      </span>
+        <span class="visually-hidden visually-hidden--inline regular-price-label">Sale price</span>
+        <span class="price__compare-price">
+          <s class="price-item price-item--regular">
+            $40.99
+          </s>
+        </span></div>
+    <small class="unit-price caption hidden">
+      <span class="visually-hidden">Unit price</span>
+      <span class="price-item price-item--last">
+        <span></span>
+        <span aria-hidden="true">/</span>
+        <span class="visually-hidden">&nbsp;per&nbsp;</span>
+        <span>
+        </span>
+      </span>
+    </small>
+  </div></div>
+
+          </div>
+        </div>
+        
+<div class="card__badge bottom left"><span
+              id="Badge-template--22690639282433__bestsellers-8856108499201"
+              class="badge badge--bottom-left color-accent-2"
+            >
+              51%
+            </span></div>
+      </div>
+    </div>
+  </div>
+                    </div>
+                  </li>
+                
+</ul>
+          </div>
+          <div class="splide__dots-and-arrows">
+            <ul class="splide__pagination"></ul>
+            <div class="splide__arrows"></div>
+          </div>
+        </div>
+        
+          </splide-component>
+        
+      </div>
+    </div></div>
+</div>
+
+
+</section>
+  </div>
+</section>
+<section class="lib__item">
+  <div class="lib__label">
+    <span class="lib__n">18</span>
+    <span class="lib__name">Custom liquid — Klaviyo form</span>
+    <span class="lib__uses">1&times; across the advertorials</span>
+    <span class="lib__note">two Klaviyo form embeds on the concealer announcement page; an app embed rather than a design</span>
+  </div>
+  <div class="lib__block">
+<section id="shopify-section-template--22690639282433__klaviyo_form" class="shopify-section section"><style data-shopify>.section-template--22690639282433__klaviyo_form-padding {
+    padding-top: calc(48px * 0.75);
+    padding-bottom: calc(48px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-template--22690639282433__klaviyo_form-padding {
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
+  }</style><div class="color-background-1 gradient content-for-grouping always-display">
+  
+  <div class="section-template--22690639282433__klaviyo_form-padding">
+    <div class="page-width"><div class="klaviyo-form-TEVTyY"></div><div class="klaviyo-form-X2hSYQ"></div></div>
+  </div>
+</div>
+
+
+</section>
+  </div>
+</section>
+<section class="lib__item">
+  <div class="lib__label">
+    <span class="lib__n">19</span>
     <span class="lib__name">AI — Statistics</span>
     <span class="lib__uses">8&times; across the advertorials</span>
     
@@ -2878,7 +4135,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">14</span>
+    <span class="lib__n">20</span>
     <span class="lib__name">AI — Reviews slider</span>
     <span class="lib__uses">7&times; across the advertorials</span>
     
@@ -3578,7 +4835,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">15</span>
+    <span class="lib__n">21</span>
     <span class="lib__name">AI — Editorial image with text</span>
     <span class="lib__uses">7&times; across the advertorials</span>
     
@@ -3844,7 +5101,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">16</span>
+    <span class="lib__n">22</span>
     <span class="lib__name">AI — How it works</span>
     <span class="lib__uses">4&times; across the advertorials</span>
     
@@ -4217,7 +5474,7 @@
 </section>
 <section class="lib__item">
   <div class="lib__label">
-    <span class="lib__n">17</span>
+    <span class="lib__n">23</span>
     <span class="lib__name">AI — Image with text carousel</span>
     <span class="lib__uses">4&times; across the advertorials</span>
     <span class="lib__note">143 settings, the most complex object in the family</span>

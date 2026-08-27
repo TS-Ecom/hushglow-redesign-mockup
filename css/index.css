@@ -11,10 +11,6 @@
 .hero .lede{font-size:17px;color:#4a413a;max-width:40ch;line-height:1.55}
 .hero .ctas{display:flex;gap:14px;margin-top:4px;flex-wrap:wrap}
 
-/* ---------- photo banners ---------- */
-.photobanner{margin-top:96px}
-.photobanner img{width:100%;height:auto;display:block}
-
 /* ---------- get the look ---------- */
 /* full-bleed edge-to-edge strip, 4 cards per viewport (Jones Road reference) */
 .look{margin-top:96px;position:relative}
@@ -44,7 +40,6 @@
   .hero .lede{font-size:15px}
   .hero .ctas{flex-direction:column;width:100%;gap:10px}
   .hero .btn{width:100%;padding:16px 0}
-  .photobanner{margin-top:64px}
   .look{margin-top:64px}
   .l-card{flex:0 0 calc(100% - 40px)}
   .l-card .cap{left:16px;right:16px;bottom:16px}

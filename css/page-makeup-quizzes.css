@@ -13,17 +13,6 @@
 .iwt.qhero .tx h2{font-size:42px;line-height:1.14;letter-spacing:-.015em}
 .iwt.qhero .tx p{font-size:17px;max-width:44ch}
 
-/* ---------- the two quiz blocks ----------
-   Contained rather than full-bleed, and the copy centred in its half. Both come from the
-   live page: run edge to edge and the two short lines sit marooned in a field of grey,
-   which is the opposite of what a block whose only job is one button should look like.
-   The photo is square, as the live one is. */
-.iwt.mid{max-width:1300px;margin:64px auto 0;padding:0 var(--pagepad);gap:48px;
-  background:transparent;grid-template-columns:1fr 1fr;align-items:center}
-.iwt.mid .ph{height:auto;aspect-ratio:1/1}
-.iwt.mid .tx{align-items:center;text-align:center;padding:0 30px}
-.iwt.mid .tx p{max-width:34ch}
-
 /* ---------- quiz numbers ---------- */
 .statrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;max-width:1000px;margin:0 auto}
 .stat{background:#f3f3f3;padding:24px 18px;text-align:center;display:flex;flex-direction:column;gap:6px;min-width:0}
@@ -48,8 +37,6 @@
   .iwt.qhero .ph{height:auto;aspect-ratio:1/1}
   /* stack like every other image-with-text: the base rule drops to one column and this
      variant has to follow it, or the copy ends up in a 150px gutter */
-  .iwt.mid{grid-template-columns:1fr;gap:22px;margin-top:40px}
-  .iwt.mid .tx{padding:0}
   .iwt.qhero .tx h2{font-size:29px}
   .iwt.qhero .tx p{font-size:16px}
 

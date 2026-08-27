@@ -548,6 +548,23 @@ function cartToggle (open) {
     }
   });
 
+  /* Collection sort. Reorders the cards that are already on the page rather than
+     pretending to fetch: the prototype has the whole collection in the markup, and a
+     control that does nothing is worse than no control. Featured is the markup order,
+     so it is remembered rather than recomputed. */
+  document.querySelectorAll('[data-collection-sort]').forEach(function (sel) {
+    var grid = sel.closest('.inner').querySelector('.collgrid');
+    if (!grid) return;
+    var featured = Array.prototype.slice.call(grid.children);
+    sel.addEventListener('change', function () {
+      var order = featured.slice();
+      if (sel.value === 'price-asc') order.sort(function (a, b) { return a.dataset.price - b.dataset.price; });
+      else if (sel.value === 'price-desc') order.sort(function (a, b) { return b.dataset.price - a.dataset.price; });
+      else if (sel.value === 'name') order.sort(function (a, b) { return a.dataset.name.localeCompare(b.dataset.name); });
+      order.forEach(function (c) { grid.appendChild(c); });
+    });
+  });
+
   /* Testimonial rails. Wired per wrapper rather than by id: the concealer template
      carries two review rails, and the cards are .tcard on one page and .rcard on the
      others, so the step is measured from whichever card the rail actually holds. */

@@ -1,0 +1,5 @@
+/* HushGlow Design — collection pages.
+
+   Deliberately empty. Three collections share one template and none has a style of its
+   own, so the block lives in shared.css under "collection". This file exists only so the
+   include list is identical on every page. */

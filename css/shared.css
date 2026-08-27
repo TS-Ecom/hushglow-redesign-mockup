@@ -1223,11 +1223,29 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .collswitch::-webkit-scrollbar{display:none}
   .collswitch a{font-size:12px;padding:10px 15px}
   /* count and sort share one row on a phone: the select gives up its slack so the
-     product count is not left orphaned on a line of its own */
+     product count is not left orphaned on a line of its own. The label itself must not
+     wrap — "Sort by" breaking across two lines was the ugliest thing on the page. */
   .collbar .right{width:100%;justify-content:space-between;gap:10px;flex-wrap:nowrap}
-  .collbar .count{flex:none}
-  .collbar label{min-width:0;font-size:14px}
+  .collbar .count{flex:none;white-space:nowrap}
+  .collbar label{min-width:0;font-size:14px;white-space:nowrap}
   .collbar select{min-width:0;font-size:14px;padding:8px 8px;max-width:100%}
+
+  /* Cards in the collection grid sit two to a row, which makes them ~170px wide — a third
+     narrower than the same card gets in the swipe rails elsewhere. At the shared sizes the
+     price row does not fit and the SAVE chip drops onto a line of its own, so the card is
+     scaled to the space it actually has here. */
+  .collgrid .p-card .nm{font-size:15px;line-height:1.35;margin-top:11px}
+  .collgrid .stars{font-size:12px;letter-spacing:2px;margin:4px 0}
+  .collgrid .stars span{font-size:12px;margin-left:4px}
+  .collgrid .pr{gap:6px;font-size:15px;row-gap:6px}
+  /* the two prices plus the chip need 187px and the card has 170, and the price is the
+     one number on this card that must not shrink — so the chip drops to its own centred
+     line at every width instead of wrapping onto one only sometimes. The zero-height
+     pseudo forces the break; giving the chip flex-basis:100% instead would stretch it into
+     a full-width bar. */
+  .collgrid .pr::before{content:'';flex-basis:100%;height:0;order:1}
+  .collgrid .pr .save{order:2;font-size:10px;padding:3px 7px;letter-spacing:.04em}
+  .collgrid .atc{height:42px;font-size:13px;margin-top:10px}
   .promotile{min-height:0}
   .promotile .in{left:14px;right:14px;bottom:14px;gap:6px}
   .promotile b{font-size:17px}

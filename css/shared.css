@@ -9,6 +9,7 @@
   /* 4px on everything — one radius for the whole system, agreed on the call after we
      showed that the live theme carries eleven different values. */
   --radius:4px; --r-btn:4px; --r-card:4px; --r-chip:4px;
+  --ok:#2e6b3a;   /* savings and free-shipping confirmations */
   --pagepad:60px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -19,6 +20,9 @@ body{font-family:var(--ui);background:var(--paper);color:var(--ink);font-size:16
 html{overflow-x:clip}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
+/* a block-level display rule beats the browser's [hidden] rule, so anything hidden with
+   the attribute stays visible unless this is here. It bit the cart's cross-sell. */
+[hidden]{display:none !important}
 /* inherit the body size instead of the browser's 13.333px default, so every rendered
    font-size on the page is a whole pixel */
 button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:none;border:none;cursor:pointer;color:inherit}
@@ -196,77 +200,81 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .footer .bottom{border-top:1px solid rgba(251,247,242,.14);margin-top:20px;padding:20px 0;font-size:13px;display:flex;justify-content:space-between;max-width:1320px;margin-left:auto;margin-right:auto}
 
 
-/* ---------- cart drawer (visual prototype of the approved cart design, dev-handoff v4 Launch) ----------
-   Static: quantity/add buttons are inert. Radii forced to 0 per foundation v1.2; swatches, spinner
-   and carousel arrow stay round by design. All rules scoped under .cartdrawer / .cart-ovl. */
+/* ---------- cart drawer ----------
+   Static: quantity/add buttons are inert. Built on foundation v1.2 and brought onto v2
+   here: the radius tokens the rest of the site uses, the 15px floor for anything that
+   carries meaning, and palette colours instead of one-off hexes. Swatches, the spinner
+   and the carousel arrow stay round by design. All rules scoped under .cartdrawer. */
 .cart-ovl{position:fixed;inset:0;background:rgba(33,26,23,.35);z-index:69;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
 .cart-ovl.open{opacity:1;visibility:visible}
-.cartdrawer{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100vw;background:#fff;z-index:70;display:flex;flex-direction:column;transform:translateX(103%);transition:transform .32s ease;box-shadow:-14px 0 40px rgba(33,26,23,.28)}
+.cartdrawer{position:fixed;top:0;right:0;bottom:0;width:440px;max-width:100vw;background:var(--paper);z-index:70;display:flex;flex-direction:column;transform:translateX(103%);transition:transform .32s ease;box-shadow:-14px 0 40px rgba(33,26,23,.28)}
 .cartdrawer.open{transform:none}
 .cartdrawer .d-body{flex:1;overflow-y:auto;min-height:0}
 .cartdrawer .gifttop{background:var(--paper);padding:10px 12px 14px;border-bottom:1px solid var(--cream);position:relative}
 .cartdrawer .gifttop .x{position:absolute;top:8px;right:12px;font-size:17px;line-height:1;color:var(--ink);padding:2px 4px;z-index:2;transition:opacity .15s ease}
 .cartdrawer .gifttop .x:hover{opacity:.55}
-.cartdrawer .gmsg{font-size:14px;text-align:center;margin:2px 24px 10px;white-space:nowrap;overflow:hidden}
+/* wraps rather than clips: at 15px the line no longer fits a 390px drawer, and losing
+   the end of "spend another $X for Y" is worse than a second line */
+.cartdrawer .gmsg{font-size:15px;line-height:1.4;text-align:center;margin:2px 26px 11px}
 .cartdrawer .gmsg b{font-weight:700}
-.cartdrawer .gift1{display:flex;align-items:center;gap:12px;border:1.5px solid var(--sand);background:#fff;padding:10px 12px;position:relative}
-.cartdrawer .gift1 .gph{width:46px;height:46px;flex:none;position:relative;overflow:hidden}
+.cartdrawer .gift1{display:flex;align-items:center;gap:12px;border:1.5px solid var(--sand);background:var(--paper);padding:11px 12px;position:relative;border-radius:var(--r-card)}
+.cartdrawer .gift1 .gph{width:48px;height:48px;flex:none;position:relative;overflow:hidden;border-radius:var(--r-card)}
 .cartdrawer .gift1 .gph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cartdrawer .g1mid{flex:1;padding-right:26px}
-.cartdrawer .g1mid b{display:block;font-size:12px;font-weight:600}
+.cartdrawer .g1mid b{display:block;font-size:15px;font-weight:600}
 .cartdrawer .g1mid .shl{margin:0 0 7px}
-.cartdrawer .shl{display:block;font-size:11px;color:var(--ink-soft);font-weight:400}
-.cartdrawer .g1bar{height:5px;background:var(--cream)}
+.cartdrawer .shl{display:block;font-size:14px;color:var(--ink-soft);font-weight:400}
+.cartdrawer .g1bar{height:5px;background:var(--cream);border-radius:var(--r-chip);overflow:hidden}
 .cartdrawer .g1bar div{height:100%;background:var(--gold)}
 .cartdrawer .item{color:inherit;text-decoration:none;display:flex;gap:14px;padding:16px 20px;border-bottom:1px solid var(--cream)}
-.cartdrawer .item .ph{width:80px;min-height:72px;align-self:stretch;flex:none;position:relative;overflow:hidden;background:var(--cream)}
+.cartdrawer .item .ph{width:84px;min-height:76px;align-self:stretch;flex:none;position:relative;overflow:hidden;background:var(--cream);border-radius:var(--r-card)}
 .cartdrawer .item .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cartdrawer .item .mid{flex:1;min-width:0}
-.cartdrawer .item .name{font-size:15px;font-weight:600;margin:0 0 3px}
-.cartdrawer .item .shade{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-soft);margin-bottom:8px}
+.cartdrawer .item .name{font-size:16px;font-weight:600;margin:0 0 4px;line-height:1.3}
+.cartdrawer .item .shade{display:flex;align-items:center;gap:7px;font-size:15px;color:var(--ink-soft);margin-bottom:9px}
 .cartdrawer .sw{width:12px;height:12px;border-radius:50%;background:#d9a186;border:1px solid rgba(0,0,0,.08)}
-.cartdrawer .qty{display:inline-flex;align-items:center;border:1px solid var(--sand);font-size:14px}
+.cartdrawer .qty{display:inline-flex;align-items:center;border:1px solid var(--sand);font-size:15px;border-radius:var(--r-btn)}
 .cartdrawer .qty span{padding:4px 10px;cursor:pointer}
 .cartdrawer .qty .n{border-left:1px solid var(--sand);border-right:1px solid var(--sand);min-width:30px;text-align:center}
-.cartdrawer .item .rm{font-size:13px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;margin-left:10px;cursor:pointer}
+.cartdrawer .item .rm{font-size:14px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;margin-left:12px;cursor:pointer}
 .cartdrawer .item .right{text-align:right}
-.cartdrawer .item .price{font-weight:600;font-size:15px}
-.cartdrawer .item .was{font-size:12px;color:var(--berry);text-decoration:line-through}
-.cartdrawer .strip{background:var(--cream);text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding:8px 20px}
-.cartdrawer .hl{margin:14px 20px 0;padding:10px;display:flex;gap:12px;background:#f8f2ea}
-.cartdrawer .hl .ph{width:106px;height:106px;flex:none;position:relative;overflow:hidden;background:var(--cream);align-self:center}
+.cartdrawer .item .price{font-weight:600;font-size:16px}
+.cartdrawer .item .was{font-size:14px;color:var(--berry);text-decoration:line-through}
+.cartdrawer .strip{background:var(--cream);text-align:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding:9px 20px}
+.cartdrawer .hl{margin:14px 20px 0;padding:12px;display:flex;gap:12px;background:var(--cream);border-radius:var(--r-card)}
+.cartdrawer .hl .ph{width:106px;height:106px;flex:none;position:relative;overflow:hidden;background:var(--paper);align-self:center;border-radius:var(--r-card)}
 .cartdrawer .hl .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cartdrawer .hl .mid{flex:1;display:flex;flex-direction:column;justify-content:center}
-.cartdrawer .hl .hd{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 2px}
-.cartdrawer .hl .nm{font-size:13px;color:var(--ink-soft);line-height:1.4}
-.cartdrawer .hl .pr{display:block;font-size:13px;color:var(--ink-soft);margin-top:2px}
+.cartdrawer .hl .hd{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px}
+.cartdrawer .hl .nm{font-size:15px;color:var(--ink);font-weight:600;line-height:1.35}
+.cartdrawer .hl .pr{display:block;font-size:15px;color:var(--ink-soft);margin-top:4px}
 .cartdrawer .hl .pr b{color:var(--ink)}
-.cartdrawer .hl .pr s{color:var(--berry);font-size:12px;margin-left:5px}
-.cartdrawer .hlbtn{display:block;width:100%;text-align:center;border:1.5px solid var(--ink);padding:10px 8px;font-size:12px;font-weight:700;letter-spacing:.1em;margin-top:8px;background:#fff;cursor:pointer;text-transform:uppercase;transition:background .2s ease,color .2s ease}
+.cartdrawer .hl .pr s{color:var(--berry);font-size:14px;margin-left:6px}
+.cartdrawer .hlbtn{display:block;width:100%;text-align:center;border:2px solid var(--ink);border-radius:var(--r-btn);padding:11px 8px;font-size:14px;font-weight:700;letter-spacing:.07em;margin-top:8px;background:var(--paper);cursor:pointer;text-transform:uppercase;transition:background .2s ease,color .2s ease}
 .cartdrawer .hlbtn:hover{background:var(--ink);color:var(--paper)}
 .cartdrawer .cyl{padding:18px 20px 6px}
-.cartdrawer .hd2{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px}
+.cartdrawer .hd2{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 13px}
 .cartdrawer .cylwrap{position:relative;overflow:hidden}
 .cartdrawer .cylrow{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory}
 .cartdrawer .cylrow::-webkit-scrollbar{display:none}
-.cartdrawer .ccard{min-width:152px;width:152px;flex:none;display:flex;flex-direction:column;scroll-snap-align:start}
-.cartdrawer .ccard .ph{aspect-ratio:1/1;position:relative;overflow:hidden;background:var(--cream)}
+.cartdrawer .ccard{min-width:164px;width:164px;flex:none;display:flex;flex-direction:column;scroll-snap-align:start}
+.cartdrawer .ccard .ph{aspect-ratio:1/1;position:relative;overflow:hidden;background:var(--cream);border-radius:var(--r-card)}
 .cartdrawer .ccard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.cartdrawer .ccard .nm{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin:9px 0 2px;line-height:1.35}
-.cartdrawer .ccard .hlbtn{margin-top:auto;padding:9px 6px}
-.cartdrawer .carr{position:absolute;right:6px;top:34%;width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--sand);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink);box-shadow:0 4px 12px rgba(33,26,23,.12);pointer-events:none}
-.cartdrawer .d-foot{border-top:1px solid var(--sand);padding:12px 16px 11px;background:#fff}
-.cartdrawer .row{display:flex;justify-content:space-between;font-size:15px;margin-bottom:4px}
+.cartdrawer .ccard .nm{font-size:14px;font-weight:500;margin:10px 0 3px;line-height:1.35}
+.cartdrawer .ccard .hlbtn{margin-top:auto;padding:10px 6px;font-size:13px}
+.cartdrawer .carr{position:absolute;right:6px;top:34%;width:34px;height:34px;border-radius:50%;background:var(--paper);border:1px solid var(--sand);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink);box-shadow:0 4px 12px rgba(33,26,23,.12);pointer-events:none}
+.cartdrawer .d-foot{border-top:1px solid var(--sand);padding:12px 16px 11px;background:var(--paper)}
+.cartdrawer .row{display:flex;justify-content:space-between;font-size:16px;margin-bottom:5px}
 .cartdrawer .row .l{color:var(--ink-soft)}
 .cartdrawer .row .r{font-weight:700}
-.cartdrawer .row.tsave{margin-bottom:2px;font-size:13px}
-.cartdrawer .row.tsave .l,.cartdrawer .row.tsave .r{color:#2e6b3a;font-weight:600}
-.cartdrawer .row.ship{margin-bottom:4px;font-size:13px}
-.cartdrawer .row.ship .r{color:#2e6b3a;font-weight:700;letter-spacing:.07em;font-size:11px}
-.cartdrawer .co{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:var(--paper);font-weight:700;font-size:16px;letter-spacing:.06em;padding:13px;margin:6px 0 5px;cursor:pointer;text-transform:uppercase;transition:background .2s ease}
-.cartdrawer .co:hover{background:#3d332d}
+.cartdrawer .row.tsave{margin-bottom:3px;font-size:14px}
+.cartdrawer .row.tsave .l,.cartdrawer .row.tsave .r{color:var(--ok);font-weight:600}
+.cartdrawer .row.ship{margin-bottom:5px;font-size:14px}
+.cartdrawer .row.ship .r{color:var(--ok);font-weight:700;letter-spacing:.07em;font-size:12px}
+.cartdrawer .co{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:var(--paper);font-weight:700;font-size:16px;letter-spacing:.06em;padding:14px;margin:7px 0 5px;border-radius:var(--r-btn);cursor:pointer;text-transform:uppercase;transition:background .2s ease}
+.cartdrawer .co:hover{background:#333}
 .cartdrawer .co .lk{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.cartdrawer .gpill{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12px;color:var(--ink-soft);margin:0 0 4px}
+.cartdrawer .gpill{display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;color:var(--ink-soft);margin:0 0 5px}
 .cartdrawer .gpill svg{width:13px;height:13px;flex:none;stroke:var(--ink-soft);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .cartdrawer .gpill b{color:var(--gold)}
 .cartdrawer .cpay{display:flex;justify-content:center;align-items:center;gap:5px;margin-top:3px}

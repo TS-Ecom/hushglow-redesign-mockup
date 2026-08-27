@@ -754,6 +754,33 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .shdesc{font-size:16px;color:var(--ink-soft);line-height:1.5}
 .shades .benef-cta{margin-top:46px;margin-bottom:0}
 
+/* ---------- static page header ----------
+   Eyebrow, title and an optional lede, centred. Used by the contact page and by every
+   policy page, which is why it lives here. */
+.pagehead{padding:56px var(--pagepad) 0;text-align:center}
+.ph-eyebrow{font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  color:var(--ink-soft);margin-bottom:10px}
+.pagehead h1{font-size:42px;font-weight:600;letter-spacing:-.01em;line-height:1.15}
+.ph-lede{font-size:17px;color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:14px auto 0}
+
+/* ---------- policy pages ----------
+   One template for all five. The live pages set these documents in a 45-character column
+   with no heading hierarchy, which is unreadable at twenty thousand words; the words are
+   unchanged, the measure is a normal one and the section titles are real headings so the
+   document can be skimmed and linked to. */
+.policy{padding:40px var(--pagepad) 0}
+.policy__body{max-width:72ch;margin:0 auto}
+.policy__body p{font-size:16px;line-height:1.8;color:var(--ink-soft);margin-bottom:18px}
+.policy__body h2{font-size:20px;font-weight:600;line-height:1.35;color:var(--ink);
+  margin:46px 0 14px;letter-spacing:.01em}
+.policy__body h3{font-size:17px;font-weight:600;line-height:1.4;color:var(--ink);margin:32px 0 12px}
+.policy__body h2:first-child,.policy__body h3:first-child{margin-top:0}
+.policy__body ul,.policy__body ol{margin:0 0 20px 22px}
+.policy__body li{font-size:16px;line-height:1.8;color:var(--ink-soft);margin-bottom:8px}
+.policy__body strong,.policy__body b{color:var(--ink);font-weight:600}
+.policy__body a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.policy__body a:hover{color:var(--berry-deep)}
+
 /* ---------- lookbook ("get the look") ----------
    One template, six pages: only the photo, the title and the four step sentences change,
    so the whole block lives here and the pages carry nothing but content. Full-height
@@ -1092,6 +1119,12 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .section{padding-top:40px}
   .bundtimer{font-size:14px}
   /* the live section stacks and flips the copy flush left on a phone */
+  .pagehead{padding-top:34px}
+  .pagehead h1{font-size:30px}
+  .ph-lede{font-size:16px;margin-top:12px}
+  .policy{padding-top:26px}
+  .policy__body h2{font-size:18px;margin:34px 0 12px}
+  .policy__body h3{font-size:16px;margin:26px 0 10px}
   .lookbook{flex-direction:column;min-height:0}
   .lookbook__media{width:100%;aspect-ratio:3/4;align-self:auto}
   .lookbook__content{width:100%;align-items:flex-start;text-align:left;gap:26px;

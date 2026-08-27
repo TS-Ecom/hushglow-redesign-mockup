@@ -4,14 +4,6 @@
    twice its height. Same content here, arranged as a page: a header that says a person
    will answer, then the three ways to reach us as cards, then the operator line. */
 
-/* ---------- page header ----------
-   Kept here rather than in shared until a second static page needs it. */
-.pagehead{padding:56px var(--pagepad) 0;text-align:center}
-.ph-eyebrow{font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
-  color:var(--ink-soft);margin-bottom:10px}
-.pagehead h1{font-size:42px;font-weight:600;letter-spacing:-.01em;line-height:1.15}
-.ph-lede{font-size:17px;color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:14px auto 0}
-
 /* ---------- the three ways to reach us ---------- */
 .cmethods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:1180px;margin:0 auto}
 .cmethod{background:#f3f3f3;padding:34px 30px 32px;display:flex;flex-direction:column;
@@ -32,9 +24,6 @@
 .clegal b{color:var(--ink);font-weight:600}
 
 @media screen and (max-width:749px){
-  .pagehead{padding-top:34px}
-  .pagehead h1{font-size:30px}
-  .ph-lede{font-size:16px;margin-top:12px}
   /* three cards stack: each one is a decision, not a row to compare across */
   .cmethods{grid-template-columns:1fr;gap:12px}
   .cmethod{padding:24px 20px 22px;gap:8px}

@@ -347,8 +347,14 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .iwt .tx h2{font-size:27px}
   .iwt .tx p{font-size:16px}
   .iwt .tx .btn{width:100%}
+  /* The product pages lead with the photo on a phone whichever side it takes on a desktop:
+     the image is the hook there. The About statement is the other way round — the sentence
+     is the point and the portrait supports it — so .box keeps the reading order it has on
+     a wide screen, copy first and the photo under it. */
   .iwt.flip .ph{order:0}
   .iwt.flip .tx{order:1}
+  .iwt.box.flip .tx{order:1}
+  .iwt.box.flip .ph{order:2}
   .grid3{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
   .grid3::-webkit-scrollbar{display:none}
   .grid3 .p-card{flex:0 0 220px;scroll-snap-align:start}

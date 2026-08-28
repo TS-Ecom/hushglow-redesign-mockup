@@ -1,3 +1,4 @@
+<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HUSH GLOW — advertorial template</title>
@@ -435,10 +436,189 @@
      accordion; without it the sliders lay out as one long overflowing row.
      Regenerate with tools/build-block-library.py. -->
 <style>
+:root{
+  --paper:#ffffff; --soft:#f7f7f8; --cream:#f1e9de; --sand:#dbcfbc; --taupe:#c1b2a0;
+  --line:#e6e6e6;
+  --ink:#121212; --ink-soft:#5c5c5c; --berry:#862b28; --berry-deep:#5b1a1d; --gold:#a8823f;
+  --ui:'Poppins',-apple-system,sans-serif;
+  /* 4px on everything — one radius for the whole system, agreed on the call after we
+     showed that the live theme carries eleven different values. */
+  --radius:4px; --r-btn:4px; --r-card:4px; --r-chip:4px;
+  --ok:#2e6b3a;   /* savings and free-shipping confirmations */
+  --pagepad:60px;
+}
+.hgx-section .inner{max-width:1320px;margin:0 auto}
+.hgx-section .lookarrow.prev{left:26px}
+.hgx-section .iwt .ph{height:640px;overflow:hidden}
+.hgx-section /* two of the bundle template's image-with-text blocks carry a video, .hgx-section not a still */
+.iwt .ph img, .hgx-section .iwt .ph video{width:100%;height:100%;object-fit:cover;display:block}
+.hgx-section .iwt.flip .ph{order:2}
+.hgx-section .iwt.ovl .ph{height:560px}
+.hgx-section .p-card{cursor:pointer;position:relative;display:block;color:inherit;text-decoration:none}
+.hgx-section .p-card .ph{display:block;border-radius:var(--radius);overflow:hidden;background:var(--cream);aspect-ratio:1/1;position:relative}
+.hgx-section .p-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,opacity .25s ease}
+.hgx-section .p-card .ph img.alt{position:absolute;inset:0;opacity:0}
+.hgx-section .p-card:hover .ph img.main{transform:scale(1.045)}
+.hgx-section .p-card:hover .ph img.alt{opacity:1}
+.hgx-section .p-card.has-alt:hover .ph img.main{transform:none}
+.hgx-section .ptag{position:absolute;top:12px;right:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;z-index:2;background:rgba(250,248,246,.92);padding:5px 10px}
+.hgx-section .p-card .nm{font-size:17px;font-weight:500;margin:14px 0 0;text-align:center}
+.hgx-section .stars{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:13px;letter-spacing:2.5px;margin:5px 0 5px}
+.hgx-section .stars span{color:var(--ink-soft);font-size:14px;letter-spacing:0;margin-left:6px;font-weight:400}
+.hgx-section .pr{display:flex;gap:8px;font-size:16px;align-items:baseline;justify-content:center;flex-wrap:wrap;row-gap:5px}
+.hgx-section .price-now{font-weight:600}
+.hgx-section .price-was{color:var(--berry);text-decoration:line-through;font-weight:400}
+.hgx-section .pr .save{background:var(--berry);color:#fff;font-size:12px;font-weight:600;letter-spacing:.05em;padding:3px 8px;text-transform:uppercase;border-radius:var(--r-chip)}
+.hgx-section .atc{margin-top:12px;display:flex;align-items:center;justify-content:center;height:46px;border-radius:var(--r-btn);background:var(--ink);color:var(--paper);font-size:14px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transition:background .2s ease,transform .12s ease}
+.hgx-section .atc:hover{background:#333}
+.hgx-section .atc:active{transform:scale(.985)}
+.hgx-section /* square, .hgx-section like every other photo in the drawer: stretching it to the row height cropped
+   the product out of a square source, .hgx-section and the bigger type made the row taller still */
+.cartdrawer .item .ph{width:84px;aspect-ratio:1/1;align-self:flex-start;flex:none;position:relative;overflow:hidden;background:var(--cream);border-radius:var(--r-card)}
+.hgx-section .cartdrawer .item .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hgx-section .cartdrawer .item .price{font-weight:600;font-size:16px}
+.hgx-section .cartdrawer .hl .ph{width:106px;height:106px;flex:none;position:relative;overflow:hidden;background:var(--paper);align-self:center;border-radius:var(--r-card)}
+.hgx-section .cartdrawer .hl .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hgx-section .cartdrawer .hl .nm{font-size:15px;color:var(--ink);font-weight:600;line-height:1.35}
+.hgx-section .cartdrawer .hl .pr{display:block;font-size:15px;color:var(--ink-soft);margin-top:4px}
+.hgx-section .cartdrawer .hl .pr b{color:var(--ink)}
+.hgx-section .cartdrawer .hl .pr s{color:var(--berry);font-size:14px;margin-left:6px}
+.hgx-section .cartdrawer .ccard .ph{aspect-ratio:1/1;position:relative;overflow:hidden;background:var(--cream);border-radius:var(--r-card)}
+.hgx-section .cartdrawer .ccard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hgx-section .cartdrawer .ccard .nm{font-size:14px;font-weight:500;margin:12px 0 0;line-height:1.35}
+@media (prefers-reduced-motion: reduce){
+  .hgx-section .press .half{animation:none}
+}
+.hgx-section .galarrow.prev{left:16px}
+.hgx-section /* gift box (mirrors cart gift bar) */
+/* Gift block, .hgx-section variant C. Cream ribbon with the threshold underlined and set larger — it
+   was being skimmed past before. Nothing here uses the buy button's burgundy, .hgx-section so the CTA
+   stays the only thing on screen that looks clickable. */
+/* ATC + subscription. The main CTA is deliberately the heaviest element in the buy box. */
+/* Add to Cart is black; burgundy stays for the secondary calls (Try Now, .hgx-section Find My Shade, .hgx-section Meet the #1 Foundation), .hgx-section so buying reads as the strongest action on the page. */
+  .atcbig{width:100%;padding:13px 0;font-size:19px;line-height:1.3;letter-spacing:.06em;background:var(--ink);border-color:var(--ink);box-shadow:0 6px 20px rgba(18,18,18,.2)}
+.hgx-section .atcbig:hover{background:#333;border-color:#333}
+.hgx-section .tname .stars{font-size:14px;margin:0}
+.hgx-section .iwt.box .ph{height:auto;aspect-ratio:1/1}
+.hgx-section /* ---------- full-bleed photo band ----------
+   A picture on its own, .hgx-section no copy. Moved out of the home page file when the about page
+   needed the same thing. */
+.photobanner{margin-top:96px}
+.hgx-section .photobanner img{width:100%;height:auto;display:block}
+.hgx-section /* Whether the discount chip fits is a question about the card, .hgx-section not the window: the same
+   206px card happens at 1024 in the four-up grid and at 390 in the two-up one. Measured on
+   this card — the two prices alone need 117px and always fit; adding the chip needs 190px, .hgx-section and getting under that would mean prices below 15px, .hgx-section the one number here that must not
+   shrink. So the chip shows only once the card is wide enough to hold it on one line, .hgx-section and
+   below that the struck-through price carries the discount on its own. */
+.collgrid .p-card{container-type:inline-size}
+.hgx-section /* ---------- promo tile ----------
+   Sits in the grid as one more cell and stretches to whatever height the row of cards
+   ends up at, .hgx-section so the row never breaks. The whole tile is the link. */
+.promotile{position:relative;display:block;overflow:hidden;border-radius:var(--r-card);
+  min-height:340px;height:100%;color:var(--paper);text-decoration:none;background:var(--cream)}
+.hgx-section .promotile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .5s ease}
+.hgx-section .promotile:hover img{transform:scale(1.045)}
+.hgx-section .promotile::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(23,14,12,.62) 0%,rgba(23,14,12,0) 52%)}
+.hgx-section .promotile .in{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;
+  display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.hgx-section .promotile b{font-size:20px;font-weight:700;line-height:1.25;letter-spacing:.01em}
+.hgx-section .promotile p{font-size:15px;line-height:1.45;margin:0;color:rgba(255,255,255,.92)}
+.hgx-section .promotile i{font-style:normal;font-size:12px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink);background:var(--paper);
+  border-radius:var(--r-btn);padding:11px 20px;margin-top:4px;
+  transition:background .2s ease,color .2s ease}
+.hgx-section .promotile:hover i{background:var(--ink);color:var(--paper)}
+.hgx-section .ph-eyebrow{font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  color:var(--ink-soft);margin-bottom:10px}
+.hgx-section .ph-lede{font-size:17px;color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:14px auto 0}
+.hgx-section /* ---------- press marquee ----------
+   Two identical halves scrolling past each other, .hgx-section so the loop has no seam. Moved out of
+   the home page file when the quiz hub page needed the same strip. */
+.press{padding:34px 0;overflow:hidden}
+.hgx-section .press .ticker{display:flex;width:max-content}
+.hgx-section .press .half{display:flex;align-items:center;gap:96px;padding-right:96px;animation:tickmove 30s linear infinite}
+.hgx-section .press img{height:30px;width:auto;filter:grayscale(1)}
+.hgx-section /* ---------- blocks used by more than one product template ----------
+   Bundle tiers with their offer timer, .hgx-section review cards, .hgx-section the ingredients variant of
+   image-with-text, .hgx-section the filled section variant, .hgx-section the how-to-use tags and the price row.
+   These lived as identical copies in the blush and concealer page files until now:
+   any page that renders the same markup now gets the same styling for free. */
+
+/* ---------- price row (live buy box shows price + BESTSELLER badge) ---------- */
+.pricerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+.hgx-section .revsec .twrap .lookarrow.prev{left:-22px}
+.hgx-section /* ---------- buy-box price row ---------- */
+.pricerow .pnow{font-size:26px;font-weight:700;letter-spacing:.01em}
+.hgx-section .pricerow .pbadge{background:var(--berry);color:#fff;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-chip)}
+.hgx-section /* compare-at stays quieter than the price it is struck against */
+.pricerow s{color:var(--berry);font-weight:400;font-size:19px;text-decoration:line-through}
+.hgx-section /* optional saving chip: shown on the products whose live buy box carries one */
+.pricerow .psave{background:var(--cream);color:var(--berry-deep);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:var(--r-chip)}
+.hgx-section /* the banners carry copy near their left edge, .hgx-section so the controls sit right at the rim */
+.bslider .lookarrow.prev{left:8px}
+.hgx-section /* ---------- recommendations: banner + three products (live arrangement) ---------- */
+.recgrid{display:grid;grid-template-columns:minmax(0,1fr) 3fr;gap:26px;max-width:1320px;margin:0 auto;align-items:start}
+.hgx-section .recrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.hgx-section .recbanner{position:relative;display:block;overflow:hidden;border-radius:var(--r-card);aspect-ratio:1/1.42;cursor:pointer;background:var(--cream)}
+.hgx-section .recbanner img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.hgx-section .recbanner:hover img{transform:scale(1.04)}
+.hgx-section .recbanner-in{position:absolute;left:0;right:0;bottom:0;padding:22px 20px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;color:#fff;background:linear-gradient(to top,rgba(18,18,18,.62),rgba(18,18,18,0))}
+.hgx-section .recbanner-in b{font-size:22px;font-weight:600;line-height:1.2;letter-spacing:.01em}
+.hgx-section .recbanner-in i{font-style:normal;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px}
+.hgx-section /* ---------- grid / flex children need a floor of zero ----------
+   A grid or flex item defaults to min-width:auto, .hgx-section which means "never shrink below my
+   content". With a larger system font that turns every long word into a stretched
+   column and pushes the page sideways. Every layout container on the product pages
+   gets the floor here, .hgx-section once, .hgx-section instead of being patched block by block. */
+.iwt > .ph, .hgx-section .iwt > .tx, .hgx-section .pdp > .gal, .hgx-section .pdp > .info, .hgx-section .ibar > .ib, .hgx-section .stockrow > *, .hgx-section .shiprow > *, .hgx-section .grt > *, .hgx-section .bgrid > *, .hgx-section .cmpwrap > *, .hgx-section .recgrid > *, .hgx-section .bun > *, .hgx-section .upcard > *, .hgx-section .gcard > *, .hgx-section .satc > *, .hgx-section .step > *, .hgx-section .resgrid > *, .hgx-section .rcards .rcard > *{min-width:0}
+.hgx-section /* rows that carry a price or a rating must be free to drop onto a second line */
+.gpr, .hgx-section .uppr, .hgx-section .puffpr, .hgx-section .stockrow, .hgx-section .pricerow, .hgx-section .tname, .hgx-section .satc .sprice{flex-wrap:wrap}
+</style>
+<style>
   /* The theme pins html to the viewport height and scrolls the body inside its own layout
      shell, which is not reproduced here — without this the page will not scroll at all. */
   html, body{height:auto;overflow:visible}
-  body{margin:0;background:#fff}
+  body{margin:0;background:#fff;font-family:'Poppins',-apple-system,sans-serif}
+
+  /* ---- our changes on top of the captured theme CSS ----
+     Kept in one place on purpose: everything above this line is the store as it runs
+     today, everything below is a decision we have taken. */
+
+  /* 1. Calls to action carry the border the storefront buttons carry. */
+  .adv-cta a, .hg-button, a.button, .button--primary,
+  [class*="ai-"] a[class*="button"], [class*="ai-"] a[class*="cta"]{
+    border:2px solid currentColor !important;
+    border-radius:var(--r-btn, 4px) !important;
+  }
+
+  /* 2. The trust badge under a button. Its icon and text fill the row, so the theme's
+     justify-content:center has no slack to work with and the icon ends up pinned to the
+     left edge, a long way from the centred text. Capping the line lets the pair centre
+     together. This is how it behaves on the live store too, not something introduced here. */
+  .hg-trust-badge{max-width:32ch;margin-left:auto;margin-right:auto}
+  .hg-trust-badge__text{flex:0 1 auto}
+
+  /* 3. AI Statistics. The theme switches it to three columns at 750px, but each column
+     needs about 280px of its own, so between roughly 750 and 900 the row runs off the
+     screen and the whole page scrolls sideways. This is the live store's behaviour, not
+     something introduced here. Letting the three tracks share the row equally and trimming
+     the side padding keeps the three columns and removes the overflow; above 900 nothing
+     changes. */
+  @media screen and (min-width:750px) and (max-width:900px){
+    [class*="ai-stats-grid-"]{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+    [class*="ai-stats-item-"]{padding-left:12px !important;padding-right:12px !important}
+  }
+
+  /* 4. Bestsellers uses our own section and product card, so it needs the page paddings
+     the rest of the prototype gives it. */
+  .hgx-section{padding:40px var(--pagepad, 60px)}
+  .hgx-h{font-size:30px;font-weight:600;text-align:center;letter-spacing:.02em;margin:0 0 30px}
+  @media screen and (max-width:749px){
+    .hgx-section{padding:28px var(--pagepad, 18px)}
+    .hgx-h{font-size:24px;margin-bottom:22px}
+  }
 </style>
 
 <div id="shopify-section-template--21807795896577__adv_header_EKAmKb" class="shopify-section"><style data-shopify>#shopify-section-template--21807795896577__adv_header_EKAmKb {
@@ -553,24 +733,24 @@
       </div>
     </div></div>
 </div>
-<section id="shopify-section-template--21807796748545__rich_text_njRdYN" class="shopify-section section"><style data-shopify>.section-template--21807796748545__rich_text_njRdYN-padding {
-    padding-top: 18px;
-    padding-bottom: 15px;
+<section id="shopify-section-template--21807792750849__rich_text_kgj874" class="shopify-section section"><style data-shopify>.section-template--21807792750849__rich_text_kgj874-padding {
+    padding-top: 15px;
+    padding-bottom: 12px;
   }
 
   @media screen and (min-width: 750px) {
-    .section-template--21807796748545__rich_text_njRdYN-padding {
-      padding-top: 24px;
-      padding-bottom: 20px;
+    .section-template--21807792750849__rich_text_kgj874-padding {
+      padding-top: 20px;
+      padding-bottom: 16px;
     }
   }
   
-    .section-template--21807796748545__rich_text_njRdYN-padding .rating-stars-and-text {
+    .section-template--21807792750849__rich_text_kgj874-padding .rating-stars-and-text {
       justify-content: center;
     }
   
 
-  .color-scheme-template--21807796748545__rich_text_njRdYN.color-custom {
+  .color-scheme-template--21807792750849__rich_text_kgj874.color-custom {
     --color-background: 255, 255, 255;
     --gradient-background: #ffffff;
     
@@ -582,48 +762,58 @@
   
 </style><div class="isolate content-for-grouping animate-section animate--hidden always-display">
   
-  <div class="rich-text content-container color-background-2 color-scheme-template--21807796748545__rich_text_njRdYN gradient rich-text--full-width content-container--full-width section-template--21807796748545__rich_text_njRdYN-padding">
+  <div class="rich-text content-container color-inverse color-scheme-template--21807792750849__rich_text_kgj874 gradient rich-text--full-width content-container--full-width section-template--21807792750849__rich_text_kgj874-padding">
     <div class="rich-text__wrapper rich-text__wrapper--center page-width">
-      <div class="rich-text__blocks center animate-item"><h2 class="rich-text__heading rte h1 title-with-highlight" style='--hightlight-color:#121212' >
-                <strong>7 REASONS WHY WOMEN OVER 50 ARE AGING BACKWARDS WITH THIS FOUNDATION CUSHION</strong>
+      <div class="rich-text__blocks center animate-item"><h2 class="rich-text__heading rte h1 title-with-highlight" style='--hightlight-color:#6d388b' >
+                BEAUTY REVIEWS
               </h2>
-            <div class="rich-text__text rte" >
-                <p>In just one year, <a href="/products/ditch-the-make-up-embrace-a-new-level" title="Hush Foundation Cushion (Buy 1 Get 1 Free)"><strong>Hush Glow Foundation Cushion</strong></a> has quietly become the go-to complexion fix for women over 50 who want skin that looks smooth, glowing, and real.</p><p>No heavy layers. No dryness. No irritation. Just one step to softer, healthier-looking skin—without sacrificing comfort or time.</p><p>After selling out repeatedly and gaining thousands of loyal fans, many women are calling it “the first foundation that actually works for mature skin.”</p><p>With over 400,000+ happy customers and glowing reviews, Hush Glow isn’t just another makeup product—it’s a skin-first confidence booster women return to again and again.</p><p>So what makes it different?<br/><br/>And why are women saying it makes them look <em>years</em> younger?</p><p>Let’s break it down.</p>
-              </div>
-              <div class="trustpilot-stars" style='--rating:4.5;--star-color:#00b67a;--bg-star-color:#c8c8c8;--font-size:1.2rem;--alignment:;' >
-  
-    <div class='rating-stars-and-text font-size--desktop-auto flex-center'>
-      <div class='rating-stars__container rating-stars__container--underlay'>
-        <svg height="469" width="2500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 96" class='trustpilot-stars-svg'>
-          <path fill="#c8c8c8" d="M0 0h96v96H0zM104 0h96v96h-96zM208 0h96v96h-96zM312 0h96v96h-96zM416 0h96v96h-96z"/>
-          <path fill="#ffffff" d="M48 64.7L62.6 61l6.1 18.8zm33.6-24.3H55.9L48 16.2l-7.9 24.2H14.4l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM152 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L152 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM256 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L256 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM360 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L360 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM464 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L464 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2z" />
-        </svg>
-        <div class='rating-stars__container rating-stars__container--overlay trustpilot-stars__container--overlay'>
-          <svg height="469" width="2500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 96" class='trustpilot-stars-svg'>
-            <path fill="#00b67a" d="M0 0h96v96H0zM104 0h96v96h-96zM208 0h96v96h-96zM312 0h96v96h-96zM416 0h96v96h-96z"/>
-            <path fill="#ffffff" d="M48 64.7L62.6 61l6.1 18.8zm33.6-24.3H55.9L48 16.2l-7.9 24.2H14.4l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM152 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L152 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM256 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L256 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM360 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L360 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM464 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L464 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2z" />
-          </svg>
-        </div>
-      </div>
-      <span class="rating-stars__label">&nbsp;(24,536 Reviews)</span>
-    </div>
-  
-</div>
-<div
-                class="rich-text__buttons"
-                
-              ><a
-                    
-                      href="https://hushglow.com/products/hush-foundation-cushion?cta=hero"
-                    
-                    class="button button--primary"
-                  >TRY IT NOW!</a></div>
             <p
                 class="rich-text__caption caption-with-letter-spacing caption-with-letter-spacing--medium"
                 
               >
-                30-Day Shade Match Guarantee
+                BEAUTY • MAKEUP • SKIN
               </p></div>
+    </div>
+  </div>
+</div>
+
+
+</section>
+<section id="shopify-section-template--21807795896577__rich_text_PrNNgG" class="shopify-section section"><style data-shopify>.section-template--21807795896577__rich_text_PrNNgG-padding {
+    padding-top: 0px;
+    padding-bottom: 24px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-template--21807795896577__rich_text_PrNNgG-padding {
+      padding-top: 0px;
+      padding-bottom: 32px;
+    }
+  }
+  
+    .section-template--21807795896577__rich_text_PrNNgG-padding .rating-stars-and-text {
+      justify-content: center;
+    }
+  
+
+  .color-scheme-template--21807795896577__rich_text_PrNNgG.color-custom {
+    --color-background: 255, 255, 255;
+    --gradient-background: #ffffff;
+    
+    --color-foreground: 46, 42, 57;
+    --color-button: 221, 29, 29;
+    --color-button-text: 255, 255, 255;
+    --color-base-outline-button-labels: 221, 29, 29;
+  }
+  
+</style><div class="isolate content-for-grouping animate-section animate--hidden always-display">
+  
+  <div class="rich-text content-container color-background-1 color-scheme-template--21807795896577__rich_text_PrNNgG gradient rich-text--full-width content-container--full-width section-template--21807795896577__rich_text_PrNNgG-padding">
+    <div class="rich-text__wrapper rich-text__wrapper--center page-width">
+      <div class="rich-text__blocks center animate-item"><h2 class="rich-text__heading rte h2 title-with-highlight" style='--hightlight-color:#121212' >
+                Most foundations on the market are NOT made for <strong>mature skin</strong>
+              </h2>
+            </div>
     </div>
   </div>
 </div>
@@ -973,6 +1163,286 @@
                 </h2>
               <div class="image-with-text__text rte body" >
                   <p>Most foundations make aging skin look worse.<br/><br/>They settle into fine lines, cling to dry patches, and leave a heavy, cakey finish that highlights everything you’d rather hide.</p><p><a href="https://hushglow.com/products/hush-foundation-cushion" title="https://hushglow.com/products/hush-foundation-cushion"><strong>Hush Glow Foundation Cushion</strong></a> does the opposite.</p><p>Our skin-first formula is made to <strong>blur fine lines, smooth texture, and even out tone</strong>—without weighing your skin down or drying it out.</p><p>Instead of masking your face, it melts in like skincare.<br/><br/><strong>No creasing. No flaking. Just a soft, radiant finish that moves with your skin.</strong></p><p>Women over 55 are calling it <em>"the first foundation that actually makes me look fresher—not older."</em></p>
+                </div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<div id="shopify-section-template--21807795896577__image_with_text_Uex7Y7" class="shopify-section section"><style data-shopify>.section-template--21807795896577__image_with_text_Uex7Y7-padding {
+    padding-top: 0px;
+    padding-bottom: 8px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-template--21807795896577__image_with_text_Uex7Y7-padding {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .image-with-text__media-item {
+      width: 35%;
+    }
+    #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .image-with-text__text-item {
+      width: 65%;
+    }
+  }
+
+  .color-scheme-template--21807795896577__image_with_text_Uex7Y7.color-custom {
+    --color-background: 46, 42, 57;
+    --gradient-background: #2e2a39;
+    --color-foreground: 255, 255, 255;
+    --color-button: 221, 29, 29;
+    --color-button-text: 255, 255, 255;
+    --color-base-outline-button-labels: 221, 29, 29;
+  }
+
+  .section-color-scheme-template--21807795896577__image_with_text_Uex7Y7.color-custom {
+    --color-background: 255, 255, 255;
+    --gradient-background: #ffffff;
+  }
+
+  #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar--inline {
+    background-color: var(--tp-bar-bg);
+    color: var(--tp-bar-text);
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    margin-top: var(--tp-bar-mt);
+    margin-bottom: var(--tp-bar-mb);
+    width: 100%;
+  }
+  #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar__inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+  }
+  #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar__inner--left { justify-content: flex-start; }
+  #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar__inner--center { justify-content: center; }
+  #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar__inner--right { justify-content: flex-end; }
+  #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar__label {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--tp-bar-text);
+  }
+  #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar__stars {
+    display: inline-flex;
+    align-items: center;
+  }
+  #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar__stars svg {
+    height: 20px;
+    width: auto;
+  }
+  #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar__summary {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--tp-bar-text);
+  }
+  #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar__link {
+    color: var(--tp-bar-link, var(--tp-bar-text));
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  #image-with-text-template--21807795896577__image_with_text_Uex7Y7 a.trustpilot-bar__link:hover {
+    text-decoration: none;
+  }
+  @media screen and (max-width: 749px) {
+    #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar__label { font-size: 14px; }
+    #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar__stars svg { height: 16px; }
+    #image-with-text-template--21807795896577__image_with_text_Uex7Y7 .trustpilot-bar__summary { font-size: 14px; }
+  }
+
+  .hg-trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--hg-tb-color, #4a4a4a);
+    font-size: var(--hg-tb-size, 1.3rem);
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: var(--hg-tb-mt, 0.8rem);
+    margin-bottom: var(--hg-tb-mb, 0.8rem);
+    width: 100%;
+  }
+  .hg-trust-badge__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--hg-tb-icon, var(--hg-tb-color, #4a4a4a));
+    flex-shrink: 0;
+  }
+  .hg-trust-badge__icon svg {
+    width: var(--hg-tb-icon-size, 18px);
+    height: var(--hg-tb-icon-size, 18px);
+  }
+  .hg-trust-badge__text {
+    letter-spacing: 0.01em;
+  }
+
+  /* Mobile alignment (default) */
+  @media screen and (max-width: 749px) {
+    .hg-trust-badge {
+      font-size: calc(var(--hg-tb-size, 1.3rem) - 0.1rem);
+    }
+    .hg-trust-badge--mobile-left { justify-content: flex-start; text-align: left; }
+    .hg-trust-badge--mobile-center { justify-content: center; text-align: center; }
+    .hg-trust-badge--mobile-right { justify-content: flex-end; text-align: right; }
+  }
+
+  /* Desktop alignment */
+  @media screen and (min-width: 750px) {
+    .hg-trust-badge--desktop-left { justify-content: flex-start; text-align: left; }
+    .hg-trust-badge--desktop-center { justify-content: center; text-align: center; }
+    .hg-trust-badge--desktop-right { justify-content: flex-end; text-align: right; }
+  }
+
+  /* Button wrapper alignment */
+  .hg-button-wrap {
+    display: flex;
+    width: 100%;
+  }
+  @media screen and (max-width: 749px) {
+    .hg-button-wrap--mobile-left { justify-content: flex-start; }
+    .hg-button-wrap--mobile-center { justify-content: center; }
+    .hg-button-wrap--mobile-right { justify-content: flex-end; }
+  }
+  @media screen and (min-width: 750px) {
+    .hg-button-wrap--desktop-left { justify-content: flex-start; }
+    .hg-button-wrap--desktop-center { justify-content: center; }
+    .hg-button-wrap--desktop-right { justify-content: flex-end; }
+  }
+
+  /* Icon + text benefits row (repeatable icon_text block) */
+  .iwt-benefits-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--iwt-row-gap, 1.2rem) var(--iwt-col-gap, 3.2rem);
+    width: 100%;
+    margin-top: var(--iwt-mt, 2.4rem);
+    margin-bottom: var(--iwt-mb, 0.8rem);
+  }
+  .iwt-benefits-row--left { justify-content: flex-start; }
+  .iwt-benefits-row--center { justify-content: center; }
+  .iwt-benefits-row--right { justify-content: flex-end; }
+  .iwt-benefits-row--space-between { justify-content: space-between; }
+
+  .iwt-benefit {
+    display: flex;
+    align-items: center;
+    gap: var(--iwt-gap, 1rem);
+    flex: 0 1 auto;
+  }
+  .iwt-benefit__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--iwt-icon-color, currentColor);
+    line-height: 1;
+  }
+  .iwt-benefit__icon .material-icon {
+    font-size: var(--iwt-icon-size, 22px);
+    line-height: 1;
+  }
+  .iwt-benefit__icon--image img {
+    display: block;
+    width: var(--iwt-icon-size, 22px);
+    height: var(--iwt-icon-size, 22px);
+    object-fit: contain;
+  }
+  .iwt-benefit__text {
+    color: var(--iwt-text-color, inherit);
+    font-size: var(--iwt-text-size-desktop, 1.6rem);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  @media screen and (max-width: 749px) {
+    .iwt-benefit__text {
+      font-size: var(--iwt-text-size-mobile, 1.4rem);
+    }
+    .iwt-benefits-row--mobile-grid .iwt-benefit {
+      flex: 1 1 calc(50% - (var(--iwt-col-gap, 3.2rem) / 2));
+    }
+    .iwt-benefits-row--mobile-stack .iwt-benefit {
+      flex: 1 1 100%;
+    }
+  }</style><div id="image-with-text-template--21807795896577__image_with_text_Uex7Y7" class="section-color-scheme-template--21807795896577__image_with_text_Uex7Y7 color-background-1 gradient content-for-grouping animate-section animate--hidden always-display">
+  
+  <div class="image-with-text image-with-text--no-overlap image-with-text--mobile-normal page-width isolate collapse-corners same-colors collapse-padding section-template--21807795896577__image_with_text_Uex7Y7-padding">
+    <div class="image-with-text__grid grid grid--gapless grid--1-col image-with-text__grid--reverse animate-item">
+      <div class="image-with-text__media-item image-with-text__media-item--middle grid__item">
+        <div
+          class="image-with-text__media image-with-text__media--adapt gradient color-scheme-template--21807795896577__image_with_text_Uex7Y7 color-background-1 global-media-settings media"
+          
+            style="padding-bottom: 110.13215859030836%;"
+          
+        ><internal-video data-autoplay="true" data-no-play-btn="true">
+              <video
+                poster="//hushglow.com/cdn/shop/files/preview_images/5fbecfd5ee4b438bbe65677089e4cc53.thumbnail.0000000000.jpg?v=1767385249"
+                 loop
+                 muted
+                width="100%" height="auto" preload="metadata" playsinline disablepictureinpicture
+              >
+                
+                  <source
+                    data-src="//hushglow.com/cdn/shop/videos/c/vp/5fbecfd5ee4b438bbe65677089e4cc53/5fbecfd5ee4b438bbe65677089e4cc53.m3u8?v=0"
+                    type="application/x-mpegURL"
+                  >
+                
+                  <source
+                    data-src="//hushglow.com/cdn/shop/videos/c/vp/5fbecfd5ee4b438bbe65677089e4cc53/5fbecfd5ee4b438bbe65677089e4cc53.HD-1080p-2.5Mbps-66253844.mp4?v=0"
+                    type="video/mp4"
+                  >
+                
+              </video>
+              <button class="internal-video__play" style='visibility: hidden;'>
+                <div class="play-button color-accent-1"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+  class="icon icon-play"
+  fill="none"
+  viewBox="0 0 10 14"
+>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"/>
+</svg>
+</div>
+              </button>
+            </internal-video></div>
+      </div>
+      <div class="image-with-text__text-item grid__item">
+        <div
+          id="ImageWithText--template--21807795896577__image_with_text_Uex7Y7"
+          class="image-with-text__content image-with-text__content--middle image-with-text__content--desktop-left image-with-text__content--mobile-center image-with-text__content--adapt gradient color-background-1 color-scheme-template--21807795896577__image_with_text_Uex7Y7 content-container"
+        ><h2 class="image-with-text__heading h2 title-with-highlight" style='--hightlight-color:#121212' >
+                  Stop smiling in photos but not posting them — just because mouth wrinkles make you feel older than you are.
+                </h2>
+              <div class="image-with-text__text rte body" >
+                  <p>And you don't need to spend hundreds on heavy concealers or thick makeup that only make it worse.<br/><br/><strong>There’s a gentler way to smooth those lines and still look like yourself.</strong></p>
+                </div><div
+                    class="hg-button-wrap hg-button-wrap--mobile-left hg-button-wrap--desktop-left"
+                    
+                  >
+                    <a
+                      
+                        href="https://hushglow.com/pages/find-your-shade?cta=mid2"
+                      
+                      class="button button--primary"
+                    >
+                      FIND MY SHADE &amp; REVEAL MY NATURAL GLOW 👉
+                    </a>
+                  </div><div
+                  class="hg-trust-badge hg-trust-badge--mobile-center hg-trust-badge--desktop-left"
+                  style="--hg-tb-color: #4a4a4a;--hg-tb-icon: #4a4a4a;--hg-tb-size: 1.3rem;--hg-tb-icon-size: 16px;--hg-tb-mt: 0.8rem;--hg-tb-mb: 0.0rem;"
+                  
+                >
+                  <span class="hg-trust-badge__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="hg-trust-badge__text">30-Day Shade Match Guarantee</span>
                 </div></div>
       </div>
     </div>
@@ -2152,6 +2622,318 @@
 
 
 </div>
+<div id="shopify-section-template--21807793340673__comparison_table_CT6Jk9" class="shopify-section"><style data-shopify>.section-template--21807793340673__comparison_table_CT6Jk9-padding {
+    padding-top: 21px;
+    padding-bottom: 33px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-template--21807793340673__comparison_table_CT6Jk9-padding {
+      padding-top: 28px;
+      padding-bottom: 44px;
+    }
+  }
+
+  .comparison-table-template--21807793340673__comparison_table_CT6Jk9 {
+    --border-radius: 0.6rem;
+  }
+  
+    .comparison-table-template--21807793340673__comparison_table_CT6Jk9 tr:not(:last-of-type) .highlighted-cell {
+      --cell-separator-opacity: 0.0;
+    }
+    .comparison-table-template--21807793340673__comparison_table_CT6Jk9 tr:not(:last-of-type) .regular-cell {
+      --cell-separator-opacity: 0.1;
+    }
+    .comparison-table-template--21807793340673__comparison_table_CT6Jk9 tr:nth-child(2n) .highlighted-cell {
+      --cell-overlay-opacity: 0.0;
+    }
+    .comparison-table-template--21807793340673__comparison_table_CT6Jk9 tr:nth-child(2n) .regular-cell {
+      --cell-overlay-opacity: 0.0;
+    }
+  
+  
+
+  .color-scheme-template--21807793340673__comparison_table_CT6Jk9.color-custom {
+    --color-background: 255, 255, 255;
+    --gradient-background: #ffffff;
+    
+    --color-foreground: 46, 42, 57;
+    --color-button: 221, 29, 29;
+    --color-button-text: 255, 255, 255;
+    --color-base-outline-button-labels: 221, 29, 29;
+  }
+  
+
+  .highlighted-color-template--21807793340673__comparison_table_CT6Jk9.color-custom {
+    --color-background: 46, 42, 57;
+    --color-foreground: 255, 255, 255;
+  }
+
+  .other-cells-color-template--21807793340673__comparison_table_CT6Jk9.color-custom {
+    --color-background: 255, 255, 255;
+    --color-foreground: 46, 42, 57;
+  }</style><div class="color-scheme-template--21807793340673__comparison_table_CT6Jk9 color-background-1 gradient content-for-grouping animate-section animate--hidden isolate always-display">
+  
+  <div class="page-width section-template--21807793340673__comparison_table_CT6Jk9-padding">
+    <div class="content-and-comparison-table section-group__container__child-grid content-and-comparison-table--table-first">
+      
+      <div class="content-container content-rte desktop-center mobile-left animate-item animate-item--child index-0 desktop-index-1">
+          <h2 class="h2 title-with-highlight" style='--hightlight-color:#121212'>
+            <strong>Say Goodbye To Cakey Smile Lines</strong>
+          </h2>
+          <div class="rte">
+            <p><em>Heavy formulas can settle into smile lines, cling to dry patches, and make texture look more visible. Hush Glow’s lightweight cushion formula smooths the look of skin without the heavy makeup feel.</em></p>
+          </div></div>
+      <div class="comparison-table-container flex-center animate-item animate-item--child index-1 desktop-index-0">
+        
+        <table class="comparison-table comparison-table--centered comparison-table-template--21807793340673__comparison_table_CT6Jk9">
+          <thead class='isolate'>
+            <tr>
+              <th>&nbsp</th>
+              <th
+                align="center"
+                class="comparison-table__logo highlighted-color-template--21807793340673__comparison_table_CT6Jk9 color-accent-1"
+                style="--mobile-logo-width: 70px;--font-size: 1.8rem;"
+              ><img src="//hushglow.com/cdn/shop/files/hush_fd088f00-0d59-4151-b468-f9c5299f5020.png?v=1758802160&amp;width=400" alt="HUSH GLOW" srcset="//hushglow.com/cdn/shop/files/hush_fd088f00-0d59-4151-b468-f9c5299f5020.png?v=1758802160&amp;width=100 100w, //hushglow.com/cdn/shop/files/hush_fd088f00-0d59-4151-b468-f9c5299f5020.png?v=1758802160&amp;width=352 352w" width="100" height="45.88394062078273" loading="lazy">
+</th>
+              
+                
+                <th
+                  align="center"
+                  class="comparison-table__others"
+                  style="--mobile-logo-width: 60px;--font-size: 1.4rem;"
+                >Others
+</th>
+              
+            </tr>
+          </thead>
+          <tbody class='isolate'>
+            
+<tr>
+                <td align="center" class="comparison-table__row-name other-cells-color-template--21807793340673__comparison_table_CT6Jk9 color-background-1 regular-cell">
+                  <strong>"Real-Life Filter" Effect</strong>
+                </td>
+                <td align="center" class="highlighted-color-template--21807793340673__comparison_table_CT6Jk9 color-accent-1 highlighted-cell"><div class='comparison-table__icon flex-center' style='--icon-color:#53af01;--bg-color:#53af01'>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill='currentColor' d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                      </svg>
+                    </div></td>
+              
+                
+                  <td align="center" class="regular-cell other-cells-color-template--21807793340673__comparison_table_CT6Jk9 color-background-1"><div class='comparison-table__icon flex-center' style='--icon-color:#121212;--bg-color:#dbdbdb'>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                          <path fill='currentColor' d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                        </svg>
+                      </div></td></tr><tr>
+                <td align="center" class="comparison-table__row-name other-cells-color-template--21807793340673__comparison_table_CT6Jk9 color-background-1 regular-cell">
+                  <strong>Adapts to your skin tone</strong>
+                </td>
+                <td align="center" class="highlighted-color-template--21807793340673__comparison_table_CT6Jk9 color-accent-1 highlighted-cell"><div class='comparison-table__icon flex-center' style='--icon-color:#53af01;--bg-color:#53af01'>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill='currentColor' d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                      </svg>
+                    </div></td>
+              
+                
+                  <td align="center" class="regular-cell other-cells-color-template--21807793340673__comparison_table_CT6Jk9 color-background-1"><div class='comparison-table__icon flex-center' style='--icon-color:#121212;--bg-color:#dbdbdb'>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                          <path fill='currentColor' d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                        </svg>
+                      </div></td></tr><tr>
+                <td align="center" class="comparison-table__row-name other-cells-color-template--21807793340673__comparison_table_CT6Jk9 color-background-1 regular-cell">
+                  <strong>Made for sensitive skin</strong>
+                </td>
+                <td align="center" class="highlighted-color-template--21807793340673__comparison_table_CT6Jk9 color-accent-1 highlighted-cell"><div class='comparison-table__icon flex-center' style='--icon-color:#53af01;--bg-color:#53af01'>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill='currentColor' d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                      </svg>
+                    </div></td>
+              
+                
+                  <td align="center" class="regular-cell other-cells-color-template--21807793340673__comparison_table_CT6Jk9 color-background-1"><div class='comparison-table__icon flex-center' style='--icon-color:#121212;--bg-color:#dbdbdb'>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                          <path fill='currentColor' d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                        </svg>
+                      </div></td></tr><tr>
+                <td align="center" class="comparison-table__row-name other-cells-color-template--21807793340673__comparison_table_CT6Jk9 color-background-1 regular-cell">
+                  <strong>Combines skincare + makeup</strong>
+                </td>
+                <td align="center" class="highlighted-color-template--21807793340673__comparison_table_CT6Jk9 color-accent-1 highlighted-cell"><div class='comparison-table__icon flex-center' style='--icon-color:#53af01;--bg-color:#53af01'>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill='currentColor' d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                      </svg>
+                    </div></td>
+              
+                
+                  <td align="center" class="regular-cell other-cells-color-template--21807793340673__comparison_table_CT6Jk9 color-background-1"><div class='comparison-table__icon flex-center' style='--icon-color:#121212;--bg-color:#dbdbdb'>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                          <path fill='currentColor' d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                        </svg>
+                      </div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<div id="shopify-section-template--22734540931329__comparison_table_7cRyWY" class="shopify-section"><style data-shopify>.section-template--22734540931329__comparison_table_7cRyWY-padding {
+    padding-top: 21px;
+    padding-bottom: 33px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-template--22734540931329__comparison_table_7cRyWY-padding {
+      padding-top: 28px;
+      padding-bottom: 44px;
+    }
+  }
+
+  .comparison-table-template--22734540931329__comparison_table_7cRyWY {
+    --border-radius: 0.6rem;
+  }
+  
+    .comparison-table-template--22734540931329__comparison_table_7cRyWY tr:not(:last-of-type) .highlighted-cell {
+      --cell-separator-opacity: 0.0;
+    }
+    .comparison-table-template--22734540931329__comparison_table_7cRyWY tr:not(:last-of-type) .regular-cell {
+      --cell-separator-opacity: 0.18;
+    }
+    .comparison-table-template--22734540931329__comparison_table_7cRyWY tr:nth-child(2n) .highlighted-cell {
+      --cell-overlay-opacity: 0.0;
+    }
+    .comparison-table-template--22734540931329__comparison_table_7cRyWY tr:nth-child(2n) .regular-cell {
+      --cell-overlay-opacity: 0.0;
+    }
+  
+  
+
+  .color-scheme-template--22734540931329__comparison_table_7cRyWY.color-custom {
+    --color-background: 255, 255, 255;
+    --gradient-background: #ffffff;
+    
+    --color-foreground: 46, 42, 57;
+    --color-button: 221, 29, 29;
+    --color-button-text: 255, 255, 255;
+    --color-base-outline-button-labels: 221, 29, 29;
+  }
+  
+
+  .highlighted-color-template--22734540931329__comparison_table_7cRyWY.color-custom {
+    --color-background: 46, 42, 57;
+    --color-foreground: 255, 255, 255;
+  }
+
+  .other-cells-color-template--22734540931329__comparison_table_7cRyWY.color-custom {
+    --color-background: 255, 255, 255;
+    --color-foreground: 46, 42, 57;
+  }</style><div class="color-scheme-template--22734540931329__comparison_table_7cRyWY color-background-2 gradient content-for-grouping animate-section animate--hidden isolate always-display">
+  
+  <div class="page-width section-template--22734540931329__comparison_table_7cRyWY-padding">
+    <div class="content-and-comparison-table section-group__container__child-grid">
+      
+      <div class="content-container content-rte desktop-center mobile-center animate-item animate-item--child index-0">
+          <h2 class="h2 title-with-highlight" style='--hightlight-color:#121212'>
+            Why Hush Glow?
+          </h2>
+          <div class="rte">
+            <p>Liquid concealers crease and dry out under-eyes by noon. Traditional sticks need a separate brush. Hush Glow fixes both — hydrating, crease-proof, brush built right in.</p>
+          </div></div>
+      <div class="comparison-table-container flex-center animate-item animate-item--child index-1">
+        
+        <table class="comparison-table comparison-table--centered comparison-table-template--22734540931329__comparison_table_7cRyWY">
+          <thead class='isolate'>
+            <tr>
+              <th>&nbsp</th>
+              <th
+                align="center"
+                class="comparison-table__logo highlighted-color-template--22734540931329__comparison_table_7cRyWY color-accent-1"
+                style="--mobile-logo-width: 75px;--font-size: 1.8rem;"
+              ><img src="//hushglow.com/cdn/shop/files/hush_glow_logo_1_1.png?v=1783867115&amp;width=400" alt="HUSH GLOW" srcset="//hushglow.com/cdn/shop/files/hush_glow_logo_1_1.png?v=1783867115&amp;width=120 120w, //hushglow.com/cdn/shop/files/hush_glow_logo_1_1.png?v=1783867115&amp;width=352 352w" width="120" height="113.9240506329114" loading="lazy">
+</th>
+              
+                
+                <th
+                  align="center"
+                  class="comparison-table__others"
+                  style="--mobile-logo-width: 60px;--font-size: 1.4rem;"
+                >Liquid Concealer
+</th>
+              
+            </tr>
+          </thead>
+          <tbody class='isolate'>
+            
+<tr>
+                <td align="center" class="comparison-table__row-name other-cells-color-template--22734540931329__comparison_table_7cRyWY color-background-1 regular-cell">
+                  <strong>Built-In Blending Brush</strong>
+                </td>
+                <td align="center" class="highlighted-color-template--22734540931329__comparison_table_7cRyWY color-accent-1 highlighted-cell"><div class='comparison-table__icon flex-center' style='--icon-color:#53af01;--bg-color:#53af01'>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill='currentColor' d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                      </svg>
+                    </div></td>
+              
+                
+                  <td align="center" class="regular-cell other-cells-color-template--22734540931329__comparison_table_7cRyWY color-background-1"><div class='comparison-table__icon flex-center' style='--icon-color:#121212;--bg-color:#dbdbdb'>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                          <path fill='currentColor' d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                        </svg>
+                      </div></td></tr><tr>
+                <td align="center" class="comparison-table__row-name other-cells-color-template--22734540931329__comparison_table_7cRyWY color-background-1 regular-cell">
+                  <strong>Won't Crease Into Fine Lines</strong>
+                </td>
+                <td align="center" class="highlighted-color-template--22734540931329__comparison_table_7cRyWY color-accent-1 highlighted-cell"><div class='comparison-table__icon flex-center' style='--icon-color:#53af01;--bg-color:#53af01'>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill='currentColor' d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                      </svg>
+                    </div></td>
+              
+                
+                  <td align="center" class="regular-cell other-cells-color-template--22734540931329__comparison_table_7cRyWY color-background-1"><div class='comparison-table__icon flex-center' style='--icon-color:#121212;--bg-color:#dbdbdb'>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                          <path fill='currentColor' d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                        </svg>
+                      </div></td></tr><tr>
+                <td align="center" class="comparison-table__row-name other-cells-color-template--22734540931329__comparison_table_7cRyWY color-background-1 regular-cell">
+                  <strong>Hydrates While It Conceals</strong>
+                </td>
+                <td align="center" class="highlighted-color-template--22734540931329__comparison_table_7cRyWY color-accent-1 highlighted-cell"><div class='comparison-table__icon flex-center' style='--icon-color:#53af01;--bg-color:#53af01'>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill='currentColor' d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                      </svg>
+                    </div></td>
+              
+                
+                  <td align="center" class="regular-cell other-cells-color-template--22734540931329__comparison_table_7cRyWY color-background-1"><div class='comparison-table__icon flex-center' style='--icon-color:#121212;--bg-color:#dbdbdb'>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                          <path fill='currentColor' d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                        </svg>
+                      </div></td></tr><tr>
+                <td align="center" class="comparison-table__row-name other-cells-color-template--22734540931329__comparison_table_7cRyWY color-background-1 regular-cell">
+                  <strong>Made For Mature Skin</strong>
+                </td>
+                <td align="center" class="highlighted-color-template--22734540931329__comparison_table_7cRyWY color-accent-1 highlighted-cell"><div class='comparison-table__icon flex-center' style='--icon-color:#53af01;--bg-color:#53af01'>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill='currentColor' d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                      </svg>
+                    </div></td>
+              
+                
+                  <td align="center" class="regular-cell other-cells-color-template--22734540931329__comparison_table_7cRyWY color-background-1"><div class='comparison-table__icon flex-center' style='--icon-color:#121212;--bg-color:#dbdbdb'>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                          <path fill='currentColor' d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                        </svg>
+                      </div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
 <div id="shopify-section-template--21807792750849__1767636237cf00b72d" class="shopify-section">
 
 
@@ -2730,6 +3512,275 @@
 
 
 </section>
+<section id="shopify-section-template--21807793340673__multicolumn_4CwP8Y" class="shopify-section section"><style data-shopify>.section-template--21807793340673__multicolumn_4CwP8Y-padding {
+    padding-top: 27px;
+    padding-bottom: 45px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-template--21807793340673__multicolumn_4CwP8Y-padding {
+      padding-top: 36px;
+      padding-bottom: 60px;
+    }
+  }
+
+  #multicolumn-template--21807793340673__multicolumn_4CwP8Y {
+    --text-boxes-radius: 20px;
+  }
+  #multicolumn-template--21807793340673__multicolumn_4CwP8Y .multicolumn-card h3 {
+    font-size: 16px;
+  }
+  #multicolumn-template--21807793340673__multicolumn_4CwP8Y .multicolumn-card .rte {
+    font-size: 15px;
+  }
+  #multicolumn-template--21807793340673__multicolumn_4CwP8Y .multicolumn-card h3 + .rte {
+    margin-top: 0px;
+  }
+  #multicolumn-template--21807793340673__multicolumn_4CwP8Y .multicolumn-card__info {
+    padding: 24px 24px;
+  }
+
+  @media screen and (max-width: 749px) {
+    #multicolumn-template--21807793340673__multicolumn_4CwP8Y .multicolumn-card h3 {
+      font-size: 16px;
+    }
+    #multicolumn-template--21807793340673__multicolumn_4CwP8Y .multicolumn-card .rte {
+      font-size: 15px;
+    }
+    #multicolumn-template--21807793340673__multicolumn_4CwP8Y .multicolumn-card h3 + .rte {
+      margin-top: 0px;
+    }
+    #multicolumn-template--21807793340673__multicolumn_4CwP8Y .multicolumn-card__info {
+      padding: 12px 14px;
+    }
+  }
+
+  .color-scheme-template--21807793340673__multicolumn_4CwP8Y.color-custom {
+    --color-background: 247, 247, 247;
+    --gradient-background: #f7f7f7;
+    
+    --color-foreground: 33, 33, 33;
+    --color-button: 221, 29, 29;
+    --color-button-text: 255, 255, 255;
+    --color-base-outline-button-labels: 221, 29, 29;
+  }
+  
+
+  .cards-color-scheme-template--21807793340673__multicolumn_4CwP8Y.color-custom {
+    --color-background: 243, 243, 243;
+    --gradient-background: #f3f3f3;
+    --color-foreground: 33, 33, 33;
+  }
+  .cards-color-scheme-template--21807793340673__multicolumn_4CwP8Y.color-custom h3 {
+    --color-foreground: 34, 33, 38;
+  }</style><div id="multicolumn-template--21807793340673__multicolumn_4CwP8Y" class="multicolumn animate-section animate--hidden color-scheme-template--21807793340673__multicolumn_4CwP8Y color-custom gradient no-heading content-for-grouping always-display" data-mobile-columns="1">
+  
+<div class="page-width section-template--21807793340673__multicolumn_4CwP8Y-padding isolate" style="--columns-desktop: 3;--columns-mobile: 1;--gap-desktop:0px;--gap-mobile:px;--stretched-cards-alignment:flex-start;">
+    
+
+      <div 
+        class='splide splide--desktop-dots-under splide--mobile-dots-under splide--desktop-arrows-sides splide--desktop-arrows-outside splide--mobile-arrows-under splide--transparent-arrows splide--destroy-desktop splide--destroy-mobile splide--align-stretch' 
+        
+        
+      >
+        <div class="splide__track">
+          <ul class="splide__list"><li class="splide__slide">
+                <div class="splide__slide__container" style="--index:0;" >
+                  <div class="multicolumn-card multicolumn-card--media-top content-container color-background-1 cards-color-scheme-template--21807793340673__multicolumn_4CwP8Y gradient multicolumn--diff-bgs left animate-item animate-item--child">
+                      <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width">
+                        <div
+                          class="media media--transparent media--adapt"
+                          
+                            style="padding-bottom: 100.0%;"
+                          
+                        >
+                          
+                            
+                            <internal-video
+                              class="internal-video"
+                              data-autoplay="true"
+                              data-action-on-inactive='none'
+                              data-no-play-btn="true"
+                            >
+                              
+                              <video 
+                                width="100%" 
+                                height="auto" 
+                                preload='metadata'
+                                poster="//hushglow.com/cdn/shop/files/preview_images/dc29b2aebad64578903350f311d68f53.thumbnail.0000000000.jpg?v=1768251837"
+                                
+                                  muted autoplay loop
+                                
+                                playsinline disablepictureinpicture
+                              >
+                                
+                                  <source 
+                                    data-src="//hushglow.com/cdn/shop/videos/c/vp/dc29b2aebad64578903350f311d68f53/dc29b2aebad64578903350f311d68f53.m3u8?v=0" 
+                                    type="application/x-mpegURL"
+                                  >
+                                
+                                  <source 
+                                    data-src="//hushglow.com/cdn/shop/videos/c/vp/dc29b2aebad64578903350f311d68f53/dc29b2aebad64578903350f311d68f53.HD-720p-4.5Mbps-66842861.mp4?v=0" 
+                                    type="video/mp4"
+                                  >
+                                
+                              </video>
+                              <button class="internal-video__play" style='visibility: hidden;'>
+                                <div class="play-button color-accent-1"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+  class="icon icon-play"
+  fill="none"
+  viewBox="0 0 10 14"
+>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"/>
+</svg>
+</div>
+                              </button>
+                              
+                            </internal-video>
+                          
+                        </div>
+                      </div><div class="multicolumn-card__info"><h3>1. Open & Pick Up</h3><div class="rte"><p>Open the compact and remove the white protective film.<br/><br/>Gently press the mushroom applicator into the cushion — a small amount is enough.</p></div></div>
+                  </div>
+                </div>
+              </li><li class="splide__slide">
+                <div class="splide__slide__container" style="--index:1;" >
+                  <div class="multicolumn-card multicolumn-card--media-top content-container color-background-1 cards-color-scheme-template--21807793340673__multicolumn_4CwP8Y gradient multicolumn--diff-bgs left animate-item animate-item--child">
+                      <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width">
+                        <div
+                          class="media media--transparent media--adapt"
+                          
+                            style="padding-bottom: 100.0%;"
+                          
+                        >
+                          
+                            
+                            <internal-video
+                              class="internal-video"
+                              data-autoplay="true"
+                              data-action-on-inactive='none'
+                              data-no-play-btn="true"
+                            >
+                              
+                              <video 
+                                width="100%" 
+                                height="auto" 
+                                preload='metadata'
+                                poster="//hushglow.com/cdn/shop/files/preview_images/761e9dc8c2634b4c91d1a743d6b25aac.thumbnail.0000000000.jpg?v=1768251371"
+                                
+                                  muted autoplay loop
+                                
+                                playsinline disablepictureinpicture
+                              >
+                                
+                                  <source 
+                                    data-src="//hushglow.com/cdn/shop/videos/c/vp/761e9dc8c2634b4c91d1a743d6b25aac/761e9dc8c2634b4c91d1a743d6b25aac.m3u8?v=0" 
+                                    type="application/x-mpegURL"
+                                  >
+                                
+                                  <source 
+                                    data-src="//hushglow.com/cdn/shop/videos/c/vp/761e9dc8c2634b4c91d1a743d6b25aac/761e9dc8c2634b4c91d1a743d6b25aac.HD-720p-4.5Mbps-66842575.mp4?v=0" 
+                                    type="video/mp4"
+                                  >
+                                
+                              </video>
+                              <button class="internal-video__play" style='visibility: hidden;'>
+                                <div class="play-button color-accent-1"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+  class="icon icon-play"
+  fill="none"
+  viewBox="0 0 10 14"
+>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"/>
+</svg>
+</div>
+                              </button>
+                              
+                            </internal-video>
+                          
+                        </div>
+                      </div><div class="multicolumn-card__info"><h3>2. Apply</h3><div class="rte"><p>Using soft tapping motions, press the foundation onto your skin.<br/><br/>Do not rub. Focus on gentle patting, especially around delicate areas.</p></div></div>
+                  </div>
+                </div>
+              </li><li class="splide__slide">
+                <div class="splide__slide__container" style="--index:2;" >
+                  <div class="multicolumn-card multicolumn-card--media-top content-container color-background-1 cards-color-scheme-template--21807793340673__multicolumn_4CwP8Y gradient multicolumn--diff-bgs left animate-item animate-item--child">
+                      <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width">
+                        <div
+                          class="media media--transparent media--adapt"
+                          
+                            style="padding-bottom: 100.0%;"
+                          
+                        >
+                          
+                            
+                            <internal-video
+                              class="internal-video"
+                              data-autoplay="true"
+                              data-action-on-inactive='none'
+                              data-no-play-btn="true"
+                            >
+                              
+                              <video 
+                                width="100%" 
+                                height="auto" 
+                                preload='metadata'
+                                poster="//hushglow.com/cdn/shop/files/preview_images/c27f87694e7c4074a916148f39f491d6.thumbnail.0000000000.jpg?v=1768252588"
+                                
+                                  muted autoplay loop
+                                
+                                playsinline disablepictureinpicture
+                              >
+                                
+                                  <source 
+                                    data-src="//hushglow.com/cdn/shop/videos/c/vp/c27f87694e7c4074a916148f39f491d6/c27f87694e7c4074a916148f39f491d6.m3u8?v=0" 
+                                    type="application/x-mpegURL"
+                                  >
+                                
+                                  <source 
+                                    data-src="//hushglow.com/cdn/shop/videos/c/vp/c27f87694e7c4074a916148f39f491d6/c27f87694e7c4074a916148f39f491d6.HD-720p-4.5Mbps-66843467.mp4?v=0" 
+                                    type="video/mp4"
+                                  >
+                                
+                              </video>
+                              <button class="internal-video__play" style='visibility: hidden;'>
+                                <div class="play-button color-accent-1"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+  class="icon icon-play"
+  fill="none"
+  viewBox="0 0 10 14"
+>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"/>
+</svg>
+</div>
+                              </button>
+                              
+                            </internal-video>
+                          
+                        </div>
+                      </div><div class="multicolumn-card__info"><h3>3. Blend & Glow</h3><div class="rte"><p>Lightly tap to blend until your skin looks even and natural.<br/><br/>Enjoy a smooth, hydrated, comfortable glow all day.</p></div></div>
+                  </div>
+                </div>
+              </li></ul>
+        </div>
+        <div class='splide__dots-and-arrows'>
+          <ul class="splide__pagination"></ul>
+          <div class="splide__arrows"></div>
+        </div>
+      </div>
+    
+    <div class="center animate-item animate-item--child index-1"></div>
+  </div>
+</div>
+
+
+<style> #shopify-section-template--21807793340673__multicolumn_4CwP8Y .multicolumn .multicolumn-card__info h3, #shopify-section-template--21807793340673__multicolumn_4CwP8Y .multicolumn .multicolumn-card__info h4 {display: inline-block; width: fit-content; background-color: #692826; color: #ffffff; padding: 8px 16px; margin-bottom: 14px; font-weight: 550; line-height: 1;} #shopify-section-template--21807793340673__multicolumn_4CwP8Y .multicolumn .multicolumn-card {box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1); overflow: hidden; transition: box-shadow 0.25s ease, transform 0.25s ease;} #shopify-section-template--21807793340673__multicolumn_4CwP8Y p {line-height: 1.5;} </style></section>
 <div id="shopify-section-template--21807793340673__custom_columns_X6Qg7j" class="shopify-section"><style data-shopify>.section-template--21807793340673__custom_columns_X6Qg7j-padding {
     padding-top: 39px;
     padding-bottom: 39px;
@@ -3584,6 +4635,380 @@
                               </div>
                             </div>
                           </div>
+                        </div><h3>Jill, 54</h3><div class="rte"><p>“I am so impressed with this product that the coverage is very good and yet it feels like you are wearing a wonderful moisturizer! I'm speechless. I chose the color warm, it blends beautifully with my coloring.“</p></div></div>
+                  </div>
+                </div>
+              </li></ul>
+        </div>
+        <div class='splide__dots-and-arrows'>
+          <ul class="splide__pagination"></ul>
+          <div class="splide__arrows"></div>
+        </div>
+      </div>
+    
+      </splide-component>
+    
+  </div>
+</div>
+
+</section>
+<section id="shopify-section-template--21807791636737__testimonials_M6mtxA" class="shopify-section section"><style data-shopify>.section-template--21807791636737__testimonials_M6mtxA-padding {
+    padding-top: 0px;
+    padding-bottom: 21px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-template--21807791636737__testimonials_M6mtxA-padding {
+      padding-top: 0px;
+      padding-bottom: 28px;
+    }
+  }
+
+  .color-scheme-template--21807791636737__testimonials_M6mtxA.color-custom {
+    --color-background: 255, 255, 255;
+    --gradient-background: #ffffff;
+    
+    --color-foreground: 46, 42, 57;
+  }
+  
+
+  .cards-color-scheme-template--21807791636737__testimonials_M6mtxA.color-custom {
+    --color-background: 230, 230, 230;
+    --gradient-background: #e6e6e6;
+    --color-foreground: 46, 42, 57;
+  }</style><div class="multicolumn color-scheme-template--21807791636737__testimonials_M6mtxA color-background-2 gradient content-for-grouping animate-section animate--hidden always-display">
+  
+<div class="page-width mobile-full-page section-template--21807791636737__testimonials_M6mtxA-padding isolate" style="--columns-desktop: 4;--columns-mobile:1;--gap-desktop:2.0rem;--gap-mobile:1.5rem;">
+    <div class='animate-item animate-item--child index-0'>
+      
+
+        <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin">
+          <h2 class="title h1 title-with-highlight" style='--hightlight-color:#121212'>
+            Loved by 400.000+
+          </h2>
+        </div>
+    </div>
+    
+      <splide-component
+        data-type='slide'
+        data-autoplay='false'
+        data-autoplay-speed='5'
+        data-arrows-color="inverse"
+        data-dots-color="inverse"
+        data-slides-desktop="4"
+        data-per-move-desktop='1'
+        data-gap-desktop='20'
+        data-side-padding-desktop='0'
+        data-padding-calc-desktop='true'
+        data-slides-mobile="1"
+        data-gap-mobile='15'
+        
+          data-side-padding-mobile='24'
+        
+        
+        data-pause-videos='true'
+      >
+    
+      <div 
+        class='splide splide--desktop-dots-hidden splide--mobile-dots-hidden splide--desktop-arrows-hidden splide--desktop-arrows-outside splide--mobile-arrows-sides splide--transparent-arrows' 
+        style="--columns-desktop: 4;--columns-mobile:1;--gap-desktop:2.0rem;--gap-mobile:1.5rem;"
+        
+        
+      >
+        <div class="splide__track">
+          <ul class="splide__list"><li class="splide__slide">
+                <div class="splide__slide__container" style="--index:1;" >
+                  <div class="multicolumn-card content-container testimonial-card color-background-1 cards-color-scheme-template--21807791636737__testimonials_M6mtxA gradient multicolumn--diff-bgs center animate-item animate-item--child">
+                      <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width multicolumn-card-spacing">
+                        <div
+                          class="media media--transparent media--adapt"
+                          
+                            style="padding-bottom: 75.0%;"
+                          
+                        >
+                          
+<img src="//hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_1.jpg?v=1775213237&amp;width=1420" alt="" srcset="//hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_1.jpg?v=1775213237&amp;width=275 275w, //hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_1.jpg?v=1775213237&amp;width=550 550w, //hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_1.jpg?v=1775213237&amp;width=710 710w, //hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_1.jpg?v=1775213237&amp;width=1420 1420w" width="1420" height="1065" loading="lazy" sizes="(min-width: 990px) 550px, (min-width:
+                              750px) 550px, calc(100vw - 30px)" class="multicolumn-card__image">
+                          
+                        </div>
+                      </div><div class="multicolumn-card__info">
+                        <div class="testimonial-card__stars rating-stars rating-stars--inactive-solid" style='--rating:5;--visible-stars:5;--star-color:#c1b2a0;--bg-star-color:#ececec;--alignment: center;--font-size: 1.8rem;'>
+                          <div class='rating-stars-and-text font-size--desktop-auto flex-center'>
+                            <div class='rating-stars__container rating-stars__container--underlay'>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                
+<div class='rating-stars__container rating-stars__container--overlay'>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div><div class="testimonial-card__quotes flex-center color-accent-2">
+                          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="currentColor" d="M119.472 66.59C53.489 66.59 0 120.094 0 186.1c0 65.983 53.489 119.487 119.472 119.487c0 0-0.578 44.392-36.642 108.284c-4.006 12.802 3.135 26.435 15.945 30.418c9.089 2.859 18.653 0.08 24.829-6.389c82.925-90.7 115.385-197.448 115.385-251.8C238.989 120.094 185.501 66.59 119.472 66.59z"/>
+                            <path fill="currentColor" d="M392.482 66.59c-65.983 0-119.472 53.505-119.472 119.51c0 65.983 53.489 119.487 119.472 119.487c0 0-0.578 44.392-36.642 108.284c-4.006 12.802 3.136 26.435 15.945 30.418c9.089 2.859 18.653 0.08 24.828-6.389C479.539 347.2 512 240.452 512 186.1C512 120.094 458.511 66.59 392.482 66.59z"/>
+                          </svg>
+                        </div><h3>Alexis, 54</h3><div class="rte"><p>“I have super sensitive skin and was scared to try anything new. But this didn’t sting, itch, or break me out. I was so schocked. It’s soft, light, and actually makes my skin feel calm. I love the glow.”</p></div></div>
+                  </div>
+                </div>
+              </li><li class="splide__slide">
+                <div class="splide__slide__container" style="--index:2;" >
+                  <div class="multicolumn-card content-container testimonial-card color-background-1 cards-color-scheme-template--21807791636737__testimonials_M6mtxA gradient multicolumn--diff-bgs center animate-item animate-item--child">
+                      <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width multicolumn-card-spacing">
+                        <div
+                          class="media media--transparent media--adapt"
+                          
+                            style="padding-bottom: 75.0%;"
+                          
+                        >
+                          
+<img src="//hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_4.jpg?v=1775213237&amp;width=1420" alt="" srcset="//hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_4.jpg?v=1775213237&amp;width=275 275w, //hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_4.jpg?v=1775213237&amp;width=550 550w, //hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_4.jpg?v=1775213237&amp;width=710 710w, //hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_4.jpg?v=1775213237&amp;width=1420 1420w" width="1420" height="1065" loading="lazy" sizes="(min-width: 990px) 550px, (min-width:
+                              750px) 550px, calc(100vw - 30px)" class="multicolumn-card__image">
+                          
+                        </div>
+                      </div><div class="multicolumn-card__info">
+                        <div class="testimonial-card__stars rating-stars rating-stars--inactive-solid" style='--rating:5;--visible-stars:5;--star-color:#c1b2a0;--bg-star-color:#ececec;--alignment: center;--font-size: 1.8rem;'>
+                          <div class='rating-stars-and-text font-size--desktop-auto flex-center'>
+                            <div class='rating-stars__container rating-stars__container--underlay'>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                
+<div class='rating-stars__container rating-stars__container--overlay'>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div><div class="testimonial-card__quotes flex-center color-accent-2">
+                          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="currentColor" d="M119.472 66.59C53.489 66.59 0 120.094 0 186.1c0 65.983 53.489 119.487 119.472 119.487c0 0-0.578 44.392-36.642 108.284c-4.006 12.802 3.135 26.435 15.945 30.418c9.089 2.859 18.653 0.08 24.829-6.389c82.925-90.7 115.385-197.448 115.385-251.8C238.989 120.094 185.501 66.59 119.472 66.59z"/>
+                            <path fill="currentColor" d="M392.482 66.59c-65.983 0-119.472 53.505-119.472 119.51c0 65.983 53.489 119.487 119.472 119.487c0 0-0.578 44.392-36.642 108.284c-4.006 12.802 3.136 26.435 15.945 30.418c9.089 2.859 18.653 0.08 24.828-6.389C479.539 347.2 512 240.452 512 186.1C512 120.094 458.511 66.59 392.482 66.59z"/>
+                          </svg>
+                        </div><h3>Kandeyce, 57</h3><div class="rte"><p>“I was very surprised to have the wonderful customer service. When I expressed disappointment with the shade I received, they worked with me to send a better color. Amazing service. Now I am very satisfied“</p></div></div>
+                  </div>
+                </div>
+              </li><li class="splide__slide">
+                <div class="splide__slide__container" style="--index:3;" >
+                  <div class="multicolumn-card content-container testimonial-card color-background-1 cards-color-scheme-template--21807791636737__testimonials_M6mtxA gradient multicolumn--diff-bgs center animate-item animate-item--child">
+                      <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width multicolumn-card-spacing">
+                        <div
+                          class="media media--transparent media--adapt"
+                          
+                            style="padding-bottom: 75.0%;"
+                          
+                        >
+                          
+<img src="//hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31.jpg?v=1775213237&amp;width=1420" alt="" srcset="//hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31.jpg?v=1775213237&amp;width=275 275w, //hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31.jpg?v=1775213237&amp;width=550 550w, //hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31.jpg?v=1775213237&amp;width=710 710w, //hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31.jpg?v=1775213237&amp;width=1420 1420w" width="1420" height="1065" loading="lazy" sizes="(min-width: 990px) 550px, (min-width:
+                              750px) 550px, calc(100vw - 30px)" class="multicolumn-card__image">
+                          
+                        </div>
+                      </div><div class="multicolumn-card__info">
+                        <div class="testimonial-card__stars rating-stars rating-stars--inactive-solid" style='--rating:5;--visible-stars:5;--star-color:#c1b2a0;--bg-star-color:#ececec;--alignment: center;--font-size: 1.8rem;'>
+                          <div class='rating-stars-and-text font-size--desktop-auto flex-center'>
+                            <div class='rating-stars__container rating-stars__container--underlay'>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                
+<div class='rating-stars__container rating-stars__container--overlay'>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div><div class="testimonial-card__quotes flex-center color-accent-2">
+                          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="currentColor" d="M119.472 66.59C53.489 66.59 0 120.094 0 186.1c0 65.983 53.489 119.487 119.472 119.487c0 0-0.578 44.392-36.642 108.284c-4.006 12.802 3.135 26.435 15.945 30.418c9.089 2.859 18.653 0.08 24.829-6.389c82.925-90.7 115.385-197.448 115.385-251.8C238.989 120.094 185.501 66.59 119.472 66.59z"/>
+                            <path fill="currentColor" d="M392.482 66.59c-65.983 0-119.472 53.505-119.472 119.51c0 65.983 53.489 119.487 119.472 119.487c0 0-0.578 44.392-36.642 108.284c-4.006 12.802 3.136 26.435 15.945 30.418c9.089 2.859 18.653 0.08 24.828-6.389C479.539 347.2 512 240.452 512 186.1C512 120.094 458.511 66.59 392.482 66.59z"/>
+                          </svg>
+                        </div><h3>Kim, 62</h3><div class="rte"><p>“Hush Glow is the best makeup that I have ever tried!!! I’m 62 and it covers brown spots and evens out my complexion. I bought warm shade. My new forever makeup friend!!! Thank u Hush Glow“</p></div></div>
+                  </div>
+                </div>
+              </li><li class="splide__slide">
+                <div class="splide__slide__container" style="--index:4;" >
+                  <div class="multicolumn-card content-container testimonial-card color-background-1 cards-color-scheme-template--21807791636737__testimonials_M6mtxA gradient multicolumn--diff-bgs center animate-item animate-item--child">
+                      <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width multicolumn-card-spacing">
+                        <div
+                          class="media media--transparent media--adapt"
+                          
+                            style="padding-bottom: 75.0%;"
+                          
+                        >
+                          
+<img src="//hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_3.jpg?v=1775213237&amp;width=1420" alt="" srcset="//hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_3.jpg?v=1775213237&amp;width=275 275w, //hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_3.jpg?v=1775213237&amp;width=550 550w, //hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_3.jpg?v=1775213237&amp;width=710 710w, //hushglow.com/cdn/shop/files/Screenshot_2026-04-03_at_12.37.31_3.jpg?v=1775213237&amp;width=1420 1420w" width="1420" height="1065" loading="lazy" sizes="(min-width: 990px) 550px, (min-width:
+                              750px) 550px, calc(100vw - 30px)" class="multicolumn-card__image">
+                          
+                        </div>
+                      </div><div class="multicolumn-card__info">
+                        <div class="testimonial-card__stars rating-stars rating-stars--inactive-solid" style='--rating:5;--visible-stars:5;--star-color:#c1b2a0;--bg-star-color:#ececec;--alignment: center;--font-size: 1.8rem;'>
+                          <div class='rating-stars-and-text font-size--desktop-auto flex-center'>
+                            <div class='rating-stars__container rating-stars__container--underlay'>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                    </svg>
+                                  
+                                
+<div class='rating-stars__container rating-stars__container--overlay'>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill='currentColor'>
+                                    <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+                                  </svg>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div><div class="testimonial-card__quotes flex-center color-accent-2">
+                          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="currentColor" d="M119.472 66.59C53.489 66.59 0 120.094 0 186.1c0 65.983 53.489 119.487 119.472 119.487c0 0-0.578 44.392-36.642 108.284c-4.006 12.802 3.135 26.435 15.945 30.418c9.089 2.859 18.653 0.08 24.829-6.389c82.925-90.7 115.385-197.448 115.385-251.8C238.989 120.094 185.501 66.59 119.472 66.59z"/>
+                            <path fill="currentColor" d="M392.482 66.59c-65.983 0-119.472 53.505-119.472 119.51c0 65.983 53.489 119.487 119.472 119.487c0 0-0.578 44.392-36.642 108.284c-4.006 12.802 3.136 26.435 15.945 30.418c9.089 2.859 18.653 0.08 24.828-6.389C479.539 347.2 512 240.452 512 186.1C512 120.094 458.511 66.59 392.482 66.59z"/>
+                          </svg>
                         </div><h3>Jill, 54</h3><div class="rte"><p>“I am so impressed with this product that the coverage is very good and yet it feels like you are wearing a wonderful moisturizer! I'm speechless. I chose the color warm, it blends beautifully with my coloring.“</p></div></div>
                   </div>
                 </div>
@@ -5220,648 +6645,173 @@
 
 
 <style> #shopify-section-template--21807793340673__collapsible_content_zpVWRJ .collapsible-content .page-width {max-width: 1200px; margin-left: auto; margin-right: auto;} #shopify-section-template--21807793340673__collapsible_content_zpVWRJ .collapsible-content details {border-radius: 14px; box-shadow: 1px 5px 11px rgba(0, 0, 0, 0.06); margin-bottom: 4px; overflow: hidden;} </style></section>
-<section id="shopify-section-template--22690639282433__bestsellers" class="shopify-section section"><link rel="stylesheet" href="//hushglow.com/cdn/shop/t/15/assets/template-collection.css?v=131127499998367489021775739304" media="print" onload="this.media='all'"><noscript><link href="//hushglow.com/cdn/shop/t/15/assets/template-collection.css?v=131127499998367489021775739304" rel="stylesheet" type="text/css" media="all" /></noscript><style data-shopify>.section-template--22690639282433__bestsellers-padding {
-    padding-top: 18px;
-    padding-bottom: 6px;
-  }
-
-  .collection-template--22690639282433__bestsellers .color-swatches-container {
-    --swatch-size: 2.4rem;
+<section id="shopify-section-template--21807792750849__rich_text_hpYCEP" class="shopify-section section"><style data-shopify>.section-template--21807792750849__rich_text_hpYCEP-padding {
+    padding-top: 45px;
+    padding-bottom: 45px;
   }
 
   @media screen and (min-width: 750px) {
-    .section-template--22690639282433__bestsellers-padding {
-      padding-top: 24px;
-      padding-bottom: 8px;
-    }
-    .collection-template--22690639282433__bestsellers .color-swatches-container {
-      --swatch-size: 3.6rem;
+    .section-template--21807792750849__rich_text_hpYCEP-padding {
+      padding-top: 60px;
+      padding-bottom: 60px;
     }
   }
+  
+    [data-rtl='true'] .section-template--21807792750849__rich_text_hpYCEP-padding .rating-stars-and-text {
+      justify-content: flex-end;
+    }
+  
 
-  .color-scheme-template--22690639282433__bestsellers.color-custom {
+  .color-scheme-template--21807792750849__rich_text_hpYCEP.color-custom {
+    --color-background: 245, 238, 228;
+    --gradient-background: #f5eee4;
+    
+    --color-foreground: 18, 18, 18;
+    --color-button: 175, 37, 26;
+    --color-button-text: 255, 255, 255;
+    --color-base-outline-button-labels: 117, 11, 16;
+  }
+  
+</style><div class="isolate content-for-grouping animate-section animate--hidden always-display">
+  
+  <div class="rich-text content-container color-custom color-scheme-template--21807792750849__rich_text_hpYCEP gradient rich-text--full-width content-container--full-width section-template--21807792750849__rich_text_hpYCEP-padding">
+    <div class="rich-text__wrapper rich-text__wrapper--left page-width">
+      <div class="rich-text__blocks left animate-item"><h2 class="rich-text__heading rte h1 title-with-highlight" style='--hightlight-color:#121212' >
+                The Winner Is Clear
+              </h2>
+            <div class="rich-text__text rte" >
+                <p>After 30 days with five foundations, one thing became obvious: <strong>most foundations are not made for women over 55.</strong> They're formulated for oil control mature skin doesn't need, packed with drying alcohols mature skin can't tolerate, and designed for a matte finish that emphasizes every line.</p><p><strong>Hush Glow</strong> is the first product we tested that was clearly built from the ground up for this skin type. Not adapted. Not repackaged. Actually designed for it.</p>
+              </div><div
+                class="rich-text__buttons"
+                
+              ><a
+                    
+                      href="https://hushglow.com/pages/find-your-shade"
+                    
+                    class="button button--primary"
+                  >Find My Shade &amp; Save 45% 👉🏻</a></div>
+            <p
+                class="rich-text__caption caption-with-letter-spacing caption-with-letter-spacing--medium"
+                
+              >
+                30-Day Shade Match Guarantee
+              </p></div>
+    </div>
+  </div>
+</div>
+
+
+</section>
+<section id="shopify-section-template--21807796748545__rich_text_njRdYN" class="shopify-section section"><style data-shopify>.section-template--21807796748545__rich_text_njRdYN-padding {
+    padding-top: 18px;
+    padding-bottom: 15px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-template--21807796748545__rich_text_njRdYN-padding {
+      padding-top: 24px;
+      padding-bottom: 20px;
+    }
+  }
+  
+    .section-template--21807796748545__rich_text_njRdYN-padding .rating-stars-and-text {
+      justify-content: center;
+    }
+  
+
+  .color-scheme-template--21807796748545__rich_text_njRdYN.color-custom {
     --color-background: 255, 255, 255;
     --gradient-background: #ffffff;
     
     --color-foreground: 46, 42, 57;
     --color-button: 221, 29, 29;
     --color-button-text: 255, 255, 255;
+    --color-base-outline-button-labels: 221, 29, 29;
   }
   
-</style><div class="color-scheme-template--22690639282433__bestsellers color-background-2 isolate gradient content-for-grouping animate-section animate--hidden always-display">
+</style><div class="isolate content-for-grouping animate-section animate--hidden always-display">
   
-  <div class="collection collection-template--22690639282433__bestsellers section-template--22690639282433__bestsellers-padding">
-    <div class="collection__title animate-item animate-item--child index-0 title-wrapper title-wrapper--no-top-margin page-width"><h2 class="title h2 title-with-highlight" style='--hightlight-color:#6d388b'>
-          Bestsellers
-        </h2></div>
-
-    <div class='page-width desktop-full-page mobile-full-page'>
-      <div
-        class="product-grid contains-card contains-card--product contains-card--standard grid--stretch"
-        style="--columns-desktop: 4;--columns-mobile: 2;--gap-desktop:36px;--gap-mobile:1.5rem;--right-padding-desktop:0px;--left-padding-desktop:0px;--side-padding-mobile:24px;"
-      >
-        
-          <splide-component
-            data-type="slide"
-            data-autoplay="false"
-            data-autoplay-speed="5"
-            data-arrows-color="inverse"
-            data-dots-color="inverse"
-            data-slides-desktop="4"
-            data-per-move-desktop="1"
-            data-gap-desktop="36"
-            data-side-padding-desktop="0"
-            data-padding-calc-desktop="true"
-            data-slides-mobile="2"
-            data-gap-mobile="15"
-            
-              data-side-padding-mobile="24"
-            
-            
-              data-destroy-desktop="true"
-            
-          >
-        
-        <div
-          class="splide splide--desktop-dots-under splide--mobile-dots-hidden splide--desktop-arrows-sides splide--desktop-arrows-outside splide--mobile-arrows-sides splide--transparent-arrows splide--destroy-desktop splide--precalc-width-mobile splide--precalc-padding-mobile"
-          
-          
-        >
-          <div class="splide__track">
-            <ul class="splide__list">
-                  <li class="splide__slide">
-                    <div
-                      class="splide__slide__container splide__slide__container--card slider__slide collection-list__item collection-list__item--no-media animate-item animate-item--child"
-                      style="--index:1;"
-                      data-mobile-columns="2"
-                    >
-                      
-<div class="card-wrapper product-card-wrapper underline-links-hover">
-    <div
-      class="
-        card
-        card--standard
-         card--media
-        
-        
-        
-        
-         card--badge-sided
-        
-        
-      "
-      style="--ratio-percent: 100.0%;"
-    >
-      <div
-        class="card__inner color-background-1 gradient ratio"
-        style="--ratio-percent: 100.0%;"
-      ><div class="card__media">
-            <div class="media media--transparent media--hover-effect">
-              
-              <img
-                srcset="//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=165 165w,//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=360 360w,//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=533 533w,//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=720 720w,//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=940 940w,//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=1066 1066w,//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683 1296w
-                "
-                src="//hushglow.com/cdn/shop/files/Frame1707481341.webp?v=1783851683&width=533"
-                sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                alt="Hydrating Concealer Stick"
-                class="motion-reduce"
-                
-                  loading="lazy"
-                
-                width="1296"
-                height="1296"
-                id='quick-add-template--22690639282433__bestsellers9241654984961-image'
-              >
-              
-<img
-                  srcset="//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=165 165w,//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=360 360w,//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=533 533w,//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=720 720w,//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=940 940w,//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=1066 1066w,//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461 1296w
-                  "
-                  src="//hushglow.com/cdn/shop/files/2_1296_1296_1_1.jpg?v=1783860461&width=533"
-                  sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                  alt=""
-                  class="motion-reduce"
-                  loading="lazy"
-                  width="1296"
-                  height="1296"
-                ></div>
-          </div><div class="card__content">
-          <div class="card__information">
-            <h3
-              class="card__heading"
-              
-            >
-              <a
-                href="/products/hydrating-concealer"
-                id="StandardCardNoMediaLink-template--22690639282433__bestsellers-9241654984961"
-                class="full-unstyled-link"
-                aria-labelledby="StandardCardNoMediaLink-template--22690639282433__bestsellers-9241654984961 NoMediaStandardBadge-template--22690639282433__bestsellers-9241654984961"
-              >
-                Hydrating Concealer Stick
-              </a>
-            </h3>
-          </div>
-          <div class="card__badge bottom left"></div>
+  <div class="rich-text content-container color-background-2 color-scheme-template--21807796748545__rich_text_njRdYN gradient rich-text--full-width content-container--full-width section-template--21807796748545__rich_text_njRdYN-padding">
+    <div class="rich-text__wrapper rich-text__wrapper--center page-width">
+      <div class="rich-text__blocks center animate-item"><h2 class="rich-text__heading rte h1 title-with-highlight" style='--hightlight-color:#121212' >
+                <strong>7 REASONS WHY WOMEN OVER 50 ARE AGING BACKWARDS WITH THIS FOUNDATION CUSHION</strong>
+              </h2>
+            <div class="rich-text__text rte" >
+                <p>In just one year, <a href="/products/ditch-the-make-up-embrace-a-new-level" title="Hush Foundation Cushion (Buy 1 Get 1 Free)"><strong>Hush Glow Foundation Cushion</strong></a> has quietly become the go-to complexion fix for women over 50 who want skin that looks smooth, glowing, and real.</p><p>No heavy layers. No dryness. No irritation. Just one step to softer, healthier-looking skin—without sacrificing comfort or time.</p><p>After selling out repeatedly and gaining thousands of loyal fans, many women are calling it “the first foundation that actually works for mature skin.”</p><p>With over 400,000+ happy customers and glowing reviews, Hush Glow isn’t just another makeup product—it’s a skin-first confidence booster women return to again and again.</p><p>So what makes it different?<br/><br/>And why are women saying it makes them look <em>years</em> younger?</p><p>Let’s break it down.</p>
+              </div>
+              <div class="trustpilot-stars" style='--rating:4.5;--star-color:#00b67a;--bg-star-color:#c8c8c8;--font-size:1.2rem;--alignment:;' >
+  
+    <div class='rating-stars-and-text font-size--desktop-auto flex-center'>
+      <div class='rating-stars__container rating-stars__container--underlay'>
+        <svg height="469" width="2500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 96" class='trustpilot-stars-svg'>
+          <path fill="#c8c8c8" d="M0 0h96v96H0zM104 0h96v96h-96zM208 0h96v96h-96zM312 0h96v96h-96zM416 0h96v96h-96z"/>
+          <path fill="#ffffff" d="M48 64.7L62.6 61l6.1 18.8zm33.6-24.3H55.9L48 16.2l-7.9 24.2H14.4l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM152 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L152 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM256 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L256 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM360 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L360 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM464 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L464 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2z" />
+        </svg>
+        <div class='rating-stars__container rating-stars__container--overlay trustpilot-stars__container--overlay'>
+          <svg height="469" width="2500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 96" class='trustpilot-stars-svg'>
+            <path fill="#00b67a" d="M0 0h96v96H0zM104 0h96v96h-96zM208 0h96v96h-96zM312 0h96v96h-96zM416 0h96v96h-96z"/>
+            <path fill="#ffffff" d="M48 64.7L62.6 61l6.1 18.8zm33.6-24.3H55.9L48 16.2l-7.9 24.2H14.4l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM152 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L152 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM256 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L256 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM360 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L360 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2zM464 64.7l14.6-3.7 6.1 18.8zm33.6-24.3h-25.7L464 16.2l-7.9 24.2h-25.7l20.8 15-7.9 24.2 20.8-15 12.8-9.2z" />
+          </svg>
         </div>
       </div>
-      <div class="card__content">
-        <div class="card__information">
-          <h3
-            class="card__heading h5"
-            
-              id="title-template--22690639282433__bestsellers-9241654984961"
-            
-          >
-            <a
-              href="/products/hydrating-concealer"
-              id="CardLink-template--22690639282433__bestsellers-9241654984961"
-              class="full-unstyled-link"
-              aria-labelledby="CardLink-template--22690639282433__bestsellers-9241654984961 Badge-template--22690639282433__bestsellers-9241654984961"
-            >
-              Hydrating Concealer Stick
-            </a>
-          </h3>
-          <div class="card-information"><span class="caption-large light"></span>
-<div
-  class="
-    price  price--on-sale "
->
-  <div class="price__container"><div class="price__regular">
-      <span class="visually-hidden visually-hidden--inline">Regular price</span>
-      <span class="price-item price-item--regular">
-        $37.99
-      </span>
+      <span class="rating-stars__label">&nbsp;(24,536 Reviews)</span>
     </div>
-    <div class="price__sale ">
-      <span class="visually-hidden visually-hidden--inline compare-price-label">Regular price</span>
-      <span class="price-item price-item--sale price-item--last">
-        $37.99
-      </span>
-        <span class="visually-hidden visually-hidden--inline regular-price-label">Sale price</span>
-        <span class="price__compare-price">
-          <s class="price-item price-item--regular">
-            $49.99
-          </s>
-        </span></div>
-    <small class="unit-price caption hidden">
-      <span class="visually-hidden">Unit price</span>
-      <span class="price-item price-item--last">
-        <span></span>
-        <span aria-hidden="true">/</span>
-        <span class="visually-hidden">&nbsp;per&nbsp;</span>
-        <span>
-        </span>
-      </span>
-    </small>
-  </div></div>
-
-          </div>
-        </div>
-        
-<div class="card__badge bottom left"><span
-              id="Badge-template--22690639282433__bestsellers-9241654984961"
-              class="badge badge--bottom-left color-accent-2"
-            >
-              24%
-            </span></div>
-      </div>
+  
+</div>
+<div
+                class="rich-text__buttons"
+                
+              ><a
+                    
+                      href="https://hushglow.com/products/hush-foundation-cushion?cta=hero"
+                    
+                    class="button button--primary"
+                  >TRY IT NOW!</a></div>
+            <p
+                class="rich-text__caption caption-with-letter-spacing caption-with-letter-spacing--medium"
+                
+              >
+                30-Day Shade Match Guarantee
+              </p></div>
     </div>
   </div>
-                    </div>
-                  </li>
-                
-
-                  <li class="splide__slide">
-                    <div
-                      class="splide__slide__container splide__slide__container--card slider__slide collection-list__item collection-list__item--no-media animate-item animate-item--child"
-                      style="--index:2;"
-                      data-mobile-columns="2"
-                    >
-                      
-<div class="card-wrapper product-card-wrapper underline-links-hover">
-    <div
-      class="
-        card
-        card--standard
-         card--media
-        
-        
-        
-        
-         card--badge-sided
-        
-        
-      "
-      style="--ratio-percent: 100.0%;"
-    >
-      <div
-        class="card__inner color-background-1 gradient ratio"
-        style="--ratio-percent: 100.0%;"
-      ><div class="card__media">
-            <div class="media media--transparent media--hover-effect">
-              
-              <img
-                srcset="//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=165 165w,//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=360 360w,//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=533 533w,//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=720 720w,//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=940 940w,//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=1066 1066w,//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768 1296w
-                "
-                src="//hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?v=1783946768&width=533"
-                sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                alt="Foundation Cushion"
-                class="motion-reduce"
-                
-                  loading="lazy"
-                
-                width="1296"
-                height="1296"
-                id='quick-add-template--22690639282433__bestsellers8822732947713-image'
-              >
-              
-<img
-                  srcset="//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=165 165w,//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=360 360w,//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=533 533w,//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=720 720w,//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=940 940w,//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=1066 1066w,//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976 1080w
-                  "
-                  src="//hushglow.com/cdn/shop/files/beforeafter_1_1_4babd776-9a63-4763-ad09-1c006e97bf69.webp?v=1783025976&width=533"
-                  sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                  alt=""
-                  class="motion-reduce"
-                  loading="lazy"
-                  width="1080"
-                  height="1080"
-                ></div>
-          </div><div class="card__content">
-          <div class="card__information">
-            <h3
-              class="card__heading"
-              
-            >
-              <a
-                href="/products/hush-foundation-cushion"
-                id="StandardCardNoMediaLink-template--22690639282433__bestsellers-8822732947713"
-                class="full-unstyled-link"
-                aria-labelledby="StandardCardNoMediaLink-template--22690639282433__bestsellers-8822732947713 NoMediaStandardBadge-template--22690639282433__bestsellers-8822732947713"
-              >
-                Foundation Cushion
-              </a>
-            </h3>
-          </div>
-          <div class="card__badge bottom left"></div>
-        </div>
-      </div>
-      <div class="card__content">
-        <div class="card__information">
-          <h3
-            class="card__heading h5"
-            
-              id="title-template--22690639282433__bestsellers-8822732947713"
-            
-          >
-            <a
-              href="/products/hush-foundation-cushion"
-              id="CardLink-template--22690639282433__bestsellers-8822732947713"
-              class="full-unstyled-link"
-              aria-labelledby="CardLink-template--22690639282433__bestsellers-8822732947713 Badge-template--22690639282433__bestsellers-8822732947713"
-            >
-              Foundation Cushion
-            </a>
-          </h3>
-          <div class="card-information"><span class="caption-large light"></span>
-<div
-  class="
-    price  price--on-sale "
->
-  <div class="price__container"><div class="price__regular">
-      <span class="visually-hidden visually-hidden--inline">Regular price</span>
-      <span class="price-item price-item--regular">
-        $39.99
-      </span>
-    </div>
-    <div class="price__sale ">
-      <span class="visually-hidden visually-hidden--inline compare-price-label">Regular price</span>
-      <span class="price-item price-item--sale price-item--last">
-        $39.99
-      </span>
-        <span class="visually-hidden visually-hidden--inline regular-price-label">Sale price</span>
-        <span class="price__compare-price">
-          <s class="price-item price-item--regular">
-            $54.99
-          </s>
-        </span></div>
-    <small class="unit-price caption hidden">
-      <span class="visually-hidden">Unit price</span>
-      <span class="price-item price-item--last">
-        <span></span>
-        <span aria-hidden="true">/</span>
-        <span class="visually-hidden">&nbsp;per&nbsp;</span>
-        <span>
-        </span>
-      </span>
-    </small>
-  </div></div>
-
-          </div>
-        </div>
-        
-<div class="card__badge bottom left"><span
-              id="Badge-template--22690639282433__bestsellers-8822732947713"
-              class="badge badge--bottom-left color-accent-2"
-            >
-              27%
-            </span></div>
-      </div>
-    </div>
-  </div>
-                    </div>
-                  </li>
-                
-
-                  <li class="splide__slide">
-                    <div
-                      class="splide__slide__container splide__slide__container--card slider__slide collection-list__item collection-list__item--no-media animate-item animate-item--child"
-                      style="--index:3;"
-                      data-mobile-columns="2"
-                    >
-                      
-<div class="card-wrapper product-card-wrapper underline-links-hover">
-    <div
-      class="
-        card
-        card--standard
-         card--media
-        
-        
-        
-        
-         card--badge-sided
-        
-        
-      "
-      style="--ratio-percent: 100.0%;"
-    >
-      <div
-        class="card__inner color-background-1 gradient ratio"
-        style="--ratio-percent: 100.0%;"
-      ><div class="card__media">
-            <div class="media media--transparent media--hover-effect">
-              
-              <img
-                srcset="//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=165 165w,//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=360 360w,//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=533 533w,//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=720 720w,//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=940 940w,//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=1066 1066w,//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817 1296w
-                "
-                src="//hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817&width=533"
-                sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                alt="Multi-Effect Blush Stick"
-                class="motion-reduce"
-                
-                  loading="lazy"
-                
-                width="1296"
-                height="1296"
-                id='quick-add-template--22690639282433__bestsellers9157281612033-image'
-              >
-              
-<img
-                  srcset="//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=165 165w,//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=360 360w,//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=533 533w,//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=720 720w,//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=940 940w,//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=1066 1066w,//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836 1080w
-                  "
-                  src="//hushglow.com/cdn/shop/files/Frame_1707481329.webp?v=1783021836&width=533"
-                  sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                  alt=""
-                  class="motion-reduce"
-                  loading="lazy"
-                  width="1080"
-                  height="1080"
-                ></div>
-          </div><div class="card__content">
-          <div class="card__information">
-            <h3
-              class="card__heading"
-              
-            >
-              <a
-                href="/products/blush-stick"
-                id="StandardCardNoMediaLink-template--22690639282433__bestsellers-9157281612033"
-                class="full-unstyled-link"
-                aria-labelledby="StandardCardNoMediaLink-template--22690639282433__bestsellers-9157281612033 NoMediaStandardBadge-template--22690639282433__bestsellers-9157281612033"
-              >
-                Multi-Effect Blush Stick
-              </a>
-            </h3>
-          </div>
-          <div class="card__badge bottom left"></div>
-        </div>
-      </div>
-      <div class="card__content">
-        <div class="card__information">
-          <h3
-            class="card__heading h5"
-            
-              id="title-template--22690639282433__bestsellers-9157281612033"
-            
-          >
-            <a
-              href="/products/blush-stick"
-              id="CardLink-template--22690639282433__bestsellers-9157281612033"
-              class="full-unstyled-link"
-              aria-labelledby="CardLink-template--22690639282433__bestsellers-9157281612033 Badge-template--22690639282433__bestsellers-9157281612033"
-            >
-              Multi-Effect Blush Stick
-            </a>
-          </h3>
-          <div class="card-information"><span class="caption-large light"></span>
-<div
-  class="
-    price "
->
-  <div class="price__container"><div class="price__regular">
-      <span class="visually-hidden visually-hidden--inline">Regular price</span>
-      <span class="price-item price-item--regular">
-        $32.99
-      </span>
-    </div>
-    <div class="price__sale ">
-      <span class="visually-hidden visually-hidden--inline compare-price-label">Regular price</span>
-      <span class="price-item price-item--sale price-item--last">
-        $32.99
-      </span>
-        <span class="visually-hidden visually-hidden--inline regular-price-label">Sale price</span>
-        <span class="price__compare-price">
-          <s class="price-item price-item--regular">
-            
-          </s>
-        </span></div>
-    <small class="unit-price caption hidden">
-      <span class="visually-hidden">Unit price</span>
-      <span class="price-item price-item--last">
-        <span></span>
-        <span aria-hidden="true">/</span>
-        <span class="visually-hidden">&nbsp;per&nbsp;</span>
-        <span>
-        </span>
-      </span>
-    </small>
-  </div></div>
-
-          </div>
-        </div>
-        
-<div class="card__badge bottom left"></div>
-      </div>
-    </div>
-  </div>
-                    </div>
-                  </li>
-                
-
-                  <li class="splide__slide">
-                    <div
-                      class="splide__slide__container splide__slide__container--card slider__slide collection-list__item collection-list__item--no-media animate-item animate-item--child"
-                      style="--index:4;"
-                      data-mobile-columns="2"
-                    >
-                      
-<div class="card-wrapper product-card-wrapper underline-links-hover">
-    <div
-      class="
-        card
-        card--standard
-         card--media
-        
-        
-        
-        
-         card--badge-sided
-        
-        
-      "
-      style="--ratio-percent: 100.0%;"
-    >
-      <div
-        class="card__inner color-background-1 gradient ratio"
-        style="--ratio-percent: 100.0%;"
-      ><div class="card__media">
-            <div class="media media--transparent media--hover-effect">
-              
-              <img
-                srcset="//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=165 165w,//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=360 360w,//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=533 533w,//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=720 720w,//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=940 940w,//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=1066 1066w,//hushglow.com/cdn/shop/files/38.jpg?v=1777287206 1500w
-                "
-                src="//hushglow.com/cdn/shop/files/38.jpg?v=1777287206&width=533"
-                sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                alt="Pore-Blurring Primer Stick"
-                class="motion-reduce"
-                
-                  loading="lazy"
-                
-                width="1500"
-                height="1500"
-                id='quick-add-template--22690639282433__bestsellers8856108499201-image'
-              >
-              
-<img
-                  srcset="//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=165 165w,//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=360 360w,//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=533 533w,//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=720 720w,//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=940 940w,//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=1066 1066w,//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389 3129w
-                  "
-                  src="//hushglow.com/cdn/shop/files/11-112759.jpg?v=1780995389&width=533"
-                  sizes="(min-width: 1400px) 317px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                  alt=""
-                  class="motion-reduce"
-                  loading="lazy"
-                  width="3129"
-                  height="3129"
-                ></div>
-          </div><div class="card__content">
-          <div class="card__information">
-            <h3
-              class="card__heading"
-              
-            >
-              <a
-                href="/products/pore-blurring-primer-stick"
-                id="StandardCardNoMediaLink-template--22690639282433__bestsellers-8856108499201"
-                class="full-unstyled-link"
-                aria-labelledby="StandardCardNoMediaLink-template--22690639282433__bestsellers-8856108499201 NoMediaStandardBadge-template--22690639282433__bestsellers-8856108499201"
-              >
-                Pore-Blurring Primer Stick
-              </a>
-            </h3>
-          </div>
-          <div class="card__badge bottom left"></div>
-        </div>
-      </div>
-      <div class="card__content">
-        <div class="card__information">
-          <h3
-            class="card__heading h5"
-            
-              id="title-template--22690639282433__bestsellers-8856108499201"
-            
-          >
-            <a
-              href="/products/pore-blurring-primer-stick"
-              id="CardLink-template--22690639282433__bestsellers-8856108499201"
-              class="full-unstyled-link"
-              aria-labelledby="CardLink-template--22690639282433__bestsellers-8856108499201 Badge-template--22690639282433__bestsellers-8856108499201"
-            >
-              Pore-Blurring Primer Stick
-            </a>
-          </h3>
-          <div class="card-information"><span class="caption-large light"></span>
-<div
-  class="
-    price  price--on-sale "
->
-  <div class="price__container"><div class="price__regular">
-      <span class="visually-hidden visually-hidden--inline">Regular price</span>
-      <span class="price-item price-item--regular">
-        $19.99
-      </span>
-    </div>
-    <div class="price__sale ">
-      <span class="visually-hidden visually-hidden--inline compare-price-label">Regular price</span>
-      <span class="price-item price-item--sale price-item--last">
-        $19.99
-      </span>
-        <span class="visually-hidden visually-hidden--inline regular-price-label">Sale price</span>
-        <span class="price__compare-price">
-          <s class="price-item price-item--regular">
-            $40.99
-          </s>
-        </span></div>
-    <small class="unit-price caption hidden">
-      <span class="visually-hidden">Unit price</span>
-      <span class="price-item price-item--last">
-        <span></span>
-        <span aria-hidden="true">/</span>
-        <span class="visually-hidden">&nbsp;per&nbsp;</span>
-        <span>
-        </span>
-      </span>
-    </small>
-  </div></div>
-
-          </div>
-        </div>
-        
-<div class="card__badge bottom left"><span
-              id="Badge-template--22690639282433__bestsellers-8856108499201"
-              class="badge badge--bottom-left color-accent-2"
-            >
-              51%
-            </span></div>
-      </div>
-    </div>
-  </div>
-                    </div>
-                  </li>
-                
-</ul>
-          </div>
-          <div class="splide__dots-and-arrows">
-            <ul class="splide__pagination"></ul>
-            <div class="splide__arrows"></div>
-          </div>
-        </div>
-        
-          </splide-component>
-        
-      </div>
-    </div></div>
 </div>
 
 
+</section>
+<section class="hgx-section">
+  <div class="inner">
+    <h2 class="hgx-h">Bestsellers</h2>
+    <div class="recgrid">
+      <a class="recbanner" href="#">
+        <img loading="lazy" decoding="async" src="https://hushglow.com/cdn/shop/files/51.jpg?width=800" alt="">
+        <span class="recbanner-in"><b>Already Know What You Want?</b><i>Shop Now</i></span>
+      </a>
+      <div class="recrow">
+      <a class="p-card" href="product-hush-foundation-cushion.html">
+        <div class="ph"><img loading="lazy" decoding="async" class="main" src="https://hushglow.com/cdn/shop/files/1_1296_1296___Ivory_2.webp?width=800" alt="Foundation Cushion"></div>
+        <div class="nm">Foundation Cushion</div>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;<span>(1264)</span></div>
+        <div class="pr"><span class="price-now">$39.99</span><span class="price-was">$70.99</span><span class="save">Save 44%</span></div>
+        <div class="atc">Add to Cart</div>
+      </a>
+      <a class="p-card" href="product-blush-stick.html">
+        <div class="ph"><span class="ptag">New</span><img loading="lazy" decoding="async" class="main" src="https://hushglow.com/cdn/shop/files/1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?width=800" alt="Multi-Effect Blush Stick"></div>
+        <div class="nm">Multi-Effect Blush Stick</div>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;<span>(312)</span></div>
+        <div class="pr"><span class="price-now">$32.99</span></div>
+        <div class="atc">Add to Cart</div>
+      </a>
+      <a class="p-card" href="product-pore-blurring-primer-stick.html">
+        <div class="ph"><img loading="lazy" decoding="async" class="main" src="https://hushglow.com/cdn/shop/files/38.jpg?width=800" alt="Pore-Blurring Primer Stick"></div>
+        <div class="nm">Pore-Blurring Primer Stick</div>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;<span>(674)</span></div>
+        <div class="pr"><span class="price-now">$19.99</span><span class="price-was">$40.99</span><span class="save">Save 51%</span></div>
+        <div class="atc">Add to Cart</div>
+      </a>
+      </div>
+    </div>
+  </div>
 </section>
 <section id="shopify-section-template--22690639282433__klaviyo_form" class="shopify-section section"><style data-shopify>.section-template--22690639282433__klaviyo_form-padding {
     padding-top: calc(48px * 0.75);

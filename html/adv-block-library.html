@@ -510,7 +510,11 @@
 .hgx-section .atcbig:hover{background:#333;border-color:#333}
 .hgx-section .tname .stars{font-size:14px;margin:0}
 .hgx-section .iwt.box .ph{height:auto;aspect-ratio:1/1}
+@media screen and (min-width:750px) and (max-width:1099px){
+  .hgx-section .iwt.box .ph{aspect-ratio:16/9}
+}
 .hgx-section .photobanner{margin-top:96px}
+.hgx-section .headwrap + .photobanner{margin-top:0}
 .hgx-section .photobanner img{width:100%;height:auto;display:block}
 .hgx-section .collgrid .p-card{container-type:inline-size}
 .hgx-section .promotile{position:relative;display:block;overflow:hidden;border-radius:var(--r-card);

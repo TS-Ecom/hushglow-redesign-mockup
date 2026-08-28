@@ -778,6 +778,22 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   background:transparent;grid-template-columns:1fr 1fr;align-items:center}
 .iwt.box .ph{height:auto;aspect-ratio:1/1}
 .iwt.box .tx{padding:0 30px}
+/* The statement scales with the column it sits in: at 1000 the column is 416px and a
+   fixed 40px heading ran to seven lines against a 416px photo. Reaches 40px at 1440. */
+.iwt.box .tx h2{font-size:clamp(31px, 2.05vw + 10.5px, 40px);line-height:1.12}
+
+/* Two columns only once each one can actually hold the statement. The block switches to
+   two at 750, where a column is 325px — narrower than the single column a 749px phone
+   gets — and the heading ran to ten lines against a 325px photo. Between 750 and 999 it
+   stays stacked, with the photo on a landscape crop so it does not fill the screen. The
+   cutoff is 1100 rather than 1000 because the copy itself, not just the heading, needs the
+   room: at 1000 the text column still ran half again as tall as the photo beside it. */
+@media screen and (min-width:750px) and (max-width:1099px){
+  .iwt.box{grid-template-columns:1fr;gap:28px}
+  .iwt.box .ph{aspect-ratio:16/9}
+  .iwt.box .tx{padding:0}
+  .iwt.box .tx h2{font-size:32px}
+}
 .iwt.box.mid .tx{align-items:center;text-align:center}
 .iwt.box.mid .tx p{max-width:34ch}
 
@@ -785,6 +801,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
    A picture on its own, no copy. Moved out of the home page file when the about page
    needed the same thing. */
 .photobanner{margin-top:96px}
+.headwrap + .photobanner{margin-top:0}
 .photobanner img{width:100%;height:auto;display:block}
 
 /* ---------- newsletter section ----------
@@ -1274,6 +1291,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
      .iwt one-column rule never reached it and the photo and the copy stayed side by side
      at 131px each on a phone. Any .iwt variant that sets columns must reset them here. */
   .iwt.box{grid-template-columns:1fr;gap:22px;margin-top:40px}
+  .iwt.box .tx h2{font-size:27px;line-height:1.15}
   .iwt.box .tx{padding:0}
   .pagehead{padding-top:34px}
   .pagehead h1{font-size:30px}

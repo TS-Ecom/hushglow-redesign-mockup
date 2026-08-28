@@ -63,7 +63,7 @@ def by_class(page, prefix):
 # rebuilt with our own section and product card, because that component is already agreed
 # and every other product row on the prototype uses it.
 CARDS = [
-    ('Foundation Cushion', 'product-hush-foundation-cushion', '1_1296_1296___Ivory_2.webp', '', '(1264)', '$39.99', '$70.99', 'Save 44%'),
+    ('Foundation Cushion', 'product-hush-foundation-cushion', '1_1296_1296___Ivory_2.webp', '', '(1264)', '$39.99', '$54.99', 'Save 27%'),
     ('Multi-Effect Blush Stick', 'product-blush-stick', '1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp', 'New', '(312)', '$32.99', '', ''),
     ('Pore-Blurring Primer Stick', 'product-pore-blurring-primer-stick', '38.jpg', '', '(674)', '$19.99', '$40.99', 'Save 51%'),
 ]

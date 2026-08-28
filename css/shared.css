@@ -213,9 +213,10 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .cartdrawer .gifttop{background:var(--paper);padding:10px 12px 14px;border-bottom:1px solid var(--cream);position:relative}
 .cartdrawer .gifttop .x{position:absolute;top:8px;right:12px;font-size:17px;line-height:1;color:var(--ink);padding:2px 4px;z-index:2;transition:opacity .15s ease}
 .cartdrawer .gifttop .x:hover{opacity:.55}
-/* wraps rather than clips: at 15px the line no longer fits a 390px drawer, and losing
-   the end of "spend another $X for Y" is worse than a second line */
-.cartdrawer .gmsg{font-size:15px;line-height:1.4;text-align:center;margin:2px 26px 11px}
+/* One line: the right margin clears the close button, the left one never had to, and the
+   body tracking is dropped here because the sentence needs every pixel it can get. */
+.cartdrawer .gmsg{font-size:14px;letter-spacing:.01em;line-height:1.4;text-align:center;
+  margin:2px 26px 11px 12px}
 .cartdrawer .gmsg b{font-weight:700}
 .cartdrawer .gift1{display:flex;align-items:center;gap:12px;border:1.5px solid var(--sand);background:var(--paper);padding:11px 12px;position:relative;border-radius:var(--r-card)}
 .cartdrawer .gift1 .gph{width:48px;height:48px;flex:none;position:relative;overflow:hidden;border-radius:var(--r-card)}
@@ -244,15 +245,19 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .cartdrawer .item .was{font-size:14px;color:var(--berry);text-decoration:line-through}
 .cartdrawer .strip{background:var(--cream);text-align:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding:9px 20px}
 .cartdrawer .hl{margin:14px 20px 0;padding:12px;display:flex;gap:12px;background:var(--cream);border-radius:var(--r-card)}
-.cartdrawer .hl .ph{width:106px;height:106px;flex:none;position:relative;overflow:hidden;background:var(--paper);align-self:center;border-radius:var(--r-card)}
+.cartdrawer .hl > .cardlink{flex:none;align-self:stretch;display:block}
+.cartdrawer .hl .ph{width:106px;height:100%;min-height:106px;position:relative;overflow:hidden;background:var(--paper);border-radius:var(--r-card)}
 .cartdrawer .hl .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cartdrawer .hl .mid{flex:1;display:flex;flex-direction:column;justify-content:center}
 .cartdrawer .hl .hd{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px}
-.cartdrawer .hl .nm{font-size:15px;color:var(--ink);font-weight:600;line-height:1.35}
+.cartdrawer .hl .nm{font-size:15px;color:var(--ink);font-weight:600;line-height:1.25}
+/* the strapline is the only line in this block that sells nothing, and it cost two of
+   the five lines the column was running to */
+.cartdrawer .hl .shl{display:none}
 .cartdrawer .hl .pr{display:block;font-size:15px;color:var(--ink-soft);margin-top:4px}
 .cartdrawer .hl .pr b{color:var(--ink)}
 .cartdrawer .hl .pr s{color:var(--berry);font-size:14px;margin-left:6px}
-.cartdrawer .hlbtn{display:block;width:100%;text-align:center;border:2px solid var(--ink);border-radius:var(--r-btn);padding:11px 8px;font-size:14px;font-weight:700;letter-spacing:.07em;margin-top:8px;background:var(--paper);cursor:pointer;text-transform:uppercase;transition:background .2s ease,color .2s ease}
+.cartdrawer .hlbtn{display:block;width:100%;text-align:center;border:2px solid var(--ink);border-radius:var(--r-btn);padding:8px;font-size:13px;font-weight:700;letter-spacing:.06em;margin-top:8px;background:var(--paper);cursor:pointer;text-transform:uppercase;transition:background .2s ease,color .2s ease}
 .cartdrawer .hlbtn:hover{background:var(--ink);color:var(--paper)}
 .cartdrawer .cyl{padding:20px 20px 8px}
 .cartdrawer .hd2{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 13px}
@@ -277,6 +282,7 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .cartdrawer .co:hover{background:#333}
 .cartdrawer .co .lk{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .cartdrawer .gpill{display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;color:var(--ink-soft);margin:0 0 5px}
+.cartdrawer .gpill .grt-t{flex:0 1 auto;text-align:center}
 .cartdrawer .gpill svg{width:13px;height:13px;flex:none;stroke:var(--ink-soft);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .cartdrawer .gpill b{color:var(--gold)}
 .cartdrawer .cpay{display:flex;justify-content:center;align-items:center;gap:5px;margin-top:3px}
@@ -434,7 +440,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .cartdrawer .hl .nm{font-size:14px}
   .cartdrawer .hl .pr{font-size:14px}
   .cartdrawer .hl .pr s{font-size:14px}
-  .cartdrawer .hlbtn{font-size:14px}
+  .cartdrawer .hlbtn{font-size:13px}
   .cartdrawer .hd2{font-size:14px}
   .cartdrawer .ccard .nm{font-size:14px}
   .cartdrawer .row.tsave{font-size:14px}

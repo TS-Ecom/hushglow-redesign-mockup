@@ -228,5 +228,65 @@ FOOT = '''
 </script>
 '''
 
+# The order a real advertorial reads in, so the page can be judged as a page rather than
+# as an inventory: masthead, hook, proof, the reasons, the offer, the social proof, the FAQ.
+PAGE_ORDER = [
+    'Advertorial header', 'Rich text', 'Icon bar',
+    'Image with text — plain', 'Image with text — with CTA',
+    'AI — Editorial image with text', 'AI — Statistics',
+    'Image with text — with CTA and star rating', 'Comparison table',
+    'AI — How it works', 'Section divider', 'Multicolumn', 'Custom columns',
+    'Countdown timer (app)', 'Comparison slider', 'Logo list', 'Testimonials',
+    'AI — Reviews slider', 'AI — Image with text carousel',
+    'Collapsible content', 'Featured collection', 'Custom liquid — Klaviyo form',
+    'Sticky button',
+]
+
+TPL_HEAD = """<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HUSH GLOW — advertorial template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+__THEME_CSS__
+
+<!-- Every family A section on one page, in the order an advertorial actually reads, with
+     no labels and nothing added — so it can be judged and resized like a real page.
+     The theme's own script is loaded, which is what drives the carousels and the
+     accordion; without it the sliders lay out as one long overflowing row.
+     Regenerate with tools/build-block-library.py. -->
+<style>
+  /* The theme pins html to the viewport height and scrolls the body inside its own layout
+     shell, which is not reproduced here — without this the page will not scroll at all. */
+  html, body{height:auto;overflow:visible}
+  body{margin:0;background:#fff}
+</style>
+
+"""
+
+TPL_FOOT = """
+<script src="__THEME_JS__"></script>
+"""
+
+def build_template():
+    by_name = {name: get for name, uses, note, get in BLOCKS}
+    missing = [n for n in PAGE_ORDER if n not in by_name]
+    if missing:
+        raise SystemExit('PAGE_ORDER names blocks that do not exist: %s' % missing)
+    unplaced = [n for n in by_name if n not in PAGE_ORDER]
+    if unplaced:
+        raise SystemExit('these blocks are built but not placed on the template: %s' % unplaced)
+    parts = []
+    for name in PAGE_ORDER:
+        frag = by_name[name]()
+        if frag:
+            parts.append(frag)
+    js = open(SRC + '../secondary.txt').read().strip()
+    doc = (TPL_HEAD.replace('__THEME_CSS__', theme_css())
+           + '\n'.join(parts) + TPL_FOOT.replace('__THEME_JS__', js))
+    open('html/adv-template-all-sections.html', 'w', encoding='utf-8').write(doc)
+    print('template:', len(parts), 'sections |', len(doc), 'bytes')
+
 if __name__ == '__main__':
     main()
+    build_template()

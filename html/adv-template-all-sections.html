@@ -450,8 +450,7 @@
 .hgx-section .inner{max-width:1320px;margin:0 auto}
 .hgx-section .lookarrow.prev{left:26px}
 .hgx-section .iwt .ph{height:640px;overflow:hidden}
-.hgx-section /* two of the bundle template's image-with-text blocks carry a video, .hgx-section not a still */
-.iwt .ph img, .hgx-section .iwt .ph video{width:100%;height:100%;object-fit:cover;display:block}
+.hgx-section .iwt .ph img, .hgx-section .iwt .ph video{width:100%;height:100%;object-fit:cover;display:block}
 .hgx-section .iwt.flip .ph{order:2}
 .hgx-section .iwt.ovl .ph{height:560px}
 .hgx-section .p-card{cursor:pointer;position:relative;display:block;color:inherit;text-decoration:none}
@@ -472,9 +471,7 @@
 .hgx-section .atc{margin-top:12px;display:flex;align-items:center;justify-content:center;height:46px;border-radius:var(--r-btn);background:var(--ink);color:var(--paper);font-size:14px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transition:background .2s ease,transform .12s ease}
 .hgx-section .atc:hover{background:#333}
 .hgx-section .atc:active{transform:scale(.985)}
-.hgx-section /* square, .hgx-section like every other photo in the drawer: stretching it to the row height cropped
-   the product out of a square source, .hgx-section and the bigger type made the row taller still */
-.cartdrawer .item .ph{width:84px;aspect-ratio:1/1;align-self:flex-start;flex:none;position:relative;overflow:hidden;background:var(--cream);border-radius:var(--r-card)}
+.hgx-section .cartdrawer .item .ph{width:84px;aspect-ratio:1/1;align-self:flex-start;flex:none;position:relative;overflow:hidden;background:var(--cream);border-radius:var(--r-card)}
 .hgx-section .cartdrawer .item .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hgx-section .cartdrawer .item .price{font-weight:600;font-size:16px}
 .hgx-section .cartdrawer .hl .ph{width:106px;height:106px;flex:none;position:relative;overflow:hidden;background:var(--paper);align-self:center;border-radius:var(--r-card)}
@@ -486,35 +483,43 @@
 .hgx-section .cartdrawer .ccard .ph{aspect-ratio:1/1;position:relative;overflow:hidden;background:var(--cream);border-radius:var(--r-card)}
 .hgx-section .cartdrawer .ccard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hgx-section .cartdrawer .ccard .nm{font-size:14px;font-weight:500;margin:12px 0 0;line-height:1.35}
+@media screen and (max-width:749px){
+  .hgx-section .p-card .nm{font-size:16px;margin-top:10px}
+  .hgx-section .stars{font-size:13px;letter-spacing:2px;margin:4px 0}
+  .hgx-section .stars span{font-size:13px;margin-left:5px}
+  .hgx-section .pr{font-size:16px;gap:6px}
+  .hgx-section .pr .save{font-size:12px;padding:3px 7px;letter-spacing:.04em}
+  .hgx-section .atc{height:46px;font-size:14px;margin-top:10px}
+  .hgx-section .ptag{top:8px;right:8px;font-size:12px;padding:4px 9px}
+  .hgx-section .iwt.ovl .ph{height:340px}
+  .hgx-section .iwt .ph{height:340px;order:0}
+  .hgx-section .iwt.flip .ph{order:0}
+  .hgx-section .grid3 .p-card{flex:0 0 220px;scroll-snap-align:start}
+  .hgx-section .grid4.swipe-m .p-card{flex:0 0 220px;scroll-snap-align:start}
+}
 @media (prefers-reduced-motion: reduce){
   .hgx-section .press .half{animation:none}
 }
+@media screen and (min-width:750px){
+  .hgx-section .ptag{font-size:14px}
+  .hgx-section .stars{font-size:14px}
+  .hgx-section .stars span{font-size:14px}
+  .hgx-section .pr .save{font-size:14px}
+  .hgx-section .atc{font-size:14px}
+  .hgx-section .cartdrawer .hl .nm{font-size:14px}
+  .hgx-section .cartdrawer .hl .pr{font-size:14px}
+  .hgx-section .cartdrawer .hl .pr s{font-size:14px}
+  .hgx-section .cartdrawer .ccard .nm{font-size:14px}
+}
 .hgx-section .galarrow.prev{left:16px}
-.hgx-section /* gift box (mirrors cart gift bar) */
-/* Gift block, .hgx-section variant C. Cream ribbon with the threshold underlined and set larger — it
-   was being skimmed past before. Nothing here uses the buy button's burgundy, .hgx-section so the CTA
-   stays the only thing on screen that looks clickable. */
-/* ATC + subscription. The main CTA is deliberately the heaviest element in the buy box. */
-/* Add to Cart is black; burgundy stays for the secondary calls (Try Now, .hgx-section Find My Shade, .hgx-section Meet the #1 Foundation), .hgx-section so buying reads as the strongest action on the page. */
-  .atcbig{width:100%;padding:13px 0;font-size:19px;line-height:1.3;letter-spacing:.06em;background:var(--ink);border-color:var(--ink);box-shadow:0 6px 20px rgba(18,18,18,.2)}
+.hgx-section .atcbig{width:100%;padding:13px 0;font-size:19px;line-height:1.3;letter-spacing:.06em;background:var(--ink);border-color:var(--ink);box-shadow:0 6px 20px rgba(18,18,18,.2)}
 .hgx-section .atcbig:hover{background:#333;border-color:#333}
 .hgx-section .tname .stars{font-size:14px;margin:0}
 .hgx-section .iwt.box .ph{height:auto;aspect-ratio:1/1}
-.hgx-section /* ---------- full-bleed photo band ----------
-   A picture on its own, .hgx-section no copy. Moved out of the home page file when the about page
-   needed the same thing. */
-.photobanner{margin-top:96px}
+.hgx-section .photobanner{margin-top:96px}
 .hgx-section .photobanner img{width:100%;height:auto;display:block}
-.hgx-section /* Whether the discount chip fits is a question about the card, .hgx-section not the window: the same
-   206px card happens at 1024 in the four-up grid and at 390 in the two-up one. Measured on
-   this card — the two prices alone need 117px and always fit; adding the chip needs 190px, .hgx-section and getting under that would mean prices below 15px, .hgx-section the one number here that must not
-   shrink. So the chip shows only once the card is wide enough to hold it on one line, .hgx-section and
-   below that the struck-through price carries the discount on its own. */
-.collgrid .p-card{container-type:inline-size}
-.hgx-section /* ---------- promo tile ----------
-   Sits in the grid as one more cell and stretches to whatever height the row of cards
-   ends up at, .hgx-section so the row never breaks. The whole tile is the link. */
-.promotile{position:relative;display:block;overflow:hidden;border-radius:var(--r-card);
+.hgx-section .collgrid .p-card{container-type:inline-size}
+.hgx-section .promotile{position:relative;display:block;overflow:hidden;border-radius:var(--r-card);
   min-height:340px;height:100%;color:var(--paper);text-decoration:none;background:var(--cream)}
 .hgx-section .promotile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transition:transform .5s ease}
@@ -533,33 +538,18 @@
 .hgx-section .ph-eyebrow{font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
   color:var(--ink-soft);margin-bottom:10px}
 .hgx-section .ph-lede{font-size:17px;color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:14px auto 0}
-.hgx-section /* ---------- press marquee ----------
-   Two identical halves scrolling past each other, .hgx-section so the loop has no seam. Moved out of
-   the home page file when the quiz hub page needed the same strip. */
-.press{padding:34px 0;overflow:hidden}
+.hgx-section .press{padding:34px 0;overflow:hidden}
 .hgx-section .press .ticker{display:flex;width:max-content}
 .hgx-section .press .half{display:flex;align-items:center;gap:96px;padding-right:96px;animation:tickmove 30s linear infinite}
 .hgx-section .press img{height:30px;width:auto;filter:grayscale(1)}
-.hgx-section /* ---------- blocks used by more than one product template ----------
-   Bundle tiers with their offer timer, .hgx-section review cards, .hgx-section the ingredients variant of
-   image-with-text, .hgx-section the filled section variant, .hgx-section the how-to-use tags and the price row.
-   These lived as identical copies in the blush and concealer page files until now:
-   any page that renders the same markup now gets the same styling for free. */
-
-/* ---------- price row (live buy box shows price + BESTSELLER badge) ---------- */
-.pricerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+.hgx-section .pricerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}
 .hgx-section .revsec .twrap .lookarrow.prev{left:-22px}
-.hgx-section /* ---------- buy-box price row ---------- */
-.pricerow .pnow{font-size:26px;font-weight:700;letter-spacing:.01em}
+.hgx-section .pricerow .pnow{font-size:26px;font-weight:700;letter-spacing:.01em}
 .hgx-section .pricerow .pbadge{background:var(--berry);color:#fff;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-chip)}
-.hgx-section /* compare-at stays quieter than the price it is struck against */
-.pricerow s{color:var(--berry);font-weight:400;font-size:19px;text-decoration:line-through}
-.hgx-section /* optional saving chip: shown on the products whose live buy box carries one */
-.pricerow .psave{background:var(--cream);color:var(--berry-deep);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:var(--r-chip)}
-.hgx-section /* the banners carry copy near their left edge, .hgx-section so the controls sit right at the rim */
-.bslider .lookarrow.prev{left:8px}
-.hgx-section /* ---------- recommendations: banner + three products (live arrangement) ---------- */
-.recgrid{display:grid;grid-template-columns:minmax(0,1fr) 3fr;gap:26px;max-width:1320px;margin:0 auto;align-items:start}
+.hgx-section .pricerow s{color:var(--berry);font-weight:400;font-size:19px;text-decoration:line-through}
+.hgx-section .pricerow .psave{background:var(--cream);color:var(--berry-deep);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:var(--r-chip)}
+.hgx-section .bslider .lookarrow.prev{left:8px}
+.hgx-section .recgrid{display:grid;grid-template-columns:minmax(0,1fr) 3fr;gap:26px;max-width:1320px;margin:0 auto;align-items:start}
 .hgx-section .recrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
 .hgx-section .recbanner{position:relative;display:block;overflow:hidden;border-radius:var(--r-card);aspect-ratio:1/1.42;cursor:pointer;background:var(--cream)}
 .hgx-section .recbanner img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
@@ -567,14 +557,37 @@
 .hgx-section .recbanner-in{position:absolute;left:0;right:0;bottom:0;padding:22px 20px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;color:#fff;background:linear-gradient(to top,rgba(18,18,18,.62),rgba(18,18,18,0))}
 .hgx-section .recbanner-in b{font-size:22px;font-weight:600;line-height:1.2;letter-spacing:.01em}
 .hgx-section .recbanner-in i{font-style:normal;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px}
-.hgx-section /* ---------- grid / flex children need a floor of zero ----------
-   A grid or flex item defaults to min-width:auto, .hgx-section which means "never shrink below my
-   content". With a larger system font that turns every long word into a stretched
-   column and pushes the page sideways. Every layout container on the product pages
-   gets the floor here, .hgx-section once, .hgx-section instead of being patched block by block. */
-.iwt > .ph, .hgx-section .iwt > .tx, .hgx-section .pdp > .gal, .hgx-section .pdp > .info, .hgx-section .ibar > .ib, .hgx-section .stockrow > *, .hgx-section .shiprow > *, .hgx-section .grt > *, .hgx-section .bgrid > *, .hgx-section .cmpwrap > *, .hgx-section .recgrid > *, .hgx-section .bun > *, .hgx-section .upcard > *, .hgx-section .gcard > *, .hgx-section .satc > *, .hgx-section .step > *, .hgx-section .resgrid > *, .hgx-section .rcards .rcard > *{min-width:0}
-.hgx-section /* rows that carry a price or a rating must be free to drop onto a second line */
-.gpr, .hgx-section .uppr, .hgx-section .puffpr, .hgx-section .stockrow, .hgx-section .pricerow, .hgx-section .tname, .hgx-section .satc .sprice{flex-wrap:wrap}
+@media screen and (max-width:749px){
+  .hgx-section .atcbig{padding:12px 0;font-size:18px;line-height:1.3}
+  .hgx-section .pricerow{gap:10px;margin-bottom:14px}
+  .hgx-section .pricerow .pnow{font-size:24px}
+  .hgx-section .pricerow .pbadge{font-size:12px;padding:4px 9px}
+  .hgx-section .pricerow s{font-size:17px}
+  .hgx-section .pricerow .psave{font-size:12px;padding:4px 8px}
+  .hgx-section .photobanner{margin-top:64px}
+  .hgx-section .collgrid .p-card .nm{font-size:15px;line-height:1.35;margin-top:11px}
+  .hgx-section .collgrid .stars{font-size:12px;letter-spacing:2px;margin:4px 0}
+  .hgx-section .collgrid .stars span{font-size:12px;margin-left:4px}
+  .hgx-section .collgrid .pr{gap:6px;font-size:15px;row-gap:6px}
+  .hgx-section .collgrid .atc{height:42px;font-size:13px;margin-top:10px}
+  .hgx-section .promotile{min-height:0}
+  .hgx-section .promotile .in{left:14px;right:14px;bottom:14px;gap:6px}
+  .hgx-section .promotile b{font-size:17px}
+  .hgx-section .promotile p{font-size:14px}
+  .hgx-section .promotile i{font-size:11px;padding:9px 15px}
+  .hgx-section .ph-lede{font-size:16px;margin-top:12px}
+  .hgx-section .press{padding:22px 0}
+  .hgx-section .press .half{gap:54px;padding-right:54px;animation-duration:24s}
+  .hgx-section .press img{height:20px}
+  .hgx-section .recgrid{display:block}
+  .hgx-section .recbanner{aspect-ratio:1/1;margin-bottom:16px}
+  .hgx-section .recbanner-in b{font-size:22px}
+  .hgx-section .recrow{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:2px var(--pagepad) 6px;scroll-padding-inline:var(--pagepad)}
+  .hgx-section .recrow::-webkit-scrollbar{display:none}
+  .hgx-section .recrow .p-card{flex:0 0 62vw;scroll-snap-align:start}
+}
+.hgx-section .iwt > .ph, .hgx-section .iwt > .tx, .hgx-section .pdp > .gal, .hgx-section .pdp > .info, .hgx-section .ibar > .ib, .hgx-section .stockrow > *, .hgx-section .shiprow > *, .hgx-section .grt > *, .hgx-section .bgrid > *, .hgx-section .cmpwrap > *, .hgx-section .recgrid > *, .hgx-section .bun > *, .hgx-section .upcard > *, .hgx-section .gcard > *, .hgx-section .satc > *, .hgx-section .step > *, .hgx-section .resgrid > *, .hgx-section .rcards .rcard > *{min-width:0}
+.hgx-section .gpr, .hgx-section .uppr, .hgx-section .puffpr, .hgx-section .stockrow, .hgx-section .pricerow, .hgx-section .tname, .hgx-section .satc .sprice{flex-wrap:wrap}
 </style>
 <style>
   /* The theme pins html to the viewport height and scrolls the body inside its own layout

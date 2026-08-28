@@ -552,6 +552,18 @@ function cartToggle (open) {
      pretending to fetch: the prototype has the whole collection in the markup, and a
      control that does nothing is worse than no control. Featured is the markup order,
      so it is remembered rather than recomputed. */
+  /* Collection switcher. On a phone the pills run in a horizontally scrollable rail, and
+     the collection you are actually on can sit past the right edge — so the page opened
+     showing the active pill sliced in half. Scroll the rail, not the element:
+     scrollIntoView would also scroll the page vertically to reach it. */
+  document.querySelectorAll('.collswitch').forEach(function (rail) {
+    var on = rail.querySelector('a.on');
+    if (!on) return;
+    var pad = parseFloat(getComputedStyle(rail).paddingRight) || 0;
+    var over = on.getBoundingClientRect().right - (rail.getBoundingClientRect().right - pad);
+    if (over > 0) rail.scrollLeft += over;
+  });
+
   document.querySelectorAll('[data-collection-sort]').forEach(function (sel) {
     var grid = sel.closest('.inner').querySelector('.collgrid');
     if (!grid) return;

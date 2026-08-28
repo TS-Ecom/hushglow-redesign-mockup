@@ -41,7 +41,7 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .btn-secondary:hover{background:var(--ink);color:var(--paper)}
 .btn-accent:hover{background:#4a1518;border-color:#4a1518}
 .btn-paper:hover{background:var(--cream);border-color:var(--cream)}
-.sec-h{font-size:30px;font-weight:600;text-align:center;letter-spacing:.02em;margin-bottom:38px}
+.sec-h{font-size:30px;font-weight:600;text-align:center;letter-spacing:.02em;line-height:1.2;margin-bottom:38px}
 /* desktop section rhythm: 64px between blocks. The page used to run 96-104 and read
    as a series of holes on a wide screen. */
 .section{padding:64px var(--pagepad) 0}
@@ -113,7 +113,7 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .iwt .ph img,.iwt .ph video{width:100%;height:100%;object-fit:cover;display:block}
 .iwt .tx{display:flex;flex-direction:column;justify-content:center;padding:60px 84px;gap:20px;align-items:flex-start}
 .iwt .tx .cap{font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink-soft);margin-bottom:-14px}
-.iwt .tx h2{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.15;overflow-wrap:anywhere;hyphens:auto}
+.iwt .tx h2{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.15;overflow-wrap:break-word;hyphens:manual}
 .iwt .tx p{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:min(52ch,100%)}
 .iwt .tx p b{color:var(--ink);font-weight:600}
 /* the shade block leads its paragraph with a sub-heading; on a wide column it used to
@@ -309,7 +309,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   :root{--pagepad:18px}
   /* one mobile rhythm for every section break: 40px. Anything larger reads as a hole
      on a phone, which is what the client kept flagging. */
-  .section{padding:40px var(--pagepad) 0}
+  .section{padding:28px var(--pagepad) 0}
   .sec-h{font-size:24px;margin-bottom:24px}
   /* buttons stay loud through weight and caps, not through size */
   .btn{font-size:14px;padding:13px 22px;line-height:1.35}
@@ -482,7 +482,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .thumbs img:hover{opacity:1}
   .thumbs img.on{border-color:var(--ink);opacity:1}
 /* info column */
-  .info{max-width:540px}
+  .info,.tabs2{max-width:540px}
 /* badge V6, the variant we approved: solid burgundy, white type, flush left */
   .badge{display:inline-block;max-width:100%;background:transparent;color:var(--berry-deep);border:1.5px solid var(--berry-deep);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;line-height:1.35;padding:7px 13px;margin:0 0 16px;border-radius:var(--r-chip);white-space:normal;overflow-wrap:break-word}
   .lovedrow{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px}
@@ -681,6 +681,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .vplay::after{content:'';position:absolute;left:52%;top:50%;transform:translate(-50%,-50%);border-left:11px solid var(--ink);border-top:7px solid transparent;border-bottom:7px solid transparent}
 /* badge stays put: it marks the tile as a video, not just a loading state */
 /* bottom tabs */
+/* 10. The second accordion is a grid item of .pdp, not a child of .info, so it inherits
+   neither the page gutter that .info carries on a phone nor the cap that keeps .info in
+   line with the heading on a desktop. Both have to be given to it explicitly. */
 .tabs2{margin-top:28px}
 /* ---------- trust ticker (marquee like the live strip, our styling) ---------- */
 /* live ticker: beige band with white type, not a cream band with dark type */
@@ -742,17 +745,17 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .giftbox{border-radius:var(--r-card);overflow:hidden;margin:18px 0 16px}
 .gribbon{background:var(--cream);color:var(--ink);font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:9px 12px}
 .gribbon em{font-style:normal;font-size:17px;font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
-.gcard{display:flex;align-items:center;gap:14px;background:var(--soft);padding:14px;text-align:left}
-.gcard img{width:96px;height:96px;object-fit:cover;flex:none;border-radius:var(--r-card);background:#fff}
+.gcard{display:flex;align-items:center;gap:12px;background:var(--soft);padding:12px;text-align:left}
+.gcard img{width:80px;height:80px;object-fit:cover;flex:none;border-radius:var(--r-card);background:#fff}
 .gmid{flex:1;min-width:0}
-.gmid b{display:block;font-size:17px;font-weight:700}
-.gmid small{display:block;font-size:14px;color:var(--ink-soft);line-height:1.5;margin-top:2px}
-.gpr{display:flex;align-items:center;gap:9px;margin-top:7px}
-.fchip{font-style:normal;background:var(--ink);color:#fff;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-chip)}
-.gcard s{font-size:15px;color:var(--ink-soft)}
+.gmid b{display:block;font-size:16px;font-weight:700;line-height:1.3}
+.gmid small{display:block;font-size:13px;letter-spacing:0;color:var(--ink-soft);line-height:1.4;margin-top:2px}
+.gpr{display:flex;align-items:center;gap:8px;margin-top:6px}
+.fchip{font-style:normal;background:var(--ink);color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1.5;padding:2px 9px;border-radius:var(--r-chip)}
+.gcard s{font-size:14px;color:var(--ink-soft)}
 
 /* ---------- shade gallery: photo cards with swatch, name and description ---------- */
-.shades .eyebrow{text-align:center;font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:10px}
+.eyebrow{text-align:center;font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:10px}
 .shades .sec-h.statement{margin-bottom:14px}
 .shsub{text-align:center;font-size:16px;color:var(--ink-soft);max-width:min(60ch,100%);margin:0 auto 40px}
 .shgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;max-width:1320px;margin:0 auto}
@@ -834,6 +837,11 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .collgrid .p-card{container-type:inline-size}
 @container (max-width: 219px){
   .collgrid .p-card .pr .save{display:none}
+}
+/* the tag is a label, not a headline: on a narrow card it steps down rather than
+   stretching across the whole photo */
+@container (max-width: 219px){
+  .collgrid .p-card .ptag{font-size:10px;letter-spacing:.1em;padding:4px 7px;top:7px;right:7px}
 }
 
 /* ---------- promo tile ----------
@@ -1051,7 +1059,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .bsdots i.on{background:var(--ink);opacity:1}
 /* 3 steps: cards are separated by a soft shadow instead of an outline. */
 .steps{padding:56px var(--pagepad) 0}
-.sec-h.statement{text-transform:none;letter-spacing:.02em;font-size:42px;font-weight:600}
+.sec-h.statement{text-transform:none;letter-spacing:.02em;font-size:42px;font-weight:600;line-height:1.15}
 /* One column per step, whatever the count: three products run three steps and the
    travel kit runs four, and a fixed three left the fourth stranded on its own row. */
 .stepgrid{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:26px;max-width:1320px;margin:0 auto}
@@ -1118,6 +1126,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .galarrow{width:34px;height:34px}
   .lookarrow svg,.galarrow svg{width:19px;height:19px}
   .info{max-width:none;padding:0 var(--pagepad);margin-top:-6px}
+  .tabs2{max-width:none;padding:0 var(--pagepad)}
   .info h1{font-size:22px;margin-bottom:12px}
   .badge{font-size:12px;padding:7px 12px}
   .pdpquote{font-size:15px;padding-left:12px;margin-bottom:16px}
@@ -1208,17 +1217,17 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .pricerow .pbadge{font-size:12px;padding:4px 9px}
   .pricerow s{font-size:17px}
   .pricerow .psave{font-size:12px;padding:4px 8px}
-    .gmid small{font-size:16px}
-  .gcard s{font-size:15px}
+  .gmid small{font-size:13px;line-height:1.4}
+  .gcard s{font-size:14px}
   .shgrid{display:flex;grid-template-columns:none;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);scroll-padding-inline:var(--pagepad)}
   .shgrid::-webkit-scrollbar{display:none}
   .shcard{flex:0 0 42vw;scroll-snap-align:start}
   .shsub{font-size:15px;margin-bottom:26px}
-  .shades .eyebrow{font-size:13px}
+  .eyebrow{font-size:13px}
   .shades .benef-cta{margin-top:32px}
-  .section.fill,.steps.fill{padding-top:40px;padding-bottom:40px}
+  .section.fill,.steps.fill{padding-top:30px;padding-bottom:30px}
   .iwt.ingr{margin-top:40px}
-  .section{padding-top:40px}
+  .section{padding-top:28px}
   .bundtimer{font-size:14px}
   /* the live section stacks and flips the copy flush left on a phone */
   .newsletter{margin-top:56px;padding:44px var(--pagepad)}
@@ -1228,8 +1237,12 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .collbanner img{aspect-ratio:4/3;max-height:none}
   .collbanner + .pagehead{padding-top:20px}
   /* three pills do not fit a phone row: swipe them */
+  /* the rail runs to the screen edge, not to the content container: width:100% pinned it
+     to the container and the last pill was sliced off 36px early. width:auto lets the
+     negative margins actually widen it. */
   .collswitch{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
-    margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);width:100%}
+    margin:0 calc(-1 * var(--pagepad));padding:0 var(--pagepad);
+    width:auto;max-width:none;flex:1 1 auto;min-width:0}
   .collswitch::-webkit-scrollbar{display:none}
   .collswitch a{font-size:12px;padding:10px 15px}
   /* count and sort share one row on a phone: the select gives up its slack so the
@@ -1257,7 +1270,10 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .promotile i{font-size:11px;padding:9px 15px}
   .collbar{margin-bottom:18px;gap:12px}
   .collgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-  .iwt.box{gap:22px;margin-top:40px}
+  /* 11. Same trap as .iwt.ovl above: .iwt.box sets two columns at 0-2-0, so the plain
+     .iwt one-column rule never reached it and the photo and the copy stayed side by side
+     at 131px each on a phone. Any .iwt variant that sets columns must reset them here. */
+  .iwt.box{grid-template-columns:1fr;gap:22px;margin-top:40px}
   .iwt.box .tx{padding:0}
   .pagehead{padding-top:34px}
   .pagehead h1{font-size:30px}
@@ -1364,7 +1380,9 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .pdpquote{flex-wrap:wrap}
   .pdpquote .qstars{letter-spacing:0}
   .gcard{flex-wrap:wrap}
-  .gcard img{width:72px;height:72px}
+  /* the note beside it needs 218px to stay on one line and had 216: the eight pixels come
+     out of the thumbnail, which also takes eight off the height of the card */
+  .gcard img{width:64px;height:64px}
 }
 
 /* ---------- narrow desktop / tablet with a larger font ----------
@@ -1400,7 +1418,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .ratrow .tp-svg{width:86px;height:17px}
   .ratrow .dn{font-size:13px}
 
-  .grt{font-size:13px;padding:11px 13px;gap:8px}
+  .grt{font-size:13px;letter-spacing:.01em;padding:11px 13px;gap:8px}
+  .grt-t{text-wrap:balance}
 
   .stockrow{font-size:13px;gap:8px}
   .stockrow .flg{width:18px;height:13px}

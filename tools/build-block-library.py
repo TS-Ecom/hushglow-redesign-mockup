@@ -165,7 +165,12 @@ CARD_CLASSES = ('hgx-section', 'hgx-h', 'inner', 'recgrid', 'recbanner', 'recban
                 'price-was', 'save', 'atc', 'main')
 
 def _rules(css):
-    """Split a stylesheet into (selector, body) pairs, descending into @media."""
+    """Split a stylesheet into (selector, body) pairs, descending into @media.
+
+       Comments are stripped first: shared.css puts one above almost every rule, and a
+       selector read as "/* ... */\n@media ..." does not start with @media, so the whole
+       mobile block was being swallowed as if it were one rule's declarations."""
+    css = re.sub(r'/\*.*?\*/', '', css, flags=re.S)
     out, i, n = [], 0, len(css)
     while i < n:
         j = css.find('{', i)

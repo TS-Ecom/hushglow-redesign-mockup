@@ -182,6 +182,15 @@ a{text-decoration:none}
 
 /* per-block spacing, emitted by adv-main.liquid for each block */
 %s
+
+/* ---- our corrections on top of the lifted theme CSS ----
+   Everything above this line is the store as it runs today. This is the only block that
+   is not, and it exists because the author card is an inline-flex box with no width cap:
+   it sizes to its content, will not shrink, and so runs 34px past a 320 or 360px screen
+   and drags the whole page sideways. The live store does this too. Kept to the minimum
+   needed to stop the sideways scroll; nothing else about the card changes. */
+.adv-author{max-width:100%%;flex-wrap:wrap}
+.adv-author__title,.adv-author__subtitle{min-width:0;overflow-wrap:break-word}
 </style>
 
 <div class="AdvHeader">

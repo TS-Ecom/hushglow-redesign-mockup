@@ -661,22 +661,47 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* one pane only: the heading is a label, not a switch */
 .uptabs.single b{cursor:default;color:var(--ink);border-bottom-color:transparent}
 /* photo left, copy and a full-width Add to Cart on the right — the live arrangement */
-.upcard{color:inherit;text-decoration:none;display:flex;align-items:center;gap:14px;border-radius:var(--r-card);box-shadow:0 2px 10px rgba(18,18,18,.09);padding:12px 14px;margin-bottom:12px;background:#fff}
-.upcard img{width:112px;height:112px;object-fit:cover;flex:none;background:var(--cream);border-radius:var(--r-card)}
+/* The row is sized by the column it sits in, not by the screen. On a 1024px desktop the
+   buy-box column is 414px, narrower than a 430px phone, and showing the description there
+   ran the row to 248px; at 750 the column is 313px and it ran to 537px. So the roomy
+   version is gated on the container, not on a media query. */
+.upsells{container-type:inline-size}
+.upcard{color:inherit;text-decoration:none;display:flex;align-items:center;gap:12px;border-radius:var(--r-card);box-shadow:0 2px 10px rgba(18,18,18,.09);padding:10px 12px;margin-bottom:12px;background:#fff}
+.upcard img{width:96px;height:96px;object-fit:contain;flex:none;background:#fff;border-radius:var(--r-card)}
 .upmid{flex:1 1 auto;min-width:0;max-width:100%}
-.upmid b{font-size:16px;font-weight:600;display:block}
-.upmid small{font-size:14px;color:var(--ink-soft);line-height:1.55;display:block;margin:1px 0 3px}
-.uppr{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;font-size:14px}
+.upmid b{font-size:15px;font-weight:600;line-height:1.3;display:block}
+.upmid small{font-size:14px;color:var(--ink-soft);line-height:1.55;display:none;margin:1px 0 3px}
+.uppr{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;font-size:15px;margin-top:3px}
 .uppr b{font-weight:600}
 .uppr s{color:var(--berry);font-weight:400}
 .usave{font-style:normal;background:var(--berry);color:#fff;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:1px 7px;line-height:1.5;border-radius:var(--r-chip)}
 /* compact Add beside the copy — the arrangement the client singled out as the one they
    liked, kept as is and only recoloured to the brand palette */
-.upbtn{flex:none;border:2px solid var(--ink);border-radius:var(--r-btn);background:#fff;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:14px 22px;cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,transform .12s ease}
+.upbtn{flex:none;border:2px solid var(--ink);border-radius:var(--r-btn);background:#fff;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:12px 16px;min-height:44px;cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,transform .12s ease}
 .upbtn:hover{background:var(--ink);color:var(--paper)}
 .upbtn:active{transform:scale(.96)}
 .upbtn.added{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .upbtn .lg{display:none}
+/* 480px is where the middle column still has ~230px after a 112px photo and the full
+   button, which is three lines of description rather than six */
+@container (max-width:340px){
+  /* the middle column is down to ~85px here and the product name was breaking into four
+     lines, which cost more height than the photo saves. Both the photo and the button give
+     ground so the name gets back to three. */
+  .upcard{gap:10px;padding:10px}
+  .upcard img{width:72px;height:72px}
+  .upbtn{padding:12px 11px}
+}
+@container (min-width:480px){
+  .upcard{gap:14px;padding:12px 14px}
+  .upcard img{width:112px;height:112px;object-fit:cover;background:var(--cream)}
+  .upmid b{font-size:16px}
+  .upmid small{display:block}
+  .uppr{font-size:14px;margin-top:0}
+  .upbtn{font-size:15px;padding:14px 22px}
+  .upbtn .sm{display:none}
+  .upbtn .lg{display:inline}
+}
 /* video carousel */
 .vidcar{margin-top:28px}
 .vh{font-size:15px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:12px}
@@ -1173,16 +1198,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .uptabs b{font-size:14px;letter-spacing:.03em}
   /* phone: the row became too small to read, so the photo grows and the button runs
      the full width under the copy, the way the live page shows it */
-  .upcard{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:12px;row-gap:10px;padding:12px}
-  .upcard img{width:96px;height:96px;grid-column:1;grid-row:1;object-fit:contain;background:#fff}
-  .upmid{grid-column:2;grid-row:1}
-  .upmid small{display:block;font-size:13px;line-height:1.45;margin:2px 0 4px}
-  .upmid b{font-size:16px;line-height:1.3}
-  .uppr{font-size:16px;gap:7px}
-  .usave{font-size:12px;padding:2px 6px}
-  .upbtn{grid-column:1/3;grid-row:2;width:100%;font-size:15px;padding:13px 14px}
-  .upbtn .sm{display:none}
-  .upbtn .lg{display:inline}
+  /* the compact row is the base now; nothing to restate here */
+  .usave{font-size:11px;padding:1px 7px}
   .lovedrow .avs img{width:22px;height:22px;border-width:1.5px}
   .lovedrow .avs img+img{margin-left:-7px}
   .lovedrow{gap:8px}
@@ -1403,10 +1420,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
      at a doubled font that overhang is what pushed the page 3px sideways */
   .oval svg{left:-4px;width:calc(100% + 8px)}
   .pdpquote .qstars{letter-spacing:0;font-size:.9em}
-  .upcard{grid-template-columns:80px minmax(0,1fr);column-gap:10px}
-  .upcard img{grid-column:1;grid-row:1;width:80px;height:80px;object-fit:contain;background:#fff}
-  .upmid{grid-column:2;grid-row:1}
-  .upbtn{grid-column:1/3;grid-row:2}
+  /* photo size at narrow widths is handled by the container query on .upsells */
   .pdpquote{flex-wrap:wrap}
   .pdpquote .qstars{letter-spacing:0}
   .gcard{flex-wrap:wrap}

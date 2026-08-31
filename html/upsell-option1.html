@@ -1,0 +1,222 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HUSH GLOW — upsell row, photo size and discount chip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Option 1 with the two things Ivan asked for: a bigger photo and the discount chip back
+     beside the price. Those two pull against each other at 390px, so both are on controls
+     here and every number under the rows is measured live rather than asserted. -->
+<style>
+  :root{
+    --paper:#fff; --soft:#f7f7f8; --cream:#f1e9de; --sand:#dbcfbc; --taupe:#c1b2a0;
+    --line:#e6e6e6; --ink:#121212; --ink-soft:#5c5c5c;
+    --berry:#862b28; --berry-deep:#5b1a1d; --gold:#a8823f;
+    --r:4px;
+    --ph:96px;          /* photo size, driven by the control */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Poppins',-apple-system,sans-serif;background:#eef0f3;color:var(--ink);
+       font-size:16px;line-height:1.75;letter-spacing:.06em;-webkit-font-smoothing:antialiased}
+
+  /* ---------- page chrome, not part of the design ---------- */
+  .top{position:sticky;top:0;z-index:9;background:#fff;border-bottom:1px solid #dfe3e8;padding:18px 26px}
+  .top .in{max-width:1180px;margin:0 auto}
+  h1{font-size:20px;font-weight:600;letter-spacing:.01em}
+  .lede{color:var(--ink-soft);font-size:14.5px;margin-top:5px;max-width:96ch;letter-spacing:.01em}
+  .ctl{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}
+  .ctl .lab{font-size:13px;color:var(--ink-soft);letter-spacing:.01em;margin:0 2px 0 14px}
+  .ctl .lab:first-child{margin-left:0}
+  .ctl button{font:inherit;font-size:13px;font-weight:600;letter-spacing:.01em;background:#fff;
+    color:var(--ink);border:1.5px solid #d7dbe0;border-radius:var(--r);padding:6px 13px;cursor:pointer}
+  .ctl button.on{border-color:var(--ink);background:var(--ink);color:#fff}
+
+  .stack{max-width:1180px;margin:0 auto;padding:24px 26px 80px}
+  .frame{background:#fff;border:1px solid #dfe3e8;border-radius:var(--r);padding:16px;width:390px}
+  body.wide .frame{width:100%;max-width:760px}
+  .meas{margin-top:10px;font-size:13.5px;color:var(--ink-soft);letter-spacing:.01em;line-height:1.7}
+  .meas b{color:var(--ink);font-weight:600}
+  .warn{color:var(--berry);font-weight:600}
+
+  /* =====================================================================
+     THE ROW
+     ===================================================================== */
+  .uphead{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    padding-bottom:9px;border-bottom:2px solid var(--ink);margin-bottom:14px;display:inline-block}
+
+  .row{color:inherit;text-decoration:none;display:flex;align-items:center;gap:12px;padding:10px 12px;
+    background:#fff;box-shadow:0 2px 10px rgba(18,18,18,.09);border-radius:var(--r);margin-bottom:10px}
+  .row:last-child{margin-bottom:0}
+
+  .ph{position:relative;flex:none}
+  .ph img{width:var(--ph);height:var(--ph);display:block;object-fit:contain;background:#fff;
+    border-radius:var(--r)}
+  /* the badge on the photo is only used by the "on the photo" placement */
+  .ph .sv{position:absolute;top:0;left:0;font-size:10px;padding:1px 5px;
+    border-radius:var(--r) 0 var(--r) 0;display:none}
+
+  .mid{flex:1 1 auto;min-width:0}
+  .nm{font-weight:600;display:block;font-size:15px;line-height:1.3}
+  .ds{display:none;color:var(--ink-soft)}
+  .pr{display:flex;align-items:baseline;gap:7px;font-size:15px;margin-top:3px;flex-wrap:wrap}
+  .pr b{font-weight:600}
+  .pr s{color:var(--berry);font-weight:400}
+  .sv{font-style:normal;background:var(--berry);color:#fff;font-size:11px;font-weight:600;
+    letter-spacing:.04em;text-transform:uppercase;padding:1px 7px;line-height:1.5;border-radius:var(--r)}
+
+  .btn{flex:none;border:2px solid var(--ink);border-radius:var(--r);background:#fff;font-weight:700;
+    font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:12px 16px;min-height:44px;
+    cursor:pointer;white-space:nowrap;font-family:inherit;color:inherit;
+    transition:background .2s ease,color .2s ease}
+  .btn:hover{background:var(--ink);color:#fff}
+
+  /* ---- chip placement ---- */
+  /* beside the price: the chip stays in the price group and drops to its own line when the
+     line runs out of room, which it does at any photo size worth having */
+  body[data-chip="price"] .mid .sv{display:inline}
+  body[data-chip="price"] .ph .sv{display:none}
+  /* its own line, deliberately: the price group breaks before the chip instead of wherever
+     the words happen to fall */
+  body[data-chip="own"] .mid .sv{display:inline}
+  body[data-chip="own"] .ph .sv{display:none}
+  body[data-chip="own"] .pr{flex-wrap:wrap}
+  body[data-chip="own"] .pr .sv{margin-left:-7px}
+  body[data-chip="own"] .pr::before{content:'';flex-basis:100%;height:0;order:1}
+  body[data-chip="own"] .pr .sv{order:2}
+  /* on the photo: what option 1 does today */
+  body[data-chip="photo"] .mid .sv{display:none}
+  body[data-chip="photo"] .ph .sv{display:inline}
+
+  /* ---- desktop: the description comes back, the chip always sits in the price line ---- */
+  body.wide .ph img{width:calc(var(--ph) + 16px);height:calc(var(--ph) + 16px)}
+  body.wide .nm{font-size:16px}
+  body.wide .ds{display:block;font-size:14px;line-height:1.5;margin:1px 0 3px}
+  body.wide .btn{font-size:15px;padding:14px 22px}
+  body.wide .ph .sv{display:none !important}
+  body.wide .mid .sv{display:inline !important}
+  body.wide .pr::before{display:none}
+</style>
+
+<div class="top"><div class="in">
+  <h1>Upsell row &mdash; photo size and discount chip</h1>
+  <p class="lede">Option 1 with the two changes asked for. They pull against each other: on a
+    390px phone the price line has about 143px once a 96px photo and the button have taken their
+    share, and &ldquo;$21.99 $45.99 SAVE 52%&rdquo; needs 191px. So the chip either sits on its own
+    line under the prices, which is free because the photo already sets the row height, or it stays
+    on the price line and the photo has to stay small. Both are here. Numbers are measured live.</p>
+  <div class="ctl">
+    <span class="lab">Photo</span>
+    <button data-ph="72">72</button>
+    <button data-ph="80">80</button>
+    <button data-ph="88">88</button>
+    <button class="on" data-ph="96">96</button>
+    <button data-ph="104">104</button>
+    <span class="lab">Discount chip</span>
+    <button class="on" data-chip="own">Own line under the price</button>
+    <button data-chip="price">In the price line</button>
+    <button data-chip="photo">On the photo</button>
+    <span class="lab">Width</span>
+    <button class="on" data-w="phone">Phone &middot; 390</button>
+    <button data-w="wide">Desktop</button>
+  </div>
+</div></div>
+
+<div class="stack">
+  <div class="frame"><div id="host"></div></div>
+  <p class="meas" id="meas"></p>
+</div>
+
+<script>
+  var CDN = 'https://hushglow.com/cdn/shop/files/';
+  var ITEMS = [
+    { img: 'try_hush13_resized_1.webp', nm: 'Waterproof Setting Spray',
+      ds: 'A must-have to keep your flawless Hush Foundation finish lasting all day.',
+      now: '$21.99', was: '$45.99', sv: 'Save 52%' },
+    { img: 'try_hush14_resized.webp', nm: 'Pore-Blurring Primer Stick',
+      ds: 'A must-have for smoothing pores and fine lines before applying your Hush Foundation.',
+      now: '$19.99', was: '$40.99', sv: 'Save 51%' },
+    { img: '1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp', nm: 'Multi-Effect Blush Stick',
+      ds: 'One swipe of colour that blends into a natural flush.',
+      now: '$32.99', was: '', sv: '' }
+  ];
+
+  document.getElementById('host').innerHTML =
+    '<span class="uphead">Often bought with</span>' +
+    ITEMS.map(function (it) {
+      return '<div class="row">' +
+        '<span class="ph"><img loading="lazy" decoding="async" src="' + CDN + it.img +
+          '?width=300" alt="">' + (it.sv ? '<i class="sv">' + it.sv + '</i>' : '') + '</span>' +
+        '<span class="mid">' +
+          '<b class="nm">' + it.nm + '</b>' +
+          '<small class="ds">' + it.ds + '</small>' +
+          '<span class="pr"><b>' + it.now + '</b>' +
+            (it.was ? '<s>' + it.was + '</s>' : '') +
+            (it.sv ? '<i class="sv">' + it.sv + '</i>' : '') +
+          '</span>' +
+        '</span>' +
+        '<button class="btn">Add</button>' +
+      '</div>';
+    }).join('');
+
+  function measure () {
+    var host = document.getElementById('host');
+    var rows = [].slice.call(host.querySelectorAll('.row'));
+    var one = Math.round(rows[0].getBoundingClientRect().height);
+    var all = Math.round(host.getBoundingClientRect().height);
+    var TODAY = 214, TODAY_ALL = 700;
+
+    /* does the price group hold together on one line? count distinct line tops, not rects:
+       the bold price and the struck price are two rects on the same line */
+    var pr = rows[0].querySelector('.pr');
+    var tops = {}, n = 0;
+    [].slice.call(pr.children).forEach(function (c) {
+      /* a child hidden with display:none still reports a rect at 0,0 and would be counted
+         as a line of its own */
+      if (getComputedStyle(c).display === 'none') return;
+      var t = Math.round(c.getBoundingClientRect().top);
+      if (!tops[t]) { tops[t] = 1; n++; }
+    });
+    var photo = Math.round(rows[0].querySelector('img').getBoundingClientRect().width);
+    var mid = Math.round(rows[0].querySelector('.mid').getBoundingClientRect().width);
+
+    var note = n === 1
+      ? 'price and chip share one line'
+      : '<span class="warn">price group runs to ' + n + ' lines</span>';
+
+    document.getElementById('meas').innerHTML =
+      'Photo <b>' + photo + 'px</b>, middle column <b>' + mid + 'px</b>. ' +
+      'One row <b>' + one + 'px</b>, three rows with the label <b>' + all + 'px</b>. ' +
+      'Against today (' + TODAY + 'px / ' + TODAY_ALL + 'px) that is <b>' +
+      Math.round((1 - all / TODAY_ALL) * 100) + '% shorter</b>. ' + note + '.';
+  }
+
+  function setBtn (attr, val) {
+    document.querySelectorAll('[data-' + attr + ']').forEach(function (b) {
+      b.classList.toggle('on', b.dataset[attr] === val);
+    });
+  }
+
+  document.querySelectorAll('.ctl button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (b.dataset.ph) {
+        document.documentElement.style.setProperty('--ph', b.dataset.ph + 'px');
+        setBtn('ph', b.dataset.ph);
+      }
+      if (b.dataset.chip) { document.body.dataset.chip = b.dataset.chip; setBtn('chip', b.dataset.chip); }
+      if (b.dataset.w) {
+        document.body.classList.toggle('wide', b.dataset.w === 'wide');
+        setBtn('w', b.dataset.w);
+      }
+      setTimeout(measure, 60);
+    });
+  });
+
+  document.body.dataset.chip = 'own';
+  var imgs = [].slice.call(document.images);
+  Promise.all(imgs.map(function (i) {
+    return i.complete ? 1 : new Promise(function (r) { i.onload = i.onerror = r; });
+  })).then(measure);
+  measure();
+</script>

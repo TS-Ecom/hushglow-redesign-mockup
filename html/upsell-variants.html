@@ -1,0 +1,292 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HUSH GLOW — upsell row, four treatments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Self-contained on purpose: the row has to be judged on its own, at the width it is
+     actually read at, with the brand tokens but without the rest of the buy box around it.
+
+     All four carry the same three products and the same offer. What changes is how much
+     vertical space one row is allowed to take, and what the tap target is. -->
+<style>
+  :root{
+    --paper:#fff; --soft:#f7f7f8; --cream:#f1e9de; --sand:#dbcfbc; --taupe:#c1b2a0;
+    --line:#e6e6e6; --ink:#121212; --ink-soft:#5c5c5c;
+    --berry:#862b28; --berry-deep:#5b1a1d; --gold:#a8823f;
+    --r:4px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Poppins',-apple-system,sans-serif;background:#eef0f3;color:var(--ink);
+       font-size:16px;line-height:1.75;letter-spacing:.06em;-webkit-font-smoothing:antialiased}
+
+  /* ---------- page chrome, not part of any design ---------- */
+  .top{position:sticky;top:0;z-index:9;background:#fff;border-bottom:1px solid #dfe3e8;padding:20px 26px}
+  .top .in{max-width:1180px;margin:0 auto}
+  h1{font-size:20px;font-weight:600;letter-spacing:.01em}
+  .lede{color:var(--ink-soft);font-size:14.5px;margin-top:6px;max-width:92ch;letter-spacing:.01em}
+  .ctl{display:flex;gap:9px;align-items:center;margin-top:14px;flex-wrap:wrap}
+  .ctl span{font-size:13px;color:var(--ink-soft);margin-right:2px;letter-spacing:.01em}
+  .ctl button{font:inherit;font-size:13.5px;font-weight:600;letter-spacing:.01em;background:#fff;
+    color:var(--ink);border:1.5px solid #d7dbe0;border-radius:var(--r);padding:7px 15px;cursor:pointer}
+  .ctl button.on{border-color:var(--ink);background:var(--ink);color:#fff}
+
+  .stack{max-width:1180px;margin:0 auto;padding:26px 26px 90px}
+  .case{margin-bottom:30px}
+  .caseh{display:flex;align-items:baseline;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+  .num{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--berry)}
+  .name{font-size:17px;font-weight:600;letter-spacing:.01em}
+  .tall{font-size:13px;font-weight:700;letter-spacing:.02em;color:#fff;background:var(--ink);
+    padding:2px 9px;border-radius:var(--r)}
+  .why{font-size:14.5px;color:var(--ink-soft);margin-bottom:12px;max-width:96ch;letter-spacing:.01em}
+  /* no width transition: the measurement below reads the box straight after the switch,
+     and an in-flight transition reports the old width */
+  .frame{background:#fff;border:1px solid #dfe3e8;border-radius:var(--r);padding:16px;
+    width:390px}
+  body.wide .frame{width:100%;max-width:760px}
+
+  /* =====================================================================
+     SHARED: the label above the rows, identical everywhere
+     ===================================================================== */
+  .uphead{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    padding-bottom:9px;border-bottom:2px solid var(--ink);margin-bottom:14px;display:inline-block}
+
+  .row{color:inherit;text-decoration:none;display:block;background:#fff;
+    box-shadow:0 2px 10px rgba(18,18,18,.09);border-radius:var(--r);margin-bottom:10px}
+  .row:last-child{margin-bottom:0}
+  .nm{font-weight:600;display:block}
+  .ds{display:block;color:var(--ink-soft)}
+  .pr{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+  .pr b{font-weight:600}
+  .pr s{color:var(--berry);font-weight:400}
+  .sv{font-style:normal;background:var(--berry);color:#fff;font-size:11px;font-weight:600;
+    letter-spacing:.04em;text-transform:uppercase;padding:1px 7px;line-height:1.5;border-radius:var(--r)}
+  .btn{border:2px solid var(--ink);border-radius:var(--r);background:#fff;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;
+    font-family:inherit;color:inherit;transition:background .2s ease,color .2s ease}
+  .btn:hover{background:var(--ink);color:#fff}
+
+  /* --------------------------------------------------------------
+     0. What is on the site today
+     -------------------------------------------------------------- */
+  .v0 .row{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:12px;row-gap:10px;padding:12px}
+  .v0 .ph{grid-column:1;grid-row:1}
+  .v0 .ph .sv{display:none}
+  .v0 img{width:96px;height:96px;object-fit:contain;background:#fff;display:block;border-radius:var(--r)}
+  .v0 .mid{grid-column:2;grid-row:1;min-width:0}
+  .v0 .nm{font-size:16px;line-height:1.3}
+  .v0 .ds{font-size:13px;line-height:1.45;margin:2px 0 4px}
+  .v0 .pr{font-size:14px}
+  .v0 .btn{grid-column:1/3;grid-row:2;width:100%;font-size:15px;padding:13px 14px}
+  body.wide .v0 .row{display:flex;align-items:center;gap:14px;padding:12px 14px}
+  body.wide .v0 .ph{flex:none}
+  body.wide .v0 img{width:112px;height:112px}
+  body.wide .v0 .mid{flex:1 1 auto}
+  body.wide .v0 .btn{width:auto;flex:none;font-size:15px;padding:14px 22px}
+
+  /* --------------------------------------------------------------
+     1. One row: photo, offer, button. Description desktop only.
+     -------------------------------------------------------------- */
+  .v1 .row{display:flex;align-items:center;gap:12px;padding:10px 12px}
+  .v1 .ph{position:relative;flex:none}
+  .v1 img{width:72px;height:72px;display:block;object-fit:contain;background:#fff;border-radius:var(--r)}
+  .v1 .ph .sv{position:absolute;top:0;left:0;font-size:10px;padding:1px 5px;border-radius:var(--r) 0 var(--r) 0}
+  .v1 .mid{flex:1 1 auto;min-width:0}
+  .v1 .nm{font-size:15px;line-height:1.3}
+  .v1 .ds{display:none}
+  .v1 .pr{font-size:15px;margin-top:3px;flex-wrap:nowrap}
+  .v1 .mid .sv{display:none}
+  .v1 .btn{flex:none;font-size:13px;padding:12px 16px;min-height:44px}
+  body.wide .v1 img{width:88px;height:88px}
+  body.wide .v1 .ph .sv{display:none}
+  body.wide .v1 .mid .sv{display:inline}
+  body.wide .v1 .nm{font-size:16px}
+  body.wide .v1 .ds{display:block;font-size:14px;line-height:1.5;margin:1px 0 3px}
+  body.wide .v1 .btn{font-size:15px;padding:14px 22px}
+
+  /* --------------------------------------------------------------
+     2. Toggle row, the pattern the travel puff already uses
+     -------------------------------------------------------------- */
+  .v2 .row{display:flex;align-items:center;gap:12px;padding:10px 12px}
+  .v2 .ph{position:relative;flex:none}
+  .v2 img{width:64px;height:64px;display:block;object-fit:contain;background:#fff;border-radius:var(--r)}
+  .v2 .ph .sv{position:absolute;top:0;left:0;font-size:10px;padding:1px 5px;border-radius:var(--r) 0 var(--r) 0}
+  .v2 .mid{flex:1 1 auto;min-width:0}
+  .v2 .nm{font-size:15px;line-height:1.3}
+  .v2 .ds{display:none}
+  .v2 .pr{font-size:15px;margin-top:2px;flex-wrap:nowrap}
+  .v2 .mid .sv{display:none}
+  .v2 .tg{flex:none;width:52px;height:30px;border-radius:999px;border:none;background:#d8d8d8;
+    position:relative;cursor:pointer;transition:background .2s ease}
+  .v2 .tg span{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s ease}
+  .v2 .tg.on{background:var(--berry-deep)}
+  .v2 .tg.on span{transform:translateX(22px)}
+  body.wide .v2 img{width:80px;height:80px}
+  body.wide .v2 .ph .sv{display:none}
+  body.wide .v2 .mid .sv{display:inline}
+  body.wide .v2 .ds{display:block;font-size:14px;line-height:1.5;margin:1px 0 3px}
+
+  /* --------------------------------------------------------------
+     3. Two lines kept, but slim
+     -------------------------------------------------------------- */
+  .v3 .row{display:grid;grid-template-columns:72px minmax(0,1fr);column-gap:12px;row-gap:8px;padding:10px 12px}
+  .v3 .ph{grid-column:1;grid-row:1}
+  .v3 .ph .sv{display:none}
+  .v3 img{width:72px;height:72px;object-fit:contain;background:#fff;display:block;border-radius:var(--r)}
+  .v3 .mid{grid-column:2;grid-row:1;min-width:0;align-self:center}
+  .v3 .nm{font-size:15px;line-height:1.3}
+  .v3 .ds{font-size:14px;line-height:1.4;margin:2px 0 3px;
+    display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+  .v3 .pr{font-size:15px}
+  .v3 .btn{grid-column:1/3;grid-row:2;width:100%;font-size:13px;padding:9px 14px}
+  body.wide .v3 .row{display:flex;align-items:center;gap:14px;padding:12px 14px}
+  body.wide .v3 .ph{flex:none}
+  body.wide .v3 img{width:96px;height:96px}
+  body.wide .v3 .mid{flex:1 1 auto}
+  body.wide .v3 .ds{-webkit-line-clamp:2;font-size:14px}
+  body.wide .v3 .btn{width:auto;flex:none;font-size:15px;padding:14px 22px}
+
+  .meas{margin-top:9px;font-size:13px;color:var(--ink-soft);letter-spacing:.01em}
+  .meas b{color:var(--ink);font-weight:600}
+</style>
+
+<div class="top"><div class="in">
+  <h1>Upsell row &mdash; four treatments</h1>
+  <p class="lede">Sasha&rsquo;s note was that the upsells are too big. All four below carry the same
+    three products and the same offer; what changes is how much height one row is allowed to take
+    and what the customer taps. Heights are measured live, on this page, at the width shown.
+    Switch to desktop to check that nothing is lost on a wide screen.</p>
+  <div class="ctl">
+    <span>Width</span>
+    <button class="on" data-w="phone">Phone &middot; 390</button>
+    <button data-w="wide">Desktop</button>
+  </div>
+</div></div>
+
+<div class="stack">
+
+  <section class="case">
+    <div class="caseh"><span class="num">Today</span><span class="name">What is on the site now</span>
+      <span class="tall" data-h="v0"></span></div>
+    <p class="why">Photo and copy on the first line, a full-width button on the second. The
+      description is shown on the phone as well as the desktop.</p>
+    <div class="frame"><div class="v0" data-v></div></div>
+    <p class="meas" data-m="v0"></p>
+  </section>
+
+  <section class="case">
+    <div class="caseh"><span class="num">Option 1</span><span class="name">One row, description on desktop only</span>
+      <span class="tall" data-h="v1"></span></div>
+    <p class="why">Everything on one line: photo, name, price, button. The description comes back
+      on the desktop, where there is room for it. This is the split the block had originally,
+      with the row tightened further.</p>
+    <div class="frame"><div class="v1" data-v></div></div>
+    <p class="meas" data-m="v1"></p>
+  </section>
+
+  <section class="case">
+    <div class="caseh"><span class="num">Option 2</span><span class="name">Toggle row, same as the travel puff</span>
+      <span class="tall" data-h="v2"></span></div>
+    <p class="why">The same shape the Premium Travel Puff already uses further up the same page,
+      so the buy box speaks one language instead of two. The switch reads as on or off rather than
+      as a button whose label has to change once it is pressed.</p>
+    <div class="frame"><div class="v2" data-v></div></div>
+    <p class="meas" data-m="v2"></p>
+  </section>
+
+  <section class="case">
+    <div class="caseh"><span class="num">Option 3</span><span class="name">Two lines kept, but slim</span>
+      <span class="tall" data-h="v3"></span></div>
+    <p class="why">Closest to today. The description stays on the phone but is held to one line,
+      the photo drops to 72px and the button gets a shorter one. Use this if the description is
+      doing work we do not want to lose.</p>
+    <div class="frame"><div class="v3" data-v></div></div>
+    <p class="meas" data-m="v3"></p>
+  </section>
+
+</div>
+
+<script>
+  /* one source of content for all four, so the only difference between them is CSS */
+  var CDN = 'https://hushglow.com/cdn/shop/files/';
+  var ITEMS = [
+    { img: 'try_hush13_resized_1.webp', nm: 'Waterproof Setting Spray',
+      ds: 'A must-have to keep your flawless Hush Foundation finish lasting all day.',
+      now: '$21.99', was: '$45.99', sv: 'Save 52%' },
+    { img: 'try_hush14_resized.webp', nm: 'Pore-Blurring Primer Stick',
+      ds: 'A must-have for smoothing pores and fine lines before applying your Hush Foundation.',
+      now: '$19.99', was: '$40.99', sv: 'Save 51%' },
+    { img: '1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp', nm: 'Multi-Effect Blush Stick',
+      ds: 'One swipe of colour that blends into a natural flush.',
+      now: '$32.99', was: '', sv: '' }
+  ];
+
+  function priceHtml (it) {
+    return '<span class="pr"><b>' + it.now + '</b>' +
+      (it.was ? '<s>' + it.was + '</s>' : '') +
+      (it.sv ? '<i class="sv">' + it.sv + '</i>' : '') + '</span>';
+  }
+
+  document.querySelectorAll('[data-v]').forEach(function (host) {
+    var toggle = host.classList.contains('v2');
+    host.innerHTML =
+      '<span class="uphead">Often bought with</span>' +
+      ITEMS.map(function (it) {
+        return '<div class="row">' +
+          '<span class="ph"><img loading="lazy" decoding="async" src="' + CDN + it.img +
+            '?width=300" alt="">' +
+            (it.sv ? '<i class="sv">' + it.sv + '</i>' : '') + '</span>' +
+          '<span class="mid">' +
+            '<b class="nm">' + it.nm + '</b>' +
+            '<small class="ds">' + it.ds + '</small>' +
+            priceHtml(it) +
+          '</span>' +
+          (toggle
+            ? '<button class="tg" role="switch" aria-checked="false" aria-label="Add ' + it.nm + '"><span></span></button>'
+            : '<button class="btn">Add</button>') +
+        '</div>';
+      }).join('');
+  });
+
+  /* the toggles actually toggle, so the state can be judged both ways */
+  document.querySelectorAll('.tg').forEach(function (t) {
+    t.addEventListener('click', function () {
+      var on = t.classList.toggle('on');
+      t.setAttribute('aria-checked', on ? 'true' : 'false');
+    });
+  });
+
+  /* measure the rows rather than describing them: one row, and the whole block of three */
+  function measure () {
+    document.querySelectorAll('[data-v]').forEach(function (host) {
+      var key = host.className.trim().split(' ')[0];
+      var row = host.querySelector('.row');
+      if (!row) return;
+      var one = Math.round(row.getBoundingClientRect().height);
+      var all = Math.round(host.getBoundingClientRect().height);
+      var chip = document.querySelector('[data-h="' + key + '"]');
+      var line = document.querySelector('[data-m="' + key + '"]');
+      if (chip) chip.textContent = one + 'px per row';
+      if (line) line.innerHTML = 'One row <b>' + one + 'px</b>, three rows with the label <b>' +
+        all + 'px</b>.';
+    });
+  }
+
+  var imgs = Array.prototype.slice.call(document.images);
+  Promise.all(imgs.map(function (i) {
+    return i.complete ? 1 : new Promise(function (r) { i.onload = i.onerror = r; });
+  })).then(measure);
+  measure();
+
+  document.querySelectorAll('.ctl button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.ctl button').forEach(function (o) { o.classList.remove('on'); });
+      b.classList.add('on');
+      document.body.classList.toggle('wide', b.dataset.w === 'wide');
+      setTimeout(measure, 260);
+    });
+  });
+</script>

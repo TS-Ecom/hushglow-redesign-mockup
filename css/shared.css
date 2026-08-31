@@ -672,6 +672,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .upmid b{font-size:15px;font-weight:600;line-height:1.3;display:block}
 .upmid small{font-size:14px;color:var(--ink-soft);line-height:1.55;display:none;margin:1px 0 3px}
 .uppr{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;font-size:15px;margin-top:3px}
+.uppr .usave{display:none}
 .uppr b{font-weight:600}
 .uppr s{color:var(--berry);font-weight:400}
 .usave{font-style:normal;background:var(--berry);color:#fff;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:1px 7px;line-height:1.5;border-radius:var(--r-chip)}
@@ -684,11 +685,15 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 .upbtn .lg{display:none}
 /* 480px is where the middle column still has ~230px after a 112px photo and the full
    button, which is three lines of description rather than six */
-@container (max-width:340px){
-  /* the middle column is down to ~85px here and the product name was breaking into four
-     lines, which cost more height than the photo saves. Both the photo and the button give
-     ground so the name gets back to three. */
+@container (max-width:334px){
+  /* A 96px photo leaves the name about 109px on a 360px phone, which breaks it into three
+     lines and makes the row taller than the photo it was meant to show off. 88px buys the
+     name back its second line and the row goes back to being set by the photo. */
   .upcard{gap:10px;padding:10px}
+  .upcard img{width:88px;height:88px}
+  .upbtn{padding:12px 12px}
+}
+@container (max-width:300px){
   .upcard img{width:72px;height:72px}
   .upbtn{padding:12px 11px}
 }
@@ -698,6 +703,8 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .upmid b{font-size:16px}
   .upmid small{display:block}
   .uppr{font-size:14px;margin-top:0}
+  /* wide enough for the chip to sit beside the prices rather than under them */
+  .uppr .usave{display:inline}
   .upbtn{font-size:15px;padding:14px 22px}
   .upbtn .sm{display:none}
   .upbtn .lg{display:inline}

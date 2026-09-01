@@ -93,9 +93,25 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 
 
 /* ---------- trust bar ---------- */
-.trust{display:flex;justify-content:space-around;align-items:center;padding:8px 40px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#fff;font-weight:500;background:#121212}
-.trust span{display:flex;align-items:center;gap:10px}
-.trust i{font-style:normal;font-weight:400;font-size:15px}
+/* Measured off the live bar rather than eyeballed: 27px tall on 4px of vertical padding,
+   three equal columns capped at the page container, 14px at weight 400 with 1px of
+   tracking, and a 18px tick 10px from its label. Ours was 33px tall at weight 500, which
+   is where "too heavy" came from. */
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-items:center;
+  padding:4px var(--gutter);font-size:14px;line-height:1.35;letter-spacing:1px;
+  text-transform:uppercase;color:#fff;font-weight:400;background:#121212}
+/* Between 750 and 1000 a third of the row is about 210px and "free shade replacement"
+   needs 237 at reading size, so the labels wrapped and the bar grew to 46px. The type
+   steps down rather than the bar getting taller. */
+@media screen and (min-width:750px) and (max-width:999px){
+  .trust{font-size:12px;letter-spacing:.5px;padding-inline:24px;gap:6px}
+}
+.trust span{display:flex;align-items:center;justify-content:center;gap:10px;min-width:0}
+/* drawn, not typed: the glyph's weight and its position on the line were whatever the
+   body font decided, and the bar carried three different decorative characters rather
+   than the one mark the live store uses */
+.trust svg{width:18px;height:18px;flex:none;display:block;fill:none;stroke:currentColor;
+  stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 
 
 /* ---------- slider arrows (used on home + product pages) ---------- */
@@ -346,7 +362,7 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .trust span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;letter-spacing:.08em;opacity:0;animation:trot 9s linear infinite}
   .trust span:nth-child(2){animation-delay:3s}
   .trust span:nth-child(3){animation-delay:6s}
-  .trust i{font-size:13px}
+  .trust svg{width:16px;height:16px}
   .grid4{grid-template-columns:1fr 1fr;gap:16px}
   .p-card .nm{font-size:16px;margin-top:10px}
   .stars{font-size:13px;letter-spacing:2px;margin:4px 0}

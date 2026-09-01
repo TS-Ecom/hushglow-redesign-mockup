@@ -1,0 +1,121 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HUSH GLOW — trust bar tick, five marks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- The bar itself is the one now on the site, measured against the live store: 27px tall,
+     14px at weight 400 with 1px of tracking, tick 10px from its label. Only the mark
+     changes between the rows below, at the size it is actually read at. -->
+<style>
+  :root{ --ink:#121212; --paper:#fff; --gutter:max(60px, calc((100vw - 1320px) / 2)); }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Poppins',-apple-system,sans-serif;background:#eef0f3;color:var(--ink);
+       font-size:16px;line-height:1.75;letter-spacing:.06em;-webkit-font-smoothing:antialiased}
+
+  .top{background:#fff;border-bottom:1px solid #dfe3e8;padding:20px 26px}
+  .top .in{max-width:1180px;margin:0 auto}
+  h1{font-size:20px;font-weight:600;letter-spacing:.01em}
+  .lede{color:#5c5c5c;font-size:14.5px;margin-top:5px;max-width:92ch;letter-spacing:.01em}
+
+  .case{margin:0 0 30px}
+  .caseh{max-width:1180px;margin:0 auto;padding:22px 26px 8px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .num{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#862b28}
+  .name{font-size:16.5px;font-weight:600;letter-spacing:.01em}
+  .why{font-size:14px;color:#5c5c5c;letter-spacing:.01em;flex:1 1 100%;max-width:96ch}
+
+  /* ---------- the bar, exactly as it is on the site ---------- */
+  .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-items:center;
+    padding:4px var(--gutter);font-size:14px;line-height:1.35;letter-spacing:1px;
+    text-transform:uppercase;color:#fff;font-weight:400;background:#121212}
+  .trust span{display:flex;align-items:center;justify-content:center;gap:10px;min-width:0}
+  .trust i{font-style:normal;font-weight:400;font-size:18px;line-height:1;flex:none}
+  .trust svg{width:18px;height:18px;flex:none;display:block;fill:none;stroke:currentColor}
+
+  /* 0. the glyph that is on the site now */
+  /* nothing: .trust i above is it */
+
+  /* 1. hairline, round caps */
+  .v1 svg path{stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+  /* 2. hairline, flat caps, longer tail */
+  .v2 svg path{stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter}
+  /* 3. a shade heavier, round caps */
+  .v3 svg path{stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  /* 4. inside a hairline ring */
+  .v4 svg{width:19px;height:19px}
+  .v4 svg circle{stroke-width:1;opacity:.55}
+  .v4 svg path{stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+
+  .zoom{max-width:1180px;margin:0 auto;padding:12px 26px 0;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+  .zoom .lbl{font-size:13px;color:#5c5c5c;letter-spacing:.01em}
+  .zoom .chip{background:#121212;border-radius:4px;padding:14px 18px;display:flex;gap:18px;align-items:center}
+  .zoom .chip > *{color:#fff}
+  .zoom svg{width:64px;height:64px;fill:none;stroke:currentColor}
+  .zoom i{font-style:normal;font-size:64px;line-height:1;color:#fff}
+</style>
+
+<div class="top"><div class="in">
+  <h1>Trust bar &mdash; five marks</h1>
+  <p class="lede">The bar is the one now on the site, matched to the live store: 27px tall, 14px
+    at weight 400 with 1px of tracking, mark 10px from its label. Only the mark changes below.
+    Each row is shown at reading size first, then blown up so the drawing can be judged.</p>
+</div></div>
+
+<section class="case">
+  <div class="caseh"><span class="num">Now</span><span class="name">The text glyph &#10003;</span>
+    <span class="why">A character from the body font. Its weight and its position on the line are
+      whatever Poppins decides, which is why it sits slightly low and reads soft.</span></div>
+  <div class="trust v0" data-v="0"></div>
+  <div class="zoom"><span class="lbl">at 64px</span><span class="chip"><i>&#10003;</i></span></div>
+</section>
+
+<section class="case">
+  <div class="caseh"><span class="num">Option 1</span><span class="name">Hairline, round caps</span>
+    <span class="why">Drawn rather than typed, so the weight is ours: 1.25px with rounded ends.
+      The lightest of the five and the closest to how a beauty brand sets a small mark.</span></div>
+  <div class="trust v1" data-v="1"></div>
+  <div class="zoom"><span class="lbl">at 64px</span><span class="chip v1"><svg viewBox="0 0 24 24"><path d="M4.5 12.75 9.75 18 19.5 6.75" style="stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round"/></svg></span></div>
+</section>
+
+<section class="case">
+  <div class="caseh"><span class="num">Option 2</span><span class="name">Hairline, flat ends</span>
+    <span class="why">Same weight, square ends and a sharp corner. Reads more editorial and a
+      little colder than the rounded one.</span></div>
+  <div class="trust v2" data-v="2"></div>
+  <div class="zoom"><span class="lbl">at 64px</span><span class="chip v2"><svg viewBox="0 0 24 24"><path d="M4.5 12.75 9.75 18 19.5 6.75" style="stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter"/></svg></span></div>
+</section>
+
+<section class="case">
+  <div class="caseh"><span class="num">Option 3</span><span class="name">One shade heavier</span>
+    <span class="why">1.7px, rounded. Holds up better on a phone and on a low-contrast screen,
+      at the cost of some of the lightness.</span></div>
+  <div class="trust v3" data-v="3"></div>
+  <div class="zoom"><span class="lbl">at 64px</span><span class="chip v3"><svg viewBox="0 0 24 24"><path d="M4.5 12.75 9.75 18 19.5 6.75" style="stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round"/></svg></span></div>
+</section>
+
+<section class="case">
+  <div class="caseh"><span class="num">Option 4</span><span class="name">Hairline in a ring</span>
+    <span class="why">The mark inside a thin circle. More deliberate, and it gives the three
+      claims a repeating shape down the bar, but it is one more element in a 27px strip.</span></div>
+  <div class="trust v4" data-v="4"></div>
+  <div class="zoom"><span class="lbl">at 64px</span><span class="chip v4"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4" style="stroke-width:1;opacity:.55"/><path d="M7.2 12.3 10.6 15.7 16.9 8.9" style="stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round"/></svg></span></div>
+</section>
+
+<script>
+  var ITEMS = ['1 Million+ Customers', 'Free Shade Replacement', 'Cruelty-Free'];
+
+  /* one path for every drawn mark, so the only difference between them is the stroke */
+  var TICK  = '<svg viewBox="0 0 24 24"><path d="M4.5 12.75 9.75 18 19.5 6.75"/></svg>';
+  var RING  = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4"/>' +
+              '<path d="M7.2 12.3 10.6 15.7 16.9 8.9"/></svg>';
+
+  document.querySelectorAll('[data-v]').forEach(function (bar) {
+    var v = bar.dataset.v;
+    var mark = v === '0' ? '<i>&#10003;</i>' : (v === '4' ? RING : TICK);
+    bar.innerHTML = ITEMS.map(function (t) {
+      return '<span>' + mark + t + '</span>';
+    }).join('');
+  });
+</script>

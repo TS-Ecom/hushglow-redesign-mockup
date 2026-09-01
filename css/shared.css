@@ -11,6 +11,9 @@
   --radius:4px; --r-btn:4px; --r-card:4px; --r-chip:4px;
   --ok:#2e6b3a;   /* savings and free-shipping confirmations */
   --pagepad:60px;
+  /* Where the page container starts. Full-bleed blocks use it to put their copy on the
+     same vertical as every contained section, instead of on an inset of their own. */
+  --gutter:max(60px, calc((100vw - 1320px) / 2));
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -111,12 +114,17 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .iwt .ph{height:640px;overflow:hidden}
 /* two of the bundle template's image-with-text blocks carry a video, not a still */
 .iwt .ph img,.iwt .ph video{width:100%;height:100%;object-fit:cover;display:block}
-/* The section runs edge to edge, so on a wide screen the column keeps growing while the
-   copy stayed pinned 84px from the screen edge. At 1920 that left the copy hugging the
-   far left with a 260px hole between it and the photo. Centre the copy inside its own
-   column instead, with the old 84px as the floor, and it sits right at every width. */
-.iwt .tx{display:flex;flex-direction:column;justify-content:center;
-  padding:60px max(84px, calc((100% - 52ch) / 2));gap:20px;align-items:flex-start}
+/* The block runs edge to edge, so its copy had an 84px inset of its own that matched
+   nothing else on the page: at 1280 the page container starts at 60 and the copy started
+   at 84, and on a wide screen the two drifted further apart. The copy now sits on the same
+   vertical as every contained section above and below it, and the 84px stays only on the
+   side facing the photo. Which side that is depends on .flip. */
+.iwt .tx{display:flex;flex-direction:column;justify-content:center;gap:20px;align-items:flex-start;
+  padding:60px var(--gutter) 60px 84px}
+/* .flip puts the photo on the right, so the copy leans on the other edge of its column */
+.iwt.flip .tx{padding:60px 84px 60px var(--gutter)}
+/* the centred variants have no photo to line up against */
+.iwt.mid .tx{padding:60px 84px}
 .iwt .tx .cap{font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink-soft);margin-bottom:-14px}
 .iwt .tx h2{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.15;overflow-wrap:break-word;hyphens:manual}
 .iwt .tx p{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:min(52ch,100%)}

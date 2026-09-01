@@ -1187,7 +1187,13 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
   .galarrow{width:34px;height:34px}
   .lookarrow svg,.galarrow svg{width:19px;height:19px}
   .info{max-width:none;padding:0 var(--pagepad);margin-top:-6px}
-  .tabs2{max-width:none;padding:0 var(--pagepad)}
+  /* .tabs2 sits inside .info on eight of the nine product pages and directly in .pdp on
+     the ninth. Only the one that is not inside .info needs the page gutter; the other eight
+     already get it from .info and were being indented twice, which is what put the second
+     accordion 18px to the right of the first. Diagnosed on the one page that is the
+     exception and applied to all nine, which is how it broke. */
+  .tabs2{max-width:none}
+  .pdp > .tabs2{padding:0 var(--pagepad)}
   .info h1{font-size:22px;margin-bottom:12px}
   .badge{font-size:12px;padding:7px 12px}
   .pdpquote{font-size:15px;padding-left:12px;margin-bottom:16px}

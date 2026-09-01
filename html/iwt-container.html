@@ -1,0 +1,117 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HUSH GLOW — image-with-text, two ways to hold the container</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- "Give the photo a container too" reads two ways and they are different designs, so both
+     are here with the same rail above them to line up against. The dashed red line is the
+     page container edge, the same one the rail uses. -->
+<style>
+  :root{
+    --paper:#fff; --cream:#f1e9de; --sand:#dbcfbc; --ink:#121212; --ink-soft:#5c5c5c;
+    --berry-deep:#5b1a1d; --pagepad:60px;
+    --gutter:max(60px, calc((100vw - 1320px) / 2));
+    --r:4px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Poppins',-apple-system,sans-serif;background:#fff;color:var(--ink);
+       font-size:16px;line-height:1.75;letter-spacing:.06em;-webkit-font-smoothing:antialiased}
+
+  .top{background:#fff;border-bottom:1px solid #dfe3e8;padding:20px 26px}
+  .top .in{max-width:1180px;margin:0 auto}
+  h1{font-size:20px;font-weight:600;letter-spacing:.01em}
+  .lede{color:var(--ink-soft);font-size:14.5px;margin-top:5px;max-width:96ch;letter-spacing:.01em}
+
+  .caseh{padding:26px var(--gutter) 8px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .num{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#862b28}
+  .name{font-size:16.5px;font-weight:600;letter-spacing:.01em}
+  .why{font-size:14px;color:var(--ink-soft);letter-spacing:.01em;flex:1 1 100%;max-width:96ch}
+
+  /* the container line, drawn so the blocks can be judged against it */
+  .guide{position:fixed;top:0;bottom:0;width:0;border-left:1px dashed #ff2d2d;z-index:5;pointer-events:none}
+  .guide.l{left:var(--gutter)}
+  .guide.r{right:var(--gutter)}
+
+  /* ---------- the rail above, contained, for reference ---------- */
+  .rail{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+    padding:0 var(--gutter);margin:0 0 34px}
+  .rail div{height:120px;background:var(--sand);border-radius:var(--r);
+    display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.1em;
+    text-transform:uppercase;color:#4a3f33}
+
+  /* ---------- the block, as it is on the site now ---------- */
+  .iwt{display:grid;grid-template-columns:1.08fr 1fr;gap:0;background:#e3dbd2}
+  .iwt .ph{height:420px;overflow:hidden}
+  .iwt .ph img{width:100%;height:100%;object-fit:cover;display:block}
+  .iwt .tx{display:flex;flex-direction:column;justify-content:center;gap:16px;align-items:flex-start;
+    padding:48px 84px 48px var(--gutter)}
+  .iwt.flip .ph{order:2}
+  .iwt.flip .tx{order:1;padding:48px 84px 48px var(--gutter)}
+  .iwt .cap{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink-soft)}
+  .iwt h2{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.15}
+  .iwt p{font-size:15.5px;color:var(--ink-soft);line-height:1.65;max-width:min(52ch,100%)}
+  .iwt p b{color:var(--ink);font-weight:600;display:block}
+  .iwt .btn{background:var(--berry-deep);color:#fff;font-weight:700;font-size:14px;
+    letter-spacing:.08em;text-transform:uppercase;padding:13px 26px;border-radius:var(--r)}
+
+  /* ===== A. the whole block on the container: colour, copy and photo all inside ===== */
+  .A .iwt{width:min(1320px, 100% - 2 * var(--pagepad));margin-inline:auto;border-radius:var(--r);overflow:hidden}
+  .A .iwt.flip .tx{padding:48px 84px 48px 60px}
+  .A .iwt .tx{padding:48px 60px 48px 84px}
+
+  /* ===== B. band stays edge to edge, only the photo stops at the container ===== */
+  .B .iwt{position:relative}
+  .B .iwt.flip .ph{margin-right:var(--gutter)}
+  .B .iwt:not(.flip) .ph{margin-left:var(--gutter)}
+</style>
+
+<div class="guide l"></div><div class="guide r"></div>
+
+<div class="top"><div class="in">
+  <h1>Image with text &mdash; two ways to hold the container</h1>
+  <p class="lede">The dashed red lines are the page container, the same edge the rail above each
+    block sits on. Today the band runs edge to edge and the photo runs past the line. Both
+    readings of &ldquo;give the photo a container too&rdquo; are below, with the rail above them so the
+    alignment can be read directly.</p>
+</div></div>
+
+<section class="caseh"><span class="num">Now</span><span class="name">Band and photo both edge to edge</span>
+  <span class="why">The copy is on the container line, which is where it was put last time, but the
+    photo carries on past it to the screen edge.</span></section>
+<div class="rail"><div>rail</div><div>rail</div><div>rail</div></div>
+<div class="now"><section class="iwt flip" data-b></section></div>
+
+<section class="caseh"><span class="num">Option A</span><span class="name">The whole block on the container</span>
+  <span class="why">Colour, copy and photo all inside the container, corners rounded like a card.
+    Lines up with the rail on both sides. The copy moves in off the line, because the beige now
+    starts there and the text needs room inside it.</span></section>
+<div class="rail"><div>rail</div><div>rail</div><div>rail</div></div>
+<div class="A"><section class="iwt flip" data-b></section></div>
+
+<section class="caseh"><span class="num">Option B</span><span class="name">Band edge to edge, photo inset</span>
+  <span class="why">The beige keeps running to the screen edge and only the photo stops at the
+    container. The copy stays exactly where it is now. The beige shows to the right of the photo,
+    which reads as a deliberate inset rather than a full-bleed image.</span></section>
+<div class="rail"><div>rail</div><div>rail</div><div>rail</div></div>
+<div class="B"><section class="iwt flip" data-b></section></div>
+
+<div style="height:80px"></div>
+
+<script>
+  var IMG = 'https://hushglow.com/cdn/shop/files/HUSH1259_584aaaa3-2dff-49a8-a326-8572354734ba.webp?width=1400';
+  var BODY =
+    '<div class="ph"><img loading="lazy" decoding="async" src="' + IMG + '" alt=""></div>' +
+    '<div class="tx">' +
+      '<span class="cap">The Beauty Innovation 2026</span>' +
+      '<h2>Skin-Loving Ingredients</h2>' +
+      '<p><b>Hyaluronic Acid + Squalane</b>Deeply hydrates and helps skin look softer, smoother and more plump throughout the day.</p>' +
+      '<p><b>Shea Butter + Sunflower Seed Oil</b>Nourishes dry mature skin and creates a creamy, comfortable finish that never feels heavy or cakey.</p>' +
+      '<p><b>Soft-Focus Blurring Minerals</b>Infused with Boron Nitride, Silica and Mica to visibly blur texture and give skin a naturally radiant glow.</p>' +
+      '<a class="btn">Try Now</a>' +
+    '</div>';
+
+  document.querySelectorAll('[data-b]').forEach(function (s) { s.innerHTML = BODY; });
+</script>

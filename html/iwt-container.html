@@ -66,6 +66,17 @@
   .B .iwt{position:relative}
   .B .iwt.flip .ph{margin-right:var(--gutter)}
   .B .iwt:not(.flip) .ph{margin-left:var(--gutter)}
+
+  /* ===== C. the live store's proportions: the photo takes the bigger half ===== */
+  .C .iwt{grid-template-columns:1fr 1.22fr}
+  .C .iwt.flip{grid-template-columns:1fr 1.22fr}
+  .C .iwt.flip .tx{padding:48px 70px 48px var(--gutter)}
+  .C .iwt:not(.flip) .tx{padding:48px var(--gutter) 48px 70px}
+
+  /* ===== D. live proportions and the live inset, no container at all ===== */
+  .D .iwt{grid-template-columns:1fr 1.22fr}
+  .D .iwt.flip .tx{padding:48px 70px 48px 70px}
+  .D .iwt:not(.flip) .tx{padding:48px 70px 48px 70px}
 </style>
 
 <div class="guide l"></div><div class="guide r"></div>
@@ -97,6 +108,21 @@
     which reads as a deliberate inset rather than a full-bleed image.</span></section>
 <div class="rail"><div>rail</div><div>rail</div><div>rail</div></div>
 <div class="B"><section class="iwt flip" data-b></section></div>
+
+<section class="caseh"><span class="num">Option C</span><span class="name">The live store's proportions</span>
+  <span class="why">The band and the photo stay edge to edge, exactly as the live store has them.
+    What changes is the split: the photo takes 55% and the copy 45%, which is what the live store
+    does and we do not. The copy then fills its narrower column instead of floating in a wide one,
+    so the hole closes without moving anything. The copy stays on the container line.</span></section>
+<div class="rail"><div>rail</div><div>rail</div><div>rail</div></div>
+<div class="C"><section class="iwt flip" data-b></section></div>
+
+<section class="caseh"><span class="num">Option D</span><span class="name">The live store, copied</span>
+  <span class="why">The same split, and the copy inset a flat 70px from the screen edge the way the
+    live store insets it, with no container involved. On a laptop this lands within about 15px of
+    the container line anyway; it only drifts on a very wide screen.</span></section>
+<div class="rail"><div>rail</div><div>rail</div><div>rail</div></div>
+<div class="D"><section class="iwt flip" data-b></section></div>
 
 <div style="height:80px"></div>
 

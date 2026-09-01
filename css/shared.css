@@ -111,7 +111,12 @@ button,input,select,textarea{font-family:var(--ui);font-size:inherit;background:
 .iwt .ph{height:640px;overflow:hidden}
 /* two of the bundle template's image-with-text blocks carry a video, not a still */
 .iwt .ph img,.iwt .ph video{width:100%;height:100%;object-fit:cover;display:block}
-.iwt .tx{display:flex;flex-direction:column;justify-content:center;padding:60px 84px;gap:20px;align-items:flex-start}
+/* The section runs edge to edge, so on a wide screen the column keeps growing while the
+   copy stayed pinned 84px from the screen edge. At 1920 that left the copy hugging the
+   far left with a 260px hole between it and the photo. Centre the copy inside its own
+   column instead, with the old 84px as the floor, and it sits right at every width. */
+.iwt .tx{display:flex;flex-direction:column;justify-content:center;
+  padding:60px max(84px, calc((100% - 52ch) / 2));gap:20px;align-items:flex-start}
 .iwt .tx .cap{font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink-soft);margin-bottom:-14px}
 .iwt .tx h2{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.15;overflow-wrap:break-word;hyphens:manual}
 .iwt .tx p{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:min(52ch,100%)}
@@ -999,6 +1004,15 @@ body.menu-open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* ---------- grey fills, matching the live sections ---------- */
 .section.fill,.steps.fill{background:#f3f3f3}
 .section.fill{padding-top:80px;padding-bottom:80px}
+/* A filled section already ends with 80px of its own. The block after it was adding its
+   full top rhythm on top of that: reviews to Real Results measured 188px of white on a
+   desktop, where the rest of the page runs at 64. The fill provides the separation, the
+   next block does not repeat it. Same stacking I fixed on mobile in de7baef; the desktop
+   half was missed. */
+.section.fill + .section{padding-top:0}
+.section.fill + .results{margin-top:0}
+.section.fill + .iwt{margin-top:0}
+.section.fill + .bslider{margin-top:0}
 .steps.fill{padding-top:80px;padding-bottom:80px}
 /* ---------- review cards ----------
    Rebuilt from the theme's own eg-reviews card: quote mark and Trustpilot stars on one

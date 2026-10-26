@@ -118,7 +118,11 @@
 .bb-stars svg{width:13px;height:13px;fill:var(--gold)}
 .bb-count{font-size:15px;line-height:24px;color:var(--ink-soft)}
 .bb-card.is-added .bb-rating{display:none}
-.bb-price{font-size:17px;line-height:24px;letter-spacing:.02em;font-weight:600}
+.bb-price{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:17px;line-height:24px;letter-spacing:.02em}
+/* price row as on the product page: price, compare-at in berry, SAVE % chip */
+.bb-price b{font-weight:600}
+.bb-price s{color:var(--berry);font-size:16px;font-weight:400}
+.bb-off{font-style:normal;background:var(--berry);color:var(--paper);font-size:13px;line-height:16px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:4px 8px;border-radius:var(--r-chip)}
 .bb-controls{padding-top:16px;display:flex;flex-direction:column;gap:12px;margin-top:auto}
 .bb-pick{display:flex;flex-direction:column;gap:12px;border:0;min-width:0}
 .bb-pick-h{min-height:28px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -156,7 +160,8 @@
 .bb-step[disabled] svg{stroke:#b5b5b5}
 .bb-qty{width:32px;text-align:center;font-size:16px;line-height:28px;font-weight:600}
 .bb-card.is-out .bb-photo img{opacity:.45}
-.bb-card.is-out .bb-name,.bb-card.is-out .bb-price{color:var(--ink-soft)}
+.bb-card.is-out .bb-name,.bb-card.is-out .bb-price,.bb-card.is-out .bb-price s{color:var(--ink-soft)}
+.bb-card.is-out .bb-off{display:none}
 @keyframes bbIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 @keyframes bbPop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.06);opacity:1}100%{transform:scale(1)}}
 @keyframes bbSlide{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
@@ -219,6 +224,7 @@
 .bb-row>span:first-child{font-weight:600}
 .bb-amt{display:flex;align-items:center;gap:10px}
 .bb-was{color:var(--berry);text-decoration:line-through;font-size:16px}
+.bb-sub{font-weight:600}
 .bb-total{font-size:20px;line-height:28px;font-weight:600;letter-spacing:.02em}
 .bb-save{color:var(--berry)}
 .bb-save b{font-weight:600}
@@ -348,20 +354,23 @@
     border-radius:12px 12px 0 0;transform:translateY(102%);transition:transform .3s var(--bb-ease);padding-bottom:env(safe-area-inset-bottom)}
   .bb-sheet.is-on{transform:none}
   .bb-sheet[hidden],.bb-scrim[hidden]{display:none}
-  .bb-grab{display:flex;justify-content:center;padding:10px 0 6px}
+  /* the sheet is compact on purpose: small phones should see the whole set with little
+     scrolling, so spacing is tight here while every font size stays as on the page */
+  .bb-grab{display:flex;justify-content:center;padding:8px 0 4px}
   .bb-grab i{width:40px;height:4px;border-radius:2px;background:var(--line)}
-  .bb-sheet .bb-sum-h{padding:4px 18px 12px}
+  .bb-sheet .bb-sum-h{padding:0 18px 8px}
   .bb-sheet .bb-sum-h div{display:flex;flex-direction:column}
   .bb-sheet .bb-sum-h span{font-size:15px;line-height:22px}
   .bb-close{width:44px;height:44px;border-radius:4px;box-shadow:inset 0 0 0 1px var(--line);display:grid;place-items:center;flex:none}
   .bb-close svg{width:24px;height:24px;stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .bb-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
-  .bb-sheet .bb-band{padding:12px 18px 14px}
+  .bb-sheet .bb-band{padding:10px 18px;gap:0}
   .bb-sheet .bb-band-s{font-size:16px;line-height:22px}
-  .bb-sheet .bb-prog{padding:16px 18px;gap:12px}
+  .bb-sheet .bb-prog{padding:12px 18px;gap:8px}
+  .bb-sheet .bb-track{--slot:36px;gap:6px}
   .bb-sheet .bb-next{font-size:16px;line-height:22px}
   .bb-items{padding:0 18px}
-  .bb-item{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--line)}
+  .bb-item{display:flex;align-items:center;gap:14px;padding:8px 0;border-top:1px solid var(--line)}
   .bb-item:first-child{border-top:0}
   .bb-item-ph{width:48px;height:48px;border-radius:4px;overflow:hidden;background:var(--cream);flex:none;position:relative}
   .bb-item-ph img{width:100%;height:100%;object-fit:cover}
@@ -371,12 +380,14 @@
   .bb-item-tx span{color:var(--ink-soft)}
   .bb-item-r{text-align:right;font-size:15px;line-height:22px;font-weight:600;display:flex;flex-direction:column;align-items:flex-end}
   .bb-item-r button{font-weight:400;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;padding:6px 0;min-height:32px}
-  .bb-sheet .bb-giftw{padding:16px 18px}
-  .bb-sheet .bb-gift{--gift-bg:var(--cream)}
+  .bb-sheet .bb-giftw{padding:8px 18px}
+  .bb-sheet .bb-gift{--gift-bg:var(--cream);padding:10px 12px}
   .bb-sheet .bb-gift-bar{background:var(--paper)}
-  .bb-sheet .bb-tot{padding:4px 18px 16px;gap:8px}
-  .bb-sheet-f{padding:12px 18px 12px;display:flex;flex-direction:column;gap:10px;box-shadow:0 -1px 0 var(--line)}
-  .bb-sheet .bb-how{padding:4px 18px 16px}
+  .bb-sheet .bb-tot{padding:4px 18px 12px;gap:4px}
+  .bb-sheet .bb-row{line-height:24px}
+  .bb-sheet-f{padding:10px 18px;display:flex;flex-direction:column;gap:8px;box-shadow:0 -1px 0 var(--line)}
+  .bb-sheet .bb-notes{gap:0}
+  .bb-sheet .bb-how{padding:4px 18px 12px}
 }
 /* narrow Android: one step down on the discount value so "20% OFF" keeps its room */
 @media screen and (max-width:374px){

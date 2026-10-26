@@ -6,9 +6,12 @@
      3 / 5 / 7 items give 10 / 15 / 20% off (Ivan, 26.10);
    - one product = one shade, nothing pre-selected; + adds another of the same shade;
    - the free Cosmetic Bag unlocks at $80 after the set discount;
-   - the set is kept in sessionStorage until it goes to the cart.
-   In the theme this file is replaced by the section's own script; prices and photos here
-   come from the live store (products.json, 26.10). */
+   - the set is kept in sessionStorage until it goes to the cart;
+   - cards show the compare-at price and SAVE %, like the product page; Subtotal shows the
+     compare-at sum struck over the price sum, then Set discount and Total, like the cart.
+   In the theme this file is replaced by the section's own script; prices, compare-at prices
+   and photos here come from the live store (products.json, 26.10; Blush Stick has no
+   compare-at price there, so its card shows the price alone). */
 (function () {
   'use strict';
   const main = document.getElementById('bb');
@@ -19,26 +22,26 @@
   const src = (f, w) => f ? CDN + f + (f.indexOf('?') > -1 ? '&' : '?') + 'width=' + (w || 400) : '';
   const sh = (n, c, p) => ({ n, c, p });
   const PRODUCTS = [
-    { id: 'foundation', name: 'Lines-Blurring Foundation Cushion', short: 'Foundation Cushion', price: 39.99, reviews: '1,321', group: 'face',
+    { id: 'foundation', name: 'Lines-Blurring Foundation Cushion', short: 'Foundation Cushion', price: 39.99, cmp: 54.99, reviews: '1,321', group: 'face',
       photo: '1_1296_1296___Ivory_2.webp?v=1783946768',
       shades: [sh('Ivory', '#eaded0', '1_1296_1296___Ivory_2.webp?v=1783946768'), sh('Honey Almond', '#e4cfb3', '1_1296_1296___Almond_1.webp?v=1783951463'),
         sh('Warm', '#dabf9f', '1_1296_1296___Warm_1.webp?v=1783951463'), sh('Caramel Glow', '#cfad85', '1_1296_1296___Caramel_1.webp?v=1783951463'),
         sh('Brunet Brown', '#c3a486', '1_1296_1296___Brunet_1.webp?v=1783951463'), sh('Deep Mocha', '#96745b', '1_1296_1296___Deep_1.webp?v=1783951462')] },
-    { id: 'concealer', name: 'Hydrating Concealer Stick', short: 'Concealer Stick', price: 37.99, reviews: '6', group: 'face',
+    { id: 'concealer', name: 'Hydrating Concealer Stick', short: 'Concealer Stick', price: 37.99, cmp: 49.99, reviews: '6', group: 'face',
       photo: 'Frame1707481341.webp?v=1783851683',
       shades: [sh('01 Soft Porcelain', '#eabd94', 'Soft_Porcelain.webp?v=1786025680'), sh('02 Light Apricot', '#d9ae8e', 'Light_Apricot.webp?v=1786025684'),
         sh('03 Natural Nude', '#d8a47c', 'Natural_Nude.webp?v=1786025690'), sh('04 Light Caramel', '#ab6c49', 'Light_Caramel.webp?v=1786025705'),
         sh('05 Warm Brown', '#9a552b', 'Warm_Brown.webp?v=1786025696'), sh('06 Cocoa Tan', '#743c23', 'Cocoa_Tan.webp?v=1786025709'),
         sh('07 Dark Mocha', '#74321a', 'Dark_Mocha.webp?v=1786025713'), sh('08 Deep Chocolate', '#562b1b', 'Deep_Chocolate.webp?v=1786025717')] },
-    { id: 'blush', name: 'Multi-Effect Blush Stick', short: 'Blush Stick', price: 32.99, reviews: '23', group: 'face',
+    { id: 'blush', name: 'Multi-Effect Blush Stick', short: 'Blush Stick', price: 32.99, cmp: null, reviews: '23', group: 'face',
       photo: '1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817',
       shades: [sh('01 Vintage Red', '#d82d59', '1_1296_1296_Vintage_Red.webp?v=1783022115'), sh('02 Soft Rose', '#f38ca1', '1_1296_1296_Soft_Rose.webp?v=1783022143'),
         sh('03 Soft Peach', '#c9725f', '1_1296_1296_Soft_Peach.webp?v=1783022148'), sh('04 Nude Pink', '#cd6876', '1_1296_1296_Nude_Pink.webp?v=1783022152'),
         sh('05 Chestnut Rose', '#994044', '1_1296_1296_Chestnut_Rose.webp?v=1783022178'), sh('06 Vibrant Poppy', '#982e3a', '1_1296_1296___Vibrant_Poppy.webp?v=1783022181')] },
-    { id: 'primer', name: 'Pore-Blurring Primer Stick', short: 'Primer Stick', price: 19.99, reviews: null, group: 'prep', photo: '38.jpg?v=1777287206' },
-    { id: 'dual', name: 'Dual-Ended Cheek + Eye Brush', short: 'Dual-Ended Brush', price: 17.99, reviews: '5', group: 'prep', photo: 'ChatGPTImage20_.2026_._20_39_21.webp?v=1789929608' },
-    { id: 'kabuki', name: 'Airbrush Kabuki Brush', short: 'Kabuki Brush', price: 19.99, reviews: null, group: 'prep', photo: '13be434c-f79b-422d-8aa6-38bff3de96eb.webp?v=1792244100' },
-    { id: 'spray', name: 'Waterproof Setting Spray', short: 'Setting Spray', price: 21.99, reviews: null, group: 'prep', photo: '37.jpg?v=1777287210' }
+    { id: 'primer', name: 'Pore-Blurring Primer Stick', short: 'Primer Stick', price: 19.99, cmp: 40.99, reviews: null, group: 'prep', photo: '38.jpg?v=1777287206' },
+    { id: 'dual', name: 'Dual-Ended Cheek + Eye Brush', short: 'Dual-Ended Brush', price: 17.99, cmp: 29.99, reviews: '5', group: 'prep', photo: 'ChatGPTImage20_.2026_._20_39_21.webp?v=1789929608' },
+    { id: 'kabuki', name: 'Airbrush Kabuki Brush', short: 'Kabuki Brush', price: 19.99, cmp: 24.99, reviews: null, group: 'prep', photo: '13be434c-f79b-422d-8aa6-38bff3de96eb.webp?v=1792244100' },
+    { id: 'spray', name: 'Waterproof Setting Spray', short: 'Setting Spray', price: 21.99, cmp: 45.99, reviews: null, group: 'prep', photo: '37.jpg?v=1777287210' }
   ];
   /* two made-up shade products, only to see how the grid behaves with 9 */
   const EXAMPLES = [
@@ -74,19 +77,22 @@
   const r2 = n => Math.round(n * 100) / 100;
   const money = n => '$' + n.toFixed(2);
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  /* compare-at price, or the price itself when the product has none */
+  const cmpOf = p => p.cmp > p.price ? p.cmp : p.price;
+  const offOf = p => p.cmp > p.price ? Math.round((1 - p.price / p.cmp) * 100) : 0;
 
   function calc () {
     const ids = S.order.filter(id => S.set[id] && byId(id));
-    let count = 0, sub = 0;
-    ids.forEach(id => { const e = S.set[id]; count += e.q; sub += byId(id).price * e.q; });
-    sub = r2(sub);
+    let count = 0, sub = 0, full = 0;
+    ids.forEach(id => { const e = S.set[id], p = byId(id); count += e.q; sub += p.price * e.q; full += cmpOf(p) * e.q; });
+    sub = r2(sub); full = r2(full);
     let tier = null; TIERS.forEach(t => { if (count >= t.n) tier = t; });
     const pct = tier ? tier.pct : 0;
     const disc = r2(sub * pct / 100);
     const total = r2(sub - disc);
     const next = TIERS.find(t => count < t.n) || null;
     const inCart = S.cart ? S.cart.total : 0;
-    return { ids, count, sub, pct, disc, total, next, need: next ? next.n - count : 0,
+    return { ids, count, full, sub, pct, disc, total, next, need: next ? next.n - count : 0,
       places: TOP, giftBase: r2(total + inCart), giftLeft: r2(Math.max(0, GIFT - total - inCart)) };
   }
   /* "4 of 7 products"; past the top level just the number */
@@ -137,8 +143,12 @@
         '<div class="bb-inset"><span class="bb-inset-l">' + ICON.check + 'In your set</span><div class="bb-stepper">' +
         '<button type="button" class="bb-step bb-dec"></button><span class="bb-qty">1</span>' +
         '<button type="button" class="bb-step bb-inc" aria-label="Add one more ' + esc(p.short) + '">' + ICON.plus + '</button></div></div>';
+    /* price row as on the product page: price, compare-at, SAVE % */
+    const off = offOf(p);
+    const price = '<div class="bb-price"><b><span class="bb-sr">Sale price </span>' + money(p.price) + '</b>' +
+      (off ? '<s><span class="bb-sr">Regular price </span>' + money(p.cmp) + '</s><i class="bb-off">Save ' + off + '%</i>' : '') + '</div>';
     a.innerHTML = '<div class="bb-top"><div class="bb-photo">' + imgOrEmpty(p.photo, 400, p.name) + '</div><div class="bb-info"><h3 class="bb-name">' + esc(p.name) + '</h3>' + rating +
-      '<div class="bb-price">' + money(p.price) + '</div></div></div><div class="bb-controls">' + picker + action + '</div>';
+      price + '</div></div><div class="bb-controls">' + picker + action + '</div>';
     return a;
   }
 
@@ -299,11 +309,16 @@
       : 'Spend <b>' + money(GIFT).replace('.00', '') + '</b> and get a <b>FREE</b> Cosmetic Bag';
     return '<div class="bb-gift">' + bag + '<div class="bb-gift-tx"><span>' + msg + '</span><span class="bb-gift-bar"><i></i></span></div></div>';
   }
+  /* like the cart: Subtotal = compare-at sum struck over the price sum, then the set
+     discount and the Total. Before the first level there is no discount, so the subtotal
+     is what she pays and carries the big number itself. */
   function totalsHTML (c) {
     if (!c.count) return '';
-    let h = '<div class="bb-row"><span>Subtotal</span><span class="bb-amt">' + (c.pct ? '<s class="bb-was">' + money(c.sub) + '</s>' : '') + '<b class="bb-total">' + money(c.total) + '</b></span></div>';
-    if (c.pct) h += '<div class="bb-row bb-save"><span>Set discount (' + c.pct + '%)</span><b>−' + money(c.disc) + '</b></div>';
-    return h;
+    const was = c.full > c.sub ? '<s class="bb-was"><span class="bb-sr">Regular price </span>' + money(c.full) + '</s>' : '';
+    if (!c.pct) return '<div class="bb-row"><span>Subtotal</span><span class="bb-amt">' + was + '<b class="bb-total">' + money(c.sub) + '</b></span></div>';
+    return '<div class="bb-row"><span>Subtotal</span><span class="bb-amt">' + was + '<b class="bb-sub">' + money(c.sub) + '</b></span></div>' +
+      '<div class="bb-row bb-save"><span>Set discount (' + c.pct + '%)</span><b>−' + money(c.disc) + '</b></div>' +
+      '<div class="bb-row"><span>Total</span><b class="bb-total">' + money(c.total) + '</b></div>';
   }
   function ctaHTML (c, where) {
     const btn = S.busy
@@ -513,8 +528,8 @@
     S.busy = true; update();
     setTimeout(() => {
       const lines = c.ids.map(id => { const p = byId(id), e = S.set[id]; return { id, s: e.s, q: e.q, pct: c.pct }; });
-      const prev = S.cart || { lines: [], sub: 0, disc: 0, total: 0, units: 0 };
-      S.cart = { lines: prev.lines.concat(lines), sub: r2(prev.sub + c.sub), disc: r2(prev.disc + c.disc), total: r2(prev.total + c.total), units: prev.units + c.count };
+      const prev = S.cart || { lines: [], full: 0, sub: 0, disc: 0, total: 0, units: 0 };
+      S.cart = { lines: prev.lines.concat(lines), full: r2((prev.full || prev.sub) + c.full), sub: r2(prev.sub + c.sub), disc: r2(prev.disc + c.disc), total: r2(prev.total + c.total), units: prev.units + c.count };
       S.set = {}; S.order = []; S.pick = {}; S.err = {};
       S.busy = false; S.cartDone = true;
       products().forEach(p => updateCard(p.id));
@@ -534,7 +549,8 @@
     S.cart.lines.forEach(l => {
       const p = byId(l.id); if (!p) return;
       names.push(p.name);
-      const full = r2(p.price * l.q), now = r2(full * (1 - l.pct / 100));
+      /* the line shows its compare-at total as "was", like any other cart line */
+      const now = r2(r2(p.price * l.q) * (1 - l.pct / 100)), full = r2(cmpOf(p) * l.q);
       const shade = p.shades && l.s != null ? p.shades[l.s] : null;
       const it = el('div', 'item');
       it.innerHTML = '<div class="ph">' + (photoFor(p, l) ? '<img src="' + src(photoFor(p, l), 300) + '" alt="">' : '') + '</div><div class="mid"><p class="name">' + esc(p.name) + '</p>' +
@@ -551,9 +567,10 @@
     const foot = d.querySelector('.d-foot');
     if (foot) {
       let save = foot.querySelector('.tsave');
-      if (S.cart.disc > 0) {
+      const saving = r2((S.cart.full || S.cart.sub) - S.cart.total);
+      if (saving > 0) {
         if (!save) { save = el('div', 'row tsave', '<span class="l">You’re saving</span><span class="r"></span>'); foot.insertBefore(save, foot.firstChild); }
-        save.querySelector('.r').textContent = money(S.cart.disc);
+        save.querySelector('.r').textContent = money(saving);
       } else if (save) save.remove();
       const sub = foot.querySelector('.row:not(.ship):not(.tsave) .r');
       if (sub) sub.textContent = money(S.cart.total);

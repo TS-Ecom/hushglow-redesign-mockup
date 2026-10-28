@@ -9,18 +9,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- no viewport-lock.js here: this page is fluid from 360px, the way the real theme renders -->
 <link rel="stylesheet" href="../css/shared.css?v=193">
-<link rel="stylesheet" href="../css/page-bundle-builder.css?v=199">
+<link rel="stylesheet" href="../css/page-bundle-builder.css?v=202">
 </head>
 <body class="bb-page bb-look-a">
 
 <!-- Prototype options: a review tool for Ivan and the client, not part of the page design.
      Look, desktop grid, product count and sold-out states can be switched live. -->
 <div class="bbo" id="bbo">
-  <button type="button" class="bbo-toggle" aria-expanded="false" aria-controls="bbo-panel">Prototype options: look, grid, 9 products</button>
+  <button type="button" class="bbo-toggle" aria-expanded="false" aria-controls="bbo-panel">Prototype options: look, grid, 10 products</button>
   <div class="bbo-panel" id="bbo-panel" hidden>
     <div class="bbo-group" data-opt="look"><span>Look</span><button type="button" data-v="a">A &middot; cream set elements</button><button type="button" data-v="b">B &middot; white with outline</button><button type="button" data-v="c">C &middot; light grey</button><button type="button" data-v="d">D &middot; berry first block</button><button type="button" data-v="now">Beige page (23.10)</button></div>
-    <div class="bbo-group" data-opt="grid"><span>Desktop grid</span><button type="button" data-v="type">By type (now)</button><button type="button" data-v="balanced">Balanced columns</button><button type="button" data-v="groups">Two groups</button></div>
-    <div class="bbo-group" data-opt="count"><span>Products</span><button type="button" data-v="7">7 (today)</button><button type="button" data-v="9">9 (2 examples)</button></div>
+    <div class="bbo-group" data-opt="grid"><span>Desktop grid</span><button type="button" data-v="groups">Two groups (now)</button><button type="button" data-v="type">By type</button><button type="button" data-v="balanced">Balanced columns</button></div>
+    <div class="bbo-group" data-opt="count"><span>Products</span><button type="button" data-v="8">8 (with mascara)</button><button type="button" data-v="10">10 (2 examples)</button></div>
     <div class="bbo-group" data-opt="soldout"><span>Sold-out states</span><button type="button" data-v="off">Off</button><button type="button" data-v="on">On</button></div>
     <button type="button" class="bbo-reset">Start over</button>
   </div>
@@ -314,6 +314,6 @@
 </aside>
 
 <script src="../js/shared.js?v=193"></script>
-<script src="../js/page-bundle-builder.js?v=198"></script>
+<script src="../js/page-bundle-builder.js?v=200"></script>
 </body>
 </html>

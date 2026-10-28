@@ -90,7 +90,8 @@
 .bb-col{flex:1;min-width:0;display:flex;flex-direction:column;gap:24px}
 .bb-group+.bb-group{margin-top:48px}
 .bb-group-t{font-size:20px;line-height:28px;font-weight:600;letter-spacing:.02em;margin-bottom:16px}
-.bb-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
+/* cards in a row stretch to the taller one, so both buttons sit on one line */
+.bb-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
 .bb-tile{align-self:stretch;background:var(--bb-tile);border-radius:4px;padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
 .bb-tile svg{width:40px;height:40px;stroke:var(--ink);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .bb-tile b{font-size:20px;line-height:28px;font-weight:600;letter-spacing:.02em}
@@ -111,6 +112,8 @@
 .bb-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .2s ease}
 .bb-photo img.is-swapping{opacity:.35}
 .bb-photo .bb-ph-empty{position:absolute;inset:0;background:var(--sand);display:grid;place-items:center;font-size:14px;color:var(--ink-soft)}
+/* the store's "New" tag, made small and moved to the empty top-left corner so it never covers the product */
+.bb-photo .ptag{top:4px;right:auto;left:4px;font-size:10px;line-height:14px;letter-spacing:.1em;padding:2px 5px}
 .bb-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
 .bb-name{font-size:17px;line-height:24px;letter-spacing:.02em;font-weight:600}
 .bb-rating{display:flex;align-items:center;gap:4px;min-height:24px}

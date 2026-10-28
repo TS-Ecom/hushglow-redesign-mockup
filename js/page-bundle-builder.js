@@ -11,7 +11,9 @@
      compare-at sum struck over the price sum, then Set discount and Total, like the cart.
    In the theme this file is replaced by the section's own script; prices, compare-at prices
    and photos here come from the live store (products.json, 26.10; Blush Stick has no
-   compare-at price there, so its card shows the price alone). */
+   compare-at price there, so its card shows the price alone). Tubing Mascara is still a
+   draft in the admin (28.10): $27.99, no compare-at price, no shades, no reviews yet, so
+   its card carries the store's "New" tag where the others show stars. */
 (function () {
   'use strict';
   const main = document.getElementById('bb');
@@ -22,32 +24,33 @@
   const src = (f, w) => f ? CDN + f + (f.indexOf('?') > -1 ? '&' : '?') + 'width=' + (w || 400) : '';
   const sh = (n, c, p) => ({ n, c, p });
   const PRODUCTS = [
-    { id: 'foundation', name: 'Lines-Blurring Foundation Cushion', short: 'Foundation Cushion', price: 39.99, cmp: 54.99, reviews: '1,321', group: 'face',
+    { id: 'foundation', name: 'Lines-Blurring Foundation Cushion', short: 'Foundation Cushion', price: 39.99, cmp: 54.99, reviews: '1,321', group: 'makeup',
       photo: '1_1296_1296___Ivory_2.webp?v=1783946768',
       shades: [sh('Ivory', '#eaded0', '1_1296_1296___Ivory_2.webp?v=1783946768'), sh('Honey Almond', '#e4cfb3', '1_1296_1296___Almond_1.webp?v=1783951463'),
         sh('Warm', '#dabf9f', '1_1296_1296___Warm_1.webp?v=1783951463'), sh('Caramel Glow', '#cfad85', '1_1296_1296___Caramel_1.webp?v=1783951463'),
         sh('Brunet Brown', '#c3a486', '1_1296_1296___Brunet_1.webp?v=1783951463'), sh('Deep Mocha', '#96745b', '1_1296_1296___Deep_1.webp?v=1783951462')] },
-    { id: 'concealer', name: 'Hydrating Concealer Stick', short: 'Concealer Stick', price: 37.99, cmp: 49.99, reviews: '6', group: 'face',
+    { id: 'concealer', name: 'Hydrating Concealer Stick', short: 'Concealer Stick', price: 37.99, cmp: 49.99, reviews: '6', group: 'makeup',
       photo: 'Frame1707481341.webp?v=1783851683',
       shades: [sh('01 Soft Porcelain', '#eabd94', 'Soft_Porcelain.webp?v=1786025680'), sh('02 Light Apricot', '#d9ae8e', 'Light_Apricot.webp?v=1786025684'),
         sh('03 Natural Nude', '#d8a47c', 'Natural_Nude.webp?v=1786025690'), sh('04 Light Caramel', '#ab6c49', 'Light_Caramel.webp?v=1786025705'),
         sh('05 Warm Brown', '#9a552b', 'Warm_Brown.webp?v=1786025696'), sh('06 Cocoa Tan', '#743c23', 'Cocoa_Tan.webp?v=1786025709'),
         sh('07 Dark Mocha', '#74321a', 'Dark_Mocha.webp?v=1786025713'), sh('08 Deep Chocolate', '#562b1b', 'Deep_Chocolate.webp?v=1786025717')] },
-    { id: 'blush', name: 'Multi-Effect Blush Stick', short: 'Blush Stick', price: 32.99, cmp: null, reviews: '23', group: 'face',
+    { id: 'blush', name: 'Multi-Effect Blush Stick', short: 'Blush Stick', price: 32.99, cmp: null, reviews: '23', group: 'makeup',
       photo: '1_1296_1296__1_f0399e93-04db-49d1-8887-d7e1110acf2e.webp?v=1783021817',
       shades: [sh('01 Vintage Red', '#d82d59', '1_1296_1296_Vintage_Red.webp?v=1783022115'), sh('02 Soft Rose', '#f38ca1', '1_1296_1296_Soft_Rose.webp?v=1783022143'),
         sh('03 Soft Peach', '#c9725f', '1_1296_1296_Soft_Peach.webp?v=1783022148'), sh('04 Nude Pink', '#cd6876', '1_1296_1296_Nude_Pink.webp?v=1783022152'),
         sh('05 Chestnut Rose', '#994044', '1_1296_1296_Chestnut_Rose.webp?v=1783022178'), sh('06 Vibrant Poppy', '#982e3a', '1_1296_1296___Vibrant_Poppy.webp?v=1783022181')] },
+    { id: 'mascara', name: 'Tubing Mascara', short: 'Mascara', price: 27.99, cmp: null, reviews: null, group: 'makeup', tag: 'New', photo: '1_1296_1296_01_2_1.jpg?v=1792787684' },
     { id: 'primer', name: 'Pore-Blurring Primer Stick', short: 'Primer Stick', price: 19.99, cmp: 40.99, reviews: null, group: 'prep', photo: '38.jpg?v=1777287206' },
     { id: 'dual', name: 'Dual-Ended Cheek + Eye Brush', short: 'Dual-Ended Brush', price: 17.99, cmp: 29.99, reviews: '5', group: 'prep', photo: 'ChatGPTImage20_.2026_._20_39_21.webp?v=1789929608' },
     { id: 'kabuki', name: 'Airbrush Kabuki Brush', short: 'Kabuki Brush', price: 19.99, cmp: 24.99, reviews: null, group: 'prep', photo: '13be434c-f79b-422d-8aa6-38bff3de96eb.webp?v=1792244100' },
     { id: 'spray', name: 'Waterproof Setting Spray', short: 'Setting Spray', price: 21.99, cmp: 45.99, reviews: null, group: 'prep', photo: '37.jpg?v=1777287210' }
   ];
-  /* two made-up shade products, only to see how the grid behaves with 9 */
+  /* two made-up shade products, only to see how the grid behaves with 10 */
   const EXAMPLES = [
-    { id: 'ex1', name: 'New Product 1 (Example)', short: 'New Product 1', price: 29.99, reviews: null, group: 'face', photo: null, example: true,
+    { id: 'ex1', name: 'New Product 1 (Example)', short: 'New Product 1', price: 29.99, reviews: null, group: 'makeup', photo: null, example: true,
       shades: PRODUCTS[2].shades.map(s => sh(s.n, s.c, null)) },
-    { id: 'ex2', name: 'New Product 2 (Example)', short: 'New Product 2', price: 24.99, reviews: null, group: 'face', photo: null, example: true,
+    { id: 'ex2', name: 'New Product 2 (Example)', short: 'New Product 2', price: 24.99, reviews: null, group: 'makeup', photo: null, example: true,
       shades: PRODUCTS[0].shades.map(s => sh(s.n, s.c, null)) }
   ];
   const BAG = 'ChatGPT_Image_29_._2026_._12_15_06.png?v=1770072174';
@@ -55,14 +58,14 @@
   const TOP = TIERS[TIERS.length - 1].n;   /* the tracker has one place per item, up to the top level */
   const GIFT = 80;
   const STOCK = 6;           /* demo stock limit: + turns off at 6 units */
-  const KEY = 'hg-bb-v1';
+  const KEY = 'hg-bb-v3';   /* v3: the mascara joined and Two groups became the default; older saved sets start fresh */
 
   const mqPhone = window.matchMedia('(max-width: 749px)');
   const mqWide = window.matchMedia('(min-width: 1100px)');
   const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /* ---------- state ---------- */
-  const S = { set: {}, order: [], pick: {}, err: {}, opt: { look: 'a', grid: 'type', count: '7', soldout: 'off' },
+  const S = { set: {}, order: [], pick: {}, err: {}, opt: { look: 'a', grid: 'groups', count: '8', soldout: 'off' },
     cart: null, cartDone: false, busy: false, lastPct: 0, lastGift: false, lastDisc: 0, lastFrac: 0, lastGiftW: 0, moment: null, newSlot: -1, newBand: false, newGift: false };
   try {
     const d = JSON.parse(sessionStorage.getItem(KEY) || 'null');
@@ -70,7 +73,7 @@
   } catch (e) { /* private mode: start empty */ }
   const save = () => { try { sessionStorage.setItem(KEY, JSON.stringify({ set: S.set, order: S.order, opt: S.opt, cart: S.cart })); } catch (e) {} };
 
-  const products = () => S.opt.count === '9' ? PRODUCTS.slice(0, 3).concat(EXAMPLES, PRODUCTS.slice(3)) : PRODUCTS.slice();
+  const products = () => S.opt.count === '10' ? PRODUCTS.slice(0, 3).concat(EXAMPLES, PRODUCTS.slice(3)) : PRODUCTS.slice();
   const byId = id => PRODUCTS.concat(EXAMPLES).find(p => p.id === id);
   const soldOut = p => S.opt.soldout === 'on' && p.id === 'kabuki';
   const shadeOut = (p, i) => S.opt.soldout === 'on' && p.id === 'foundation' && i === 5;
@@ -147,7 +150,7 @@
     const off = offOf(p);
     const price = '<div class="bb-price"><b><span class="bb-sr">Sale price </span>' + money(p.price) + '</b>' +
       (off ? '<s><span class="bb-sr">Regular price </span>' + money(p.cmp) + '</s><i class="bb-off">Save ' + off + '%</i>' : '') + '</div>';
-    a.innerHTML = '<div class="bb-top"><div class="bb-photo">' + imgOrEmpty(p.photo, 400, p.name) + '</div><div class="bb-info"><h3 class="bb-name">' + esc(p.name) + '</h3>' + rating +
+    a.innerHTML = '<div class="bb-top"><div class="bb-photo">' + (p.tag ? '<span class="ptag">' + esc(p.tag) + '</span>' : '') + imgOrEmpty(p.photo, 400, p.name) + '</div><div class="bb-info"><h3 class="bb-name">' + esc(p.name) + '</h3>' + rating +
       price + '</div></div><div class="bb-controls">' + picker + action + '</div>';
     return a;
   }
@@ -199,16 +202,17 @@
     return el('div', 'bb-tile', ICON.swap + '<b>Not sure about your shade?</b><p>Pick the closest one. If it isn’t right, we’ll exchange it for free.</p>');
   }
 
-  /* grid layouts: "type" = shade products left, the rest right (the approved one);
-     "balanced" = order kept, the break point chosen so both columns end level;
-     "groups" = two groups in even rows, a helper tile fills an odd slot */
+  /* grid layouts: "groups" = two groups in even rows, a helper tile fills an odd slot; the
+     default since the mascara made it four and four, so there is no tile (Ivan, 28.10);
+     "type" = shade products left, the rest right, the mascara opens the right column;
+     "balanced" = order kept, the break point chosen so both columns end level */
   function layout () {
     const list = products();
     grid.innerHTML = '';
     const mode = S.opt.grid;
     if (mode === 'groups') {
-      const face = list.filter(p => p.group === 'face'), prep = list.filter(p => p.group === 'prep');
-      [['Face makeup · pick your shade', face], ['Prep, set & brushes', prep]].forEach(([t, ps], gi) => {
+      const makeup = list.filter(p => p.group === 'makeup'), prep = list.filter(p => p.group === 'prep');
+      [['Face & eye makeup', makeup], ['Prep, set & brushes', prep]].forEach(([t, ps], gi) => {
         const g = el('section', 'bb-group');
         g.appendChild(el('h3', 'bb-group-t', esc(t)));
         const rows = el('div', 'bb-rows');
@@ -648,7 +652,7 @@
       S.opt[k] = b.dataset.v;
       if (k === 'look') applyLook();
       else {
-        if (k === 'count' && S.opt.count === '7') EXAMPLES.forEach(p => { delete S.set[p.id]; delete S.pick[p.id]; S.order = S.order.filter(x => x !== p.id); });
+        if (k === 'count' && S.opt.count === '8') EXAMPLES.forEach(p => { delete S.set[p.id]; delete S.pick[p.id]; S.order = S.order.filter(x => x !== p.id); });
         if (k === 'soldout' && S.opt.soldout === 'on') { delete S.set.kabuki; S.order = S.order.filter(x => x !== 'kabuki'); if (S.set.foundation && S.set.foundation.s === 5) { delete S.set.foundation; S.order = S.order.filter(x => x !== 'foundation'); } if (S.pick.foundation === 5) delete S.pick.foundation; }
         layout();
         update();
